@@ -1,0 +1,42 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+.container .info-title h1 {
+  font-family: "TmoneyRoundWindExtraBold";
+  color: rgb(70, 70, 70);
+  font-size: 40px;
+  letter-spacing: 5px;
+  padding: 20px 20px;
+}
+.container .info-main {
+  font-family: "Cafe24SsurroundAir";
+  font-size: 15px;
+  color: #2a2a2a;
+  width: 800px;
+  padding: 20px;
+  height: 100%; /*1.줄 필요가 없나? 2.가운데로 옮기려면 뭐 변경?*/
+}
+.container .info-main p {
+  padding-bottom: 10px;
+}
+.container .info-main li {
+  margin: 20px 0 20px 0;
+}
+.container .info-main h2 {
+  width: 120px;
+  border-bottom: 3px solid rgb(70, 70, 70);
+  padding: 10px;
+}
+.container .info-main span {
+  font-family: "TmoneyRoundWindExtraBold";
+  color: rgb(70, 70, 70);
+  font-size: 20px;
+  border-bottom: 3px solid rgba(245, 96, 153, 0.5);
+}
+
+/*-----------------------*/

@@ -1,0 +1,121 @@
+main .register-main .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 800px;
+  }
+  .wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    height: 900px;
+  }
+  
+  .wrap .logo {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .wrap .logo h1 {
+    margin: 0;
+    font-size: 50px;
+  }
+  .wrap .contents {
+    width: 1000px;
+    padding: 50px;
+    background-color: #ffffff;
+    border-radius: 5px;
+  }
+  
+  #form_wrap {
+    margin: 0 auto;
+    width: 1000px;
+    height: 800px;
+    font-size: 20px;
+  }
+  input[type="checkbox"] {
+    display: none;
+  }
+  input[type="checkbox"] + label {
+    cursor: pointer;
+  }
+  
+  input[type="checkbox"] + label::before {
+    content: "";
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    line-height: 15px;
+    border: 1px solid #2a2a2a;
+    border-radius: 3px;
+  }
+  input[type="checkbox"]:checked + label::before {
+    content: "\2714";
+    font-size: 13px;
+    font-weight: 600;
+    color: #2a2a2a;
+    background: rgba(245, 96, 153, 0.5);
+    text-align: center;
+  }
+  input[type="checkbox"]:checked + label span,
+  input[type="checkbox"] + label span {
+    padding-left: 20px;
+  }
+  
+  #form_wrap .check_box_all {
+    display: flex;
+    margin-bottom: 35px;
+  }
+  
+  #form_wrap .check_box_all label {
+    text-decoration: underline;
+  }
+  
+  .check_list .check_box {
+    margin: 20px 0;
+  }
+  .contents label {
+    font-weight: 700;
+  }
+  
+  label.required::after {
+    margin-left: 4px;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #0086ff;
+    content: "(필수)";
+  }
+  
+  .check_list .terms_content {
+    height: 88px;
+    overflow: auto;
+    margin-top: 30px;
+    padding: 30px 12px 30px 12px;
+    border: 1px solid #dadada;
+    background: #fff;
+    font-size: 15px;
+  }
+  
+  .next-button {
+    width: 100%;
+    height: 40px;
+    outline: none;
+    cursor: pointer;
+    background-color: rgba(245, 96, 153, 0.8);
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    transition-duration: 0.2s;
+  }
+  
+  .next-button:hover:enabled {
+    background-color: #a3a2a2;
+  }
+  
+  .next-button:disabled {
+    opacity: 0.2;
+    cursor: not-allowed;
+  }

@@ -1,0 +1,98 @@
+.title {
+  /* 카테고리: 장바구니 */
+  font-size: 50px;
+}
+
+/* 프로필 내용 css */
+
+.proimg {
+  text-align: center;
+}
+
+.main {
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.main form {
+  margin: 20px 0 20px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 1000px;
+}
+.main form .change-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main form .proimg {
+  width: 300px;
+  height: 300px;
+  border: 1px solid black;
+  margin: 20px;
+}
+.main form .proimg > img {
+  width: 300px;
+  height: 300px;
+  margin-bottom: 10px;
+}
+.main form .edit-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+.main form .edit-form table .form-control {
+  display: flex;
+  margin: 20px;
+  text-align: left;
+  font-family: "Cafe24Ssurround", sans-serif;
+  font-weight: 500;
+  color: rgba(245, 96, 153, 0.9);
+  font-size: 20px;
+}
+.main form .edit-form table .form-control th {
+  width: 120px;
+  padding: 10px;
+}
+.main form .edit-form table .form-control td input {
+  padding: 20px;
+  border: none;
+  border: 1px solid rgba(170, 170, 170, 0.6);
+  border-radius: 10px;
+}
+.adress {
+  margin-top: 5px;
+}
+
+.adresslink2 {
+  color: gray;
+}
+
+.button {
+  text-align: center;
+}
+
+.delet {
+  font-size: 20px;
+  background-color: white;
+  color: black;
+  padding: 5px;
+  border-radius: 10px;
+  margin-top: 15px;
+}
+
+.save {
+  font-size: 20px;
+  background-color: pink;
+  color: black;
+  padding: 5px;
+  border-radius: 10px;
+  margin-top: 15px;
+}

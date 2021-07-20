@@ -1,0 +1,145 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.chat {
+  background-color: white;
+  width: 360px;
+  height: 550px;
+  display: none;
+  right: 30px;
+  bottom: 15px;
+  position: fixed;
+  border-radius: 25px;
+  box-shadow: 5px 5px 10px 3px gray;
+}
+.chat .chat_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(
+      103deg,
+      rgb(82, 70, 255) 0%,
+      rgb(82, 90, 230) 50%,
+      rgb(82, 113, 200)
+    )
+    100% center;
+  border-radius: 25px 25px 0 0;
+  padding-bottom: 20px;
+  box-shadow: 0px 1px 5px 1px gray;
+}
+.chat .chat_logo {
+  color: white;
+  margin: 10px 0 0 30px;
+  font-size: 25px;
+}
+.chat .fa-times {
+  margin: 10px 20px 0 0;
+  font-size: 25px;
+  color: lightgrey;
+}
+.chat .fa-times:hover {
+  cursor: pointer;
+  color: white;
+}
+.chat .chat_main {
+  overflow-y: scroll;
+  height: 470px;
+  /* overflow-x: hidden; */
+  width: 360px;
+}
+.chat .chat_main::-webkit-scrollbar {
+  width: 10px;
+}
+.chat .chat_main::-webkit-scrollbar-thumb {
+  border-radius: 50px;
+  background: linear-gradient(
+      103deg,
+      rgb(82, 70, 255) 0%,
+      rgb(82, 90, 230) 50%,
+      rgb(82, 113, 200)
+    )
+    100% center;
+}
+.chat .chat_info {
+  display: flex;
+  margin: 15px 0 0 10px;
+}
+.chat .chat_img {
+  width: 40px;
+  height: 40px;
+  border: 1px solid none;
+  box-shadow: 0px 1px 5px 1px gray;
+  border-radius: 50%;
+  text-align: center;
+}
+.chat .fa-rocket {
+  margin: 8px 3px 0 0;
+  font-size: 30px;
+  color: rgb(82, 70, 255);
+}
+.chat .dito {
+  margin: -15px 0 5px 10px;
+  max-width: 250px;
+}
+.chat .dito_name {
+  font-size: 13px;
+}
+.chat .dito_text {
+  background-color: rgb(225, 232, 235, 0.5);
+  border-radius: 10px;
+  padding: 7px;
+}
+.chat .question {
+  margin: 10px 5px 0 0;
+  text-align: right;
+}
+.chat .question .ask {
+  margin: 5px 0 5px 0;
+  border-radius: 7px;
+  padding: 3px;
+  text-align: center;
+  width: 100px;
+  background-color: white;
+  border: 0;
+  outline: 0;
+  box-shadow: 0px 1px 5px 1px grey;
+}
+.chat .question .ask:hover {
+  cursor: pointer;
+  background: linear-gradient(
+      103deg,
+      rgb(82, 70, 255) 0%,
+      rgb(82, 90, 230) 50%,
+      rgb(82, 113, 200)
+    )
+    100% center;
+  color: white;
+}
+.ask_text {
+  background: linear-gradient(
+      103deg,
+      rgb(82, 70, 255) 0%,
+      rgb(82, 90, 230) 50%,
+      rgb(82, 113, 200)
+    )
+    100% center;
+  border: 1px solid white;
+  border-radius: 7px;
+  padding: 5px;
+  color: white;
+}
+.fa-docker {
+  position: fixed;
+  right: 30px;
+  bottom: 15px;
+  color: rgb(82, 70, 255);
+  font-size: 100px;
+  transform: scale(0.75);
+  /* transform: scaleX(-1); */
+}
+.fa-docker:hover {
+  transition: transform 0.5s linear;
+  transform: scale(1);
+  cursor: pointer;
+}

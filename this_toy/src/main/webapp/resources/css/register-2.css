@@ -1,0 +1,232 @@
+main .register-main .register-menu .one {
+  font-size: 25px;
+  color: rgba(27, 26, 26, 0.9);
+}
+main .register-main .register-menu .two {
+  font-size: 35px;
+  color: rgba(245, 96, 153, 0.9);
+}
+/*--------회원가입 입력----------*/
+.wrap {
+  height: 1200px;
+  width: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wrap.wd668.line {
+  border: 1px solid #ececec;
+  padding: 30px 20px;
+}
+.container {
+  width: 100%;
+}
+.sub_tit_txt {
+  margin: 80px 0 20px 20px;
+  color: #2f2f2f;
+  font-size: 25px;
+}
+.wrap.wd668.line .sub_tit_txt {
+  margin: 0px 0 20px 20px;
+}
+.con_term .term_txt {
+  border: 1px solid #ececec;
+  padding: 30px;
+  height: 210px;
+  overflow-y: auto;
+  margin: 0 0 15px;
+}
+.con_term .term_txt ul li,
+.con_term .term_txt p,
+.con_term .term_txt div {
+  color: #818181;
+  font-size: 12px;
+  line-height: 17px;
+  margin: 0 0 15px;
+}
+.left_margin {
+  margin: 0 0 0 20px;
+}
+.con_term .term_txt div.txt_bold {
+  font-weight: bold;
+  margin: 0 0 25px;
+}
+.btn_wrap {
+  text-align: center;
+  margin: 40px 0 30px;
+}
+.btn_wrap .button {
+  color: #fff;
+  background-color: rgba(245, 96, 153, 0.9);
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+  height: 50px;
+  width: 168px;
+  text-align: center;
+  margin: 0 auto;
+}
+.btn_wrap .button:hover {
+  background-color: rgba(245, 96, 153, 0.7);
+}
+.btn_wrap a.wide {
+  width: 587px;
+  margin: 0 0 0 20px;
+}
+.find_txt ul li {
+  color: #9a9a9a;
+  font-size: 13px;
+  text-align: center;
+  line-height: 17px;
+  margin: 0 0 20px;
+}
+.exTxt {
+  font-size: 14px;
+  color: #9a9a9a;
+  display: block;
+  margin: 0 0 45px 20px;
+}
+.join_form {
+  width: 100%;
+}
+.join_form table {
+  border-spacing: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  width: 100%;
+}
+.join_form table input {
+  border: 1px solid #ececec;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #4c4c4c;
+  height: 60px;
+  width: 500px;
+}
+
+.join_form table .form-control {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 10px 0 0 0;
+}
+.form-control input.error {
+  border: 1px solid red;
+}
+.form-control p {
+  font-size: 15px;
+  position: absolute;
+  top: 73px;
+  color: red;
+}
+.join_form table th span {
+  color: #404040;
+  font-size: 14px;
+  display: inline-block;
+  position: relative;
+  padding: 0 10px 0 0;
+  margin: 0 15px 0 0;
+  text-indent: 20px;
+}
+.join_form table th {
+  text-align: left;
+}
+.join_form table tr td:nth-child(2) {
+  display: flex;
+  justify-content: flex-start;
+}
+.join_form table tr th {
+  width: 150px;
+}
+.join_form table tr td:last-child {
+  width: 100px;
+}
+
+.join_form table td {
+  padding: 6px 0;
+  position: relative;
+}
+.join_form table th span:after {
+  content: "*";
+  font-size: 13px;
+  color: #f95427;
+  position: absolute;
+  top: 0;
+  right: 0px;
+}
+.join_form.idpwFind table th span:after {
+  content: none;
+}
+
+.join_form table td button {
+  width: 100px;
+  height: 60px;
+  border: 1px solid #cfcfcf;
+  border-radius: 5px;
+  background-color: rgba(245, 96, 153, 0.9);
+  color: #ffffff;
+}
+.join_form table td button:hover {
+  background-color: rgba(245, 96, 153, 0.7);
+}
+.join_form.idpwFind table td select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  text-indent: 20px;
+  width: 124px;
+  height: 50px;
+  border: 1px solid #ececec;
+  font-size: 14px;
+  color: #ccc;
+  float: left;
+}
+.join_form.idpwFind table td select::-ms-expand {
+  display: none;
+}
+.join_form.idpwFind table td tr.phone td select {
+  text-align: center;
+  text-indent: 10px;
+}
+.join_form.idpwFind table tr.email input:after,
+.mar10:after,
+.join_form.idpwFind table td select:after,
+.join_form table td a.btn_confirm:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.exform_txt {
+  padding: 12px 0 19px 0;
+  text-align: right;
+  color: #9a9a9a;
+  font-size: 13px;
+  border-bottom: 1px solid #ececec;
+}
+.exform_txt span {
+  display: inline-block;
+  position: relative;
+  padding-left: 10px;
+}
+.exform_txt span:after {
+  content: "*";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #f95427;
+  font-size: 13px;
+  font-weight: bold;
+}
+.explan_txt {
+  margin: 3px 0 0 22px;
+}
+.explan_txt li {
+  color: #b2b2b2;
+  font-size: 13px;
+  line-height: 17px;
+}
+
+/*--------------------------*/

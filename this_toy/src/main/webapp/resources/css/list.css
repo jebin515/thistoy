@@ -1,0 +1,130 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Cafe24SsurroundAir";
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+ol,
+ul {
+  list-style: none;
+}
+body {
+  margin: 0;
+}
+article {
+  width: 1400px;
+  margin: 0 auto;
+}
+.title {
+  margin: 0 0 0 315px;
+}
+
+.line {
+  height: 1px;
+  background-color: gray;
+  opacity: 0.3;
+  box-shadow: 0px 1px 5px 1px gray;
+  position: relative;
+  top: 15px;
+  z-index: -1;
+  width: 100%;
+}
+.item {
+  margin: 0 30px 0 0;
+  background-color: rgb(193, 122, 241);
+  text-align: left;
+  height: 60px;
+  width: 150px;
+  color: white;
+  border-bottom: 1px solid none;
+  box-shadow: 0px 1px 7px 0px rgb(8, 8, 8);
+  padding: 0 0 0 20px;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: block;
+}
+.nodrop {
+  cursor: inherit;
+}
+.drop {
+  height: 30px;
+  text-align: left;
+  padding-left: 35px;
+  box-shadow: 0px 1px 7px 0px white;
+  background-color: rgba(224, 185, 250, 0.781);
+}
+.dropbox {
+  display: none;
+}
+
+.list {
+  display: flex;
+}
+.fa-sort-down {
+  position: absolute;
+  top: -40px;
+  left: 120px;
+  font-size: 20px;
+  color: white;
+}
+.fa-sort-up {
+  position: absolute;
+  top: -30px;
+  left: 120px;
+  font-size: 20px;
+  color: white;
+  display: none;
+}
+.fa-sort-down:hover {
+  cursor: pointer;
+}
+.fa-sort-up:hover {
+  cursor: pointer;
+}
+.aside {
+  margin-left: 100px;
+}
+.fa-caret-left {
+  transform: rotate(-45deg);
+  position: absolute;
+  top: -5px;
+  right: 21px;
+  font-size: 31px;
+  color: rgb(41, 37, 97);
+}
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(auto, 265px));
+  gap: 70px;
+  justify-content: center;
+  width: 1000px;
+  margin-top: 30px;
+}
+
+.product_info {
+  text-align: right;
+}
+.product_logo {
+  color: rgb(193, 122, 241);
+}
+.ratingbox {
+  position: relative;
+}
+.rating {
+  position: absolute;
+  display: flex;
+  right: 0px;
+  color: rgb(193, 122, 241);
+}
+.rating2 {
+  clip: rect(0px, 81px, 18px, 0);
+}
+.page {
+  text-align: center;
+  margin: 30px 0;
+}

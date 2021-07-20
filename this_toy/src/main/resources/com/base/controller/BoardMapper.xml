@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 어떤 내용들이 들어가고 어떤게 들어가면 안되는지 알려주는게 dtd(자동완성기능이 지원된다) -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace는 인터페이스와 동일하게 해줘야한다. -->
+<mapper namespace="org.zerock.mapper.BoardMapper">
+<!-- id : 메서드 이름  -->
+	<select id="getList" resultType="org.zerock.domain.BoardVO">
+	select * from tbl_board order by bno desc
+	</select>
+	<insert id="insert">
+	<!-- #{변수명} : preparestatement를 사용한다 변수명은 VO의 getter를 사용해주는것과 같다 -->
+	insert into tbl_board (bno,title,content,writer)
+	values(seq_board.nextval,#{title},#{content},#{writer})
+	</insert>
+	<insert id="insertSelectKey">
+	<selectKey keyProperty="bno" order="BEFORE" resultType="long">
+	<!-- dual이란 oracle에서 기본적으로 제공하는 임시 테이블 -->
+	select seq_board.nextval from dual
+	</selectKey>
+	insert into tbl_board (bno,title,content,writer)
+	values(#{bno},#{title},#{content},#{writer})</insert>
+	<select id="read" resultType="org.zerock.domain.BoardVO">
+	select * from tbl_board where bno = #{bno}
+	</select>
+	<delete id="delete">
+	delete from tbl_board where bno = #{bno}
+	</delete>
+	<update id="update">
+	update tbl_board
+	set title = #{title},
+	content = #{content},
+	writer = #{writer},
+	updateDate = sysdate
+	where bno = #{bno}
+	</update>
+	<select id="getListWithPaging" resultType="org.zerock.domain.BoardVO">
+	<![CDATA[
+	select * from(
+    select rownum num , n.* from 
+	(select * from tbl_board order by regdate desc) n
+    )
+    where num between (#{pageNum}-1)*10+1 and #{pageNum}*10
+	]]>
+	</select>
+	<select id="getTotalCount" resultType="int">
+	<![CDATA[
+	select count(*) from tbl_board where bno>0
+	]]>
+	</select>
+</mapper>

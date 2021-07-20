@@ -1,0 +1,171 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+
+  .main{    /* 장바구니 전체 영역 */
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    }
+
+  .title {  /* CART 글씨영역 */
+    font-family: "Bukhari Script",sans-serif;
+    letter-spacing: 10px;
+    font-size: 50px;
+    margin: 20px 30px 20px 30px;
+  }
+  
+
+
+/* 테이블 장바구니 표 */
+.basketdiv {
+   width: 1200px;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+/* 표 카테고리 */
+.row.head{
+    letter-spacing: 5px;
+    height: 45px;
+    background-color: rgba(245, 96, 153, 0.5);
+    border-top: 1px solid black;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* 장바구니 내역 */
+.row.data{
+    border-bottom: 1px dashed gray; /* 하단점선 */
+    height: 60px;
+    line-height: 60px;
+}
+
+
+.row.head .pname{
+    padding-top: 12px;
+}
+
+.row.head .check {    /* 선택 가로길이 */
+    width: 60px;
+}
+
+.check input[type="checkbox"] {   /* 체크박스 크기 */
+    transform: scale(2.5);
+    margin: 25px;
+}
+
+.row.head .img {
+    /* 이미지 열 가로길이 */
+    width: 110px;
+  }
+
+  .img {    /* 이미지 여백 */
+    padding: 15px 0px 0px;
+    align-items: center;
+  }
+
+  .row.head .basketprice {
+    /* 상품가격 열 가로길이 */
+    width: 150px;
+  }
+
+  .num {
+    width: 145px;
+  }
+
+  .sum {
+    width: 85px;
+  }
+
+  .basketcmd {
+    width: 110px;
+  }
+
+  .total {
+    /* 최종 선택된 상품 + 결제 금액 */
+    border: 1px solid gray;
+    margin-top: 20px;
+    padding: 15px 50px 15px 50px;
+    text-align: center;
+  }
+
+   .num .updown, .p_num {
+    /* 수량 열 숫자, 아이콘 크기*/
+    color: steelblue;
+    font-size: 20px;
+    letter-spacing: -2px;
+  }
+
+   .sum {
+    /* 합계 열 가로길이, 색상 */
+    max-width: 80px;
+    color: rgba(8, 4, 255, 0.7);
+  }
+
+   .pname {
+    /* 상품명 글자 */
+    text-align: left !important;
+    line-height: 1.2 !important;
+  }
+
+  .buttongroup {
+    padding: 11px 0;
+    margin: 50px 0;
+    text-align: center;
+  }
+
+.abutton,
+.abutton:link,
+.abutton:visited,
+.abutton:active,
+input[type="button"] {
+  background-color: lightpink;
+  border: 1px solid white;
+  color: midnightblue;
+  cursor: pointer;
+  letter-spacing: -1px;
+  padding: 3px 5px;
+  margin: 2px 3px;
+  width: auto;
+  word-break: keep-all;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.basketrowcmd {
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+.sumcount,
+.summoney {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.cmd a,
+.cmd span {
+  padding: 12px 30px;
+  box-sizing: border-box;
+  margin-top: 10px;
+  font-size: 30px;
+  color: white;
+  background-color: rgba(197, 137, 199, 0.75);
+  border: 5px solid rgba(88, 113, 253, 0.75);
+  text-align: center;
+  border-radius: 10px;
+}
+
+.p_num {
+  text-align: center;
+  width: 50px;
+  font-size: 25px;
+}
