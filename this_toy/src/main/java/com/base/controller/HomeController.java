@@ -18,12 +18,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
+		
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/mypage/mypage_sellbox", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
+		
+		System.out.println("안녕 하세요");
+		
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
 		Date date = new Date();
