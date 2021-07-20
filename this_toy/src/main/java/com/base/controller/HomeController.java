@@ -25,11 +25,9 @@ public class HomeController {
 	@RequestMapping(value = "/mypage/mypage_sellbox", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		
-		System.out.println("안녕 하세요");
-		
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
-		System.out.println("�ȳ�");
+		System.out.println("안녕");
 		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
