@@ -7,10 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-이진웅입니다
-dldldl
-dldldl
-안녕
-asdasdsdadd
+3333333333333333
 </body>
 </html>
