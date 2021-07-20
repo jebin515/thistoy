@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	hi
+이진웅입니다
 </body>
 </html>
