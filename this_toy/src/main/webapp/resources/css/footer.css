@@ -98,22 +98,22 @@ footer {
   margin-left: 20px;
   width: 150px;
   height: 150px;
-  background: url("/img/2.png") no-repeat 0 0 / auto 150px;
+  background: url("/img/logo_ani.png") no-repeat 0 0 / auto 150px;
 }
 .chat .chat_logo:hover {
   margin-top: 10px;
   margin-left: 20px;
   width: 150px;
   height: 150px;
-  background: url("/img/2.png") no-repeat 0 0 / auto 150px;
+  background: url("/img/logo_ani.png") no-repeat 0 0 / auto 150px;
   animation: logo_ani 1s infinite steps(17);
 }
-.chat .fa-times {
+.chat .bx-x {
   margin: 10px 20px 0 0;
   font-size: 25px;
   color: lightgrey;
 }
-.chat .fa-times:hover {
+.chat .bx-x:hover {
   cursor: pointer;
   color: white;
 }
