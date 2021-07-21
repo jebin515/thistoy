@@ -34,8 +34,6 @@
 		<!-- 1024 * 1024 * 2 bytes 2MB -->
 		<beans:property name="maxUploadSizePerFile"
 			value="2097152"></beans:property>
-		<beans:property name="uploadTempDir"
-			value="file:/C:/upload/tmp"></beans:property>
 		<beans:property name="maxInMemorySize" value="10485756"></beans:property>
 	</beans:bean>
 	<!-- web과 관련된 애들만 servlet-context에서 빈생성 -->
