@@ -201,8 +201,9 @@
 			</table>
 		</div>
 		<!-- 메인 2 끝 -->
-		<%@ include file="../includes/footer.jsp" %>
+		
 	</div>
+	<%@ include file="../includes/footer.jsp" %>
 	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 	<script src="/js/index.js" defer></script>
 	<script src="/js/editor.js"></script>
