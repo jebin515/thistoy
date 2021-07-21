@@ -58,5 +58,5 @@
 <div class="chat-bot-open">
 	<i class='bx bx-message-rounded' onclick="openchat();"></i>
 </div>
-<script src="js/back-to-top.js"></script>
-    <script src="js/chatbot.js"></script>
+<script src="/js/back-to-top.js"></script>
+    <script src="/js/chatbot.js"></script>
