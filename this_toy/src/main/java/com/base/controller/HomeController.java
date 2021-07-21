@@ -30,6 +30,7 @@ public class HomeController {
 		System.out.println("안녕");
 		System.out.println("하이하이하이하이");
 		System.out.println("아아아아아아아 세희누나 바보");
+		System.out.println("취소");
 		System.out.println("이이");
 		System.out.println("아아아ㅏ");
 		Date date = new Date();
