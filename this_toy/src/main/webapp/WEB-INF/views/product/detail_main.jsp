@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="/css/detail-main.css" />
 </head>
 <body>
-	<%@ include file="../includes/header.jsp" %>
+	<%@ include file="../includes/header.jsp"%>
 	<div id="main">
 		<!-- 메인 1 -->
 		<div class="detail-head">
@@ -201,9 +201,9 @@
 			</table>
 		</div>
 		<!-- 메인 2 끝 -->
-		
+
 	</div>
-	<%@ include file="../includes/footer.jsp" %>
+	<%@ include file="../includes/footer.jsp"%>
 	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 	<script src="/js/index.js" defer></script>
 	<script src="/js/editor.js"></script>
