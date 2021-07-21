@@ -2,9 +2,15 @@
 <!DOCTYPE configuration 
 PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!-- db의 컬럼이름 : 스네이크 표시법  java의 VO 이름: 카멜 표기법 
+	db의 컬럼이름과 VO의 이름은 같아야함 하지만 표기법이 달라서 다를수 밖에 없음
+	이걸 다르게 해도 각각의 표기법을 이해하고 적용되게 하는 설정
+	예) DB의 일부 컬럼이름 : notice_number VO의 컬럼 : noticeNumber 이런식으로 설정 가능
+-->
 <configuration>
 	<settings>
 		<setting name="mapUnderscoreToCamelCase" value="true" />
 	</settings>
+		<typeAliases> <package name="com/base/entity"/> </typeAliases>
 </configuration>
 
