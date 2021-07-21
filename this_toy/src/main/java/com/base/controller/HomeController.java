@@ -36,6 +36,10 @@ public class HomeController {
 		System.out.println("박성주 11시 37분");
 		System.out.println("박성주 취소");
 		System.out.println("박성주 테스트");
+		System.out.println("명준 테스트");
+		System.out.println("명준22 테스트");
+		System.out.println("명준333 테스트");
+		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		
