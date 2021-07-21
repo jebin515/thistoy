@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<link rel="stylesheet" href="/css/footer.css">
+<link rel="stylesheet" href="/css/footer.css?ver=2">
 <footer>
 	<div class="footer-icon">
 		<div class="i1">
@@ -31,9 +31,9 @@
 <div class="chat">
 	<div class="chat_header">
 		<div class="chat_logo"></div>
-		<div class="fa-times">
+<!-- 		<div class="fa-times"> -->
 			<i class="bx bx-x" onclick="closechat();"></i>
-		</div>
+<!-- 		</div> -->
 	</div>
 	<div class="chat_main">
 		<div class="chat_info">
