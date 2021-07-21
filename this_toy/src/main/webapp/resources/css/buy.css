@@ -1,0 +1,135 @@
+main {
+    width: 1500px;
+    margin: 0 auto;
+}
+main .container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   
+}
+main .container .title{
+    font-size: 30px;
+    font-family: "Cafe24Ssurround", sans-serif;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+main .container table{
+    width: 1100px;
+    text-align: center;
+    margin: 30px;
+   
+}
+main .container table tr{
+    height: 50px;
+}
+main .container table tr th{
+    font-size: 20px;
+    font-family: "Cafe24Ssurround", sans-serif;
+    font-weight: 500;
+    background-color: rgba(245, 96, 153, 0.2);
+    vertical-align: middle;
+    padding: 10px;
+}
+main .container table tr th:nth-child(1){
+    width: 150px;
+}
+main .container table tr th:nth-child(2){
+    width: 350px;
+}
+main .container table tr th:nth-child(3){
+    width: 100px;
+}
+main .container table tr th:nth-child(4){
+    width: 150px;
+}
+main .container table tr th:nth-child(5){
+    width: 100px;
+}
+main .container table tr th:nth-child(6){
+    width: 150px;
+}
+main .container table tr td img{
+    width: 150px;
+    height: 150px;
+    padding: 10px;
+}
+main .container table tr td{
+    height: 50px;
+    vertical-align: middle;
+}
+
+main .container .list_main{
+    width: 1100px;
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+}
+main .container .list_main .addr_list{
+    width: 850px;
+}
+main .container .list_main .user_list{
+    width: 200px;
+    text-align: center;
+}
+
+main .container .list_main .addr_list .addr_chk ul{
+    display: flex;
+    justify-content: flex-start;
+}
+main .container .list_main .addr_list .addr_chk ul li{
+    position: relative;
+    white-space: nowrap;
+    padding: 10px 22px 10px 0;
+}
+main .container .list_main .addr_list .addr_main ul li{
+    padding: 15px 10px 15px 0;
+}
+main .container .list_main .addr_list .addr_new_main ul li{
+    padding: 15px 10px 15px 0;
+}
+main .container .list_main .addr_list .addr_new_main ul li span{
+    font-size: 20px;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+main .container .list_main .addr_list .addr_new_main ul li input{
+    width: 200px;
+    padding: 8px;
+    border: none;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+main .container .list_main .user_list ul li{
+    padding: 20px;
+}
+main .container .totle{
+    width: 1100px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(245, 96, 153, 0.2);
+    margin: 20px 0 20px 0;
+    padding: 25px;
+    text-align: center;
+}
+main .container .totle .totle_main{
+    display: flex;
+    text-align: center;
+}
+main .container .totle .totle_main ul li{
+    padding: 20px;
+}
+main .container .totle button{
+    background-color: rgba(245, 96, 153, 0.5);
+    padding: 10px 20px 10px 20px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-family: "Cafe24Ssurround", sans-serif;
+    font-weight: 500;
+
+}
+

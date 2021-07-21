@@ -29,11 +29,14 @@ public class HomeController {
 		
 		System.out.println("안녕");
 		System.out.println("하이하이하이하이");
-		System.out.println("아아아아아아아 세희누나 바보");
+		System.out.println("아아아아아아아 진웅이 바보");
 		System.out.println("취소");
 		System.out.println("취소를 취소");
 		System.out.println("이이");
-		System.out.println("아아아ㅏ");
+		System.out.println("박성주 11시 37분");
+		System.out.println("박성주 취소");
+		System.out.println("박성주 테스트");
+		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		
