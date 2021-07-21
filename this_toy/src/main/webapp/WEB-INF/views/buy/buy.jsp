@@ -12,8 +12,8 @@
     <title>Document</title>
 </head>
 <body>
+<%@ include file="../includes/header.jsp" %>
  <main>
- <%@ include file="../includes/header.jsp" %>
         <div class="container">
             <div class="title">
                 주문/결제
@@ -28,7 +28,7 @@
                     <th>상품금액</th>
                 </tr>
                 <tr>
-                    <td><img src="img/cart2.png"></td>
+                    <td><img src="/img/cart2.png"></td>
                     <td>상품정보</td>
                     <td>판매자</td>
                     <td>3000원</td>
@@ -36,7 +36,7 @@
                     <td>100원</td>
                 </tr>
                 <tr>
-                    <td><img src="img/cart2.png"></td>
+                    <td><img src="/img/cart2.png"></td>
                     <td>상품정보</td>
                     <td>판매자</td>
                     <td>3000원</td>
@@ -44,7 +44,7 @@
                     <td>100원</td>
                 </tr>
                 <tr>
-                    <td><img src="img/cart2.png"></td>
+                    <td><img src="/img/cart2.png"></td>
                     <td>상품정보</td>
                     <td>판매자</td>
                     <td>3000원</td>
@@ -130,10 +130,8 @@
     </main>
     <%@ include file="../includes/footer.jsp" %>
         <script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
-    <script src="js/back-to-top.js"></script>
-    <script src="js/chatbot.js"></script>
     <script src="/js/address.js"></script>
-    <script src="js/sell.js"></script>
+    <script src="/js/buy.js"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <!-- jQuery -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
