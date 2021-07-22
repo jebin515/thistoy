@@ -171,9 +171,7 @@
 			</div>
 		</form>
 
-		<!-- 메인 1 끝 -->
 
-		<!-- 메인 2 시작 -->
 
 		<div class="detail-content">
 			<div class="title-plan">
@@ -190,7 +188,6 @@
 				</table>
 			</div>
 		</div>
-		<!-- 메인 2 끝 -->
 	</div>
 	<%@ include file="../includes/footer.jsp"%>
 
