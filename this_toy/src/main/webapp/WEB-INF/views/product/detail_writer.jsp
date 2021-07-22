@@ -18,6 +18,7 @@
 </head>
 
 <body>
+<!-- ------------------재빈 상품 판매글 작업------------------ -->
 	<%@ include file="../includes/header.jsp"%>
 	<!-- 메인 진입 -->
 	<div id="main">
@@ -34,13 +35,13 @@
 							<tbody>
 								<tr>
 									<td>1</td>
-									<td><input type="file" id="slide-1"> <label
+									<td><input type="file" id="slide-1" name="productMainImg"> <label
 										for="slide-1" id="slide-1-view">
 											<div class="upload">
 												<span>업로드</span>
 											</div>
 									</label></td>
-									<td><input type="file" id="main-1"> <label
+									<td><input type="file" id="main-1" name="productInfoImg"> <label
 										for="main-1" id="main-1-view">
 											<div class="upload">
 												<span>업로드</span>
@@ -49,13 +50,13 @@
 								</tr>
 								<tr>
 									<td>2</td>
-									<td><input type="file" id="slide-2"> <label
+									<td><input type="file" id="slide-2" name="productMainImg"> <label
 										for="slide-2" id="slide-2-view">
 											<div class="upload">
 												<span>업로드</span>
 											</div>
 									</label></td>
-									<td><input type="file" id="main-2"> <label
+									<td><input type="file" id="main-2" name="productInfoImg"> <label
 										for="main-2" id="main-2-view">
 											<div class="upload">
 												<span>업로드</span>
@@ -64,13 +65,13 @@
 								</tr>
 								<tr>
 									<td>3</td>
-									<td><input type="file" id="slide-3"> <label
+									<td><input type="file" id="slide-3" name="productMainImg"> <label
 										for="slide-3" id="slide-3-view">
 											<div class="upload">
 												<span>업로드</span>
 											</div>
 									</label></td>
-									<td><input type="file" id="main-3"> <label
+									<td><input type="file" id="main-3" name="productInfoImg"> <label
 										for="main-3" id="main-3-view">
 											<div class="upload">
 												<span>업로드</span>
@@ -79,13 +80,13 @@
 								</tr>
 								<tr>
 									<td>4</td>
-									<td><input type="file" id="slide-4"> <label
+									<td><input type="file" id="slide-4" name="productMainImg"> <label
 										for="slide-4" id="slide-4-view">
 											<div class="upload">
 												<span>업로드</span>
 											</div>
 									</label></td>
-									<td><input type="file" id="main-4"> <label
+									<td><input type="file" id="main-4" name="productInfoImg"> <label
 										for="main-4" id="main-4-view">
 											<div class="upload">
 												<span>업로드</span>
@@ -96,7 +97,7 @@
 						</table>
 				</div>
 				<div class="write-text">
-					<textarea name="product_text"></textarea>
+					<textarea name="productText"></textarea>
 				</div>
 			</div>
 		</div>
@@ -129,6 +130,10 @@
 				<div class="txt-main">
 					<table>
 						<tr>
+							<th><span>판매자</span></th>
+							<td><input type="text" readonly="readonly" name="userId" /></td>
+						</tr>
+						<tr>
 							<th><span>상품명</span></th>
 							<td><input type="text" name="productName" class="pdname" /></td>
 						</tr>
@@ -153,7 +158,7 @@
 						</tr>
 						<tr>
 							<th><span>재고</span></th>
-							<td><input type="number" class="product_num" />
+							<td><input type="number" class="product_num" name="productStock"/>
 								<button type="button" class="ea_btn" onclick="plus()">+</button>
 								<button type="button" class="ea_btn" onclick="minus()">-</button>
 							</td>
