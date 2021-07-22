@@ -38,21 +38,26 @@
 					<ul>
 						<li class="drop-down"><a href="#">피규어</a>
 							<ul>
-								<li><a href="#">애니</a></li>
-								<li><a href="#">게임</a></li>
-								<li><a href="#">연예인</a></li>
+								<li><a href="/product/list?dcc=0101">애니</a></li>
+								<li><a href="/product/list?dcc=0102">게임</a></li>
+								<li><a href="/product/list?dcc=0103">연예인</a></li>
 							</ul></li>
 						<li class="drop-down"><a href="#">미니어쳐</a>
 							<ul>
-								<li><a href="#">소형</a></li>
-								<li><a href="#">중형</a></li>
-								<li><a href="#">대형</a></li>
+								<li><a href="/product/list?dcc=0201">소형</a></li>
+								<li><a href="/product/list?dcc=0202">중형</a></li>
+								<li><a href="/product/list?dcc=0203">대형</a></li>
 							</ul></li>
-						<li><a href="#">RC카</a></li>
+						<li class="drop-down"><a href="#">RC</a>
+							<ul>
+								<li><a href="/product/list?dcc=0301">육</a></li>
+								<li><a href="/product/list?dcc=0302">해</a></li>
+								<li><a href="/product/list?dcc=0303">공</a></li>
+							</ul></li>
 						<li class="drop-down"><a href="#">기타</a>
 							<ul>
-								<li><a href="#">슬라임</a></li>
-								<li><a href="#">굿즈</a></li>
+								<li><a href="/product/list?dcc=0401">슬라임</a></li>
+								<li><a href="/product/list?dcc=0402">굿즈</a></li>
 							</ul></li>
 					</ul></li>
 			</ul></li>
@@ -62,21 +67,26 @@
 			<ul>
 				<li class="drop-down"><a href="#">피규어</a>
 					<ul>
-						<li><a href="#">애니</a></li>
-						<li><a href="#">게임</a></li>
-						<li><a href="#">연예인</a></li>
+						<li><a href="/product/list?dcc=0101">애니</a></li>
+						<li><a href="/product/list?dcc=0102">게임</a></li>
+						<li><a href="/product/list?dcc=0103">연예인</a></li>
 					</ul></li>
-				<li class="drop-down"><a href="#">미니어쳐</a>
+				<li class="drop-down"><a href="#">하우스</a>
 					<ul>
-						<li><a href="#">소형</a></li>
-						<li><a href="#">중형</a></li>
-						<li><a href="#">대형</a></li>
+						<li><a href="/product/list?dcc=0201">소형</a></li>
+						<li><a href="/product/list?dcc=0202">중형</a></li>
+						<li><a href="/product/list?dcc=0203">대형</a></li>
 					</ul></li>
-				<li><a href="#">RC카</a></li>
+				<li class="drop-down"><a href="#">RC</a>
+					<ul>
+						<li><a href="/product/list?dcc=0301">육</a></li>
+						<li><a href="/product/list?dcc=0302">행</a></li>
+						<li><a href="/product/list?dcc=0303">공</a></li>
+					</ul></li>
 				<li class="drop-down"><a href="#">기타</a>
 					<ul>
-						<li><a href="#">슬라임</a></li>
-						<li><a href="#">굿즈</a></li>
+						<li><a href="/product/list?dcc=0401">슬라임</a></li>
+						<li><a href="/product/list?dcc=0402">굿즈</a></li>
 					</ul></li>
 			</ul></li>
 	</ul>
