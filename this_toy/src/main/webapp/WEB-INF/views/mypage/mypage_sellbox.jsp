@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="/css/style.css">
 <link rel="stylesheet" href="/css/mypage_sellbox.css">
 <!-- <script src="/js/mypage.js" defer></script> -->
-<script src="/https://kit.fontawesome.com/a216194d9c.js"
+<script src="https://kit.fontawesome.com/a216194d9c.js"
 	crossorigin="anonymous"></script>
 <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'
 	rel='stylesheet'>
@@ -47,7 +47,7 @@
 			</div>
 			<div class="gridContainer">
 				<div class="gridItem">
-					<a href=""> <img src="/https://via.placeholder.com/265x170"
+					<a href=""> <img src="https://via.placeholder.com/265x170"
 						alt="" />
 					</a>
 					<div class="product_info">
@@ -59,7 +59,7 @@
 					</div>
 				</div>
 				<div class="gridItem">
-					<a href=""> <img src="/https://via.placeholder.com/265x170"
+					<a href=""> <img src="https://via.placeholder.com/265x170"
 						alt="" />
 					</a>
 					<div class="product_info">
@@ -71,7 +71,7 @@
 					</div>
 				</div>
 				<div class="gridItem">
-					<a href=""> <img src="/https://via.placeholder.com/265x170"
+					<a href=""> <img src="https://via.placeholder.com/265x170"
 						alt="" />
 					</a>
 					<div class="product_info">
@@ -83,7 +83,7 @@
 					</div>
 				</div>
 				<div class="gridItem">
-					<a href=""> <img src="/https://via.placeholder.com/265x170"
+					<a href=""> <img src="https://via.placeholder.com/265x170"
 						alt="" />
 					</a>
 					<div class="product_info">
@@ -95,7 +95,7 @@
 					</div>
 				</div>
 				<div class="gridItem">
-					<a href=""> <img src="/https://via.placeholder.com/265x170"
+					<a href=""> <img src="https://via.placeholder.com/265x170"
 						alt="" />
 					</a>
 					<div class="product_info">
@@ -107,7 +107,7 @@
 					</div>
 				</div>
 				<div class="gridItem">
-					<a href=""> <img src="/https://via.placeholder.com/265x170"
+					<a href=""> <img src="https://via.placeholder.com/265x170"
 						alt="" />
 					</a>
 					<div class="product_info">
@@ -119,7 +119,7 @@
 					</div>
 				</div>
 				<div class="gridItem">
-					<a href=""> <img src="/https://via.placeholder.com/265x170"
+					<a href=""> <img src="https://via.placeholder.com/265x170"
 						alt="" />
 					</a>
 					<div class="product_info">
@@ -133,7 +133,6 @@
 			</div>
 	</section>
 	<%@ include file="../includes/footer.jsp" %>
-	<!-- -----------푸터------------- -->
 </body>
 
 </html>
