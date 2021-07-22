@@ -35,7 +35,6 @@ public class ProductController {
 //		session.setAttribute("userId", "재빈");
 		String userId = (String)session.getAttribute("userId");
 		if(userId == null) {
-			System.out.println("실패");
 			rttr.addFlashAttribute("fail","fail");
 			return "redirect:/";
 		}
