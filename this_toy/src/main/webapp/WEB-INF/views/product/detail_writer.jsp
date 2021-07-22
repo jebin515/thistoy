@@ -14,7 +14,7 @@
 	href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 <title>Document</title>
 <link rel="stylesheet" href="/css/style.css">
-<link rel="stylesheet" href="/css/detail-main.css" />
+<link rel="stylesheet" href="/css/detail-writer.css?ver=2" />
 </head>
 
 <body>
@@ -23,8 +23,8 @@
 	<div id="main">
 		<div id="write">
 			<div class="write-form">
-				<form>
-					<div class="write-img">
+				<div class="write-img">
+					<form action="">
 						<table>
 							<thead>
 								<th>순서</th>
@@ -94,12 +94,10 @@
 								</tr>
 							</tbody>
 						</table>
-					</div>
-					<div class="write-text">
-						<textarea></textarea>
-						<input type="submit">
-					</div>
-				</form>
+				</div>
+				<div class="write-text">
+					<textarea name="product_text"></textarea>
+				</div>
 			</div>
 		</div>
 
@@ -131,55 +129,47 @@
 				<div class="txt-main">
 					<table>
 						<tr>
-							<th><span>판매가</span></th>
-							<td>
-								<div class="price">100</div>
-							</td>
+							<th><span>상품명</span></th>
+							<td><input type="text" name="productName" class="pdname" /></td>
 						</tr>
 						<tr>
-							<th><span>판매자</span></th>
-							<td>이진웅</td>
+							<th><span>판매가</span></th>
+							<td><input type="number" class="price" name="productPrice" />
+							</td>
 						</tr>
 						<tr>
 							<th><span>카테고리</span></th>
-							<td>피규어</td>
-						</tr>
-						<tr>
-							<th><span>주문수량</span></th>
-							<td><input type="text" class="product_num" value="1"
-								oninput="inputnumber();" min="1" max="99" />
-								<button type="button" class="ea_btn" onclick="plus()">+</button>
-								<button type="button" class="ea_btn" onclick="minus()">-</button>
+							<td>
+							<select name="downCaCode">
+									<option value="">--선택--</option>
+									<option value="dog">Dog</option>
+									<option value="cat">Cat</option>
+									<option value="hamster">Hamster</option>
+									<option value="parrot">Parrot</option>
+									<option value="spider">Spider</option>
+									<option value="goldfish">Goldfish</option>
+							</select>
 							</td>
 						</tr>
 						<tr>
-							<th><span>총합</span></th>
-							<td>
-								<div class="total">원</div>
+							<th><span>재고</span></th>
+							<td><input type="number" class="product_num" />
+								<button type="button" class="ea_btn" onclick="plus()">+</button>
+								<button type="button" class="ea_btn" onclick="minus()">-</button>
 							</td>
 						</tr>
 					</table>
 				</div>
 				<div class="detail-head-button">
-					<button>바로구매</button>
-					<button>장바구니</button>
-					<button>하트</button>
+					<input type="submit" value="등록">
 				</div>
+				</form>
 			</div>
 		</div>
 
 		<!-- 메인 1 끝 -->
 
 		<!-- 메인 2 시작 -->
-		<div class="detail-menu">
-			<ul>
-				<li class="tab1"><a href="#">상품 설명</a></li>
-				<li class="tab2"><a href="#">상품 후기</a></li>
-				<li class="tab3"><a href="#">Q&A</a></li>
-				<li class="tab4"><a href="#">문의하기</a></li>
-				<li class="tab4"><a href="#">배송/교환/환불</a></li>
-			</ul>
-		</div>
 
 		<div class="detail-content">
 			<div class="title-plan">
@@ -195,75 +185,6 @@
 					</tr>
 				</table>
 			</div>
-		</div>
-
-		<div class="detail-content">
-			<div class="title">
-				<span class="review">상품후기 (1)</span>
-				<button>후기 작성하기</button>
-			</div>
-			<table>
-				<tr>
-					<th>번호</th>
-					<th>내용</th>
-					<th>작성시간</th>
-					<th>작성자</th>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>재뷘이 재뷘이 재뷘이 재뷘이 재뷘이 세빈이 ^^</td>
-					<td>2021-07-14</td>
-					<td>이진웅</td>
-				</tr>
-			</table>
-		</div>
-
-		<div class="detail-content">
-			<div class="title">
-				<span class="Q&A">Q&A (1)</span>
-				<button>문의하기</button>
-			</div>
-			<table>
-				<tr>
-					<th>번호</th>
-					<th>내용</th>
-					<th>작성시간</th>
-					<th>작성자</th>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>재뷘이 재뷘이 재뷘이 재뷘이 재뷘이 세빈이 ^^</td>
-					<td>2021-07-14</td>
-					<td>이진웅</td>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>재뷘이 재뷘이 재뷘이 재뷘이 재뷘이 세빈이 ^^</td>
-					<td>2021-07-14</td>
-					<td>이진웅</td>
-				</tr>
-			</table>
-		</div>
-
-		<div class="detail-content">
-			<div class="title">
-				<span class="another">배송/교환/환불 (1)</span>
-				<button>문의하기</button>
-			</div>
-			<table>
-				<tr>
-					<th>번호</th>
-					<th>내용</th>
-					<th>작성시간</th>
-					<th>작성자</th>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>재뷘이 재뷘이 재뷘이 재뷘이 재뷘이 세빈이 ^^</td>
-					<td>2021-07-14</td>
-					<td>이진웅</td>
-				</tr>
-			</table>
 		</div>
 		<!-- 메인 2 끝 -->
 	</div>
