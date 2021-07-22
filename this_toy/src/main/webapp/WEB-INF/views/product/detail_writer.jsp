@@ -14,7 +14,7 @@
 	href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 <title>Document</title>
 <link rel="stylesheet" href="/css/style.css">
-<link rel="stylesheet" href="/css/detail-writer.css?ver=2" />
+<link rel="stylesheet" href="/css/detail-writer.css?ver=3" />
 </head>
 
 <body>
@@ -22,10 +22,11 @@
 	<%@ include file="../includes/header.jsp"%>
 	<!-- 메인 진입 -->
 	<div id="main">
-		<div id="write">
-			<div class="write-form">
-				<div class="write-img">
-					<form action="">
+		<form action="/product/detail_writer" method="post"
+			enctype="multipart/form-data">
+			<div id="write">
+				<div class="write-form">
+					<div class="write-img">
 						<table>
 							<thead>
 								<th>순서</th>
@@ -35,14 +36,14 @@
 							<tbody>
 								<tr>
 									<td>1</td>
-									<td><input type="file" id="slide-1" name="productMainImg"> <label
-										for="slide-1" id="slide-1-view">
+									<td><input type="file" id="slide-1" name="mainFiles">
+										<label for="slide-1" id="slide-1-view">
 											<div class="upload">
 												<span>업로드</span>
 											</div>
 									</label></td>
-									<td><input type="file" id="main-1" name="productInfoImg"> <label
-										for="main-1" id="main-1-view">
+									<td><input type="file" id="main-1" name="infoFiles">
+										<label for="main-1" id="main-1-view">
 											<div class="upload">
 												<span>업로드</span>
 											</div>
@@ -50,14 +51,14 @@
 								</tr>
 								<tr>
 									<td>2</td>
-									<td><input type="file" id="slide-2" name="productMainImg"> <label
-										for="slide-2" id="slide-2-view">
+									<td><input type="file" id="slide-2" name="mainFiles">
+										<label for="slide-2" id="slide-2-view">
 											<div class="upload">
 												<span>업로드</span>
 											</div>
 									</label></td>
-									<td><input type="file" id="main-2" name="productInfoImg"> <label
-										for="main-2" id="main-2-view">
+									<td><input type="file" id="main-2" name="infoFiles">
+										<label for="main-2" id="main-2-view">
 											<div class="upload">
 												<span>업로드</span>
 											</div>
@@ -65,14 +66,14 @@
 								</tr>
 								<tr>
 									<td>3</td>
-									<td><input type="file" id="slide-3" name="productMainImg"> <label
-										for="slide-3" id="slide-3-view">
+									<td><input type="file" id="slide-3" name="mainFiles">
+										<label for="slide-3" id="slide-3-view">
 											<div class="upload">
 												<span>업로드</span>
 											</div>
 									</label></td>
-									<td><input type="file" id="main-3" name="productInfoImg"> <label
-										for="main-3" id="main-3-view">
+									<td><input type="file" id="main-3" name="infoFiles">
+										<label for="main-3" id="main-3-view">
 											<div class="upload">
 												<span>업로드</span>
 											</div>
@@ -80,14 +81,14 @@
 								</tr>
 								<tr>
 									<td>4</td>
-									<td><input type="file" id="slide-4" name="productMainImg"> <label
-										for="slide-4" id="slide-4-view">
+									<td><input type="file" id="slide-4" name="mainFiles">
+										<label for="slide-4" id="slide-4-view">
 											<div class="upload">
 												<span>업로드</span>
 											</div>
 									</label></td>
-									<td><input type="file" id="main-4" name="productInfoImg"> <label
-										for="main-4" id="main-4-view">
+									<td><input type="file" id="main-4" name="infoFiles">
+										<label for="main-4" id="main-4-view">
 											<div class="upload">
 												<span>업로드</span>
 											</div>
@@ -95,82 +96,82 @@
 								</tr>
 							</tbody>
 						</table>
-				</div>
-				<div class="write-text">
-					<textarea name="productText"></textarea>
-				</div>
-			</div>
-		</div>
-
-
-		<!-- 메인 1 -->
-		<div class="detail-head">
-			<div class="img-section">
-				<div class="swiper-container mySwiper2">
-					<div class="swiper-wrapper">
-						<div class="swiper-slide">
-							<img src="/img/500x500.png" id="slide-1-img">
-						</div>
-						<div class="swiper-slide">
-							<img src="/img/500x500.png" id="slide-2-img" />
-						</div>
-						<div class="swiper-slide">
-							<img src="/img/500x500.png" id="slide-3-img" />
-						</div>
-						<div class="swiper-slide">
-							<img src="/img/500x500.png" id="slide-4-img" />
-						</div>
 					</div>
-					<div class="swiper-button-next"></div>
-					<div class="swiper-button-prev"></div>
+					<div class="write-text">
+						<textarea name="productText"></textarea>
+					</div>
 				</div>
 			</div>
-			<div class="txt-section">
-				<div class="txt-title">미리보기</div>
-				<div class="txt-main">
-					<table>
-						<tr>
-							<th><span>판매자</span></th>
-							<td><input type="text" readonly="readonly" name="userId" /></td>
-						</tr>
-						<tr>
-							<th><span>상품명</span></th>
-							<td><input type="text" name="productName" class="pdname" /></td>
-						</tr>
-						<tr>
-							<th><span>판매가</span></th>
-							<td><input type="number" class="price" name="productPrice" />
-							</td>
-						</tr>
-						<tr>
-							<th><span>카테고리</span></th>
-							<td>
-							<select name="downCaCode">
-									<option value="">--선택--</option>
-									<option value="dog">Dog</option>
-									<option value="cat">Cat</option>
-									<option value="hamster">Hamster</option>
-									<option value="parrot">Parrot</option>
-									<option value="spider">Spider</option>
-									<option value="goldfish">Goldfish</option>
-							</select>
-							</td>
-						</tr>
-						<tr>
-							<th><span>재고</span></th>
-							<td><input type="number" class="product_num" name="productStock"/>
-								<button type="button" class="ea_btn" onclick="plus()">+</button>
-								<button type="button" class="ea_btn" onclick="minus()">-</button>
-							</td>
-						</tr>
-					</table>
+
+
+			<!-- 메인 1 -->
+			<div class="detail-head">
+				<div class="img-section">
+					<div class="swiper-container mySwiper2">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide">
+								<img src="/img/500x500.png" id="slide-1-img">
+							</div>
+							<div class="swiper-slide">
+								<img src="/img/500x500.png" id="slide-2-img" />
+							</div>
+							<div class="swiper-slide">
+								<img src="/img/500x500.png" id="slide-3-img" />
+							</div>
+							<div class="swiper-slide">
+								<img src="/img/500x500.png" id="slide-4-img" />
+							</div>
+						</div>
+						<div class="swiper-button-next"></div>
+						<div class="swiper-button-prev"></div>
+					</div>
 				</div>
-				<div class="detail-head-button">
-					<input type="submit" value="등록">
+				<div class="txt-section">
+					<div class="txt-title">미리보기</div>
+					<div class="txt-main">
+						<table>
+							<tr>
+								<th><span>판매자</span></th>
+								<td><input type="text" readonly="readonly" name="userId"
+									value='<c:out value="${userId}"/>' /></td>
+							</tr>
+							<tr>
+								<th><span>상품명</span></th>
+								<td><input type="text" name="productName" class="pdname" /></td>
+							</tr>
+							<tr>
+								<th><span>판매가</span></th>
+								<td><input type="number" class="price" name="productPrice" />
+								</td>
+							</tr>
+							<tr>
+								<th><span>카테고리</span></th>
+								<td><select name="downCaCode">
+										<option value="">--선택--</option>
+										<option value="dog">Dog</option>
+										<option value="cat">Cat</option>
+										<option value="hamster">Hamster</option>
+										<option value="parrot">Parrot</option>
+										<option value="spider">Spider</option>
+										<option value="goldfish">Goldfish</option>
+								</select></td>
+							</tr>
+							<tr>
+								<th><span>재고</span></th>
+								<td><input type="number" class="product_num"
+									name="productStock" />
+									<button type="button" class="ea_btn" onclick="plus()">+</button>
+									<button type="button" class="ea_btn" onclick="minus()">-</button>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div class="detail-head-button">
+						<input type="submit" value="등록">
+					</div>
 				</div>
-				</form>
 			</div>
-		</div>
+		</form>
 
 		<!-- 메인 1 끝 -->
 

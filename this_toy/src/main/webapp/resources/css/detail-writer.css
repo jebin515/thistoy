@@ -253,7 +253,7 @@ input[type="number"]::-webkit-inner-spin-button {
   justify-content: center;
   align-items: center;
 }
-#write .write-form form input[type="file"]{
+#write .write-form input[type="file"]{
   display: none;
 }
 
