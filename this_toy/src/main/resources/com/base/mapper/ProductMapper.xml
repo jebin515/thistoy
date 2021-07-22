@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 어떤 내용들이 들어가고 어떤게 들어가면 안되는지 알려주는게 dtd(자동완성기능이 지원된다) -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace는 인터페이스와 동일하게 해줘야한다. -->
+<mapper namespace="com.base.mapper.BoardMapper">
+
+</mapper>
