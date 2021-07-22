@@ -1,5 +1,7 @@
 package com.base.service.product;
 
+import java.util.ArrayList;
+
 import org.springframework.stereotype.Service;
 
 import com.base.entity.ProductVO;
@@ -16,6 +18,12 @@ public class ProductServiceImpl implements ProductService{
 	public int register(ProductVO vo) {
 		// TODO Auto-generated method stub
 		return mapper.insert(vo);
+	}
+
+	@Override
+	public ArrayList<ProductVO> getList(String downCaCode) {
+		// TODO Auto-generated method stub
+		return mapper.getList(downCaCode);
 	}
 
 }

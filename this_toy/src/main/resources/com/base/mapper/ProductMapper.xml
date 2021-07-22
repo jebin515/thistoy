@@ -13,4 +13,9 @@
 	#{downCaCode},#{userId},#{productInfoImg})
 	]]>
 	</insert>
+	<select id="getList" resultType="ProductVO">
+	<![CDATA[
+	select * from product where down_ca_code=#{downCaCode}
+	]]>
+	</select>
 </mapper>

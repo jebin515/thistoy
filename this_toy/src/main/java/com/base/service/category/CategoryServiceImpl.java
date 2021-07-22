@@ -18,5 +18,10 @@ public class CategoryServiceImpl implements CategoryService {
 		// TODO Auto-generated method stub
 		return mapper.select();
 	}
+	@Override
+	public DownCategoryVO getDcName(String downCaCode) {
+		// TODO Auto-generated method stub
+		return mapper.getDcName(downCaCode);
+	}
 
 }
