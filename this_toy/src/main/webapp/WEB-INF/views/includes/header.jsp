@@ -2,6 +2,15 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link rel="stylesheet" href="/css/header.css">
+<script defer>
+	var result = "<c:out value='${fail}'/>";
+	function fail() {
+		alert('로그인시 이용가능합니다.');
+	}
+	if (result == 'fail') {
+		fail();
+	}
+</script>
 <header id="header">
 	<div class="header-full">
 		<a href="#" class="logo">
@@ -49,22 +58,6 @@
 			</ul></li>
 	</ul>
 	<ul>
-		<li><a href="#">공지사항</a></li>
-	</ul>
-	<ul>
-		<li><a href="#">사이트안내</a></li>
-	</ul>
-	<ul>
-		<li class="drop-down"><a href="#">신제품/인기제품</a>
-			<ul>
-				<li><a href="#">신제품</a></li>
-				<li><a href="#">인기제품</a></li>
-			</ul></li>
-	</ul>
-	<ul>
-		<li class="drop-down"><a href="#">고객센터</a></li>
-	</ul>
-	<ul>
 		<li class="drop-down"><a href="#">카테고리</a>
 			<ul>
 				<li class="drop-down"><a href="#">피규어</a>
@@ -88,6 +81,23 @@
 			</ul></li>
 	</ul>
 	<ul>
+		<li class="drop-down"><a href="#">신제품/인기제품</a>
+			<ul>
+				<li><a href="#">신제품</a></li>
+				<li><a href="#">인기제품</a></li>
+			</ul></li>
+	</ul>
+	<ul>
+		<li><a href="#">공지사항</a></li>
+	</ul>
+	<ul>
+		<li><a href="#">사이트안내</a></li>
+	</ul>
+
+	<ul>
+		<li class="drop-down"><a href="/product/detail_writer">판매글작성</a></li>
+	</ul>
+	<ul>
 		<li>
 			<nav class="main_top">
 				<div class="search">
@@ -103,3 +113,4 @@
 	</ul>
 </div>
 </nav>
+

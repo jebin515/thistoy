@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.base.entity.ProductVO;
 import com.base.service.category.CategoryService;
@@ -29,10 +30,17 @@ public class ProductController {
 	private ProductService service;
 	private CategoryService service2;
 	@GetMapping("detail_writer")
-	public void registerget(Model model, HttpServletRequest request) {
+	public String registerget(Model model, HttpServletRequest request,RedirectAttributes rttr) {
 		HttpSession session = request.getSession();
-		session.setAttribute("userId", "재빈");
+//		session.setAttribute("userId", "재빈");
+		String userId = (String)session.getAttribute("userId");
+		if(userId == null) {
+			System.out.println("실패");
+			rttr.addFlashAttribute("fail","fail");
+			return "redirect:/";
+		}
 		model.addAttribute("list",service2.getList());
+		return "product/detail_writer";
 	}
 	@PostMapping("detail_writer")
 	public String register(ProductVO vo, MultipartFile[] mainFiles,MultipartFile[] infoFiles,HttpServletRequest request) {
