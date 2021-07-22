@@ -10,7 +10,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class ProductServiceImpl implements ProductService{
 	
-	ProductMapper mapper;
+	private ProductMapper mapper;
 	
 	@Override
 	public int register(ProductVO vo) {
