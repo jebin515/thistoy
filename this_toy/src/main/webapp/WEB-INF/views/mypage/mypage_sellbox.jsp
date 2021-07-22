@@ -36,11 +36,11 @@
 		<div class="line"></div>
 		<div class="mypage_inner">
 			<div class="inner">
-				<a href="mypage_wishlist.html" class="item">찜목록</a> <a
-					href="mypage_sellbox.html" class="item">등록한 판매글</a> <a
-					href="mypage_cart.html" class="item">장바구니</a> <a
-					href="mypage_orderbox.html" class="item">주문목록</a> <a
-					href="mypage_review.html" class="item">문의/후기</a>
+				<a href="/mypage/mypage" class="item">찜목록</a> <a
+					href="/mypage/mypage_sellbox" class="item">등록한 판매글</a> <a
+					href="/mypage/mypage_cart" class="item">장바구니</a> <a
+					href="/mypage/mypage_orderbox" class="item">주문목록</a> <a
+					href="/mypage/mypage_review" class="item">문의/후기</a>
 			</div>
 			<div style="position: relative;">
 				<i class="fas fa-caret-left"></i>

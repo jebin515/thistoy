@@ -10,10 +10,9 @@
     <title>나의장바구니</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
         integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/mypage_cart.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/mypage_cart.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-    <script type="text/javascript" src="/js/cart_3.js"></script>
 </head>
 
 <body>
@@ -286,7 +285,7 @@
     </form>
     </div>
 <%@ include file="../includes/footer.jsp" %>
-
+<script type="text/javascript" src="/js/cart_3.js"></script>
 </body>
 
 </html>
