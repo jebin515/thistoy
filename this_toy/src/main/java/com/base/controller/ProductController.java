@@ -7,11 +7,14 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -94,5 +97,11 @@ public class ProductController {
 		vo.setProductInfoImg(infonames);
 		service.register(vo);
 		return "redirect:/";
+	}
+	@GetMapping("list")
+	public void getList(@RequestParam(name="dcc") String downCaCode,Model model) {
+		model.addAttribute("pdList",service.getList(downCaCode));
+		model.addAttribute("dcname",service2.getDcName(downCaCode));
+		model.addAttribute("dcList",service2.getList());
 	}
 }

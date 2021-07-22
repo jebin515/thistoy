@@ -7,4 +7,7 @@
  <select id="select" resultType="DownCategoryVO">
  	select * from down_category
  </select>
+ <select id="getDcName" resultType="DownCategoryVO">
+ 	select * from down_category where down_ca_code=#{downCaCode}
+ </select>
 </mapper>
