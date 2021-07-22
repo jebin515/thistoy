@@ -29,7 +29,8 @@
 			<div class="aside">
 				<button type="button" class="item nodrop">피규어</button>
 				<div style="position: relative;">
-					<i class="fas fa-sort-down"></i> <i class="fas fa-sort-up"></i>
+					<i class="fas fa-sort-down"></i> 
+					<i class="fas fa-sort-up"></i>
 				</div>
 				<div class="dropbox">
 					<button type="button" class="item drop"
