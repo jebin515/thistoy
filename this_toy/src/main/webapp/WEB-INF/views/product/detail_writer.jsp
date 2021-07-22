@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +19,7 @@
 </head>
 
 <body>
-<!-- ------------------재빈 상품 판매글 작업------------------ -->
+	<!-- ------------------재빈 상품 판매글 작업------------------ -->
 	<%@ include file="../includes/header.jsp"%>
 	<!-- 메인 진입 -->
 	<div id="main">
@@ -98,7 +99,7 @@
 						</table>
 					</div>
 					<div class="write-text">
-						<textarea name="productText"></textarea>
+						<textarea name="productText" required></textarea>
 					</div>
 				</div>
 			</div>
@@ -137,29 +138,26 @@
 							</tr>
 							<tr>
 								<th><span>상품명</span></th>
-								<td><input type="text" name="productName" class="pdname" /></td>
+								<td><input type="text" name="productName" class="pdname" required /></td>
 							</tr>
 							<tr>
 								<th><span>판매가</span></th>
-								<td><input type="number" class="price" name="productPrice" />
+								<td><input type="number" class="price" name="productPrice" required />
 								</td>
 							</tr>
 							<tr>
 								<th><span>카테고리</span></th>
 								<td><select name="downCaCode">
-										<option value="">--선택--</option>
-										<option value="dog">Dog</option>
-										<option value="cat">Cat</option>
-										<option value="hamster">Hamster</option>
-										<option value="parrot">Parrot</option>
-										<option value="spider">Spider</option>
-										<option value="goldfish">Goldfish</option>
+										<c:forEach var="down" items="${list}">
+											<option value="<c:out value='${down.downCaCode}'/>"><c:out
+													value="${down.downCaName}" /></option>
+										</c:forEach>
 								</select></td>
 							</tr>
 							<tr>
 								<th><span>재고</span></th>
 								<td><input type="number" class="product_num"
-									name="productStock" />
+									name="productStock"  required/>
 									<button type="button" class="ea_btn" onclick="plus()">+</button>
 									<button type="button" class="ea_btn" onclick="minus()">-</button>
 								</td>

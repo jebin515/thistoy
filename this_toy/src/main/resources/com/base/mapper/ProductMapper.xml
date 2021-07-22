@@ -5,7 +5,12 @@
 <!-- namespace는 인터페이스와 동일하게 해줘야한다. -->
 <mapper namespace="com.base.mapper.ProductMapper">
  <!-- id : 메서드 이름  -->
-	<select id="insert">
-	select * from product;
-	</select>
+	<insert id="insert">
+	<![CDATA[
+	insert into product 
+	(product_code,product_name,product_price,product_main_img,product_text,product_stock,down_ca_code,user_id,product_info_img) values
+	(#{downCaCode}||pd_code_seq.nextval,#{productName},#{productPrice},#{productMainImg},#{productText},#{productStock},
+	#{downCaCode},#{userId},#{productInfoImg})
+	]]>
+	</insert>
 </mapper>
