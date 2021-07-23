@@ -10,7 +10,7 @@
 <script src="https://kit.fontawesome.com/a216194d9c.js"
 	crossorigin="anonymous"></script>
 <link rel="stylesheet" href="/css/style.css">
-<link rel="stylesheet" href="/css/list.css?ver=1">
+<link rel="stylesheet" href="/css/list.css?ver=2">
 <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'
 	rel='stylesheet'>
 <script src="/js/list.js" defer></script>
@@ -121,24 +121,19 @@
 		</div>
 		<div class="page">
 			<a href="/product/list?dcc=${dcname.downCaCode}&p=1"><i
-				class="fas fa-angle-double-left"></i></a>
-<%-- 			<c:if test="${pageMaker.prev}"> --%>
-				<a
-					href="/product/list?dcc=${dcname.downCaCode}&p=${pageMaker.startPage-1}"><i
-					class="fas fa-angle-left"></i></a>
-<%-- 			</c:if> --%>
+				class="fas fa-angle-double-left"></i></a> <a
+				href="/product/list?dcc=${dcname.downCaCode}&p=${pageMaker.startPage-1}"><i
+				class="fas fa-angle-left"></i></a>
 			<c:forEach var="num" begin="${pageMaker.startPage}"
 				end="${pageMaker.endPage}">
-				<a href="/product/list?dcc=${dcname.downCaCode}&p=${num}">${num}</a>
+				<a href="/product/list?dcc=${dcname.downCaCode}&p=${num}"
+				class="${pageMaker.pageNum==num? 'pageNum':''}">${num}</a>
 			</c:forEach>
-			<!-- <a href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a>
-			<a href="#">5</a> -->
-<%-- 			<c:if test="${pageMaker.next}"> --%>
-				<a
-					href="/product/list?dcc=${dcname.downCaCode}&p=${pageMaker.endPage+1}"><i
-					class="fas fa-angle-right"></i></a>
-<%-- 			</c:if> --%>
-			<a href="/product/list?dcc=${dcname.downCaCode}&p=${pageMaker.realEnd}"><i class="fas fa-angle-double-right"></i></a>
+			<a
+				href="/product/list?dcc=${dcname.downCaCode}&p=${pageMaker.endPage+1}"><i
+				class="fas fa-angle-right"></i></a> <a
+				href="/product/list?dcc=${dcname.downCaCode}&p=${pageMaker.realEnd}"><i
+				class="fas fa-angle-double-right"></i></a>
 		</div>
 	</article>
 	<!-- -----------------footer----------------- -->

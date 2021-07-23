@@ -100,10 +100,17 @@ public class ProductController {
 	}
 	@GetMapping("list")
 	public void getList(@RequestParam(name="dcc") String downCaCode,Model model,@RequestParam(name = "p",defaultValue = "1")int pageNum) {
+		
 		DccPageVO vo = new DccPageVO();
+		int count = service.getTotal(downCaCode);
+		ListPageVO listvo = new ListPageVO(count, 1);
+		if(pageNum < 1) {
+			pageNum = 1;
+		}else if(pageNum > listvo.getRealEnd()) {
+			pageNum=listvo.getRealEnd();
+		}
 		vo.setDownCaCode(downCaCode);
 		vo.setPageNum(pageNum);
-		int count = service.getTotal(downCaCode);
 		model.addAttribute("pdList",service.getList(vo));
 		model.addAttribute("dcname",service2.getDcName(downCaCode));
 		model.addAttribute("dcList",service2.getList());
