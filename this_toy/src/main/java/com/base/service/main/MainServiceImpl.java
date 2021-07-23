@@ -9,7 +9,7 @@ import com.base.entity.ProductVO;
 import com.base.mapper.MainMapper;
 
 import lombok.AllArgsConstructor;
-//mapper로 값을 보내줌
+
 @Service
 @AllArgsConstructor
 public class MainServiceImpl implements MainService{
@@ -21,5 +21,15 @@ public class MainServiceImpl implements MainService{
 		// TODO Auto-generated method stub
 		return mapper.searchList(search);
 	}
+	
+//	public ArrayList<ProductVO> bestList(){
+//		// TODO Auto-generated method stub
+//		return mapper.bestList();
+//	}
+//	
+//	public ArrayList<ProductVO> newList(){
+//		// TODO Auto-generated method stub
+//		return mapper.newList();
+//	}
 
 }
