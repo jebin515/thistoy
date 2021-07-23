@@ -11,7 +11,7 @@
 <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'
 	rel='stylesheet'>
 <link rel="stylesheet" href="/css/style.css">
-<link rel="stylesheet" href="/css/buy.css">
+<link rel="stylesheet" href="/css/orders.css">
 <title>Document</title>
 </head>
 
@@ -172,7 +172,14 @@
 				// 결제검증
 				$.ajax({
 					type : "POST",
-					url : "/orders/" + rsp.imp_uid
+					url : "/orders/" + rsp.imp_uid,
+					dataType:"json",
+					contentType:'application/json',
+					data: JSON.stringify({
+						uid : rsp.imp_uid,
+						price: rsp.paid_amount
+					})
+					
 				}).done(function(data) {
 
 					console.log(data);
@@ -180,12 +187,12 @@
 					// 위의 rsp.paid_amount 와 data.response.amount를 비교한후 로직 실행 (import 서버검증)
 					if (data.response) {
 						if (rsp.paid_amount == data.response.amount) {
-							alert("결제 및 결제검증완료");
+							location.href="/orders/orderssuccess";
 						} else {
 							alert("결제 실패");
 						}
 					} else {
-						alert("결제 시실패");
+						alert("결제 검증실패");
 					}
 
 				});
