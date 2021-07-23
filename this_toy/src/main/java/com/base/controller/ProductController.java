@@ -114,6 +114,8 @@ public class ProductController {
 		model.addAttribute("pdList",service.getList(vo));
 		model.addAttribute("dcname",service2.getDcName(downCaCode));
 		model.addAttribute("dcList",service2.getList());
+		if(count>0) {
 		model.addAttribute("pageMaker",new ListPageVO(count, pageNum));
+		}
 	}
 }

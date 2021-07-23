@@ -119,22 +119,24 @@
 				</c:forEach>
 			</div>
 		</div>
-		<div class="page">
-			<a href="/product/list?dcc=${dcname.downCaCode}&p=1"><i
-				class="fas fa-angle-double-left"></i></a> <a
-				href="/product/list?dcc=${dcname.downCaCode}&p=${pageMaker.startPage-1}"><i
-				class="fas fa-angle-left"></i></a>
-			<c:forEach var="num" begin="${pageMaker.startPage}"
-				end="${pageMaker.endPage}">
-				<a href="/product/list?dcc=${dcname.downCaCode}&p=${num}"
-				class="${pageMaker.pageNum==num? 'pageNum':''}">${num}</a>
-			</c:forEach>
-			<a
-				href="/product/list?dcc=${dcname.downCaCode}&p=${pageMaker.endPage+1}"><i
-				class="fas fa-angle-right"></i></a> <a
-				href="/product/list?dcc=${dcname.downCaCode}&p=${pageMaker.realEnd}"><i
-				class="fas fa-angle-double-right"></i></a>
-		</div>
+		<c:if test="${!empty pageMaker}">
+			<div class="page">
+				<a href="/product/list?dcc=${dcname.downCaCode}&p=1"><i
+					class="fas fa-angle-double-left"></i></a> <a
+					href="/product/list?dcc=${dcname.downCaCode}&p=${pageMaker.startPage-1}"><i
+					class="fas fa-angle-left"></i></a>
+				<c:forEach var="num" begin="${pageMaker.startPage}"
+					end="${pageMaker.endPage}">
+					<a href="/product/list?dcc=${dcname.downCaCode}&p=${num}"
+						class="${pageMaker.pageNum==num? 'pageNum':''}">${num}</a>
+				</c:forEach>
+				<a
+					href="/product/list?dcc=${dcname.downCaCode}&p=${pageMaker.endPage+1}"><i
+					class="fas fa-angle-right"></i></a> <a
+					href="/product/list?dcc=${dcname.downCaCode}&p=${pageMaker.realEnd}"><i
+					class="fas fa-angle-double-right"></i></a>
+			</div>
+		</c:if>
 	</article>
 	<!-- -----------------footer----------------- -->
 	<%@ include file="../includes/footer.jsp"%>
