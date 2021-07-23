@@ -9,7 +9,7 @@ public class BinTestController {
 	
 	@RequestMapping("/detail_writer")
 	public void writer() {
-		
+		System.out.println(12);
 	}
 	@RequestMapping("/list")
 	public void list() {
