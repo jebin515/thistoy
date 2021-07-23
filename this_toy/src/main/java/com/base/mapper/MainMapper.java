@@ -6,5 +6,9 @@ import com.base.entity.ProductVO;
 
 public interface MainMapper {
 
-	ArrayList<ProductVO> searchList(String  h);
+	ArrayList<ProductVO> searchList(String search);
+	
+	ArrayList<ProductVO> bestList();
+	
+	ArrayList<ProductVO> newList();
 }
