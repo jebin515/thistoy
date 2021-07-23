@@ -118,4 +118,8 @@ public class ProductController {
 		model.addAttribute("pageMaker",new ListPageVO(count, pageNum));
 		}
 	}
+	@GetMapping("detail_main")
+	public void getDetailMain() {
+		
+	}
 }
