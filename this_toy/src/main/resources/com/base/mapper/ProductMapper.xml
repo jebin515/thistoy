@@ -15,7 +15,16 @@
 	</insert>
 	<select id="getList" resultType="ProductVO">
 	<![CDATA[
-	select * from product where down_ca_code=#{downCaCode}
+	select * from(
+    select rownum num , n.* from 
+	(select * from product where down_ca_code=#{downCaCode} order by product_date desc) n
+    )
+    where num between (#{pageNum}-1)*15+1 and #{pageNum}*15
+	]]>
+	</select>
+	<select id="getTotalCount" resultType="int">
+	<![CDATA[
+	select count(*) from product where down_ca_code=#{downCaCode}
 	]]>
 	</select>
 </mapper>
