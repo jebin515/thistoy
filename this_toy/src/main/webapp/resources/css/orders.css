@@ -32,22 +32,25 @@ main .container table tr th{
     padding: 10px;
 }
 main .container table tr th:nth-child(1){
-    width: 150px;
+    width: 15%;
 }
 main .container table tr th:nth-child(2){
-    width: 350px;
+    width: 10%;
 }
 main .container table tr th:nth-child(3){
-    width: 100px;
+     width: 30%;
 }
 main .container table tr th:nth-child(4){
-    width: 150px;
+    width: 15%;
 }
 main .container table tr th:nth-child(5){
-    width: 100px;
+    width: 10%;
 }
 main .container table tr th:nth-child(6){
-    width: 150px;
+    width: 10%;
+}
+main .container table tr th:nth-child(7){
+    width: 10%;
 }
 main .container table tr td img{
     width: 150px;

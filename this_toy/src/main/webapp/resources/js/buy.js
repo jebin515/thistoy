@@ -17,7 +17,7 @@ function none() {
         addr_new_main.style.display = "none";
         addr_main.style.display = "block"
     } else {
-        addr_main.style.display = "none"
+        addr_main.remove;
         addr_new_main.style.display = "block"
     }
 }

@@ -23,6 +23,7 @@
 			<table class="list_table">
 				<tr>
 					<th>이미지</th>
+					<th>제목<th>
 					<th>상품정보</th>
 					<th>판매자</th>
 					<th>배송비</th>
@@ -31,22 +32,7 @@
 				</tr>
 				<tr>
 					<td><img src="/img/cart2.png"></td>
-					<td>상품정보</td>
-					<td>판매자</td>
-					<td>3000원</td>
-					<td>1개</td>
-					<td>100원</td>
-				</tr>
-				<tr>
-					<td><img src="/img/cart2.png"></td>
-					<td>상품정보</td>
-					<td>판매자</td>
-					<td>3000원</td>
-					<td>1개</td>
-					<td>100원</td>
-				</tr>
-				<tr>
-					<td><img src="/img/cart2.png"></td>
+					<td>제목</td>
 					<td>상품정보</td>
 					<td>판매자</td>
 					<td>3000원</td>
@@ -153,6 +139,10 @@
 	<script type="text/javascript"
 		src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 	<script>
+		$().click(function(){
+
+		});
+
 		$("#check_module").click(function() {
 			//가맹점 식별코드
 			IMP.init('imp76068644');
