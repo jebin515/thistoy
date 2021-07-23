@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 어떤 내용들이 들어가고 어떤게 들어가면 안되는지 알려주는게 dtd(자동완성기능이 지원된다) -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace는 인터페이스와 동일하게 해줘야한다. -->
+<mapper namespace="com.base.mapper.ProductMapper">
+ <!-- id : 메서드 이름  -->
+	<insert id="insert">
+	<![CDATA[
+	insert into product 
+	(product_code,product_name,product_price,product_main_img,product_text,product_stock,down_ca_code,user_id,product_info_img) values
+	(#{downCaCode}||pd_code_seq.nextval,#{productName},#{productPrice},#{productMainImg},#{productText},#{productStock},
+	#{downCaCode},#{userId},#{productInfoImg})
+	]]>
+	</insert>
+	<select id="getList" resultType="ProductVO">
+	<![CDATA[
+	select * from product where down_ca_code=#{downCaCode}
+	]]>
+	</select>
+</mapper>

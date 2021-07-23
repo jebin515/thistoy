@@ -1,0 +1,72 @@
+main .register-main .register-menu .one {
+  font-size: 25px;
+  color: rgba(27, 26, 26, 0.9);
+}
+main .register-main .register-menu .two {
+  font-size: 25px;
+  color: rgba(27, 26, 26, 0.9);
+}
+main .register-main .register-menu .three {
+  font-size: 35px;
+  color: rgba(245, 96, 153, 0.9);
+}
+
+.wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 800px;
+  margin-top: 150px;
+}
+.wrap .register-success {
+  height: 800px;
+}
+.wrap .register-success .register-logo {
+  text-align: center;
+  font-size: 150px;
+  margin-bottom: 40px;
+}
+.wrap .register-success .register-logo i{
+    border-radius: 50%;
+    background :rgba(88, 113, 253, 0.75);
+
+}
+.wrap .register-success .content {
+  text-align: center;
+  font-family: "Cafe24Ssurround", sans-serif;
+  color: rgba(27, 26, 26, 0.9);
+  transition: 0.3s;
+  font-size: 40px;
+  margin-bottom: 40px;
+}
+.wrap .register-success .content span {
+  text-align: center;
+  color: rgba(245, 96, 153, 0.9);
+  transition: 0.3s;
+  font-size: 70px;
+  font-family: "Cafe24Ssurround", sans-serif;
+  font-weight: bold;
+}
+.wrap .register-success .content h2{
+    margin-bottom: 20px;
+}
+.wrap .register-success .content p{
+    font-size: 20px;
+    font-family: "Cafe24Ssurround", sans-serif;
+    color: rgba(27, 26, 26, 0.3);
+    margin-bottom: 60px;
+}
+.wrap .register-success .register-success-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.wrap .register-success .register-success-btn a{
+    color: white;
+    background-color: rgba(245, 96, 153, 0.9);
+    border-radius: 8px;
+    padding: 20px;
+    font-size: 20px;
+    font-family: "Cafe24Ssurround", sans-serif;
+    border: 1px solid rgba(245, 96, 153, 0.9);
+}

@@ -15,11 +15,3 @@ for (let i = 0; i < up.length; i++) {
         down[i].style.display = "block";
     })
 }
-for (let i = 0; i < drop.length; i++) {
-    drop[i].addEventListener('click', function () {
-        for (let j = 0; j < drop.length; j++) {
-            drop[j].style.background = 'rgba(224, 185, 250, 0.781)';
-        }
-        this.style.background = 'rgb(162, 109, 236)';
-    })
-}

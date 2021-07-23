@@ -1,4 +1,3 @@
-var openbutton = document.querySelector('.fa-docker');
 var chat = document.querySelector('.chat');
 //챗봇열기
 function openchat() {
