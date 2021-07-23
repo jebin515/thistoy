@@ -1,5 +1,10 @@
 package com.base.service.main;
 
-public interface MainService {
+import java.util.ArrayList;
 
+import com.base.entity.ProductVO;
+
+public interface MainService {
+	
+	ArrayList<ProductVO> searchList(String search);
 }
