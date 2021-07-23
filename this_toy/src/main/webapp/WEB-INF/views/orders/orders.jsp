@@ -23,16 +23,17 @@
 			<table class="list_table">
 				<tr>
 					<th>이미지</th>
-					<th>제목<th>
+					<th>제목</th>
 					<th>상품정보</th>
 					<th>판매자</th>
 					<th>배송비</th>
 					<th>수량</th>
 					<th>상품금액</th>
 				</tr>
+				<c:forEach items="${select }"></c:forEach>
 				<tr>
 					<td><img src="/img/cart2.png"></td>
-					<td>제목</td>
+					<td><c:out value="${select.orderCode}"/></td>
 					<td>상품정보</td>
 					<td>판매자</td>
 					<td>3000원</td>
