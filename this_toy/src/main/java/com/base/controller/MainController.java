@@ -1,5 +1,7 @@
 package com.base.controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -8,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.base.entity.ProductVO;
 import com.base.service.main.MainService;
 
 import lombok.AllArgsConstructor;
@@ -24,10 +27,9 @@ public class MainController {
 	}
 	
 	@GetMapping("main")
-	public void getView(Model model,HttpServletRequest request) {
-		HttpSession session = request.getSession();
-		session.setAttribute("userId", "유진");
-		String userId = (String)session.getAttribute("userId");
-//		model.addAttribute("view", service.bestList());
+	public void getBest(Model model) {
+		model.addAttribute("best", service.bestList());
+		model.addAttribute("newproduct", service.newList());
 	}
+		
 }

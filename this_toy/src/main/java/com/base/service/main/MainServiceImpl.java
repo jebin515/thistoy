@@ -2,7 +2,6 @@ package com.base.service.main;
 
 import java.util.ArrayList;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.base.entity.ProductVO;
@@ -22,14 +21,16 @@ public class MainServiceImpl implements MainService{
 		return mapper.searchList(search);
 	}
 	
-//	public ArrayList<ProductVO> bestList(){
-//		// TODO Auto-generated method stub
-//		return mapper.bestList();
-//	}
-//	
-//	public ArrayList<ProductVO> newList(){
-//		// TODO Auto-generated method stub
-//		return mapper.newList();
-//	}
+	@Override
+	public ArrayList<ProductVO> bestList(){
+		// TODO Auto-generated method stub
+		return mapper.bestList();
+	}
+	
+	@Override
+	public ArrayList<ProductVO> newList(){
+		// TODO Auto-generated method stub
+		return mapper.newList();
+	}
 
 }

@@ -10,9 +10,16 @@
 	</select>
 	<select id="bestList" resultType="ProductVO">
 		<![CDATA[
-		select * from bestList
+		select * from
 		(select * from product order by sell_count desc) 
-		where rownum <=8;
+		where rownum <=8
+		]]>
+	</select>
+	<select id="newList" resultType="ProductVO">
+		<![CDATA[
+		select * from
+        (select * from product order by product_date desc)
+        where rownum <=8
 		]]>
 	</select>
 </mapper>
