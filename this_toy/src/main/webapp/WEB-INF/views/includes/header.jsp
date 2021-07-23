@@ -111,7 +111,7 @@
 		<li>
 			<nav class="main_top">
 				<div class="search">
-					<form action="get">
+					<form action="/main/search" method="get">
 						<input type="text" name="search" placeholder="search"
 							class="search_text">
 						<button type="submit">
