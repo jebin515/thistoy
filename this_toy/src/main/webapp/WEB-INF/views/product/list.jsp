@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +10,7 @@
 <script src="https://kit.fontawesome.com/a216194d9c.js"
 	crossorigin="anonymous"></script>
 <link rel="stylesheet" href="/css/style.css">
-<link rel="stylesheet" href="/css/list.css">
+<link rel="stylesheet" href="/css/list.css?ver=1">
 <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'
 	rel='stylesheet'>
 <script src="/js/list.js" defer></script>
@@ -29,40 +30,49 @@
 			<div class="aside">
 				<button type="button" class="item nodrop">피규어</button>
 				<div style="position: relative;">
-					<i class="fas fa-sort-down"></i> 
-					<i class="fas fa-sort-up"></i>
+					<i class="fas fa-sort-down"></i> <i class="fas fa-sort-up"></i>
 				</div>
 				<div class="dropbox">
 					<button type="button" class="item drop"
 						value='<c:out value="${dcList[0].downCaCode}"/>'>애니</button>
-					<button type="button" class="item drop" value='<c:out value="${dcList[1].downCaCode}"/>'>게임</button>
-					<button type="button" class="item drop" value='<c:out value="${dcList[2].downCaCode}"/>'>연예인</button>
+					<button type="button" class="item drop"
+						value='<c:out value="${dcList[1].downCaCode}"/>'>게임</button>
+					<button type="button" class="item drop"
+						value='<c:out value="${dcList[2].downCaCode}"/>'>연예인</button>
 				</div>
 				<button type="button" class="item nodrop">하우스</button>
 				<div style="position: relative;">
 					<i class="fas fa-sort-down"></i> <i class="fas fa-sort-up"></i>
 				</div>
 				<div class="dropbox">
-					<button type="button" class="item drop" value='<c:out value="${dcList[3].downCaCode}"/>'>소형</button>
-					<button type="button" class="item drop" value='<c:out value="${dcList[4].downCaCode}"/>'>중형</button>
-					<button type="button" class="item drop" value='<c:out value="${dcList[5].downCaCode}"/>'>대형</button>
+					<button type="button" class="item drop"
+						value='<c:out value="${dcList[3].downCaCode}"/>'>소형</button>
+					<button type="button" class="item drop"
+						value='<c:out value="${dcList[4].downCaCode}"/>'>중형</button>
+					<button type="button" class="item drop"
+						value='<c:out value="${dcList[5].downCaCode}"/>'>대형</button>
 				</div>
 				<button type="button" class="item nodrop">RC</button>
 				<div style="position: relative;">
 					<i class="fas fa-sort-down"></i> <i class="fas fa-sort-up"></i>
 				</div>
 				<div class="dropbox">
-					<button type="button" class="item drop" value='<c:out value="${dcList[6].downCaCode}"/>'>육</button>
-					<button type="button" class="item drop" value='<c:out value="${dcList[7].downCaCode}"/>'>해</button>
-					<button type="button" class="item drop" value='<c:out value="${dcList[8].downCaCode}"/>'>공</button>
+					<button type="button" class="item drop"
+						value='<c:out value="${dcList[6].downCaCode}"/>'>육</button>
+					<button type="button" class="item drop"
+						value='<c:out value="${dcList[7].downCaCode}"/>'>해</button>
+					<button type="button" class="item drop"
+						value='<c:out value="${dcList[8].downCaCode}"/>'>공</button>
 				</div>
 				<button type="button" class="item nodrop">기타</button>
 				<div style="position: relative;">
 					<i class="fas fa-sort-down"></i> <i class="fas fa-sort-up"></i>
 				</div>
 				<div class="dropbox">
-					<button type="button" class="item drop" value='<c:out value="${dcList[9].downCaCode}"/>'>슬라임</button>
-					<button type="button" class="item drop" value='<c:out value="${dcList[10].downCaCode}"/>'>굿즈</button>
+					<button type="button" class="item drop"
+						value='<c:out value="${dcList[9].downCaCode}"/>'>슬라임</button>
+					<button type="button" class="item drop"
+						value='<c:out value="${dcList[10].downCaCode}"/>'>굿즈</button>
 				</div>
 				<button type="button" class="item nodrop">Best</button>
 				<button type="button" class="item nodrop">New</button>
@@ -72,9 +82,12 @@
 			</div>
 			<div class="gridContainer">
 				<c:forEach var="pdinfo" items="${pdList}">
+					<c:set var="i" value='${fn:indexOf(pdinfo.productMainImg,",")}' />
+					<c:set var="mimg"
+						value="${fn:substring(pdinfo.productMainImg,0,i)}" />
 					<div class="gridItem">
 						<a href="detail_main.html"> <img
-							src="https://via.placeholder.com/265x170" alt="" />
+							src="/upload/product/main/${mimg}" alt="" class="mainImg" />
 						</a>
 						<div class="product_info">
 							<a href="#"> <span class="product_name"><span
@@ -107,10 +120,25 @@
 			</div>
 		</div>
 		<div class="page">
-			<i class="fas fa-angle-double-left"></i> <i class="fas fa-angle-left"></i>
-			<a href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a>
-			<a href="#">5</a> <i class="fas fa-angle-right"></i> <i
-				class="fas fa-angle-double-right"></i>
+			<a href="/product/list?dcc=${dcname.downCaCode}&p=1"><i
+				class="fas fa-angle-double-left"></i></a>
+<%-- 			<c:if test="${pageMaker.prev}"> --%>
+				<a
+					href="/product/list?dcc=${dcname.downCaCode}&p=${pageMaker.startPage-1}"><i
+					class="fas fa-angle-left"></i></a>
+<%-- 			</c:if> --%>
+			<c:forEach var="num" begin="${pageMaker.startPage}"
+				end="${pageMaker.endPage}">
+				<a href="/product/list?dcc=${dcname.downCaCode}&p=${num}">${num}</a>
+			</c:forEach>
+			<!-- <a href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a>
+			<a href="#">5</a> -->
+<%-- 			<c:if test="${pageMaker.next}"> --%>
+				<a
+					href="/product/list?dcc=${dcname.downCaCode}&p=${pageMaker.endPage+1}"><i
+					class="fas fa-angle-right"></i></a>
+<%-- 			</c:if> --%>
+			<a href="/product/list?dcc=${dcname.downCaCode}&p=${pageMaker.realEnd}"><i class="fas fa-angle-double-right"></i></a>
 		</div>
 	</article>
 	<!-- -----------------footer----------------- -->
@@ -124,17 +152,17 @@
 					let parent1 = downca[i].parentElement;
 					downca[i].parentElement.style.display = "block";
 					downca[i].style.background = 'rgb(162, 109, 236)';
- 					downca[i].parentElement.previousElementSibling.children[0].style.display="none";
- 					downca[i].parentElement.previousElementSibling.children[1].style.display="block";
+					downca[i].parentElement.previousElementSibling.children[0].style.display = "none";
+					downca[i].parentElement.previousElementSibling.children[1].style.display = "block";
 				}
 			}
 		}
 		category();
-		for(let i = 0; i < downca.length; i++){
-			downca[i].addEventListener('click', function () {
+		for (let i = 0; i < downca.length; i++) {
+			downca[i].addEventListener('click', function() {
 				let dcn = downca[i].value;
-				location.href="/product/list?dcc="+dcn;
-		    })
+				location.href = "/product/list?dcc=" + dcn;
+			})
 		}
 	</script>
 </body>

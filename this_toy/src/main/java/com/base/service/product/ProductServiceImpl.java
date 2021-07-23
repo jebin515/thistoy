@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.springframework.stereotype.Service;
 
+import com.base.entity.DccPageVO;
 import com.base.entity.ProductVO;
 import com.base.mapper.ProductMapper;
 
@@ -21,9 +22,15 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public ArrayList<ProductVO> getList(String downCaCode) {
+	public ArrayList<ProductVO> getList(DccPageVO vo) {
 		// TODO Auto-generated method stub
-		return mapper.getList(downCaCode);
+		return mapper.getList(vo);
+	}
+
+	@Override
+	public int getTotal(String downCaCode) {
+		// TODO Auto-generated method stub
+		return mapper.getTotalCount(downCaCode);
 	}
 
 }

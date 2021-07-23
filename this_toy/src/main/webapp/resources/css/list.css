@@ -105,6 +105,11 @@ article {
   width: 1000px;
   margin-top: 30px;
 }
+.mainImg{
+	width:265px;
+	height:170px;
+	object-fit:cover;
+}
 
 .product_info {
   text-align: right;

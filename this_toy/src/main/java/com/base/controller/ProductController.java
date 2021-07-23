@@ -7,8 +7,6 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.base.entity.DccPageVO;
+import com.base.entity.ListPageVO;
 import com.base.entity.ProductVO;
 import com.base.service.category.CategoryService;
 import com.base.service.product.ProductService;
@@ -35,7 +35,7 @@ public class ProductController {
 	@GetMapping("detail_writer")
 	public String registerget(Model model, HttpServletRequest request,RedirectAttributes rttr) {
 		HttpSession session = request.getSession();
-//		session.setAttribute("userId", "재빈");
+		session.setAttribute("userId", "이름이뭘까");
 		String userId = (String)session.getAttribute("userId");
 		if(userId == null) {
 			rttr.addFlashAttribute("fail","fail");
@@ -99,9 +99,14 @@ public class ProductController {
 		return "redirect:/";
 	}
 	@GetMapping("list")
-	public void getList(@RequestParam(name="dcc") String downCaCode,Model model) {
-		model.addAttribute("pdList",service.getList(downCaCode));
+	public void getList(@RequestParam(name="dcc") String downCaCode,Model model,@RequestParam(name = "p",defaultValue = "1")int pageNum) {
+		DccPageVO vo = new DccPageVO();
+		vo.setDownCaCode(downCaCode);
+		vo.setPageNum(pageNum);
+		int count = service.getTotal(downCaCode);
+		model.addAttribute("pdList",service.getList(vo));
 		model.addAttribute("dcname",service2.getDcName(downCaCode));
 		model.addAttribute("dcList",service2.getList());
+		model.addAttribute("pageMaker",new ListPageVO(count, pageNum));
 	}
 }
