@@ -16,28 +16,29 @@ import lombok.extern.log4j.Log4j;
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService{
 	
-	private final UserMapper mapper;
+	private final UserMapper userMapper;
 	
 	
 	@Override
-	public UserVO login(UserVO uservo) {
+	public UserVO login(UserVO userVO) {
 		
-		return  null;
-	}
-
-	@Override
-	public void login2(UserVO uservo) {
-		
+		return userMapper.login(userVO);
 	}
 	
 	//회원가입
 	@Override
-	public void register(UserVO uservo){
-		mapper.register(uservo);
+	public void register(UserVO userVO){
+		userMapper.register(userVO);
 	}
 	@Override
-	public int idCheck(UserVO uservo) {
-		int result = mapper.idCheck(uservo);
+	public int idCheck(UserVO userVO) {
+		int result = userMapper.idCheck(userVO);
+		return result;
+	}
+
+	@Override
+	public int loginCheck(UserVO userVO) {
+		int result = userMapper.loginCheck(userVO);
 		return result;
 	}
 

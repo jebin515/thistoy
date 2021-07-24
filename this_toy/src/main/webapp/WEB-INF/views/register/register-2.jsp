@@ -108,7 +108,7 @@
 								</div>
 							</div>
 							<div class="btn_wrap">
-								<input type="submit" id="idCheck" onclick="fn_idCheck();" class="button" value="확인">
+								<input type="submit" id="idCheck"  class="button" value="확인">
 							</div>
 						</form>
 					</div>

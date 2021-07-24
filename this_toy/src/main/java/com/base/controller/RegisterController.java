@@ -50,18 +50,18 @@ public class RegisterController {
 //	(임시)중복체크회원가입
 //	@ResponseBody
 	@PostMapping("/register-2")
-	public String registerPOST(UserVO userVo,Model model) throws Exception {
-//		String hashedPw = BCrypt.hashpw(userVo.getUserPasswd(), BCrypt.gensalt());
-//        userVo.setUserPasswd(hashedPw);
-        //연속등록 불가능하도록 플래시어트리뷰트 후 리다이렉트
-//        rttr.addFlashAttribute("result", "success");
-		int result = userService.idCheck(userVo);
+	public String registerPOST(UserVO userVO,RedirectAttributes rttr) throws Exception {
+		//암호화 저장
+//		String hashedPw = BCrypt.hashpw(userVO.getUserPasswd(), BCrypt.gensalt());
+//		userVO.setUserPasswd(hashedPw);
+//        연속등록 불가능하도록 플래시어트리뷰트 후 리다이렉트
+        rttr.addFlashAttribute("result", "success");
+		int result = userService.idCheck(userVO);
 		try {
 			if(result == 1) {
-				model.addAttribute("idCheck","alert("+"이미 있는 아이디 입니다.)");
 				return "/register/register-2";
 			}else if (result == 0) {
-				userService.register(userVo);
+				userService.register(userVO);
 			}
 		} catch (Exception e) {
 			throw new RuntimeException();

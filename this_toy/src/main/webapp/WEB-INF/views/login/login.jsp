@@ -96,7 +96,7 @@
 			</div>
 			</nav>
 			<main>
-				<form action="index.html">
+				<form action="/login/loginsuccess" method="post">
 					<div><a href="#" class="logo"></a></div>
 					<div class="input-div one">
 						<div class="i">
@@ -104,7 +104,7 @@
 						</div>
 						<div class="div">
 							<h5>아이디</h5>
-							<input type="text" class="input">
+							<input type="text" class="input" name="userId">
 						</div>
 					</div>
 					<div class="input-div pass">
@@ -113,7 +113,7 @@
 						</div>
 						<div class="div">
 							<h5>비밀번호</h5>
-							<input type="password" class="input">
+							<input type="password" class="input" name="userPasswd">
 						</div>
 					</div>
 					<a href="#">비밀번호 찾기</a>

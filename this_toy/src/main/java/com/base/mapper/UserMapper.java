@@ -7,12 +7,14 @@ import com.base.entity.UserVO;
 
 public interface UserMapper {
 	
-	// 유저테이블 내용 가져오기
-	UserVO login(UserVO userVo);
+	// 로그인
+	UserVO login(UserVO userVO);
 	
-	void login2(UserVO uservo);
+	int loginCheck(UserVO userVO);
 	
-	void register(UserVO uservo);
+	//회원가입
+	void register(UserVO userVO);
 	
-	int idCheck(UserVO uservo);
+	//아이디 중복체크
+	int idCheck(UserVO userVO);
 }
