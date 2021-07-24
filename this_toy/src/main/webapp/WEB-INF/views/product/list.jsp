@@ -10,7 +10,7 @@
 <script src="https://kit.fontawesome.com/a216194d9c.js"
 	crossorigin="anonymous"></script>
 <link rel="stylesheet" href="/css/style.css">
-<link rel="stylesheet" href="/css/list.css?ver=3">
+<link rel="stylesheet" href="/css/list.css?ver=1">
 <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'
 	rel='stylesheet'>
 <script src="/js/list.js" defer></script>
