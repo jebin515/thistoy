@@ -1,0 +1,71 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.title {
+    font-weight: bold;
+    font-family: "Bukhari Script", sans-serif;
+    font-size: 40px;
+    color: #484848;
+    letter-spacing: 10px;
+    padding: 20px 20px;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+.board {
+    position: relative;
+    font-size: 21px;
+    display: flex;
+}
+
+.base {
+    margin: 0 auto;
+    border: 1px solid pink;
+}
+.base th:first-child {
+    text-align: center;
+    width: 150px;
+    background-color: rgb(253, 214, 219);
+}
+.base td {
+    border: 1px solid rgba(88, 113, 253, 0.75);
+    padding-left: 5px;
+}
+
+.base tbody th {
+    padding: 10px 15px 10px 10px;
+    border: 1px solid rgba(88, 113, 253, 0.75);
+}
+
+.detail-text {
+padding: 10px 10px;
+margin-bottom: 20px;
+}
+
+.detail-text > .oderlist {
+    color: blue;
+    text-decoration: underline;
+}
+
+.board-button {
+    font-size: 25px;
+    text-align: center;
+    margin: 50px;
+}
+
+.board-list {
+    border: 1px solid rgba(88, 113, 253, 0.75);
+    background-color: rgba(197, 137, 199, 0.75);
+    border-radius: 10px;
+    padding: 10px 30px;
+    color: white;
+}
+.board-edit, .board-del {
+    border: 1px solid rgba(88, 113, 253, 0.75);
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px 30px;
+    color: black;
+}

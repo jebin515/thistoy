@@ -15,7 +15,6 @@ public class MainServiceImpl implements MainService{
 	
 	private MainMapper mapper;
 	
-	
 	@Override
 	public ArrayList<ProductVO> bestList(){
 		// TODO Auto-generated method stub

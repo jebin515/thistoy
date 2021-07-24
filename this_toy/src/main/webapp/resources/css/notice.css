@@ -55,6 +55,10 @@ main {
     padding: 20px 15px;
     letter-spacing: 5px;
   }
+  .page-number-ea:hover{
+    color: blue;
+    text-decoration: underline;
+  }
   .container .notice-search {
     position: relative;
     padding: 20px 20px;
@@ -82,3 +86,11 @@ main {
     width: 62px;
     color: #616161;
   }
+  .subject-list {
+    color: black;
+  }
+  .subject-list:hover {
+    color: plum;
+    text-decoration: underline;
+  }
+  
