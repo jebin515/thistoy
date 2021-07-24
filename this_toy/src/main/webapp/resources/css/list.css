@@ -105,6 +105,12 @@ article {
   width: 1000px;
   margin-top: 30px;
 }
+.noproduct{
+	text-align: center;
+    width: 800px;
+    margin: 150px 0 0 170px;
+    font-size: 50px;
+}
 .mainImg{
 	width:265px;
 	height:170px;
