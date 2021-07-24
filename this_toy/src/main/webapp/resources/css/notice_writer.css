@@ -1,0 +1,65 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.title {
+    font-weight: bold;
+    font-family: "Bukhari Script", sans-serif;
+    font-size: 40px;
+    color: #484848;
+    letter-spacing: 10px;
+    padding: 20px 20px;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+.write-base {
+    position: relative;
+    font-size: 21px;
+    display: flex;
+  }
+
+  .write-board {
+    margin: 0 auto;
+  }
+.board-title {
+    width: 400px;
+    font-size: 20px;
+    text-align: center;
+    padding: 10px;
+    margin-left: 15px;
+    margin-bottom: 20px;
+    border: 1px solid lightgray;
+}
+th>div {
+  border-bottom: 1px solid lightgray;
+  padding-bottom: 20px;
+}
+.textbox {
+  margin-top: 20px
+}
+
+.under-button {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 80px;
+}
+.write {
+    font-size: 23px;
+    border: 1px solid rgba(88, 113, 253, 0.75);
+    background-color: rgba(197, 137, 199, 0.75);
+    color: white;
+    padding: 5px;
+    border-radius: 10px;
+    margin-right: 15px;
+}
+
+.cancel {
+  font-size: 23px;
+  border: 1px solid rgba(88, 113, 253, 0.75);
+  background-color: white;
+  color: black;
+  padding: 5px;
+  border-radius: 10px;
+}
