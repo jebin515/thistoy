@@ -41,7 +41,7 @@
 									<tbody>
 										<tr class="form-control">
 											<th><span>이미지</span></th>
-											<td><input type="file" name="id"
+											<td><input type="file" name="img"
 												placeholder="아이디를 입력하세요." required></td>
 											<td></td>
 										</tr>
