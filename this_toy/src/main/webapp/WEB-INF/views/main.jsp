@@ -30,8 +30,8 @@
 							<h4>거북이</h4>
 							<p>이진웅</p>
 							<div class="slide-link">
-								<a href="#"><i class="bx bx-plus"></i></a> <a href="#"><i
-									class="bx bx-link"></i></i></a>
+								<a href="#"><i class="bx bx-plus"></i></a> 
+								<a href="#"><i class="bx bx-link"></i></a>
 							</div>
 						</div>
 					</div>
@@ -99,8 +99,16 @@
 					
 						<c:set var="i" value='${fn:indexOf(bs.productMainImg,",")}' />
 						<c:set var="mimg" value="${fn:substring(bs.productMainImg,0,i)}" />
-						<div class="swiper-slide"><img src="/upload/product/main/${mimg}"></div>
-						
+						<div class="swiper-slide"><img src="/upload/product/main/${mimg}">
+						<div class="slide-info">
+							<h4>${bs.productName}</h4>
+							<p>${bs.productPrice}원</p>
+							<div class="slide-link">
+								<a href="#?ncc=${bs.productCode}"><i class="bx bx-plus"></i></a> 
+								<a href="#"><i class="bx bx-link"></i></a>
+							</div>
+							</div>
+						</div>
 					</c:forEach>
 				</div>
 				<div class="swiper-pagination"></div>
