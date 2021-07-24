@@ -30,7 +30,7 @@
 			<div class="wrap wd668">
 				<div class="container">
 					<div class="form_txtInput">
-						<form id="form" class="form">
+						<form id="form" class="form" method="post">
 							<p class="exTxt">회원가입시 이메일 인증을 반드시 진행하셔야 합니다.</p>
 							<div class="join_form">
 								<table>
@@ -47,19 +47,19 @@
 										</tr>
 										<tr class="form-control">
 											<th><span>아이디</span></th>
-											<td><input type="text" name="id"
+											<td><input type="text" name="userId" id="userId"
 												placeholder="아이디를 입력하세요." required></td>
 											<td></td>
 										</tr>
 										<tr class="form-control">
 											<th><span>이름</span></th>
-											<td><input type="text" name="username"
+											<td><input type="text" name="userName"
 												placeholder="이름을 입력하세요."></td>
 											<td></td>
 										</tr>
 										<tr class="form-control">
 											<th><span>비밀번호</span></th>
-											<td><input type="password" id="password" name="password"
+											<td><input type="password" id="password" name="userPasswd"
 												placeholder="특수문자/문자/숫자 포함 8자리 이상 입력하세요."></td>
 											<td></td>
 										</tr>
@@ -71,7 +71,7 @@
 										</tr>
 										<tr class="form-control">
 											<th><span>이메일</span></th>
-											<td><input type="email" name="email" id="email"
+											<td><input type="email" name="userEmail" id="email"
 												placeholder="예)abc@abc.com" required></td>
 											<td>
 												<button class="btn_confirm" onclick="sendEmail()">인증번호
@@ -86,18 +86,18 @@
 										</tr>
 										<tr class="form-control">
 											<th><span>휴대폰 번호</span></th>
-											<td><input type="tel" name="tel"
+											<td><input type="tel" name="userTel"
 												placeholder="번호를 입력하세요."></td>
 											<td></td>
 										</tr>
 										<tr class="form-control">
 											<th><span>주소</span></th>
 											<td></td>
-											<td><input id="member_post" name="member_post"
+											<td><input id="member_post" name="userAddress"
 												type="text" placeholder="지번" readonly onclick="findAddr()"><br>
 												<br> <br> <input id="member_addr"
-												name="member_addr" type="text" placeholder="주소" readonly><br>
-												<br> <br> <input type="text" name="member_detail"
+												name="userAddress2" type="text" placeholder="주소" readonly><br>
+												<br> <br> <input type="text" name="userAddress3"
 												id="member_detail" placeholder="추가 주소"></td>
 											<td></td>
 										</tr>
@@ -108,7 +108,7 @@
 								</div>
 							</div>
 							<div class="btn_wrap">
-								<input type="submit" class="button" value="확인">
+								<input type="submit" id="idCheck" onclick="fn_idCheck();" class="button" value="확인">
 							</div>
 						</form>
 					</div>

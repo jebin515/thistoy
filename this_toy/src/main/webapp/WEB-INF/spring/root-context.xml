@@ -30,7 +30,7 @@
 
 	</bean>
 	<!-- mybatis-spring 연동 설정 -->
-	<mybatis-spring:scan base-package="com.base.mapper"/>
+	<mybatis-spring:scan base-package="com.base.mapper"/> <!-- mapper.xml을 찾아줌 -->
 	<context:component-scan base-package="com.base.service"></context:component-scan>
 	
 </beans>

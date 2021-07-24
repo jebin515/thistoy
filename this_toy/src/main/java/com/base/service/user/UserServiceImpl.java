@@ -2,6 +2,7 @@ package com.base.service.user;
 
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Service;
 
 import com.base.entity.UserVO;
@@ -17,10 +18,11 @@ public class UserServiceImpl implements UserService{
 	
 	private final UserMapper mapper;
 	
+	
 	@Override
-	public List<UserVO> login() {
-		return null;
-
+	public UserVO login(UserVO uservo) {
+		
+		return  null;
 	}
 
 	@Override
@@ -30,8 +32,14 @@ public class UserServiceImpl implements UserService{
 	
 	//회원가입
 	@Override
-	public void register(UserVO uservo) {
+	public void register(UserVO uservo){
 		mapper.register(uservo);
 	}
+	@Override
+	public int idCheck(UserVO uservo) {
+		int result = mapper.idCheck(uservo);
+		return result;
+	}
+
 
 }

@@ -7,10 +7,15 @@ import com.base.entity.UserVO;
 
 public interface UserService {
 	//로그인
+	UserVO login(UserVO uservo);
+	
 	void login2(UserVO uservo);
 	
-	List<UserVO> login();
 	
 	//회원가입
 	void register(UserVO uservo);
+	
+	//id체크
+	int idCheck(UserVO uservo);
+	
 }
