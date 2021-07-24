@@ -112,8 +112,9 @@
 			<nav class="main_top">
 				<div class="search">
 					<form action="/product/list" method="get">
-						<input type="text" name="search" placeholder="search"
-							class="search_text">
+						<input type="text" name="search" placeholder="search" onfocus="placeholder=''"
+                        onblur='placeholder="search"'
+							class="search_text" required oninvalid="this.setCustomValidity('검색어를 입력해주세요')" oninput="setCustomValidity('')">
 						<button type="submit">
 							<i class='bx-fw bx bx-search bx-sm'></i>
 						</button>
