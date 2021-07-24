@@ -1,5 +1,9 @@
 package com.base.service.orders;
 
-public interface OrdersService {
+import java.util.ArrayList;
 
+import com.base.entity.OrdersVO;
+
+public interface OrdersService {
+	ArrayList<OrdersVO> select();
 }
