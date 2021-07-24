@@ -30,10 +30,10 @@
 					<th>수량</th>
 					<th>상품금액</th>
 				</tr>
-				<c:forEach items="${select }"></c:forEach>
+			<%-- 	<c:forEach items="${select }"></c:forEach> --%>
 				<tr>
 					<td><img src="/img/cart2.png"></td>
-					<td><c:out value="${select.orderCode}"/></td>
+					<td><%-- <c:out value="${select.orderCode}"/> --%></td>-
 					<td>상품정보</td>
 					<td>판매자</td>
 					<td>3000원</td>

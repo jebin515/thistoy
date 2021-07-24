@@ -74,53 +74,33 @@
 					<c:forEach var="nw" items="${newproduct}">
 						<c:set var="j" value='${fn:indexOf(nw.productMainImg,",")}' />
 						<c:set var="nimg" value="${fn:substring(nw.productMainImg,0,j)}" />
-<!-- 						<div class="swiper-slide"> -->
-<%-- 							<img src="/upload/product/main/${nimg}"> --%>
-<!-- 						</div> -->
 						<div class="swiper-slide">
-						<img src="/img/1.jpg">
+						<img src="/upload/product/main/${nimg}">
 						<div class="slide-info">
 							<h4>${nw.productName}</h4>
 							<p>${nw.productPrice}원</p>
 							<div class="slide-link">
-								<a href="#?ncc=${nw.productCode}"><i class="bx bx-plus"></i></a> <a href="#"><i
-									class="bx bx-link"></i></i></a>
+								<a href="#?ncc=${nw.productCode}"><i class="bx bx-plus"></i></a> 
+								<a href="#"><i class="bx bx-link"></i></a>
 							</div>
 						</div>
 					</div>
 					</c:forEach>
-					<!-- <div class="swiper-slide">
-						<img src="/img/1.jpg">
-					</div>
-					<div class="swiper-slide">
-						<img src="/img/1.jpg">
-						<div class="slide-info">
-							<h4>가격</h4>
-							<p>19000원</p>
-							<div class="slide-link">
-								<a href="#"><i class="bx bx-plus"></i></a> <a href="#"><i
-									class="bx bx-link"></i></i></a>
-							</div>
-						</div>
-					</div>-->
 				</div>
 				<div class="swiper-pagination"></div>
 			</div>
 		</div>
 
 		<div class="item">
-			<h2>
-				<span class="item-border">인기제품</span>
-			</h2>
+			<h2><span class="item-border">인기제품</span></h2>
 			<div class="swiper-container mySwiper">
 				<div class="swiper-wrapper">
 					<c:forEach var="bs" items="${best}">
+					
 						<c:set var="i" value='${fn:indexOf(bs.productMainImg,",")}' />
 						<c:set var="mimg" value="${fn:substring(bs.productMainImg,0,i)}" />
-						<div class="swiper-slide">
-							<img src="/upload/product/main/${mimg}">
-							${bs.productPrice}
-						</div>
+						<div class="swiper-slide"><img src="/upload/product/main/${mimg}"></div>
+						
 					</c:forEach>
 				</div>
 				<div class="swiper-pagination"></div>

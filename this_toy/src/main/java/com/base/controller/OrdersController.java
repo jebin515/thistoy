@@ -29,7 +29,7 @@ public class OrdersController {
 
 	@RequestMapping("/orders")
 	public void orders(Model model) {
-		model.addAttribute("select",service.select());
+//		model.addAttribute("select",service.select());
 	}
 
 	@ResponseBody
