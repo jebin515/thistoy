@@ -13,4 +13,6 @@ public interface ProductMapper {
 	
 	int getTotalCount(DccPageVO vo); //카테고리에 대한 총 상품 등록 수 리턴.
 	
+	ProductVO getProduct(String productCode);
+	
 }

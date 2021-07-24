@@ -13,4 +13,5 @@ public interface ProductService {
 
 	int getTotal(DccPageVO vo);
 
+	ProductVO getProduct(String productCode);
 }

@@ -33,4 +33,10 @@ public class ProductServiceImpl implements ProductService{
 		return mapper.getTotalCount(vo);
 	}
 
+	@Override
+	public ProductVO getProduct(String productCode) {
+		// TODO Auto-generated method stub
+		return mapper.getProduct(productCode);
+	}
+
 }
