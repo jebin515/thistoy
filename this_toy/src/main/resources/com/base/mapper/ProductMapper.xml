@@ -4,7 +4,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- namespace는 인터페이스와 동일하게 해줘야한다. -->
 <mapper namespace="com.base.mapper.ProductMapper">
- <!-- id : 메서드 이름  -->
+	<!-- id : 메서드 이름 -->
 	<insert id="insert">
 	<![CDATA[
 	insert into product 
@@ -14,17 +14,35 @@
 	]]>
 	</insert>
 	<select id="getList" resultType="ProductVO">
-	<![CDATA[
-	select * from(
-    select rownum num , n.* from 
-	(select * from product where down_ca_code=#{downCaCode} order by product_date desc) n
-    )
-    where num between (#{pageNum}-1)*15+1 and #{pageNum}*15
-	]]>
+		select * from(
+		select rownum num , n.* from
+		(select * from product where
+		<choose>
+			<when test="search == null or search.equals('')">
+				down_ca_code=#{downCaCode} order by product_date
+				desc) n
+				)
+			</when>
+			<otherwise>
+     <![CDATA[
+      product_name like '%'||#{search}||'%' order by product_date desc) n
+	    )
+	  ]]>
+			</otherwise>
+		</choose>
+		where num between (#{pageNum}-1)*15+1 and #{pageNum}*15
 	</select>
 	<select id="getTotalCount" resultType="int">
-	<![CDATA[
-	select count(*) from product where down_ca_code=#{downCaCode}
-	]]>
+		select count(*) from product where
+		<choose>
+			<when test="search == null or search.equals('')">
+				down_ca_code=#{downCaCode}
+			</when>
+			<otherwise>
+				<![CDATA[
+				product_name like '%'||#{search}||'%'
+				  ]]>
+			</otherwise>
+		</choose>
 	</select>
 </mapper>

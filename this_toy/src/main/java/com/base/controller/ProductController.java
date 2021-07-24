@@ -99,23 +99,26 @@ public class ProductController {
 		return "redirect:/";
 	}
 	@GetMapping("list")
-	public void getList(@RequestParam(name="dcc") String downCaCode,Model model,@RequestParam(name = "p",defaultValue = "1")int pageNum) {
-		
+	public void getList(@RequestParam(name="dcc", defaultValue="") String downCaCode,Model model,@RequestParam(name = "p",defaultValue = "1")int pageNum,
+			@RequestParam(name="search",defaultValue = "")String search) {
+//		System.out.println(search);
 		DccPageVO vo = new DccPageVO();
-		int count = service.getTotal(downCaCode);
+		vo.setDownCaCode(downCaCode);
+		vo.setSearch(search);
+		int count = service.getTotal(vo);
 		ListPageVO listvo = new ListPageVO(count, 1);
 		if(pageNum < 1) {
 			pageNum = 1;
 		}else if(pageNum > listvo.getRealEnd()) {
 			pageNum=listvo.getRealEnd();
 		}
-		vo.setDownCaCode(downCaCode);
 		vo.setPageNum(pageNum);
-		model.addAttribute("pdList",service.getList(vo));
-		model.addAttribute("dcname",service2.getDcName(downCaCode));
-		model.addAttribute("dcList",service2.getList());
+		model.addAttribute("pdList",service.getList(vo)); // 페이지넘버와 하위카테고리 번호로 출력시킬 리스트 가져오기
+		model.addAttribute("search",search); // 검색어 가져가기
+		model.addAttribute("dcname",service2.getDcName(downCaCode)); // 현재가 어떤 카테고리인지 이름을 띄워주기 위해 작업
+		model.addAttribute("dcList",service2.getList()); // 각 카테고리에 value값을 주기 위한 설정
 		if(count>0) {
-		model.addAttribute("pageMaker",new ListPageVO(count, pageNum));
+		model.addAttribute("pageMaker",new ListPageVO(count, pageNum)); // 페이징 처리를위한 설정
 		}
 	}
 	@GetMapping("detail_main")

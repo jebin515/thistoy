@@ -28,9 +28,9 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public int getTotal(String downCaCode) {
+	public int getTotal(DccPageVO vo) {
 		// TODO Auto-generated method stub
-		return mapper.getTotalCount(downCaCode);
+		return mapper.getTotalCount(vo);
 	}
 
 }
