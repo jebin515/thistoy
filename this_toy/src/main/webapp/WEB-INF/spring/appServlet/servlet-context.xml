@@ -19,6 +19,9 @@
 		up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/**" location="/resources/" />
 
+	<!-- NaverLoginBO Class에 대한 Bean설정 추가 네이버 네아로관련 -->
+	<beans:bean id="naverLoginBO"
+		class="com.test.tst.NaverLoginBO" />
 
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
