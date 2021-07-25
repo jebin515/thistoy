@@ -22,7 +22,7 @@ function none() {
         addr_new_main.style.display = "block"
     }
 }
-addr.addEventListener('click',function submit(){
+addr.addEventListener('click',function(){
     var nameValue = 
     addrType == addr ? document.querySelector(".name").value : document.querySelector(".new_name").value
     console.log(nameValue);
