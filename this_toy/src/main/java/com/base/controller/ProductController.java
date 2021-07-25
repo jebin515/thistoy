@@ -100,12 +100,15 @@ public class ProductController {
 	}
 	@GetMapping("list")
 	public void getList(@RequestParam(name="dcc", defaultValue="") String downCaCode,Model model,@RequestParam(name = "p",defaultValue = "1")int pageNum,
-			@RequestParam(name="search",defaultValue = "")String search) {
+			@RequestParam(name="search",defaultValue = "")String search,@RequestParam(name="bn",defaultValue = "")String bn) {
 //		System.out.println(search);
+		System.out.println(bn);
 		DccPageVO vo = new DccPageVO();
 		vo.setDownCaCode(downCaCode);
 		vo.setSearch(search);
+		vo.setBn(bn);
 		int count = prService.getTotal(vo);
+		System.out.println(count);
 		ListPageVO listvo = new ListPageVO(count, 1);
 		if(pageNum < 1) { // 페이지가1인상태에서 이전페이지가기 눌렀을때 1페이지로 보내기위한 설정
 			pageNum = 1;
@@ -114,6 +117,7 @@ public class ProductController {
 		}
 		vo.setPageNum(pageNum);
 		model.addAttribute("pdList",prService.getList(vo)); // 페이지넘버와 하위카테고리 번호로 출력시킬 리스트 가져오기
+		System.out.println(prService.getList(vo));
 		model.addAttribute("search",search); // 검색어 가져가기
 		model.addAttribute("dcname",CaService.getDcName(downCaCode)); // 현재가 어떤 카테고리인지 이름을 띄워주기 위해 작업
 		model.addAttribute("dcList",CaService.getList()); // 각 카테고리에 value값을 주기 위한 설정
