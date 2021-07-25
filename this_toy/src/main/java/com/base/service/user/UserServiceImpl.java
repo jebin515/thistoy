@@ -2,11 +2,16 @@ package com.base.service.user;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Service;
 
 import com.base.entity.UserVO;
 import com.base.mapper.UserMapper;
+import com.base.session.AuthInfo;
+import com.base.session.IdPasswordNotMatchingException;
+import com.base.session.LoginCommand;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -41,6 +46,45 @@ public class UserServiceImpl implements UserService{
 		int result = userMapper.loginCheck(userVO);
 		return result;
 	}
+
+	@Override
+    public AuthInfo loginAuth(LoginCommand loginCommand) {
+        UserVO user = userMapper.selectById(loginCommand.getUserId());
+        if(user == null) {
+            throw new IdPasswordNotMatchingException();
+        }
+        if(!user.matchPassword(loginCommand.getUserPasswd())) {
+            throw new IdPasswordNotMatchingException();
+        }
+        return new AuthInfo(user.getUserId(), user.getUserName());
+    }
+	//boolean 로그인
+//	@Override
+//	public boolean loginCheck2(UserVO userVO, HttpSession session) {
+//		boolean result = userMapper.loginCheck2(userVO);
+//		if(result) {
+//			UserVO userVO2 = viewUser(userVO);
+//			session.setAttribute("userId", userVO2.getUserId());
+//			session.setAttribute("userName", userVO2.getUserName());
+//		}
+//		return result;
+//	}
+
+
+//	@Override
+//	public boolean loginCheck2(UserVO userVO, HttpSession session) {
+//		boolean result = userMapper.loginCheck2(userVO);
+//		if(result) {
+//		UserVO userVO2 = viewUser(userVO);
+//		session.setAttribute("userId", userVO2.getUserId());
+//		session.setAttribute("userName", userVO2.getUserName());
+//		}
+//	return result;
+//	}
+//	@Override
+//	public UserVO viewUser(UserVO userVO) {
+//		return userMapper.viewUser(userVO);
+//	}
 
 
 }

@@ -17,4 +17,10 @@ public class UserVO {
 	private String userImg; //이미지
 	
 	private boolean useCookie;
+	
+	//비밀번호체크
+	public boolean matchPassword(String pw) {
+        return this.userPasswd.equals(pw);
+    }
+	
 }

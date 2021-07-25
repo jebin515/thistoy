@@ -2,13 +2,20 @@ package com.base.mapper;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 
+import com.base.entity.UserDTO;
 import com.base.entity.UserVO;
 
-public interface UserMapper {
+public interface UserMapper{
 	
 	// 로그인
 	UserVO login(UserVO userVO);
+	
+	
+	boolean loginCheck2(UserVO userVO);
+	UserVO viewUser(UserVO userVO);
+	
 	
 	int loginCheck(UserVO userVO);
 	
@@ -17,4 +24,8 @@ public interface UserMapper {
 	
 	//아이디 중복체크
 	int idCheck(UserVO userVO);
+	
+	//현재 로그인 사용 매퍼
+	public UserVO selectById(String UserId);
+	
 }

@@ -47,8 +47,7 @@ public class RegisterController {
 //	        System.out.println("register - 2   -------------------------------- Post! ---------------------------");
 //			return "redirect:/register/register-3";
 //		}
-//	(임시)중복체크회원가입
-//	@ResponseBody
+	
 	@PostMapping("/register-2")
 	public String registerPOST(UserVO userVO,RedirectAttributes rttr) throws Exception {
 		//암호화 저장

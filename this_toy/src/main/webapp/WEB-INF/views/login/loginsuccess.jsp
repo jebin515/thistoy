@@ -11,7 +11,7 @@
     <title>Document</title>
 </head>
 <body>
-    로그인 성공~
+   ID :  ${authInfo.userName}로  로그인 성공~
     <script type="text/javascript">
         var naver_id_login = new naver_id_login("wAn7o12sEkZPjEGZTzY6", "http://localhost:5500/loginsuccess.html");
         // 접근 토큰 값 출력
