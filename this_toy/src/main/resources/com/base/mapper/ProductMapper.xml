@@ -29,7 +29,7 @@
 				)
 				]]>
 			</when>
-			<when test="bn.equals('best')">
+			<when test="bn.equals('Best')">
 			<![CDATA[
 			order by sell_count desc) n)
         	]]>
@@ -53,7 +53,7 @@
 				 product where product_name like '%'||#{search}||'%'
 				  ]]>
 			</when>
-			<when test="bn.equals('best')">
+			<when test="bn.equals('Best')">
 			<![CDATA[
 				(select * from product order by sell_count desc) 
 				where rownum <=15
