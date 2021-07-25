@@ -58,25 +58,22 @@
 					</div>
 					<div class="addr_main" id="addr_main">
 						<ul>
-							<li><input type="text" id="username" value="이진융" readonly></li>
-							<li><input type="text" id="usertell" value="010-5513-7334"
-								readonly></li>
-							<li>(<input type="text" id="member_post" value="18362"
-								readonly>) <input type="text" id="member_addr"
+							<li><input type="text" id="name"  name="name" value="이진융" readonly></li>
+							<li>(<input type="text" id="old_member_post" value="18362"
+								readonly>) <input type="text" id="old_member_addr"
 								value="경기도 화성시 안녕남로 246-21(안녕동, 안녕동 우방아이유쉘)" readonly> <input
-								type="text" id="member_detail" value="106동 1303호" readonly>
+								type="text" id="old_member_detail" value="106동 1303호" readonly>
 							</li>
 						</ul>
 					</div>
-					<div class="addr_new_main" id="addr_new_main"
-						style="display: none;">
+					<div class="addr_new_main" id="addr_new_main" style="display: none;">
 						<ul>
-							<li><span>수령인</span> : <input type="text"></li>
+							<li><span>수령인</span> : <input type="text"  id="new_name" name="new_name"></li>
 							<li><span>배송지</span> : <input id="member_post"
-								name="member_post" type="text" placeholder="지번" readonly
+								name="new_member_post" type="text" placeholder="지번" readonly
 								onclick="findAddr()"> <input id="member_addr"
-								name="member_addr" type="text" placeholder="주소" readonly>
-								<input type="text" name="member_detail" id="member_detail"
+								name="new_member_addr" type="text" placeholder="주소" readonly>
+								<input type="text" name="new_member_detail" id="member_detail"
 								placeholder="추가 주소"></li>
 						</ul>
 					</div>
@@ -130,7 +127,7 @@
 	<%@ include file="../includes/footer.jsp"%>
 	<script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
 	<script src="/js/address.js"></script>
-	<script src="/js/buy.js"></script>
+	<script src="/js/orders.js"></script>
 	<script
 		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<!-- jQuery -->
@@ -140,10 +137,6 @@
 	<script type="text/javascript"
 		src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 	<script>
-		$().click(function(){
-
-		});
-
 		$("#check_module").click(function() {
 			//가맹점 식별코드
 			IMP.init('imp76068644');
