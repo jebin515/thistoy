@@ -13,7 +13,7 @@
 </script>
 <header id="header">
 	<div class="header-full">
-		<a href="#" class="logo">
+		<a href="/main" class="logo">
 			<nav class="header_nav">
 				<div class="header_menu">
 					<a href="#" class="header_login"><i
@@ -31,8 +31,8 @@
 			<ul>
 				<li><a href="#">공지사항</a></li>
 				<li><a href="#">사이트안내</a></li>
-				<li><a href="#">신제품</a></li>
-				<li><a href="#">인기제품</a></li>
+				<li><a href="/product/list?bn=New">신제품</a></li>
+				<li><a href="/product/list?bn=Best">인기제품</a></li>
 				<li><a href="#">판매글 작성</a></li>
 				<li class="drop-down"><a href="#">카테고리</a>
 					<ul>
@@ -93,8 +93,8 @@
 	<ul>
 		<li class="drop-down"><a href="#">신제품/인기제품</a>
 			<ul>
-				<li><a href="#">신제품</a></li>
-				<li><a href="#">인기제품</a></li>
+				<li><a href="/product/list?bn=New">신제품</a></li>
+				<li><a href="/product/list?bn=Best">인기제품</a></li>
 			</ul></li>
 	</ul>
 	<ul>

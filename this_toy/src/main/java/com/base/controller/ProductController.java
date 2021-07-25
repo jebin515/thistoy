@@ -39,13 +39,18 @@ public class ProductController {
 		String userId = (String)session.getAttribute("userId");
 		if(userId == null) {
 			rttr.addFlashAttribute("fail","fail");
-			return "redirect:/";
+			return "redirect:/main";
 		}
 		model.addAttribute("list",CaService.getList());
 		return "product/detail_writer";
 	}
 	@PostMapping("detail_writer")
-	public String register(ProductVO vo, MultipartFile[] mainFiles,MultipartFile[] infoFiles,HttpServletRequest request) {
+	public String register(ProductVO vo, MultipartFile[] mainFiles,MultipartFile[] infoFiles,HttpServletRequest request,RedirectAttributes rttr) {
+		System.out.println(mainFiles[0].getSize());
+		if(mainFiles[0].getSize() == 0 || infoFiles[0].getSize()==0) {
+			rttr.addFlashAttribute("fail","noimg");
+			return "redirect:/product/detail_writer";
+		}
 		ServletContext ctx = request.getServletContext();
 		String mainnames = null;
 		String infonames = null;
@@ -96,15 +101,15 @@ public class ProductController {
 		vo.setProductMainImg(mainnames);
 		vo.setProductInfoImg(infonames);
 		prService.register(vo);
-		return "redirect:/";
+		return "redirect:/main";
 	}
 	@GetMapping("list")
 	public void getList(@RequestParam(name="dcc", defaultValue="") String downCaCode,Model model,@RequestParam(name = "p",defaultValue = "1")int pageNum,
-			@RequestParam(name="search",defaultValue = "")String search) {
-//		System.out.println(search);
+			@RequestParam(name="search",defaultValue = "")String search,@RequestParam(name="bn",defaultValue = "")String bn) {
 		DccPageVO vo = new DccPageVO();
 		vo.setDownCaCode(downCaCode);
 		vo.setSearch(search);
+		vo.setBn(bn);
 		int count = prService.getTotal(vo);
 		ListPageVO listvo = new ListPageVO(count, 1);
 		if(pageNum < 1) { // 페이지가1인상태에서 이전페이지가기 눌렀을때 1페이지로 보내기위한 설정
@@ -114,7 +119,7 @@ public class ProductController {
 		}
 		vo.setPageNum(pageNum);
 		model.addAttribute("pdList",prService.getList(vo)); // 페이지넘버와 하위카테고리 번호로 출력시킬 리스트 가져오기
-		model.addAttribute("search",search); // 검색어 가져가기
+		model.addAttribute("dpv",vo); // 검색어와 best,new값을 들고가기 위한설정
 		model.addAttribute("dcname",CaService.getDcName(downCaCode)); // 현재가 어떤 카테고리인지 이름을 띄워주기 위해 작업
 		model.addAttribute("dcList",CaService.getList()); // 각 카테고리에 value값을 주기 위한 설정
 		if(count>0) {
