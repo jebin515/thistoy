@@ -8,4 +8,9 @@
 		select * from notice order by notice_num desc
 	</select>
 	
+	<insert id="insert">
+	insert INTO notice (notice_num, notice_title, notice_text, user_id)
+	VALUES (seq_notice.nextval, 'test제목', 'test내용', 'shtest')
+	</insert>
+	
 </mapper>
