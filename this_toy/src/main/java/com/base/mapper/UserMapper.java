@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import com.base.entity.UserDTO;
 import com.base.entity.UserVO;
 
 public interface UserMapper{

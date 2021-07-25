@@ -44,6 +44,8 @@
 	</beans:bean>
 	<!-- web과 관련된 애들만 servlet-context에서 빈생성 -->
 	<context:component-scan
+		base-package="com.test.tst" />
+	<context:component-scan
 		base-package="com.base.controller" />
 
 	<!-- <beans:bean id="loginInterceptor" -->

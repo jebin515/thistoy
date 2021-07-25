@@ -10,6 +10,8 @@ import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,8 +19,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.github.scribejava.core.model.OAuth2AccessToken;
 
 @Controller
-@RequestMapping("/naver/*")
-public class LoginController {
+@RequestMapping("/tst/*")
+public class NaverLoginController {
 /* NaverLoginBO */
 private NaverLoginBO naverLoginBO;
 private String apiResult = null;
@@ -26,8 +28,26 @@ private String apiResult = null;
 private void setNaverLoginBO(NaverLoginBO naverLoginBO) {
 this.naverLoginBO = naverLoginBO;
 }
+
+@GetMapping("/login")
+public String loginGET() {
+	System.out.println("네이버로그인 페이지");
+	return "/tst/login";
+}
+@GetMapping("/index")
+public String indexGET() {
+	System.out.println("네이버기본 페이지");
+	return "/tst/index";
+}
+@GetMapping("/callback")
+public String callbackGET() {
+	System.out.println("콜백 페이지");
+	return "/tst/callback";
+}
+
 //로그인 첫 화면 요청 메소드
-@RequestMapping(value = "/login", method = { RequestMethod.GET, RequestMethod.POST })
+//@RequestMapping(value = "/login", method = { RequestMethod.GET, RequestMethod.POST })
+@PostMapping("/login")
 public String login(Model model, HttpSession session) {
 /* 네이버아이디로 인증 URL을 생성하기 위하여 naverLoginBO클래스의 getAuthorizationUrl메소드 호출 */
 String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
@@ -39,7 +59,8 @@ model.addAttribute("url", naverAuthUrl);
 return "login";
 }
 //네이버 로그인 성공시 callback호출 메소드
-@RequestMapping(value = "/callback", method = { RequestMethod.GET, RequestMethod.POST })
+//@RequestMapping(value = "/callback", method = { RequestMethod.GET, RequestMethod.POST })
+@PostMapping("/callback")
 public String callback(Model model, @RequestParam String code, @RequestParam String state,
 		HttpSession session) throws IOException, ParseException {
 System.out.println("여기는 callback");
@@ -68,7 +89,8 @@ model.addAttribute("result", apiResult);
 return "login";
 }
 //로그아웃
-@RequestMapping(value = "/logout", method = { RequestMethod.GET, RequestMethod.POST })
+//@RequestMapping(value = "/logout", method = { RequestMethod.GET, RequestMethod.POST })
+@PostMapping("/logout")
 public String logout(HttpSession session)throws IOException {
 System.out.println("여기는 logout");
 session.invalidate();
