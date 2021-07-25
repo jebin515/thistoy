@@ -15,8 +15,8 @@ public class OrdersServiceImpl implements OrdersService {
 	private OrdersMapper mapper;
 
 	@Override
-	public ArrayList<OrdersVO> select() {
+	public String insert(OrdersVO oav) {
 		// TODO Auto-generated method stub
-		return mapper.select();
+		return mapper.insert(oav);
 	}
 }
