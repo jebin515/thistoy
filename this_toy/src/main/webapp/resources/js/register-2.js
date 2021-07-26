@@ -4,6 +4,22 @@ $.validator.addMethod("regex", function(value, element, regexp){
     console.log(res,value,regexp,re)
     return res;
 });
+function fn_idCheck() {
+    $.ajax({
+        url: "/register/idCheck",
+        type: "post",
+        dataType: "json",
+        data: { "userId": $("userId").val() },
+        success: function (data) {
+            if (data == 1) {
+                alert("이미 있는 아이디 입니다.");
+            } else if (data == 0) {
+                $("#idCheck").attr("value", "Y");
+                alert("사용 가능한 아이디입니다.");
+            }
+        }
+    })
+}
 
 $(function(){
     $(".form").validate({
@@ -17,12 +33,12 @@ $(function(){
                 minlength : 2 	
             },
             password:{
-                required : true, 
-                regex: "^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$",
+                required : false, 
+//                regex: "^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$",
                 minlength : 8
             },
             password2:{
-                required : true, 
+                required : false, 
                 equalTo : '#password'
             },
             email:{

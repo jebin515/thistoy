@@ -1,28 +1,46 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<link rel="stylesheet" href="/css/header.css?ver=1">
-<script defer>
-	var result = "<c:out value='${fail}'/>";
-	function fail() {
+<link rel="stylesheet" href="/css/header.css">
+
+ <script defer>
+ 	var result = "<c:out value='${fail}'/>";
+ 	function fail() {
 		alert('로그인시 이용가능합니다.');
-	}
-	if (result == 'fail') {
-		fail();
-	}
+ 	}
+ 	if (result == 'fail') {
+	fail();
+ 	}
 </script>
+
 <header id="header">
+	<c:if test="${empty authInfo.userId}">
 	<div class="header-full">
 		<a href="/main" class="logo">
 			<nav class="header_nav">
 				<div class="header_menu">
-					<a href="#" class="header_login"><i
+					<a href="/login/login" class="header_login"><i
 						class='bx-fw bx bxs-rocket bx-tada-hover'></i>로그인</a> <a href="#"
 						class="header_register"><i
 						class='bx-fw bx bxs-user-plus bx-tada-hover'></i>회원가입</a>
 				</div>
 			</nav>
 	</div>
+	</c:if>
+	<c:if test="${not empty authInfo.userId}">
+	<div class="header-full">
+		<a href="#" class="logo">
+			<nav class="header_nav">
+				<div class="header_menu">
+					<a href="/login/logout" class="header_login">  <i
+						class='bx-fw bx bxs-rocket bx-tada-hover'></i>로그아웃</a> <a href="#"
+						class="header_register"><i
+						class='bx-fw bx bxs-user-plus bx-tada-hover'></i>회원가입</a>
+						<p> 반갑습니다 ${authInfo.userName}님</p>
+				</div>
+			</nav>
+	</div>
+	</c:if>
 </header>
 <div class="menu">
 	<ul>

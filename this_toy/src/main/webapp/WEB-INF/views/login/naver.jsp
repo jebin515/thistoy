@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,9 +11,9 @@
     <title>Document</title>
 </head>
 <body>
-    로그인 성공~
+   ID :  ${authInfo.userName}로  로그인 성공~
     <script type="text/javascript">
-        var naver_id_login = new naver_id_login("wAn7o12sEkZPjEGZTzY6", "http://localhost:5500/loginsuccess.html");
+        var naver_id_login = new naver_id_login("5sh4TrG6DyRbb_FeQOmr", "http://localhost:9090/login/naver");
         // 접근 토큰 값 출력
         alert(naver_id_login.oauthParams.access_token);
         // 네이버 사용자 프로필 조회
@@ -19,8 +21,9 @@
         // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
         function naverSignInCallback() {
           alert(naver_id_login.getProfileData('email'));
-          alert(naver_id_login.getProfileData('nickname'));
-          alert(naver_id_login.getProfileData('age'));
+          alert(naver_id_login.getProfileData('name'));
+          alert(naver_id_login.getProfileData('phone'));
+
         }
       </script>
 </body>
