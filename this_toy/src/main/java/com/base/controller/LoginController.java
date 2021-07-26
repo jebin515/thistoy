@@ -123,6 +123,13 @@ public class LoginController {
 //		}
 //		return "/main";
 //	} //int 로그인 종료
-
+	@RequestMapping("/naver")
+	public void naver() {
+		System.out.println("네이버로그인 페이지 띄움");
+	}
+	@RequestMapping("/kakao")
+	public void kakao() {
+		System.out.println("카카오로그인 페이지 띄움");
+	}
 
 }// 클래스 종료

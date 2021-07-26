@@ -154,11 +154,11 @@
 	<script type="text/javascript" src="/js/kakao.js"></script>
 	<script type="text/javascript" src="/js/google.js"></script>
 	<script type="text/javascript">
-		var naver_id_login = new naver_id_login("wAn7o12sEkZPjEGZTzY6",
-				"http://localhost:5500/loginsuccess.html");
+		var naver_id_login = new naver_id_login("5sh4TrG6DyRbb_FeQOmr",
+				"http://localhost:9090/login/naver");
 		var state = naver_id_login.getUniqState();
 		naver_id_login.setButton("green", 3, 60);
-		naver_id_login.setDomain("http://localhost:5500/login.html");
+		naver_id_login.setDomain("http://localhost:9090/login/login");
 		naver_id_login.setState(state);
 		naver_id_login.setPopup();
 		naver_id_login.init_naver_id_login();
