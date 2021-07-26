@@ -3,10 +3,20 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link rel="stylesheet" href="/css/header.css">
 
+<!-- <script defer> -->
+// 	var result = "<c:out value='${fail}'/>";
+// 	function fail() {
+// 		alert('로그인시 이용가능합니다.');
+// 	}
+// 	if (result == 'fail') {
+// 		fail();
+// 	}
+<!-- </script> -->
+
 <header id="header">
 	<c:if test="${empty authInfo.userId}">
 	<div class="header-full">
-		<a href="#" class="logo">
+		<a href="/main" class="logo">
 			<nav class="header_nav">
 				<div class="header_menu">
 					<a href="/login/login" class="header_login"><i
@@ -39,30 +49,70 @@
 			<ul>
 				<li><a href="#">공지사항</a></li>
 				<li><a href="#">사이트안내</a></li>
-				<li><a href="#">신제품</a></li>
-				<li><a href="#">인기제품</a></li>
+				<li><a href="/product/list?bn=New">신제품</a></li>
+				<li><a href="/product/list?bn=Best">인기제품</a></li>
 				<li><a href="#">판매글 작성</a></li>
 				<li class="drop-down"><a href="#">카테고리</a>
 					<ul>
 						<li class="drop-down"><a href="#">피규어</a>
 							<ul>
-								<li><a href="#">애니</a></li>
-								<li><a href="#">게임</a></li>
-								<li><a href="#">연예인</a></li>
+								<li><a href="/product/list?dcc=0101">애니</a></li>
+								<li><a href="/product/list?dcc=0102">게임</a></li>
+								<li><a href="/product/list?dcc=0103">연예인</a></li>
 							</ul></li>
 						<li class="drop-down"><a href="#">미니어쳐</a>
 							<ul>
-								<li><a href="#">소형</a></li>
-								<li><a href="#">중형</a></li>
-								<li><a href="#">대형</a></li>
+								<li><a href="/product/list?dcc=0201">소형</a></li>
+								<li><a href="/product/list?dcc=0202">중형</a></li>
+								<li><a href="/product/list?dcc=0203">대형</a></li>
 							</ul></li>
-						<li><a href="#">RC카</a></li>
+						<li class="drop-down"><a href="#">RC</a>
+							<ul>
+								<li><a href="/product/list?dcc=0301">육</a></li>
+								<li><a href="/product/list?dcc=0302">해</a></li>
+								<li><a href="/product/list?dcc=0303">공</a></li>
+							</ul></li>
 						<li class="drop-down"><a href="#">기타</a>
 							<ul>
-								<li><a href="#">슬라임</a></li>
-								<li><a href="#">굿즈</a></li>
+								<li><a href="/product/list?dcc=0401">슬라임</a></li>
+								<li><a href="/product/list?dcc=0402">굿즈</a></li>
 							</ul></li>
 					</ul></li>
+			</ul></li>
+	</ul>
+	<ul>
+		<li class="drop-down"><a href="#">카테고리</a>
+			<ul>
+				<li class="drop-down"><a href="#">피규어</a>
+					<ul>
+						<li><a href="/product/list?dcc=0101">애니</a></li>
+						<li><a href="/product/list?dcc=0102">게임</a></li>
+						<li><a href="/product/list?dcc=0103">연예인</a></li>
+					</ul></li>
+				<li class="drop-down"><a href="#">하우스</a>
+					<ul>
+						<li><a href="/product/list?dcc=0201">소형</a></li>
+						<li><a href="/product/list?dcc=0202">중형</a></li>
+						<li><a href="/product/list?dcc=0203">대형</a></li>
+					</ul></li>
+				<li class="drop-down"><a href="#">RC</a>
+					<ul>
+						<li><a href="/product/list?dcc=0301">육</a></li>
+						<li><a href="/product/list?dcc=0302">행</a></li>
+						<li><a href="/product/list?dcc=0303">공</a></li>
+					</ul></li>
+				<li class="drop-down"><a href="#">기타</a>
+					<ul>
+						<li><a href="/product/list?dcc=0401">슬라임</a></li>
+						<li><a href="/product/list?dcc=0402">굿즈</a></li>
+					</ul></li>
+			</ul></li>
+	</ul>
+	<ul>
+		<li class="drop-down"><a href="#">신제품/인기제품</a>
+			<ul>
+				<li><a href="/product/list?bn=New">신제품</a></li>
+				<li><a href="/product/list?bn=Best">인기제품</a></li>
 			</ul></li>
 	</ul>
 	<ul>
@@ -71,46 +121,18 @@
 	<ul>
 		<li><a href="#">사이트안내</a></li>
 	</ul>
+
 	<ul>
-		<li class="drop-down"><a href="#">신제품/인기제품</a>
-			<ul>
-				<li><a href="#">신제품</a></li>
-				<li><a href="#">인기제품</a></li>
-			</ul></li>
-	</ul>
-	<ul>
-		<li class="drop-down"><a href="#">고객센터</a></li>
-	</ul>
-	<ul>
-		<li class="drop-down"><a href="#">카테고리</a>
-			<ul>
-				<li class="drop-down"><a href="#">피규어</a>
-					<ul>
-						<li><a href="#">애니</a></li>
-						<li><a href="#">게임</a></li>
-						<li><a href="#">연예인</a></li>
-					</ul></li>
-				<li class="drop-down"><a href="#">미니어쳐</a>
-					<ul>
-						<li><a href="#">소형</a></li>
-						<li><a href="#">중형</a></li>
-						<li><a href="#">대형</a></li>
-					</ul></li>
-				<li><a href="#">RC카</a></li>
-				<li class="drop-down"><a href="#">기타</a>
-					<ul>
-						<li><a href="#">슬라임</a></li>
-						<li><a href="#">굿즈</a></li>
-					</ul></li>
-			</ul></li>
+		<li class="drop-down"><a href="/product/detail_writer">판매글작성</a></li>
 	</ul>
 	<ul>
 		<li>
 			<nav class="main_top">
 				<div class="search">
-					<form action="get">
-						<input type="text" name="search" placeholder="search"
-							class="search_text">
+					<form action="/product/list" method="get">
+						<input type="text" name="search" placeholder="search" onfocus="placeholder=''"
+                        onblur='placeholder="search"'
+							class="search_text" required oninvalid="this.setCustomValidity('검색어를 입력해주세요')" oninput="setCustomValidity('')">
 						<button type="submit">
 							<i class='bx-fw bx bx-search bx-sm'></i>
 						</button>
@@ -120,3 +142,4 @@
 	</ul>
 </div>
 </nav>
+

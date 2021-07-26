@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +17,7 @@
 
 <title>Document</title>
 <link rel="stylesheet" href="/css/style.css">
-<link rel="stylesheet" href="/css/detail-main.css" />
+<link rel="stylesheet" href="/css/detail-main.css?ver=2" />
 </head>
 <body>
 	<%@ include file="../includes/header.jsp"%>
@@ -25,55 +27,54 @@
 			<div class="img-section">
 				<div class="swiper-container mySwiper2">
 					<div class="swiper-wrapper">
-						<div class="swiper-slide">
-							<img src="/img/서브2.jpg" />
-						</div>
-						<div class="swiper-slide">
-							<img src="/img/서브1.jpg" />
-						</div>
-						<div class="swiper-slide">
-							<img src="/img/서브1.jpg" />
-						</div>
-						<div class="swiper-slide">
-							<img src="/img/서브1.jpg" />
-						</div>
+						<c:forTokens var="fileName" items="${product.productMainImg}"
+							delims=",">
+							<div class="swiper-slide">
+								<img src="/upload/product/main/${fileName}" class="reviewImage">
+							</div>
+						</c:forTokens>
+						<!-- 							<img src="/img/서브2.jpg" /> -->
+						<!-- 						<div class="swiper-slide"> -->
+						<!-- 							<img src="/img/서브1.jpg" /> -->
+						<!-- 						</div> -->
+						<!-- 						<div class="swiper-slide"> -->
+						<!-- 							<img src="/img/서브1.jpg" /> -->
+						<!-- 						</div> -->
+						<!-- 						<div class="swiper-slide"> -->
+						<!-- 							<img src="/img/서브1.jpg" /> -->
+						<!-- 						</div> -->
 					</div>
 					<div class="swiper-button-next"></div>
 					<div class="swiper-button-prev"></div>
 				</div>
 				<div thumbsSlider="" class="swiper-container mySwiper">
 					<div class="swiper-wrapper">
-						<div class="swiper-slide">
-							<img src="/img/서브1.jpg" />
-						</div>
-						<div class="swiper-slide">
-							<img src="/img/서브1.jpg" />
-						</div>
-						<div class="swiper-slide">
-							<img src="/img/서브1.jpg" />
-						</div>
-						<div class="swiper-slide">
-							<img src="/img/서브1.jpg" />
-						</div>
+						<c:forTokens var="fileName" items="${product.productMainImg}"
+							delims=",">
+							<div class="swiper-slide">
+								<img src="/upload/product/main/${fileName}" class="reviewImage">
+							</div>
+						</c:forTokens>
 					</div>
 				</div>
 			</div>
 			<div class="txt-section">
-				<div class="txt-title">[만옥] 테스트 제목 입니다~</div>
-				<input type="text" id="txt-title" value="테스트" style="display: none;">
+				<div class="txt-title">
+					<c:out value="${product.productName}" />
+				</div>
 				<div class="txt-main">
 					<table>
 						<tr>
 							<th><span>판매가</span></th>
 							<td>
-								<div class="price">36000</div>
+								<div class="price">
+									<c:out value="${product.productPrice}" />
+								</div>
 							</td>
 						</tr>
 						<tr>
 							<th><span>판매자</span></th>
-							<td>아이디</td>
-							<input id="sell_id" type="text" value="이진웅"
-								style="display: none;">
+							<td><c:out value="${product.userId}" /></td>
 						</tr>
 						<tr>
 							<th><span>카테고리</span></th>
@@ -96,9 +97,9 @@
 					</table>
 				</div>
 				<div class="detail-head-button">
-					<button>바로구매</button>
-					<button>장바구니</button>
-					<button>하트</button>
+					<a href=""><button>바로구매</button></a> 
+					<a href=""><button>장바구니</button></a>
+					<a href=""><button>하트</button></a>
 				</div>
 			</div>
 		</div>
@@ -122,11 +123,11 @@
 			<div class="plan">
 				<table>
 					<tr>
-						<td><img src="//참고 파일/박성주/coupang_ex/상품2.jpg"></td>
-						<td><img src="/img/slide-1.jpg"></td>
-						<td><img src="/img/slide-2.jpg"></td>
-						<td><img src="/img/fit1.jpg"></td>
-						<td><img src="/img/서브1.jpg"></td>
+						<c:forTokens var="fileName" items="${product.productInfoImg}"
+							delims=",">
+							<td><img src="/upload/product/info/${fileName}"
+								class="reviewImage"></td>
+						</c:forTokens>
 					</tr>
 				</table>
 			</div>
@@ -207,7 +208,7 @@
 	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 	<script src="/js/index.js" defer></script>
 	<script src="/js/editor.js"></script>
-	<script src="/js/detail-slide.js"></script>
+	<script src="/js/detail-slide.js?ver=1" defer></script>
 	<script type="text/javascript">
 		function winpop() {
 			var open = window.open("questionpop.html", "parent",

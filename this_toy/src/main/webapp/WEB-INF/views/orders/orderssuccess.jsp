@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="kr">
 
@@ -8,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=980" />
     <link href="/css/style.css" rel="stylesheet">
-    <link href="/css/buysuccess.css" rel="stylesheet">
+    <link href="/css/orderssuccess.css" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <title>Document</title>
 </head>
@@ -26,7 +27,7 @@
                         <p>추가적인 결재 및 환불/교환은 해당 페이지를 찾아주시기 바랍니다</p>
                     </div>
                     <div class="register-success-btn">
-                        <a href="/buy/buy">메인페이지로 이동</a>
+                        <a href="/">메인페이지로 이동</a>
                     </div>
                 </div>
             </div>
