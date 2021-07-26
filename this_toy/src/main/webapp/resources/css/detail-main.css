@@ -79,8 +79,9 @@
   width: 150px;
   height: 50px;
   margin-right: 5px ;
+  cursor:pointer;
 }
-#main .txt-section .detail-head-button button:nth-child(2){
+#main .txt-section .detail-head-button a:nth-child(2) button{
   background-color: white;
   color: red;
 }

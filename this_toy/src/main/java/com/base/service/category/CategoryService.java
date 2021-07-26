@@ -7,4 +7,6 @@ import com.base.entity.DownCategoryVO;
 public interface CategoryService {
 
 	ArrayList<DownCategoryVO> getList();
+	
+	DownCategoryVO getDcName(String downCaCode);
 }

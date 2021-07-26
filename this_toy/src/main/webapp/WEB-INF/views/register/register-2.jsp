@@ -93,12 +93,12 @@
 										<tr class="form-control">
 											<th><span>주소</span></th>
 											<td></td>
-											<td><input id="member_post" name="userAddress"
-												type="text" placeholder="지번" readonly onclick="findAddr()"><br>
+											<td><input id="member_post" name="userAddressPost"
+												type="text" placeholder="우편번호" readonly onclick="findAddr()"><br>
 												<br> <br> <input id="member_addr"
-												name="userAddress2" type="text" placeholder="주소" readonly><br>
-												<br> <br> <input type="text" name="userAddress3"
-												id="member_detail" placeholder="추가 주소"></td>
+												name="userAddress" type="text" placeholder="기본주소" readonly><br>
+												<br> <br> <input type="text" name="userAddressDetail"
+												id="member_detail" placeholder="상세 주소"></td>
 											<td></td>
 										</tr>
 									</tbody>
