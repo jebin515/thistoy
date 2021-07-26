@@ -74,7 +74,7 @@
 											<td><input type="email" name="userEmail" id="email"
 												placeholder="예)abc@abc.com" required></td>
 											<td>
-												<button class="btn_confirm" onclick="sendEmail()">인증번호
+												<button class="btn_confirm" onclick="sendEmail()" type="button">인증번호
 													발송</button>
 											</td>
 										</tr>
@@ -82,7 +82,7 @@
 											<th><span>인증번호 확인</span></th>
 											<td><input type="text" class="send_number"
 												name="send_number" placeholder="4자리를 입력하세요."></td>
-											<td><button class="btn_send">확인</button></td>
+											<td><button class="btn_send" type="button">확인</button></td>
 										</tr>
 										<tr class="form-control">
 											<th><span>휴대폰 번호</span></th>
@@ -93,12 +93,12 @@
 										<tr class="form-control">
 											<th><span>주소</span></th>
 											<td></td>
-											<td><input id="member_post" name="userAddress"
-												type="text" placeholder="지번" readonly onclick="findAddr()"><br>
+											<td><input id="member_post" name="userAddressPost"
+												type="text" placeholder="우편번호" readonly onclick="findAddr()"><br>
 												<br> <br> <input id="member_addr"
-												name="userAddress2" type="text" placeholder="주소" readonly><br>
-												<br> <br> <input type="text" name="userAddress3"
-												id="member_detail" placeholder="추가 주소"></td>
+												name="userAddress" type="text" placeholder="기본주소" readonly><br>
+												<br> <br> <input type="text" name="userAddressDetail"
+												id="member_detail" placeholder="상세 주소"></td>
 											<td></td>
 										</tr>
 									</tbody>
