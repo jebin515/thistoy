@@ -135,15 +135,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link rel="stylesheet" href="/css/header.css">
 
-<!-- <script defer> -->
-// 	var result = "<c:out value='${fail}'/>";
-// 	function fail() {
-// 		alert('로그인시 이용가능합니다.');
-// 	}
-// 	if (result == 'fail') {
-// 		fail();
-// 	}
-<!-- </script> -->
+ <script defer>
+ 	var result = "<c:out value='${fail}'/>";
+ 	function fail() {
+		alert('로그인시 이용가능합니다.');
+ 	}
+ 	if (result == 'fail') {
+	fail();
+ 	}
+</script>
 
 <header id="header">
 	<c:if test="${empty authInfo.userId}">
