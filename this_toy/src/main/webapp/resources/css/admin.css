@@ -33,6 +33,10 @@
   border-bottom: 1px solid rgb(194, 194, 194);
   line-height: 40px;
 }
+.table_head .member_date {
+  width: 130px;
+  height: 60px;
+}
 .table_head .member_id {
   width: 150px;
 }
@@ -49,7 +53,7 @@
   width: 200px;
 }
 .table_head .member_delete {
-  width: 80px;
+  width: 130px;
 }
 .delete {
   background-color: rgba(224, 185, 250, 0.781);
