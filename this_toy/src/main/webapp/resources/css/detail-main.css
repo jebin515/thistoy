@@ -95,7 +95,7 @@
 	cursor: pointer;
 }
 
-#main .txt-section .detail-head-button a:nth-child(2) button {
+#main .txt-section .detail-head-button button:nth-child(2) {
 	background-color: white;
 	color: red;
 }
@@ -170,7 +170,7 @@
 
 #main .detail-content select {
 	width: 100px;
-	margin-right: 700px;
+	margin-right: 650px;
 }
 
 #main .detail-content select, option {
@@ -182,7 +182,7 @@
 	color: rgba(245, 96, 153, 0.9);
 }
 
-#main .detail-content input[type="submit"] {
+#main .detail-content button {
 	border: 1px solid rgba(245, 96, 153, 0.9);
 	background-color: rgba(245, 96, 153, 0.9);
 	color: white;
@@ -196,6 +196,7 @@
 	cursor: pointer;
 }
 
+
 #main .detail-content .title {
 	width: 1000px;
 	position: relative;
@@ -208,7 +209,10 @@
 	color: rgba(245, 96, 153, 0.9);
 	height: 50px;
 }
-
+#main .detail-content .fa-star,.fa-star-o{
+	margin:-2px;
+	color:rgba(245, 96, 153, 0.9);
+}
 #main .detail-content .title-plan {
 	font-size: 20px;
 	font-family: "Cafe24Ssurround", sans-serif;

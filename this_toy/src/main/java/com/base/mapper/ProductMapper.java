@@ -2,8 +2,11 @@ package com.base.mapper;
 
 import java.util.ArrayList;
 
+import com.base.entity.CartVO;
 import com.base.entity.DccPageVO;
 import com.base.entity.ProductVO;
+import com.base.entity.ReviewVO;
+import com.base.entity.WishlistVO;
 
 public interface ProductMapper {
 
@@ -15,4 +18,17 @@ public interface ProductMapper {
 	
 	ProductVO getProduct(String productCode);
 	
+	ArrayList<ReviewVO> getReview(String productCode);
+	
+	int reviewCount(String productCode);
+	
+	int insertCart(CartVO vo);
+	
+	int cartCount(CartVO vo);
+	
+	int insertWish(WishlistVO vo);
+	
+	int wishCount(WishlistVO vo);
+	
+	int deleteWish(WishlistVO vo);
 }
