@@ -13,4 +13,8 @@ public interface NoticeMapper {
 		void insert(NoticeVO notice);
 		
 		void insertSelectKey(NoticeVO notice);
+		
+		NoticeVO read(Long notice_num);
+		
+		int delete(Long notice_num);
 }
