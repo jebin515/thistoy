@@ -1,9 +1,6 @@
 package com.base.controller;
 
 import java.io.IOException;
-import java.util.Locale;
-
-import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,13 +9,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.base.entity.ProductVO;
 import com.base.service.orders.OrdersService;
 import com.siot.IamportRestClient.IamportClient;
 import com.siot.IamportRestClient.exception.IamportResponseException;
 import com.siot.IamportRestClient.response.IamportResponse;
 import com.siot.IamportRestClient.response.Payment;
-
-import lombok.extern.log4j.Log4j;
 
 @Controller
 @RequestMapping("/orders/*")
@@ -28,7 +24,7 @@ public class OrdersController {
 			"42VKSjQQgdnutTWiJq7BNN0vt2anFEPJGKuz4kplyNP2GLlpcs10f1vJ3G6JkWt1GXALi06QOVTuHeUT");
 
 	@RequestMapping("/orders")
-	public void orders(Model model) {
+	public void orders(Model model,ProductVO vo) {
 
 
 	}

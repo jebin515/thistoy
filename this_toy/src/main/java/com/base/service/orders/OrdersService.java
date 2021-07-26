@@ -5,5 +5,5 @@ import java.util.ArrayList;
 import com.base.entity.OrdersVO;
 
 public interface OrdersService {
-	String insert (OrdersVO oav);
+	String insert (OrdersVO vo);
 }

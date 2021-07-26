@@ -6,5 +6,5 @@ import com.base.entity.OrdersVO;
 
 public interface OrdersMapper {
 
-	String insert(OrdersVO oav);
+	String insert(OrdersVO vo);
 }
