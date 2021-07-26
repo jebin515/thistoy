@@ -11,14 +11,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.base.entity.CartVO;
 import com.base.entity.DccPageVO;
 import com.base.entity.ListPageVO;
 import com.base.entity.ProductVO;
+import com.base.entity.WishlistVO;
 import com.base.service.category.CategoryService;
 import com.base.service.product.ProductService;
 
@@ -129,6 +133,29 @@ public class ProductController {
 	
 	@GetMapping("detail_main")
 	public void getDetailMain(@RequestParam(name="pc")String productCode,Model model) {
+		model.addAttribute("count",prService.reviewCount(productCode));
 		model.addAttribute("product",prService.getProduct(productCode));
+		model.addAttribute("review",prService.getReview(productCode));
+	}
+	@ResponseBody
+	@PostMapping(value = "cart",produces = "application/text; charset=UTF-8")
+	public String insertCart(@RequestBody CartVO vo) {
+		int cartcount=prService.cartCount(vo);
+		if(cartcount >= 1) {
+			return "이미 장바구니에 추가된 상품입니다.";
+		}
+		int count = prService.registerCart(vo);
+		return count==1? "장바구니에 등록하였습니다.":"잘못된 동작입니다.";
+	}
+	@ResponseBody
+	@PostMapping(value = "wishList",produces = "application/text; charset=UTF-8")
+	public String insertWishList(@RequestBody WishlistVO vo) {
+		int wishcount=prService.wishCount(vo);
+		if(wishcount >= 1) {
+			prService.deleteWish(vo);
+			return "찜목록에서 취소했습니다.";
+		}
+		int count = prService.registerWish(vo);
+		return count==1? "찜목록에 등록하였습니다.":"잘못된 동작입니다.";
 	}
 }

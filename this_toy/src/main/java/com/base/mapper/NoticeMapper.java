@@ -8,9 +8,13 @@ import com.base.entity.NoticeVO;
 
 public interface NoticeMapper {
 
-		//@Select("select * from notice where notice_num > 0")
 		List<NoticeVO> getList();
 		
-		void insert(NoticeVO vo);
+		void insert(NoticeVO notice);
 		
+		void insertSelectKey(NoticeVO notice);
+		
+		NoticeVO read(Long notice_num);
+		
+		int delete(Long notice_num);
 }
