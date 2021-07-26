@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -20,7 +21,6 @@ import com.siot.IamportRestClient.response.Payment;
 import lombok.extern.log4j.Log4j;
 
 @Controller
-@Log4j
 @RequestMapping("/orders/*")
 public class OrdersController {
 	private OrdersService service;
@@ -29,11 +29,12 @@ public class OrdersController {
 
 	@RequestMapping("/orders")
 	public void orders(Model model) {
-//		model.addAttribute("select",service.select());
+
+
 	}
 
 	@ResponseBody
-	@RequestMapping(value="/orders/{imp_uid}")
+	@PostMapping(value="/orders/{imp_uid}")
 	public IamportResponse<Payment> paymentByImpUid(
 			@PathVariable("imp_uid") String imp_uid
 			) throws IamportResponseException, IOException

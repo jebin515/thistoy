@@ -14,4 +14,7 @@ public class OrdersVO {
 	private int orderEa;//주문갯수
 	private String productImg;//상품이미지
 	private String orderAddress;//주소
+	private String orderSituation;//주문현황
+	private String orderAddress2;
+	private String orderAddress3;
 }
