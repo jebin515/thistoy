@@ -20,9 +20,9 @@
 	<resources mapping="/**" location="/resources/" />
 
 	<!-- NaverLoginBO Class에 대한 Bean설정 추가 -->
-	<beans:bean id="naverLoginBO"
+<!-- 	<beans:bean id="naverLoginBO"
 		class="com.test.tst.NaverLoginBO" />
-
+ -->
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->
