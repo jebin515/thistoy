@@ -169,8 +169,8 @@
 }
 
 #main .detail-content select {
-	width: 300px;
-	margin-right: 200px;
+	width: 100px;
+	margin-right: 700px;
 }
 
 #main .detail-content select, option {
