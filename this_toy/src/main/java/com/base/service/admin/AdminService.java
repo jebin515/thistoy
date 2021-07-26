@@ -1,5 +1,5 @@
-package com.base.service.admin;
-
-public interface AdminService {
-
-}
+//package com.base.service.admin;
+//
+//public interface AdminService {
+//
+//}

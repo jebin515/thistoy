@@ -74,7 +74,7 @@
 											<td><input type="email" name="userEmail" id="email"
 												placeholder="예)abc@abc.com" required></td>
 											<td>
-												<button class="btn_confirm" onclick="sendEmail()">인증번호
+												<button class="btn_confirm" onclick="sendEmail()" type="button">인증번호
 													발송</button>
 											</td>
 										</tr>
@@ -82,7 +82,7 @@
 											<th><span>인증번호 확인</span></th>
 											<td><input type="text" class="send_number"
 												name="send_number" placeholder="4자리를 입력하세요."></td>
-											<td><button class="btn_send">확인</button></td>
+											<td><button class="btn_send" type="button">확인</button></td>
 										</tr>
 										<tr class="form-control">
 											<th><span>휴대폰 번호</span></th>
