@@ -10,7 +10,17 @@
 	
 	<insert id="insert">
 	insert INTO notice (notice_num, notice_title, notice_text, user_id)
-	VALUES (seq_notice.nextval, 'test제목', 'test내용', 'shtest')
+	VALUES (seq_notice.nextval, #{notice_title}, #{notice_text}, #{user_id})
+	</insert>
+	
+	<insert id="insertSelectKey">
+	<selectKey order="BEFORE" keyProperty="notice_num" resultType="Long">
+	select seq_notice.nextval from dual
+	</selectKey>
+	
+	insert INTO notice (notice_num, notice_title, notice_text, user_id)
+	VALUES (#{notice_num}, #{notice_title}, #{notice_text}, #{user_id})
+	
 	</insert>
 	
 </mapper>
