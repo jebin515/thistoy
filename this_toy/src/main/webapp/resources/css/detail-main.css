@@ -1,321 +1,407 @@
-#main{
-  width: 1200px;
-  height: 100%;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+#main {
+	width: 1200px;
+	height: 100%;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
-#main .detail-head{
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+#main .detail-head {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
-#main .img-section{
-  display: flex;
-  flex-direction: column;
-  margin: 20px;
-  width: 500px;
-  height: 550px;
+
+#main .img-section {
+	display: flex;
+	flex-direction: column;
+	margin: 20px;
+	width: 500px;
+	height: 550px;
 }
-#main .txt-section{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 20px;
+
+#main .txt-section {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 20px;
 }
-#main .txt-section .txt-title{
-  font-family: "Cafe24Ssurround", sans-serif;
-  font-weight: bold;
-  font-size: 30px;
-  height: 100px;
-  border-bottom:1px solid rgba(0, 0, 0,0.2) ;
+
+#main .txt-section .txt-title {
+	font-family: "Cafe24Ssurround", sans-serif;
+	font-weight: bold;
+	font-size: 30px;
+	height: 100px;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
-#main .txt-section .txt-main{
-  height: 300px;
-  margin: 20px 0 20px 0;
-  border-bottom:1px solid rgba(0, 0, 0,0.2) ;
+
+#main .txt-section .txt-main {
+	height: 300px;
+	margin: 20px 0 20px 0;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
-#main .txt-section .txt-main table{
-  height: 300px;
+
+#main .txt-section .txt-main table {
+	height: 300px;
 }
-#main .txt-section .txt-main table th{
-  text-align: left;
+
+#main .txt-section .txt-main table th {
+	text-align: left;
 }
-#main .txt-section .txt-main table tr{
-  height: 60px;
+
+#main .txt-section .txt-main table tr {
+	height: 60px;
 }
-#main .txt-section .txt-main table .ea_btn{
-  border: none;
-  border-radius: 3px;
-  background-color: rgba(245, 96, 153, 0.5);
+
+#main .txt-section .txt-main table .ea_btn {
+	border: none;
+	border-radius: 3px;
+	background-color: rgba(245, 96, 153, 0.5);
 }
-#main .txt-section .txt-main span{
-  font-family: "Cafe24Ssurround", sans-serif;
-  font-weight: 300;
-  color: rgba(245, 96, 153, 0.9);
-  font-size: 20px;
-  padding-right: 20px;
+
+#main .txt-section .txt-main span {
+	font-family: "Cafe24Ssurround", sans-serif;
+	font-weight: 300;
+	color: rgba(245, 96, 153, 0.9);
+	font-size: 20px;
+	padding-right: 20px;
 }
-#main .txt-section .txt-main div{
-  display: inline-flex;
+
+#main .txt-section .txt-main div {
+	display: inline-flex;
 }
-#main .txt-section .txt-main input{
-  border: none;
-  border: 1px solid rgba(0, 0, 0,0.2);
-  border-radius: 3px;
-  text-align: center;
-  width: 40px;
-  height: 20px;
+
+#main .txt-section .txt-main input {
+	border: none;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: 3px;
+	text-align: center;
+	width: 40px;
+	height: 20px;
 }
-#main .txt-section .detail-head-button button{
-  border: none;
-  background-color: rgba(245, 96, 153, 0.9);
-  font-family: "Cafe24Ssurround", sans-serif;
-  color: white;
-  font-size: 15px;
-  font-weight: 300;
-  border: 1px solid red;
-  width: 150px;
-  height: 50px;
-  margin-right: 5px ;
-  cursor:pointer;
+
+#main .txt-section .detail-head-button button {
+	border: none;
+	background-color: rgba(245, 96, 153, 0.9);
+	font-family: "Cafe24Ssurround", sans-serif;
+	color: white;
+	font-size: 15px;
+	font-weight: 300;
+	border: 1px solid red;
+	width: 150px;
+	height: 50px;
+	margin-right: 5px;
+	cursor: pointer;
 }
-#main .txt-section .detail-head-button a:nth-child(2) button{
-  background-color: white;
-  color: red;
+
+#main .txt-section .detail-head-button a:nth-child(2) button {
+	background-color: white;
+	color: red;
 }
 /* 메인 1 끝 */
 
 /* 메인 2 시작 */
-
-#main .detail-menu{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 120px;
-}
-#main .detail-menu ul{
-  display: flex;
-  justify-content: center;
-  height: 60px;
-}
-#main .detail-menu ul>li{
-  background: rgba(245, 96, 153, 0.3);
-  position: relative;
-  white-space: nowrap;
-  padding: 10px 30px 10px 30px;
-  display: flex;
-  align-items: center;
-}
-#main .detail-menu ul>li a{
-  font-size: 20px;
-  font-family: "Cafe24Ssurround", sans-serif;
-  font-weight: 300;
-  color: rgba(245, 96, 153, 0.9);
-}
-#main .detail-menu ul>li a:hover{
-  color: rgba(245, 96, 153, 0.6);
-}
-#main .detail-content{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 50px 0 50px 0;
-}
-#main .detail-content .title{
-  width: 1000px;
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 20px;
-  font-family: "Cafe24Ssurround", sans-serif;
-  font-weight: 300;
-  color: rgba(245, 96, 153, 0.9);
-  height: 50px;
-}
-#main .detail-content .title-plan{
-  font-size: 20px;
-  font-family: "Cafe24Ssurround", sans-serif;
-  font-weight: 300;
-  color: rgba(245, 96, 153, 0.9);
-  height: 50px;
+#main .detail-menu {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 120px;
 }
 
-#main .detail-content table{
-  width: 1000px;
-  border-collapse: collapse;
-  text-align: center;
-  border-top: 2px solid rgba(245, 96, 153, 0.6);
-  border-bottom: 2px solid rgba(245, 96, 153, 0.6);
-}
-#main .detail-content table:first-child{
-  border: none;
-}
-#main .detail-content table tr th:nth-child(1){
-  width: 20%;
-}
-#main .detail-content table tr th:nth-child(2){
-  width: 40%;
-}
-#main .detail-content table tr th:nth-child(3){
-  width: 20%;
-}
-#main .detail-content table tr th:nth-child(4){
-  width: 20%;
-}
-#main .detail-content table tr th{
-  padding: 10px
-}
-#main .detail-content table tr td{
-  padding: 10px 0 10px 0
-}
-#main .detail-content table img{
-  width: 1000px;
-}
-#main .detail-content .plan table tr{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
+#main .detail-menu ul {
+	display: flex;
+	justify-content: center;
+	height: 60px;
 }
 
+#main .detail-menu ul>li {
+	background: rgba(245, 96, 153, 0.3);
+	position: relative;
+	white-space: nowrap;
+	padding: 10px 30px 10px 30px;
+	display: flex;
+	align-items: center;
+}
+
+#main .detail-menu ul>li a {
+	font-size: 20px;
+	font-family: "Cafe24Ssurround", sans-serif;
+	font-weight: 300;
+	color: rgba(245, 96, 153, 0.9);
+}
+
+#main .detail-menu ul>li a:hover {
+	color: rgba(245, 96, 153, 0.6);
+}
+
+#main .detail-content {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+	padding: 50px 0 50px 0;
+	width: 1000px;
+	margin: 0 auto;
+}
+
+#main .detail-content .write_review {
+	text-align: left;
+	color: rgba(245, 96, 153, 0.9);
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+#main .detail-content .write_text {
+	resize: none;
+	font-size: 20px;
+	outline-color: grey;
+	margin-bottom: 10px;
+}
+
+#main .detail-content .img_rating {
+	display: flex;
+	justify-content: space-between;
+}
+
+#main .detail-content input[type="file"] {
+	width: 200px;
+}
+
+#main .detail-content select {
+	width: 300px;
+	margin-right: 200px;
+}
+
+#main .detail-content select, option {
+	font-family: "Font Awesome 5 Free";
+	font-weight: 900;
+}
+
+#main .detail-content select {
+	color: rgba(245, 96, 153, 0.9);
+}
+
+#main .detail-content input[type="submit"] {
+	border: 1px solid rgba(245, 96, 153, 0.9);
+	background-color: rgba(245, 96, 153, 0.9);
+	color: white;
+}
+
+#main .detail-content .file-button {
+	padding: 6px 25px;
+	background-color: rgba(245, 96, 153, 0.9);
+	border-radius: 4px;
+	color: white;
+	cursor: pointer;
+}
+
+#main .detail-content .title {
+	width: 1000px;
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 20px;
+	font-family: "Cafe24Ssurround", sans-serif;
+	font-weight: 300;
+	color: rgba(245, 96, 153, 0.9);
+	height: 50px;
+}
+
+#main .detail-content .title-plan {
+	font-size: 20px;
+	font-family: "Cafe24Ssurround", sans-serif;
+	font-weight: 300;
+	color: rgba(245, 96, 153, 0.9);
+	height: 50px;
+}
+
+#main .detail-content table {
+	width: 1000px;
+	border-collapse: collapse;
+	text-align: center;
+	border-top: 2px solid rgba(245, 96, 153, 0.6);
+	border-bottom: 2px solid rgba(245, 96, 153, 0.6);
+}
+
+#main .detail-content table:first-child {
+	border: none;
+}
+
+#main .detail-content table tr th:nth-child(1) {
+	width: 20%;
+}
+
+#main .detail-content table tr th:nth-child(2) {
+	width: 40%;
+}
+
+#main .detail-content table tr th:nth-child(3) {
+	width: 20%;
+}
+
+#main .detail-content table tr th:nth-child(4) {
+	width: 20%;
+}
+
+#main .detail-content table tr th {
+	padding: 10px
+}
+
+#main .detail-content table tr td {
+	padding: 10px 0 10px 0
+}
+
+#main .detail-content table img {
+	width: 1000px;
+}
+
+#main .detail-content .plan table tr {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
 
 /* 메인 2 끝 */
 /* 슬라이드 */
-
 #main .img-section .swiper-container {
-  width: 500px;
+	width: 500px;
 }
 
 #main .img-section .swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  background: #fff;
-
-  /* Center slide text vertically */
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
-  align-items: center;
+	text-align: center;
+	font-size: 18px;
+	background: #fff;
+	/* Center slide text vertically */
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
 }
 
 #main .img-section .swiper-slide img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }
 
 #main .img-section .swiper-container {
-  width: 500px;
-  height: 300px;
+	width: 500px;
+	height: 300px;
 }
 
 #main .img-section .swiper-slide {
-  background-size: cover;
-  background-position: center;
+	background-size: cover;
+	background-position: center;
 }
 
 #main .img-section .mySwiper2 {
-  height: 550px;
-  width: 500px;
+	height: 550px;
+	width: 500px;
 }
 
 #main .img-section .mySwiper {
-  height: 100px;
-  box-sizing: border-box;
-  padding: 10px 0;
-  width: 400px;
+	height: 100px;
+	box-sizing: border-box;
+	padding: 10px 0;
+	width: 400px;
 }
 
 #main .img-section .mySwiper .swiper-slide {
-  opacity: 0.4;
+	opacity: 0.4;
 }
 
 #main .img-section .mySwiper .swiper-slide-thumb-active {
-  opacity: 1;
+	opacity: 1;
 }
 
 #main .img-section .swiper-slide img {
-  display: block;
-  width: 500px;
-  height: 100%;
-  object-fit: contain;
+	display: block;
+	width: 500px;
+	height: 100%;
+	object-fit: contain;
 }
-.swiper-button-next ,.swiper-button-prev{
-  color: rgba(245, 96, 153, 0.5);
-  opacity: 0;
+
+.swiper-button-next, .swiper-button-prev {
+	color: rgba(245, 96, 153, 0.5);
+	opacity: 0;
 }
-.swiper-button-next:hover ,.swiper-button-prev:hover{
-  opacity: 1;
+
+.swiper-button-next:hover, .swiper-button-prev:hover {
+	opacity: 1;
 }
 
 /* 슬라이드 끝 */
 /* writer */
-
-#write{
-  display: flex;
-  justify-content: center;
-  border-top: 2px solid rgba(245, 96, 153, 0.6);
-}
-#write .write-form form{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-#write .write-form form input[type="file"]{
-  display: none;
+#write {
+	display: flex;
+	justify-content: center;
+	border-top: 2px solid rgba(245, 96, 153, 0.6);
 }
 
-#write .write-form .write-img table{
-  width: 500px;
-  border-collapse: collapse;
-  text-align: center;
- 
+#write .write-form form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
-#write .write-form .write-img table tr td{
-  padding: 10px;
+
+#write .write-form form input[type="file"] {
+	display: none;
 }
-#write .write-form .write-img table th{
-  font-size: 20px;
-  font-family: "Cafe24Ssurround", sans-serif;
-  font-weight: 300;
-  color: rgba(245, 96, 153, 0.9);
-  padding: 20px 0 0 0;
+
+#write .write-form .write-img table {
+	width: 500px;
+	border-collapse: collapse;
+	text-align: center;
 }
-#write .write-form .write-img table th:first-child{
-  width: 100px;
+
+#write .write-form .write-img table tr td {
+	padding: 10px;
 }
-#write .write-form .upload{
-  background: rgba(245, 96, 153, 0.5);
-  border-radius: 15px;
-  box-shadow: 2px 2px 2px 2px rgb(185, 185, 185);
-  font-family: "Cafe24Ssurround", sans-serif;
-  color: rgb(255, 255, 255);
-  font-size: 20px;
-  padding: 20px;
+
+#write .write-form .write-img table th {
+	font-size: 20px;
+	font-family: "Cafe24Ssurround", sans-serif;
+	font-weight: 300;
+	color: rgba(245, 96, 153, 0.9);
+	padding: 20px 0 0 0;
 }
-#write .write-form .upload:hover{
-  background: rgba(245, 96, 153, 0.8);
+
+#write .write-form .write-img table th:first-child {
+	width: 100px;
 }
-#write .write-form .upload span{
-  font-family: "Cafe24Ssurround", sans-serif;
-  color: rgb(255, 255, 255);
-  font-size: 20px;
+
+#write .write-form .upload {
+	background: rgba(245, 96, 153, 0.5);
+	border-radius: 15px;
+	box-shadow: 2px 2px 2px 2px rgb(185, 185, 185);
+	font-family: "Cafe24Ssurround", sans-serif;
+	color: rgb(255, 255, 255);
+	font-size: 20px;
+	padding: 20px;
+}
+
+#write .write-form .upload:hover {
+	background: rgba(245, 96, 153, 0.8);
+}
+
+#write .write-form .upload span {
+	font-family: "Cafe24Ssurround", sans-serif;
+	color: rgb(255, 255, 255);
+	font-size: 20px;
 }
 
 /* writer 끝 */
