@@ -1,14 +1,21 @@
 package com.base.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.base.entity.OrdersVO;
 import com.base.entity.ProductVO;
 import com.base.service.orders.OrdersService;
 import com.siot.IamportRestClient.IamportClient;
@@ -23,18 +30,29 @@ public class OrdersController {
 	private IamportClient api = new IamportClient("9935225488488363",
 			"42VKSjQQgdnutTWiJq7BNN0vt2anFEPJGKuz4kplyNP2GLlpcs10f1vJ3G6JkWt1GXALi06QOVTuHeUT");
 
-	@RequestMapping("/orders")
-	public void orders(Model model,ProductVO vo) {
-
-
+	@RequestMapping(value = "/cart")
+	public String cart(Model model) {
+		
+		return "orders/orders";
 	}
-
+	@GetMapping(value = "/direct")
+		public String direct(Model model,
+				@RequestParam(name="pdc")String productCode,
+				@RequestParam(name="name")String userId,
+				@RequestParam(name="st")String productStock) {
+		model.addAttribute("pdc",service.getproduct(productCode));
+		model.addAttribute("user",service.getaddr(userId));
+		model.addAttribute("st",productStock);
+		return "orders/orders";
+	}
+	
 	@ResponseBody
 	@PostMapping(value="/orders/{imp_uid}")
 	public IamportResponse<Payment> paymentByImpUid(
-			@PathVariable("imp_uid") String imp_uid
+			@PathVariable("imp_uid") String imp_uid,
+			@RequestBody  OrdersVO vo
 			) throws IamportResponseException, IOException
-	{	
+	{
 			System.out.println(api.paymentByImpUid(imp_uid));
 			return api.paymentByImpUid(imp_uid);
 	}

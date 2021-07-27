@@ -1,10 +1,12 @@
 package com.base.mapper;
 
-import java.util.ArrayList;
-
-import com.base.entity.OrdersVO;
+import com.base.entity.ProductVO;
+import com.base.entity.UserVO;
 
 public interface OrdersMapper {
 
-	String insert(OrdersVO vo);
+	UserVO getaddr(String userId); 
+	ProductVO getproduct(String productCode);
+	
+	
 }

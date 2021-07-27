@@ -13,8 +13,9 @@ public class OrdersVO {
 	private Date orderDate;//주문시간
 	private int orderEa;//주문갯수
 	private String productImg;//상품이미지
-	private String orderAddress;//주소
 	private String orderSituation;//주문현황
-	private String orderAddress2;
-	private String orderAddress3;
+	private String orderAddressPost;//주소
+	private String orderAddress;
+	private String orderAddressDetail;
+	private String userId;
 }
