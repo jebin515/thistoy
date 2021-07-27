@@ -1,18 +1,37 @@
-const inputs = document.querySelector('#form')
-function sendEmail(){
-Email.send({
-    SecureToken :"e934022e-9a7f-42a2-91af-4a39a9ed0261",
-    To : document.getElementById('email').value,
-    From : "display3634@gmail.com",
-    Subject : "인증번호",
-    Body : "번호번호"
-}).then(function(responce){
-    if (responce == 'OK'){
-        alert("성공적으로 메일을 보냈습니다");
-    } else {
-        throw new Error("에러 : " + responce.statusText);
+var code = "";
+const submitBtn2 = document.getElementById("next_button")
+const submitBtn = document.querySelector("#next_button");
+/* 이메일 버튼 누를시 이메일 발송 */
+$(".btn_send").click(function () {
+    // var email = $(".mail_input").val();            // 입력한 이메일
+    var checkBox = $("#mail_check_input");        // 인증번호 입력란
+    var boxWrap = $(".mail_check_input_box");    // 인증번호 입력란 겉 박스
+
+    var semail = $(".mail_input").val();        // 입력한 이메일값
+    $.ajax({
+        type: "GET",
+        url: "mailCheck?semail=" + semail,
+        success: function (data) {
+            console.log("data : " + data);
+
+            code = data;
+        }
+    });
+});
+
+$(".btn_confirm").click(function () {
+
+    var inputCode = $("#mail_check_input").val();        // 인풋에 입력한 코드
+    var checkResult = $(".code_check");    // 비교 결과
+    submitBtn2.disable = false;
+    if (inputCode == code) {                            // 일치할 경우
+        checkResult.html("인증 성공3!");
+
+        $(submitBtn).removeAttr('disabled');
+    } else {                                            // 일치하지 않을 경우
+        checkResult.html("인증 실패4.");
+
+        // checkfail();
+
     }
-})(
-  
-);
-} 
+});
