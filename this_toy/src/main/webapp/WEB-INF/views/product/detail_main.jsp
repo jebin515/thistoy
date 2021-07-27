@@ -163,7 +163,8 @@
 				<c:forEach var="rv" items="${review}">
 					<tr>
 						<td><c:forEach var="rt" begin="1" end="${rv.reviewRating}">
-								<i class="fa fa-star"></i>
+								<i class="fa fa-star">
+								</i>
 							</c:forEach> <c:forEach var="rt" begin="${rv.reviewRating+1}" end="5">
 								<i class="fa fa-star-o"></i>
 							</c:forEach></td>
