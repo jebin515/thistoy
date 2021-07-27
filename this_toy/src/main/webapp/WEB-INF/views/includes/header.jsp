@@ -16,7 +16,7 @@
 <header id="header">
 	<c:if test="${empty authInfo.userId}">
 	<div class="header-full">
-		<a href="/main" class="logo">
+		<a href="/main" class="logo"></a>
 			<nav class="header_nav">
 				<div class="header_menu">
 					<a href="/login/login" class="header_login"><i
@@ -29,7 +29,7 @@
 	</c:if>
 	<c:if test="${not empty authInfo.userId}">
 	<div class="header-full">
-		<a href="#" class="logo">
+		<a href="#" class="logo"></a>
 			<nav class="header_nav">
 				<div class="header_menu">
 					<a href="/login/logout" class="header_login">  <i
@@ -130,16 +130,18 @@
 			<nav class="main_top">
 				<div class="search">
 					<form action="/product/list" method="get">
-						<input type="text" name="search" placeholder="search" onfocus="placeholder=''"
-                        onblur='placeholder="search"'
-							class="search_text" required oninvalid="this.setCustomValidity('검색어를 입력해주세요')" oninput="setCustomValidity('')">
+						<input type="text" name="search" placeholder="search"
+							onfocus="placeholder=''" onblur='placeholder="search"'
+							class="search_text" required
+							oninvalid="this.setCustomValidity('검색어를 입력해주세요')"
+							oninput="setCustomValidity('')">
 						<button type="submit">
 							<i class='bx-fw bx bx-search bx-sm'></i>
 						</button>
 					</form>
 				</div>
+			</nav>
 		</li>
 	</ul>
 </div>
-</nav>
 
