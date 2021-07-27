@@ -11,6 +11,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'
 	rel='stylesheet'>
 <link rel="stylesheet"
@@ -19,7 +21,7 @@
 	crossorigin="anonymous"></script>
 <title>Document</title>
 <link rel="stylesheet" href="/css/style.css">
-<link rel="stylesheet" href="/css/detail-main.css?ver=2" />
+<link rel="stylesheet" href="/css/detail-main.css?ver=3" />
 </head>
 <body>
 	<%@ include file="../includes/header.jsp"%>
@@ -35,16 +37,6 @@
 								<img src="/upload/product/main/${fileName}" class="reviewImage">
 							</div>
 						</c:forTokens>
-						<!-- 							<img src="/img/서브2.jpg" /> -->
-						<!-- 						<div class="swiper-slide"> -->
-						<!-- 							<img src="/img/서브1.jpg" /> -->
-						<!-- 						</div> -->
-						<!-- 						<div class="swiper-slide"> -->
-						<!-- 							<img src="/img/서브1.jpg" /> -->
-						<!-- 						</div> -->
-						<!-- 						<div class="swiper-slide"> -->
-						<!-- 							<img src="/img/서브1.jpg" /> -->
-						<!-- 						</div> -->
 					</div>
 					<div class="swiper-button-next"></div>
 					<div class="swiper-button-prev"></div>
@@ -99,7 +91,8 @@
 					</table>
 				</div>
 				<div class="detail-head-button">
-					<button class="directbuy">바로구매</button> <button class="cart">장바구니</button>
+					<button class="directbuy">바로구매</button>
+					<button class="cart">장바구니</button>
 					<button class="hart">하트</button>
 				</div>
 			</div>
@@ -151,9 +144,10 @@
 				<button class="review_register">등록</button>
 			</div>
 			<div class="title">
-				<span class="review">상품리뷰 (${count})</span>
+				<span>상품리뷰 (<span class="review">${pageMaker.total}</span>)
+				</span>
 			</div>
-			<table>
+			<table class="reviewAll">
 				<tr class="reviewlist">
 					<th>별점</th>
 					<th>내용</th>
@@ -161,10 +155,9 @@
 					<th>작성시간</th>
 				</tr>
 				<c:forEach var="rv" items="${review}">
-					<tr>
+					<tr class="rv">
 						<td><c:forEach var="rt" begin="1" end="${rv.reviewRating}">
-								<i class="fa fa-star">
-								</i>
+								<i class="fa fa-star"> </i>
 							</c:forEach> <c:forEach var="rt" begin="${rv.reviewRating+1}" end="5">
 								<i class="fa fa-star-o"></i>
 							</c:forEach></td>
@@ -175,9 +168,24 @@
 					</tr>
 				</c:forEach>
 			</table>
-
+			<div class="page">
+				<c:if test="${pageMaker.total!=0}">
+					<a href="/product/detail_main?pc=${product.productCode}"> <i
+						class="fas fa-angle-double-left"></i></a>
+					<i class="fas fa-angle-left"></i>
+					<span class="pageNumber"> <c:forEach var="num"
+							begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+							<span class="pn">${num}</span>
+							<!-- </a> -->
+						</c:forEach>
+					</span>
+					<i class="fas fa-angle-right" id="right"></i>
+					<a
+						href="/product/detail_main?pc=${product.productCode}&p=${pageMaker.realEnd}"><i
+						class="fas fa-angle-double-right"></i></a>
+				</c:if>
+			</div>
 		</div>
-
 		<div class="detail-content">
 			<div class="title">
 				<span class="QnA">QnA (1)</span>
@@ -233,136 +241,222 @@
 	<script src="/js/detail-slide.js?ver=1" defer></script>
 	<script src="/js/detail-main.js?ver=1" defer></script>
 	<script type="text/javascript">
-// 		function winpop() {
-// 			var open = window.open("questionpop.html", "parent",
-// 					"resizable=no, scrollbars=0");
-// 		}
-		$(".directbuy").click(function(){
-			location.href="/orders/direct?pdc=${product.productCode}&user=${userId}&st="+$(".product_num").val();
+		$(".fa-angle-right").click(function(){
+			let lastn=Number($(".pn").last().text())+1;
+			location.href="/product/detail_main?pc=${product.productCode}&p="+lastn;
 		})
-		/* ----------------------- 리뷰 작성 ajax 및 작성글 바로 띄우기 ----------------------   */
-		$(".review_register")
+		$(".fa-angle-left").click(function(){
+			let lastn=Number($(".pn").first().text())-1;
+			location.href="/product/detail_main?pc=${product.productCode}&p="+lastn;
+		})
+		if(${pageMaker.total != 0}){
+		if(${pageMaker.pageNum%5==0}){
+			$(".pn").last().css('color','rgba(245, 96, 153, 0.9)');
+		}else if(${pageMaker.pageNum%5==1}){
+			$(".pn").first().css('color','rgba(245, 96, 153, 0.9)');
+		}
+		}
+		$(".directbuy")
 				.click(
 						function() {
-							let today = new Date();
-							let year = today.getFullYear();
-							let month = ('0' + (today.getMonth() + 1))
-									.slice(-2);
-							let day = ('0' + today.getDate()).slice(-2);
-							let dateString = year + '.' + month + '.' + day;
-							let Text = $('.write_text').val();
-							let Rating = Number($('.ratingop').val());
-							let fullstar = "";
-							function rt() {
-								for (let i = 1; i <= Rating; i++) {
-									fullstar += '<i class="fa fa-star"></i> ';
-								}
-								for (let i = Rating + 1; i <= 5; i++) {
-									fullstar += '<i class="fa fa-star-o"></i> ';
-								}
-							}
-							rt();
-							console.log(fullstar + 'hi');
+							location.href = "/orders/direct?pdc=${product.productCode}&user=${userId}&st="
+									+ $(".product_num").val();
+						})
+		/* ----------------------- 리뷰 작성 ajax 및 작성글 바로 띄우기 ----------------------   */
+		$(document).on('click',".review_register",function() {
+			let today = new Date();
+			let year = today.getFullYear();
+			let month = ('0' + (today.getMonth() + 1)).slice(-2);
+			let day = ('0' + today.getDate()).slice(-2);
+			let dateString = year + '.' + month + '.' + day;
+			let Text = $('.write_text').val();
+			let Rating = Number($('.ratingop').val());
+			let fullstar = "";
+			let data = {
+				reviewText : Text,
+				reviewRating : Rating,
+				productCode : '<c:out value="${product.productCode}"/>',
+				userId : '<c:out value="${userId}"/>'
+			};
+			if (data["userId"] == null || data["userId"] == "") {
+				alert('로그인이 필요한 기능입니다.');
+				$(".write_text").val("");
+				return;
+			}
+			$.ajax({
+				type : 'post',
+				url : '/review/new',
+				data : JSON.stringify(data),
+				contentType : "application/json; charset=utf-8",
+				success : function(result) {
+					alert('리뷰를 등록하였습니다.');
+					let pn="";
+					let lastnum=Number(${pageMaker.endPage});
+					let rvNum = Number($(".review").html());
+					if(${pageMaker.total}!=0){
+					if(Number(${pageMaker.endPage})%5==0){
+						lastnum=5;
+					}
+					if(rvNum>=50){
+					for(let i=Number(${pageMaker.startPage}%5); i<=5; i++){
+						pn +='<span class="pn"> '+i+'</span> ';
+					}
+					$(".pageNumber").html("");
+					$(".pageNumber").html(pn);
+					}
+					}else if(rvNum==0){
+						pn ='<a href="/product/detail_main?pc=${product.productCode}"><i class="fas fa-angle-double-left"></i></a> '+
+						'<i class="fas fa-angle-left"></i>'
+						+'<span class="pageNumber">'+'<span class="pn"> '+1+'</span>'+
+						'</span>'+
+						' <i class="fas fa-angle-right" id="right"></i>' 
+						+' <a href="/product/detail_main?pc=${product.productCode}&p=${pageMaker.realEnd}"><i class="fas fa-angle-double-right"></i></a>';
+						$(".page").html(pn);
+						$('.pn').first().css('color', 'rgba(245, 96, 153, 0.9)');
+					}
+					
+					$(".write_text").val("");
+					if(rvNum == 10){
+						$(".pageNumber").append("<span class='pn'> "+2+"</span>");
+					}
+					if(rvNum == 20){
+						$(".pageNumber").append("<span class='pn'> "+3+"</span>");
+					}
+					if(rvNum == 30){
+						$(".pageNumber").append("<span class='pn'> "+4+"</span>");
+					}
+					if(rvNum == 40){
+						$(".pageNumber").append("<span class='pn'> "+5+"</span>");
+					}
+					rvNum +=  1;
+					if (rvNum > 10) {
+						$(".reviewlist").nextAll().last().remove();
+					}
+					$(".review").html(rvNum);
+					$(".file-button").text("+사진추가");
+					
+					$('.pn').first().css('color', 'rgba(245, 96, 153, 0.9)');
+				},
+				error : function(er) {
+					alert(er);
+				}
+			})
+		})
+		/* ----------------------- 장바구니에 물건넣기 ajax ----------------------   */
+		$(".cart").click(function() {
+			let data = {
+				productCode : '<c:out value="${product.productCode}"/>',
+				productEa : $(".product_num").val(),
+				userId : '<c:out value="${userId}"/>'
+			};
+			if (data["userId"] == null || data["userId"] == "") {
+				alert('로그인이 필요한 기능입니다.');
+				return;
+			}
+			$.ajax({
+				type : 'post',
+				url : '/product/cart',
+				data : JSON.stringify(data),
+				contentType : "application/json; charset=utf-8",
+				success : function(result) {
+					alert(result);
+				},
+				error : function(er) {
+					alert(er);
+				}
+			})
+
+		})
+		/* ----------------------- 찜목록 추가하기 ajax ----------------------   */
+		$(".hart")
+				.click(
+						function() {
 							let data = {
-								reviewText : Text,
-								reviewRating : Rating,
 								productCode : '<c:out value="${product.productCode}"/>',
 								userId : '<c:out value="${userId}"/>'
 							};
-							if(data["userId"]==null || data["userId"]==""){
+							if (data["userId"] == null || data["userId"] == "") {
 								alert('로그인이 필요한 기능입니다.');
-								$(".write_text").val("");
 								return;
 							}
 							$
 									.ajax({
 										type : 'post',
-										url : '/review/new',
+										url : '/product/wishList',
 										data : JSON.stringify(data),
 										contentType : "application/json; charset=utf-8",
 										success : function(result) {
-											alert('리뷰를 등록하였습니다.');
-											$(".reviewlist")
-													.after(
-															'<tr><td>'
-																	+ fullstar
-																	+ '</td>'
-																	+ '<td>'
-																	+ data["reviewText"]
-																	+ '</td>'
-																	+ '<td>'
-																	+ data["userId"]
-																	+ '</td>'
-																	+ '<td>'
-																	+ dateString
-																	+ '</td></tr>');
-											if(${count+1}>10){
-											$(".reviewlist").nextAll().last()
-													.remove();
+											if (result == '찜목록에 등록하였습니다.') {
+												$(".hart").css(
+														'background-color',
+														'red');
+											} else if (result == '찜목록에서 취소했습니다.') {
+												$(".hart")
+														.css(
+																'background-color',
+																'rgba(245, 96, 153, 0.9)');
 											}
-											$(".write_text").val("");
-											$(".review").html("상품리뷰 ("+${count+1}+")");
-											$(".file-button").text("+사진추가");
+											alert(result);
 										},
 										error : function(er) {
 											alert(er);
 										}
 									})
+
 						})
-				/* ----------------------- 장바구니에 물건넣기 ajax ----------------------   */
-				$(".cart").click(function(){
-					let data = {
-							productCode: '<c:out value="${product.productCode}"/>',
-							productEa: $(".product_num").val(),
-							userId: '<c:out value="${userId}"/>'
-					};
-					if(data["userId"]==null || data["userId"]==""){
-						alert('로그인이 필요한 기능입니다.');
-						return;
-					}
-					$.ajax({
-						type : 'post',
-						url : '/product/cart',
-						data : JSON.stringify(data),
-						contentType : "application/json; charset=utf-8",
-						success:function(result) {
-							alert(result);
-						},
-						error : function(er) {
-							alert(er);
-						}
-					})
-					
-				})
-				/* ----------------------- 찜목록 추가하기 ajax ----------------------   */
-				$(".hart").click(function(){
-					let data = {
-							productCode: '<c:out value="${product.productCode}"/>',
-							userId: '<c:out value="${userId}"/>'
-					};
-					if(data["userId"]==null || data["userId"]==""){
-						alert('로그인이 필요한 기능입니다.');
-						return;
-					}
-					$.ajax({
-						type : 'post',
-						url : '/product/wishList',
-						data : JSON.stringify(data),
-						contentType : "application/json; charset=utf-8",
-						success:function(result) {
-							if(result=='찜목록에 등록하였습니다.'){
-								$(".hart").css('background-color','red');
-							}else if(result=='찜목록에서 취소했습니다.'){
-								$(".hart").css('background-color','rgba(245, 96, 153, 0.9)');
+		/*-----------------페이징처리(ajax) -------------------  */
+		$(document).on('click',".pn,.review_register",
+						function() {
+							console.log($(this).text());
+							let tag = "";
+							$(".pn").css('color', 'black');
+							if ($(this).hasClass("pn")) {
+								tag = $(this).text();
+								$(this).css('color', 'rgba(245, 96, 153, 0.9)');
+							} else {
+								tag = 1;
 							}
-							alert(result);
-						},
-						error : function(er) {
-							alert(er);
-						}
-					})
-					
-				})
+							$
+									.ajax({
+										type : 'get',
+										url : '/review/reviewpage/${product.productCode}'
+												+ '/' + tag,
+										contentType : "application/json; charset=utf-8",
+										success : function(result) {
+											let rvtable = "";
+											let starRating = "";
+											rvtable += '<tr class="reviewlist"><th>별점</th><th>내용</th><th>작성자</th><th>작성시간</th></tr>';
+											$(".reviewAll").html("");
+											for (let i = 0; i < result.length; i++) {
+												
+												starRating = "";
+												for (let j = 0; j < result[i].reviewRating; j++) {
+													starRating += '<i class="fa fa-star"></i> ';
+												}
+												for (let j = result[i].reviewRating + 1; j <= 5; j++) {
+													starRating += '<i class="fa fa-star-o"></i> ';
+												}
+												rvtable += '<tr class="rv"><td>'
+														+ starRating
+														+ '</td><td>'
+														+ result[i].reviewText
+														+ '</td><td>'
+														+ result[i].userId
+														+ '</td><td>'
+														+ moment(
+																result[i].reviewDate)
+																.format(
+																		"YYYY.MM.DD")
+														+ '</td></tr>'
+											}
+											$(".reviewAll").html(rvtable);
+										},
+										error : function(er) {
+											alert(er);
+										}
+									})
+
+						})
 	</script>
 </body>
 </html>
