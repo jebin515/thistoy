@@ -31,4 +31,13 @@
 	delete from notice where notice_num = #{notice_num}
 	</delete>
 	
+	<update id="update">
+	update notice
+	set notice_title = #{notice_title},
+	notice_text = #{notice_text},
+	user_id = #{user_id},
+	updatedate = sysdate
+	where notice_num = #{notice_num}
+	</update>
+	
 </mapper>

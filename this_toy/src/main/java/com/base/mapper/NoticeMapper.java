@@ -17,4 +17,6 @@ public interface NoticeMapper {
 		NoticeVO read(Long notice_num);
 		
 		int delete(Long notice_num);
+		
+		int update(NoticeVO notice);
 }
