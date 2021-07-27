@@ -3,6 +3,7 @@ package com.base.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,9 +24,12 @@ import com.siot.IamportRestClient.exception.IamportResponseException;
 import com.siot.IamportRestClient.response.IamportResponse;
 import com.siot.IamportRestClient.response.Payment;
 
+import lombok.AllArgsConstructor;
+
 @Controller
 @RequestMapping("/orders/*")
 public class OrdersController {
+	@Autowired
 	private OrdersService service;
 	private IamportClient api = new IamportClient("9935225488488363",
 			"42VKSjQQgdnutTWiJq7BNN0vt2anFEPJGKuz4kplyNP2GLlpcs10f1vJ3G6JkWt1GXALi06QOVTuHeUT");
@@ -38,7 +42,7 @@ public class OrdersController {
 	@GetMapping(value = "/direct")
 		public String direct(Model model,
 				@RequestParam(name="pdc")String productCode,
-				@RequestParam(name="name")String userId,
+				@RequestParam(name="user")String userId,
 				@RequestParam(name="st")String productStock) {
 		model.addAttribute("pdc",service.getproduct(productCode));
 		model.addAttribute("user",service.getaddr(userId));
