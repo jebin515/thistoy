@@ -72,17 +72,6 @@
 		select * from product where
 		product_code = #{productCode}
 	</select>
-	<select id="getReview" resultType="ReviewVO">
-		select * from(
-		select rownum num , n.* from
-		(select * from review where
-		product_code = #{productCode} order by review_date desc) n
-		)
-		where num between 0*10+1 and 1*10
-	</select>
-	<select id="reviewCount" resultType="int">
-	select count(*) from review where product_code = #{productCode}
-	</select>
 	<insert id="insertCart">
 	insert into cart values(cart_seq.nextval,#{productEa},#{productCode},#{userId})
 	</insert>

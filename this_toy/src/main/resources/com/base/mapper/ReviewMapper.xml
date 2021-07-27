@@ -8,4 +8,15 @@
 	insert into review (review_code,review_text,review_rating,product_code,user_id)
 	values (review_seq.nextval,#{reviewText},#{reviewRating},#{productCode},#{userId})
 	</insert>
+	<select id="getReview" resultType="ReviewVO">
+		select * from(
+		select rownum num , n.* from
+		(select * from review where
+		product_code = #{productCode} order by review_date desc) n
+		)
+		where num between (#{pageNum}-1)*10+1 and #{pageNum}*10
+	</select>
+	<select id="getReviewTotalCount" resultType="int">
+	select count(*) from review where product_code = #{productCode}
+	</select>
 </mapper>
