@@ -10,34 +10,34 @@
 	
 	<insert id="insert">
 	insert INTO notice (notice_num, notice_title, notice_text, user_id)
-	VALUES (notice_seq.nextval, #{notice_title}, #{notice_text}, #{user_id})
+	VALUES (notice_seq.nextval, #{noticeTitle}, #{noticeText}, #{userId})
 	</insert>
 	
 	<insert id="insertSelectKey">
 	
-	<selectKey order="BEFORE" keyProperty="notice_num" resultType="Long">
+	<selectKey order="BEFORE" keyProperty="noticeNum" resultType="Long">
 	select notice_seq.nextval from dual
 	</selectKey>
 
 	insert INTO notice (notice_num, notice_title, notice_text, user_id)
-	VALUES (#{notice_num}, #{notice_title}, #{notice_text}, #{user_id})
+	VALUES (#{noticeNum}, #{noticeTitle}, #{noticeText}, #{userId})
 	</insert>
 	
 	<select id="read"  resultType="NoticeVO">
-	select * from notice where notice_num = #{notice_num}
+	select * from notice where notice_num = #{noticeNum}
 	</select>
 	
 	<delete id="delete">
-	delete from notice where notice_num = #{notice_num}
+	delete from notice where notice_num = #{noticeNum}
 	</delete>
 	
 	<update id="update">
 	update notice
-	set notice_title = #{notice_title},
-	notice_text = #{notice_text},
-	user_id = #{user_id},
+	set notice_title = #{noticeTitle},
+	notice_text = #{noticeText},
+	user_id = #{userId},
 	updatedate = sysdate
-	where notice_num = #{notice_num}
+	where notice_num = #{noticeNum}
 	</update>
 	
 </mapper>
