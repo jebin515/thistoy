@@ -149,7 +149,7 @@ main .register-main .register-menu .two {
   position: relative;
 }
 .join_form table th span:after {
-  content: "*";
+  content: "";
   font-size: 13px;
   color: #f95427;
   position: absolute;
