@@ -24,7 +24,7 @@ public interface UserMapper{
 	//아이디 중복체크
 	int idCheck(UserVO userVO);
 	
-	//현재 로그인 사용 매퍼
+	//현재사용 로그인  매퍼
 	public UserVO selectById(String UserId);
 	
 }

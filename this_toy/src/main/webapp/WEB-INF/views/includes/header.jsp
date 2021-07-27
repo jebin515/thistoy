@@ -20,7 +20,7 @@
 			<nav class="header_nav">
 				<div class="header_menu">
 					<a href="/login/login" class="header_login"><i
-						class='bx-fw bx bxs-rocket bx-tada-hover'></i>로그인</a> <a href="#"
+						class='bx-fw bx bxs-rocket bx-tada-hover'></i>로그인</a> <a href="/register/register-1"
 						class="header_register"><i
 						class='bx-fw bx bxs-user-plus bx-tada-hover'></i>회원가입</a>
 				</div>

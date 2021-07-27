@@ -98,11 +98,10 @@
 				</c:if>
 				<c:forEach var="pdinfo" items="${pdList}">
 					<c:set var="i" value='${fn:indexOf(pdinfo.productMainImg,",")}' />
-					<c:set var="mimg"
-						value="${fn:substring(pdinfo.productMainImg,0,i)}" />
+					<c:set var="mimg" value="${fn:substring(pdinfo.productMainImg,0,i)}" />
 					<div class="gridItem">
-						<a href="/product/detail_main?pc=${pdinfo.productCode}"> <img
-							src="/upload/product/main/${mimg}" alt="" class="mainImg" />
+						<a href="/product/detail_main?pc=${pdinfo.productCode}"> 
+						<img src="/upload/product/main/${mimg}" alt="" class="mainImg" />
 						</a>
 						<div class="product_info">
 							<a href="/product/detail_main?pc=${pdinfo.productCode}"> <span
