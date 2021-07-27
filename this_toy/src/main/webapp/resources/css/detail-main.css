@@ -195,8 +195,15 @@
 	color: white;
 	cursor: pointer;
 }
-
-
+.pn:hover{
+	cursor:pointer;
+}
+#pageNum{
+	color:rgba(245, 96, 153, 0.9);
+}
+.fas:hover{
+	cursor:pointer;
+}
 #main .detail-content .title {
 	width: 1000px;
 	position: relative;

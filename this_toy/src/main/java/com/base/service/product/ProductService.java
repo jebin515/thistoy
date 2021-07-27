@@ -18,10 +18,6 @@ public interface ProductService {
 
 	ProductVO getProduct(String productCode);
 	
-	ArrayList<ReviewVO> getReview(String productCode);
-	
-	int reviewCount(String productCode);
-	
 	int registerCart(CartVO vo);
 	
 	int cartCount(CartVO vo);

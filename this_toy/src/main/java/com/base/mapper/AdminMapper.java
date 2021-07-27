@@ -1,5 +1,7 @@
-//package com.base.mapper;
-//
-//public interface AdminMapper {
-//
-//}
+/*
+ * package com.base.mapper;
+ * 
+ * public interface AdminMapper {
+ * 
+ * }
+ */
