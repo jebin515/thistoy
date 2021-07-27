@@ -1,8 +1,8 @@
 package com.base.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,38 +10,40 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.base.entity.OrdersVO;
-import com.base.entity.ProductVO;
 import com.base.service.orders.OrdersService;
 import com.siot.IamportRestClient.IamportClient;
 import com.siot.IamportRestClient.exception.IamportResponseException;
 import com.siot.IamportRestClient.response.IamportResponse;
 import com.siot.IamportRestClient.response.Payment;
 
+import lombok.AllArgsConstructor;
+
 @Controller
 @RequestMapping("/orders/*")
 public class OrdersController {
+	@Autowired
 	private OrdersService service;
 	private IamportClient api = new IamportClient("9935225488488363",
 			"42VKSjQQgdnutTWiJq7BNN0vt2anFEPJGKuz4kplyNP2GLlpcs10f1vJ3G6JkWt1GXALi06QOVTuHeUT");
 
-	@RequestMapping(value = "/cart")
+	@RequestMapping(value = "cart")
 	public String cart(Model model) {
 		
 		return "orders/orders";
 	}
-	@GetMapping(value = "/direct")
+	@GetMapping(value = "direct")
 		public String direct(Model model,
 				@RequestParam(name="pdc")String productCode,
-				@RequestParam(name="name")String userId,
+				@RequestParam(name="user")String userId,
 				@RequestParam(name="st")String productStock) {
+		System.out.println(productCode);
 		model.addAttribute("pdc",service.getproduct(productCode));
 		model.addAttribute("user",service.getaddr(userId));
+		System.out.println(service.getaddr(userId)+"hi");
 		model.addAttribute("st",productStock);
 		return "orders/orders";
 	}
