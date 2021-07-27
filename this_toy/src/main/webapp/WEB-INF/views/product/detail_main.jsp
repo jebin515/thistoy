@@ -236,6 +236,9 @@
 // 			var open = window.open("questionpop.html", "parent",
 // 					"resizable=no, scrollbars=0");
 // 		}
+		$(".directbuy").click(function(){
+			location.href="/orders/direct?pdc=${product.productCode}&user=${userId}&st="+$(".product_num").val();
+		})
 		/* ----------------------- 리뷰 작성 ajax 및 작성글 바로 띄우기 ----------------------   */
 		$(".review_register")
 				.click(
