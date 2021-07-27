@@ -39,7 +39,7 @@
 						<p>회원님은 ThisToy의 모든 기능을 사용하실 수 있습니다 회원접속 후 이용가능 합니다</p>
 					</div>
 					<div class="register-success-btn">
-						<a href="/login.html">로그인페이지로 이동</a>
+						<a href="/login/login">로그인페이지로 이동</a>
 					</div>
 				</div>
 			</div>
