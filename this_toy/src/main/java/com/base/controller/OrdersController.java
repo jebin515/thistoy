@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.base.entity.CartVO;
 import com.base.entity.OrdersVO;
 import com.base.service.orders.OrdersService;
 import com.siot.IamportRestClient.IamportClient;
@@ -25,12 +26,13 @@ import com.siot.IamportRestClient.response.Payment;
 public class OrdersController {
 	@Autowired
 	private OrdersService service;
+	
 	private IamportClient api = new IamportClient("9935225488488363",
 			"42VKSjQQgdnutTWiJq7BNN0vt2anFEPJGKuz4kplyNP2GLlpcs10f1vJ3G6JkWt1GXALi06QOVTuHeUT");
 
 	@RequestMapping(value = "cart")
-	public String cart(Model model) {
-		
+	public String cart(Model model,CartVO vo) {
+		model.addAttribute("pdc",service.getcart(vo));
 		return "orders/orders";
 	}
 	@GetMapping(value = "direct")
@@ -45,14 +47,17 @@ public class OrdersController {
 		model.addAttribute("st",productStock);
 		return "orders/orders";
 	}
+	@RequestMapping("orders")
+	public void orders() {
+		
+	}
 	
 	@ResponseBody
-	@PostMapping(value="/orders/{imp_uid}")
+	@RequestMapping(value="/orders/{imp_uid}")
 	public IamportResponse<Payment> paymentByImpUid(
-			@PathVariable("imp_uid") String imp_uid,
-			@RequestBody  OrdersVO vo
+			@PathVariable("imp_uid") String imp_uid
 			) throws IamportResponseException, IOException
-	{
+	{	
 			System.out.println(api.paymentByImpUid(imp_uid));
 			return api.paymentByImpUid(imp_uid);
 	}

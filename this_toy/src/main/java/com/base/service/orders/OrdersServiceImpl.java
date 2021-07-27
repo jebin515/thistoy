@@ -1,7 +1,10 @@
 package com.base.service.orders;
 
+import java.util.ArrayList;
+
 import org.springframework.stereotype.Service;
 
+import com.base.entity.CartVO;
 import com.base.entity.ProductVO;
 import com.base.entity.UserVO;
 import com.base.mapper.OrdersMapper;
@@ -16,7 +19,7 @@ public class OrdersServiceImpl implements OrdersService {
 	private OrdersMapper mapper;
 
 	@Override
-	public ProductVO getproduct(String productCode) {
+	public ArrayList<ProductVO> getproduct(String productCode) {
 		
 		return mapper.getproduct(productCode);
 	}
@@ -26,6 +29,10 @@ public class OrdersServiceImpl implements OrdersService {
 		return mapper.getaddr(userId);
 	}
 	
-	
+	@Override
+	public CartVO getcart(CartVO vo) {
+		// TODO Auto-generated method stub
+		return mapper.getcart(vo);
+	}
 	
 }

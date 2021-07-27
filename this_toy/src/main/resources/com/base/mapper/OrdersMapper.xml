@@ -20,7 +20,9 @@
 <select id="getaddr" resultType="UserVO">
 	select * from usertable where user_id = #{userId}
 </select>
-
+<select id="getcart" resultType="CartVO">
+	select * from cart a,product b where a.product_code = b.product_code;
+</select>
 <!-- <delete id ="delete"> -->
 <!-- 	delete from cart where product_code=#{productCode} -->
 <!-- </delete> -->
