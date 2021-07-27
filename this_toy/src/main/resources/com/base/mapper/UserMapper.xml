@@ -50,18 +50,18 @@
 		user_name,
 		user_email,
 		user_tel,
+		user_address_post,
 		user_address,
-		user_address2,
-		user_address3
+		user_address_detail
 		) values (
 		#{userId},
 		#{userPasswd},
 		#{userName},
 		#{userEmail},
 		#{userTel},
+		#{userAddressPost},
 		#{userAddress},
-		#{userAddress2},
-		#{userAddress3}
+		#{userAddressDetail}
 		)
 		<!-- 'xml테스트','xml테스트','xml테스트','xml테스트','xml테스트','xml테스트' -->
 	</insert>
