@@ -20,8 +20,6 @@ import com.siot.IamportRestClient.exception.IamportResponseException;
 import com.siot.IamportRestClient.response.IamportResponse;
 import com.siot.IamportRestClient.response.Payment;
 
-import lombok.AllArgsConstructor;
-
 @Controller
 @RequestMapping("/orders/*")
 public class OrdersController {
