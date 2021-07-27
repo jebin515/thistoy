@@ -1,9 +1,10 @@
 package com.base.service.orders;
 
-import java.util.ArrayList;
-
-import com.base.entity.OrdersVO;
+import com.base.entity.ProductVO;
+import com.base.entity.UserVO;
 
 public interface OrdersService {
-	String insert (OrdersVO oav);
+	
+	ProductVO getproduct(String productCode);
+	UserVO getaddr(String userId); 
 }

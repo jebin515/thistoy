@@ -15,6 +15,7 @@
 
 		<body>
 			<%@ include file="../includes/header.jsp" %>
+				<!-- <form action="/orders/{imp_uid}" method="post"> -->
 				<main>
 					<div class="container">
 						<div class="title">주문/결제</div>
@@ -22,7 +23,6 @@
 							<tr>
 								<th>이미지</th>
 								<th>제목</th>
-								<th>상품정보</th>
 								<th>판매자</th>
 								<th>배송비</th>
 								<th>수량</th>
@@ -39,15 +39,22 @@
 								</c:forEach>
 								--%>
 								<tr>
-									<td><img src="/img/cart2.png" /></td>
-									<td>
-										<%-- <c:out value="${select.orderCode}" /> --%>
+									<input type="hidden" name="productCode" value="010">
+									<td><input type="hidden" name="productImg" value="dd"><img src="/img/cart2.png" />
 									</td>
-									<td>상품정보</td>
-									<td>판매자</td>
-									<td>3000원</td>
-									<td>1개</td>
-									<td>100원</td>
+									<td><input type="hidden" name="productName" value="">
+										<c:out value="${pdc.productName}" />
+									</td>
+									<td><input type="hidden" name="userId" value="판매자">
+										<c:out value="${pdc.userId}" />
+									</td>
+									<td><input type="hidden" value="배송비">3000원</td>
+									<td><input type="hidden" name="orderEa" value="3">
+										<c:out value="${st}" />
+									</td>
+									<td><input type="hidden" name="orderPrice" value="300">
+										<c:out value="${pdc.productPrice}" />
+									</td>
 								</tr>
 						</table>
 						<hr />
@@ -74,13 +81,16 @@
 								<div class="addr_main" id="addr_main">
 									<ul>
 										<li>
-											<input type="text" id="name" name="name" value="이진융" readonly />
+											<input type="text" id="name" name="name"
+												value=" <c:out value='${user.userName}'/>" readonly />
 										</li>
 										<li>
-											(<input type="text" id="old_member_post" value="18362" readonly />)
-											<input type="text" id="old_member_addr"
-												value="경기도 화성시 안녕남로 246-21(안녕동, 안녕동 우방아이유쉘)" readonly />
-											<input type="text" id="old_member_detail" value="106동 1303호" readonly />
+											<input type="text" id="old_member_post" name="orderAddressPost"
+												value="<c:out value='${user.userAddressPost}'/>" readonly />
+											<input type="text" id="old_member_addr" name="orderAddress"
+												value="<c:out value='${user.userAddress}'/>" readonly />
+											<input type="text" id="old_member_detail" name="orderAddressDetail"
+												value="<c:out value='${user.userAddressDetail}'/>" readonly />
 										</li>
 									</ul>
 								</div>
@@ -92,11 +102,11 @@
 										</li>
 										<li>
 											<span>배송지</span> :
-											<input id="member_post" name="new_member_post" type="text" placeholder="지번"
+											<input id="member_post" name="orderAddressPost" type="text" placeholder="지번"
 												readonly onclick="findAddr()" />
-											<input id="member_addr" name="new_member_addr" type="text" placeholder="주소"
+											<input id="member_addr" name="orderAddress" type="text" placeholder="주소"
 												readonly />
-											<input type="text" name="new_member_detail" id="member_detail"
+											<input type="text" name="orderAddressDetail" id="member_detail"
 												placeholder="추가 주소" />
 										</li>
 									</ul>
@@ -141,15 +151,16 @@
 								<ul>
 									<li>총합</li>
 									<li>
-										<input type="hidden" class="price_total" value="100" /> 원
+										<input type="text" class="price_total" value="100" /> 원
 									</li>
 								</ul>
 							</div>
 							<div class="totle_btn">
-								<button id="check_module" type="button">결제하기</button>
+								<button id=" check_module">결제하기</button>
 							</div>
 						</div>
 					</div>
+					</form>
 				</main>
 				<%@ include file="../includes/footer.jsp" %>
 					<script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
@@ -167,14 +178,15 @@
 						var member_post = "";
 						var member_addr = "";
 						var member_detail = "";
+						console.log($("#check_module"));
 						$("#check_module").click(function () {
 							var addrType = $("input[name='addr_list']:checked").val();
 							nameValue =
 								addrType == "addr" ? $("#name").val() : $("#new_name").val();
 							member_post =
-								addrType == "addr" ? $("#old_member_post").val() : $("#new_member_post").val();
+								addrType == "addr" ? $("#old_member_post").val() : $("#member_post").val();
 							member_addr =
-								addrType == "addr" ? $("#old_member_addr").val() : $("#new_member_addr").val();
+								addrType == "addr" ? $("#old_member_addr").val() : $("#member_addr").val();
 							//가맹점 식별코드
 							IMP.init("imp76068644");
 							IMP.request_pay(
@@ -212,7 +224,7 @@
 											}
 										});
 									} else {
-										alert("결제 실패")
+										alert("결제 실패");
 									}
 								}
 							);
