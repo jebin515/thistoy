@@ -49,7 +49,7 @@ public class NoticeController {
 			return "redirect: /notice/notice";
 		}
 		
-		@GetMapping("/notice_detail")
+		@GetMapping({"/notice_detail", "/notice_modify"})
 		public void get(@RequestParam("noticeNum") Long noticeNum, Model model) {
 			
 			model.addAttribute("notice", service.get(noticeNum));

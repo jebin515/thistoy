@@ -3,6 +3,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="kr">
@@ -81,7 +82,7 @@
             <div class="page-number">
                 <tr>
                     <a href="#"></a>
-                    <a class="page-number-ea" href="/">1</a>
+                    <a class="page-number-ea" href="/" >1</a>
                     <a class="page-number-ea" href="/">2</a>
                     <a class="page-number-ea" href="/">3</a>
                     <a class="page-number-ea" href="/">4</a>
@@ -135,20 +136,28 @@
     </div>
   </div>
 </div>
-<script type="text/javascript">
+
+<script>
 $(document).ready(function() {
 	var result = '<c:out value="${result}"/>';
 	
 	checkModal(result);
 	
+	history.replaceState({}, null, null);
+	
 	function checkModal(result){
-		if (result === '') {
+		if (result === '' || history.state) {
 			return;
 		}
-		if(parseInt(result)>0){
+		
+		if(result === 'success'){
+			$(".modal-body").html(
+					"정상적으로 처리되었습니다.");
+		}else if(parseInt(result)>0){
 			$(".modal-body").html(
 					"공지사항" + parseInt(result) + "번이 등록되었습니다.");
 		}
+		
 		$("#myModal").modal("show");
 	}
 	
