@@ -195,7 +195,7 @@
 				<button class="QnA_register">등록</button>
 			</div>
 			<div class="title">
-				<span class="QnA">QnA (1)</span>
+				<span class="QnA">QnA (${QnACount})</span>
 			</div>
 			<table>
 				<tr>
@@ -204,18 +204,15 @@
 					<th>작성시간</th>
 					<th>작성자</th>
 				</tr>
+				<c:forEach var="Qn" items="${QnA}">
 				<tr>
-					<td>1</td>
-					<td>재뷘이 재뷘이 재뷘이 재뷘이 재뷘이 세빈이 ^^</td>
-					<td>2021-07-14</td>
-					<td>이진웅</td>
+					<td>${Qn.replySituation}</td>
+					<td><c:out value="${Qn.questionText}"/></td>
+					<td><fmt:formatDate var="date" value="${Qn.questionDate}"
+								pattern="yyyy.MM.dd" /> ${date}</td>
+					<td>${Qn.userId}</td>
 				</tr>
-				<tr>
-					<td>1</td>
-					<td>재뷘이 재뷘이 재뷘이 재뷘이 재뷘이 세빈이 ^^</td>
-					<td>2021-07-14</td>
-					<td>이진웅</td>
-				</tr>
+				</c:forEach>
 			</table>
 		</div>
 		<div class="detail-content">
@@ -354,12 +351,18 @@
 		})
 		/* ----------------------- 문의글 작성 ajax ----------------------------*/
 		$(document).on('click','.QnA_register',function(){
+			let data = {
+				questionText : $('.QnA_text').val(),
+				productCode : '<c:out value="${product.productCode}"/>',
+				userId : '<c:out value="${userId}"/>'
+			}; 
 			$.ajax({
 				type : 'post',
-				url : '/review/new',
+				url : '/QnA/new',
 				data : JSON.stringify(data),
 				contentType : "application/json; charset=utf-8",
-				success : function(result) {
+				success : function(rs) {
+					alert(rs);
 				},
 				error : function(er) {
 					alert(er);
@@ -383,7 +386,7 @@
 				data : JSON.stringify(data),
 				contentType : "application/json; charset=utf-8",
 				success : function(result) {
-					alert(result);
+					alert('문의글을 등록하였습니다.');
 				},
 				error : function(er) {
 					alert(er);
