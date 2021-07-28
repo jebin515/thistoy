@@ -21,7 +21,7 @@
 	crossorigin="anonymous"></script>
 <title>Document</title>
 <link rel="stylesheet" href="/css/style.css">
-<link rel="stylesheet" href="/css/detail-main.css?ver=3" />
+<link rel="stylesheet" href="/css/detail-main.css?ver=4" />
 </head>
 <body>
 	<%@ include file="../includes/header.jsp"%>
@@ -130,7 +130,7 @@
 		<div class="detail-content">
 			<div class="write_review">REVIEW</div>
 			<textarea name="reviewText" cols="30" rows="5" class="write_text"
-				value="" maxlength="1000"></textarea>
+				maxlength="1000"></textarea>
 			<div class="img_rating">
 				<label class="file-button" for="input-file">+사진추가</label> <input
 					type="file" name="reviewImg" id="input-file" style="display: none;">
@@ -176,7 +176,6 @@
 					<span class="pageNumber"> <c:forEach var="num"
 							begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
 							<span class="pn">${num}</span>
-							<!-- </a> -->
 						</c:forEach>
 					</span>
 					<i class="fas fa-angle-right" id="right"></i>
@@ -187,13 +186,20 @@
 			</div>
 		</div>
 		<div class="detail-content">
+			<div class="write_QnA">QnA</div>
+			<textarea name="reviewText" cols="30" rows="3" class="QnA_text"
+				value="" maxlength="1000" required
+				oninvalid="this.setCustomValidity('문의를 입력해주세요.')"
+				oninput="setCustomValidity('')"></textarea>
+			<div class="QnA_buttonbox">
+				<button class="QnA_register">등록</button>
+			</div>
 			<div class="title">
 				<span class="QnA">QnA (1)</span>
-				<button onclick="winpop();">문의하기</button>
 			</div>
 			<table>
 				<tr>
-					<th>번호</th>
+					<th>답변상태</th>
 					<th>내용</th>
 					<th>작성시간</th>
 					<th>작성자</th>
@@ -239,7 +245,7 @@
 	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 	<script src="/js/index.js" defer></script>
 	<script src="/js/detail-slide.js?ver=1" defer></script>
-	<script src="/js/detail-main.js?ver=1" defer></script>
+	<script src="/js/detail-main.js?ver=4" defer></script>
 	<script type="text/javascript">
 		$(".fa-angle-right").click(function(){
 			let lastn=Number($(".pn").last().text())+1;
@@ -278,6 +284,10 @@
 				productCode : '<c:out value="${product.productCode}"/>',
 				userId : '<c:out value="${userId}"/>'
 			};
+			if($('.write_text').val() == null || $('.write_text').val() == ""){
+				alert("리뷰를 입력해주세요");
+				return;
+			}
 			if (data["userId"] == null || data["userId"] == "") {
 				alert('로그인이 필요한 기능입니다.');
 				$(".write_text").val("");
@@ -336,6 +346,20 @@
 					$(".file-button").text("+사진추가");
 					
 					$('.pn').first().css('color', 'rgba(245, 96, 153, 0.9)');
+				},
+				error : function(er) {
+					alert(er);
+				}
+			})
+		})
+		/* ----------------------- 문의글 작성 ajax ----------------------------*/
+		$(document).on('click','.QnA_register',function(){
+			$.ajax({
+				type : 'post',
+				url : '/review/new',
+				data : JSON.stringify(data),
+				contentType : "application/json; charset=utf-8",
+				success : function(result) {
 				},
 				error : function(er) {
 					alert(er);
@@ -404,16 +428,15 @@
 									})
 
 						})
-		/*-----------------페이징처리(ajax) -------------------  */
+		/*-----------------리뷰 페이징처리(ajax) -------------------  */
 		$(document).on('click',".pn,.review_register",
 						function() {
-							console.log($(this).text());
 							let tag = "";
 							$(".pn").css('color', 'black');
 							if ($(this).hasClass("pn")) {
 								tag = $(this).text();
 								$(this).css('color', 'rgba(245, 96, 153, 0.9)');
-							} else {
+							}else {
 								tag = 1;
 							}
 							$

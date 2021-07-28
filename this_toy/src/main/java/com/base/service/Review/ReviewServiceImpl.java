@@ -27,7 +27,7 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public int getReviewTotalCount(String productCode) {
 		// TODO Auto-generated method stub
-		return 30;
+		return mapper.getReviewTotalCount(productCode);
 	}
 
 }

@@ -163,7 +163,9 @@
 	display: flex;
 	justify-content: space-between;
 }
-
+#main .detail-content .review_register{
+	width:100px;
+}
 #main .detail-content input[type="file"] {
 	width: 200px;
 }
@@ -275,7 +277,26 @@
 	align-items: center;
 	height: 100%;
 }
+#main .detail-content .write_QnA {
+	text-align: left;
+	color: rgba(245, 96, 153, 0.9);
+	font-weight: bold;
+	margin-bottom: 10px;
+}
 
+#main .detail-content .QnA_text {
+	resize: none;
+	font-size: 20px;
+	outline-color: grey;
+	margin-bottom: 10px;
+}
+.QnA_buttonbox{
+	text-align:right;
+}
+.QnA_register{
+	width:100px;
+	padding:5px 0;
+}
 /* 메인 2 끝 */
 /* 슬라이드 */
 #main .img-section .swiper-container {
