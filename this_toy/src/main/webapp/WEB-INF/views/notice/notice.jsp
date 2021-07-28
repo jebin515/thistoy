@@ -81,13 +81,32 @@
 
             <div class="page-number">
                 <tr>
-                    <a href="#"></a>
-                    <a class="page-number-ea" href="/" >1</a>
-                    <a class="page-number-ea" href="/">2</a>
-                    <a class="page-number-ea" href="/">3</a>
-                    <a class="page-number-ea" href="/">4</a>
-                    <a class="page-number-ea" href="/">5</a>
-                    <a class="page-number-ea" href="#"></a>
+                ${pageMaker}
+                <div class = 'pull-right'>
+                	<ul class="pagination">
+                				<c:if test="${page.Maker.prev}">
+                				<li class="page-item">
+                					<a class="page-link" href="#" tabindex="-1">이전</a>
+                				</li>
+                				</c:if>
+                		<c:forEach begin="${pageMaker.startPage}"
+                						end="${pageMaker.endPage}" var="num">
+                				<li class="page-item ${pageMaker.cri.pageNum == num?"active":""}"><a class="page-number-ea page-link" href="#">${num}</a></li>
+                		</c:forEach>
+                				<c:if test="${page.Maker.next}">
+                				<li class="page-item">
+                					<a class="page-link" href="#" tabindex="-1">다음</a>
+                				</li>
+                				</c:if>
+                	</ul>
+                </div>
+<!--                     <a href="#"></a> -->
+<!--                     <a class="page-number-ea" href="/" >1</a> -->
+<!--                     <a class="page-number-ea" href="/">2</a> -->
+<!--                     <a class="page-number-ea" href="/">3</a> -->
+<!--                     <a class="page-number-ea" href="/">4</a> -->
+<!--                     <a class="page-number-ea" href="/">5</a> -->
+<!--                     <a class="page-number-ea" href="#"></a> -->
                 </tr>
             </div>
             </div>
