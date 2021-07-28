@@ -1,5 +1,7 @@
 package com.base.entity;
 
+import java.util.Date;
+
 import lombok.Data;
 
 @Data
@@ -15,9 +17,9 @@ public class UserVO {
 	private String userAddressDetail; //상세주소
 	private String userCode; //코드
 	private String userImg; //이미지
-	
-	private boolean useCookie;
-	
+	private Date userDate; //생성날짜
+//	/* private boolean useCookie; */
+//	
 	//비밀번호체크
 	public boolean matchPassword(String pw) {
         return this.userPasswd.equals(pw);

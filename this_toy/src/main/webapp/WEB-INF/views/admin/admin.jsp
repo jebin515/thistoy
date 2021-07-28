@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,125 +52,20 @@
                     </tr>
 
                     <!-- 회원정보 -->
+                    <c:forEach var="admin" items="${admin}">
+                    <fmt:formatDate var="date" value="${admin.uesrDate}" pattern="yyyy-MM-dd "/>
                     <tr class="table_data">
-                        <td class="member_date">2021-05-18</td>
-                        <td class="member_id">jiyoojin0518</td>
-                        <td class="member_name">지유진</td>
-                        <td class="member_phone">010-1111-2222</td>
-                        <td class="member_email">jiyoojin@gmail.com</td>
-                        <td class="member_address">경기도 안양시 동안구 38-7</td>
+                        <td class="member_date"><c:out value="${date}"/></td>
+                        <td class="member_id"><c:out value="${admin.userId}"/></td>
+                        <td class="member_name"><c:out value="${admin.userName}"/></td>
+                        <td class="member_phone"><c:out value="${admin.userTel}"/></td>
+                        <td class="member_email"><c:out value="${admin.userEmail}"/></td>
+                        <td class="member_address"><c:out value="${admin.userAddress}"/></td>
                         <td>
                             <a href="#" class="delete">삭제</a>
                         </td>
                     </tr>
-
-                    <tr class="table_data">
-                        <td class="member_date">2021-05-18</td>
-                        <td class="member_id">jiyoojin0518</td>
-                        <td class="member_name">지유진</td>
-                        <td class="member_phone">010-1111-2222</td>
-                        <td class="member_email">jiyoojin@gmail.com</td>
-                        <td class="member_address">경기도 안양시 동안구 38-7</td>
-                        <td>
-                            <a href="#" class="delete">삭제</a>
-                        </td>
-                    </tr>
-
-                    <tr class="table_data">
-                        <td class="member_date">2021-05-18</td>
-                        <td class="member_id">jiyoojin0518</td>
-                        <td class="member_name">지유진</td>
-                        <td class="member_phone">010-1111-2222</td>
-                        <td class="member_email">jiyoojin@gmail.com</td>
-                        <td class="member_address">경기도 안양시 동안구 38-7</td>
-                        <td>
-                            <a href="#" class="delete">삭제</a>
-                        </td>
-                    </tr>
-
-                    <tr class="table_data">
-                        <td class="member_date">2021-05-18</td>
-                        <td class="member_id">jiyoojin0518</td>
-                        <td class="member_name">지유진</td>
-                        <td class="member_phone">010-1111-2222</td>
-                        <td class="member_email">jiyoojin@gmail.com</td>
-                        <td class="member_address">경기도 안양시 동안구 38-7</td>
-                        <td>
-                            <a href="#" class="delete">삭제</a>
-                        </td>
-                    </tr>
-
-                    <tr class="table_data">
-                        <td class="member_date">2021-05-18</td>
-                        <td class="member_id">jiyoojin0518</td>
-                        <td class="member_name">지유진</td>
-                        <td class="member_phone">010-1111-2222</td>
-                        <td class="member_email">jiyoojin@gmail.com</td>
-                        <td class="member_address">경기도 안양시 동안구 38-7</td>
-                        <td>
-                            <a href="#" class="delete">삭제</a>
-                        </td>
-                    </tr>
-
-                    <tr class="table_data">
-                        <td class="member_date">2021-05-18</td>
-                        <td class="member_id">jiyoojin0518</td>
-                        <td class="member_name">지유진</td>
-                        <td class="member_phone">010-1111-2222</td>
-                        <td class="member_email">jiyoojin@gmail.com</td>
-                        <td class="member_address">경기도 안양시 동안구 38-7</td>
-                        <td>
-                            <a href="#" class="delete">삭제</a>
-                        </td>
-                    </tr>
-
-                    <tr class="table_data">
-                        <td class="member_date">2021-05-18</td>
-                        <td class="member_id">jiyoojin0518</td>
-                        <td class="member_name">지유진</td>
-                        <td class="member_phone">010-1111-2222</td>
-                        <td class="member_email">jiyoojin@gmail.com</td>
-                        <td class="member_address">경기도 안양시 동안구 38-7</td>
-                        <td>
-                            <a href="#" class="delete">삭제</a>
-                        </td>
-                    </tr>
-
-                    <tr class="table_data">
-                        <td class="member_date">2021-05-18</td>
-                        <td class="member_id">jiyoojin0518</td>
-                        <td class="member_name">지유진</td>
-                        <td class="member_phone">010-1111-2222</td>
-                        <td class="member_email">jiyoojin@gmail.com</td>
-                        <td class="member_address">경기도 안양시 동안구 38-7</td>
-                        <td>
-                            <a href="#" class="delete">삭제</a>
-                        </td>
-                    </tr>
-
-                    <tr class="table_data">
-                        <td class="member_date">2021-05-18</td>
-                        <td class="member_id">jiyoojin0518</td>
-                        <td class="member_name">지유진</td>
-                        <td class="member_phone">010-1111-2222</td>
-                        <td class="member_email">jiyoojin@gmail.com</td>
-                        <td class="member_address">경기도 안양시 동안구 38-7</td>
-                        <td>
-                            <a href="#" class="delete">삭제</a>
-                        </td>
-                    </tr>
-
-                    <tr class="table_data">
-                        <td class="member_date">2021-05-18</td>
-                        <td class="member_id">jiyoojin0518</td>
-                        <td class="member_name">지유진</td>
-                        <td class="member_phone">010-1111-2222</td>
-                        <td class="member_email">jiyoojin@gmail.com</td>
-                        <td class="member_address">경기도 안양시 동안구 38-7</td>
-                        <td>
-                            <a href="#" class="delete">삭제</a>
-                        </td>
-                    </tr>
+					</c:forEach>
 
                 </table>
             </div>
