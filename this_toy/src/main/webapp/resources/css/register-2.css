@@ -69,6 +69,12 @@ main .register-main .register-menu .two {
 .btn_wrap .button:hover {
   background-color: rgba(245, 96, 153, 0.7);
 }
+
+/* 확인버튼클릭불가 */
+#next_button:disabled {
+	opacity: 0.2;
+    cursor: not-allowed;
+}
 .btn_wrap a.wide {
   width: 587px;
   margin: 0 0 0 20px;
@@ -149,7 +155,7 @@ main .register-main .register-menu .two {
   position: relative;
 }
 .join_form table th span:after {
-  content: "*";
+  content: "";
   font-size: 13px;
   color: #f95427;
   position: absolute;

@@ -103,7 +103,13 @@ article {
   gap: 70px;
   justify-content: center;
   width: 1000px;
-  margin-top: 30px;
+  margin-top: 70px;
+}
+.noproduct{
+	text-align: center;
+    width: 800px;
+    margin: 110px 0 0 170px;
+    font-size: 50px;
 }
 .mainImg{
 	width:265px;
