@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NOTICE상세보기</title>
+    <title>NOTICE수정/삭제</title>
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/notice_detail.css">
@@ -20,8 +20,9 @@
 
     <!-- ---------------------main---------------------------------  -->
     <div class="title">
-        <h1>NOTICE</h1>
+        <h1>NOTICE Modify/Delete</h1>
     </div>
+    <form>
     <div class="board">
         <div class="base">
             <table>
@@ -32,7 +33,7 @@
                     </tr>
                     <tr>
                         <th>제목</th>
-                        <td><input type="text" class="noticeTitle"  name="noticeTitle" readonly="readonly" value= '<c:out value="${notice.noticeTitle}"/>'></td>
+                        <td><input type="text" class="noticeTitle"  name="noticeTitle"  value= '<c:out value="${notice.noticeTitle}"/>'></td>
                     </tr>
                     <tr>
                         <th>작성자</th>
@@ -46,13 +47,7 @@
                         <td colspan="2">
                             <div class="detail">
                                 <div class="detail-text">
-                                	<textarea rows="20" cols="50"  name="noticeText"  class="noticeText""> <c:out value=" ${notice.noticeText}"/> </textarea>
-<!--                                     <p>안녕하세요, 디스토이(ThisToy)입니다.</p> -->
-<!--                                     <br> -->
-<!--                                     <p>신명준 회원님, 디스토이(ThisToy)를 이용해주셔서 감사합니다!</p><br> -->
-<!--                                     <p>결재 안내에 관하여 안내드립니다.</p><br> -->
-<!--                                     <p>결재 내역은 아래의 링크를 클릭하여 확인해주세요.</p> -->
-<!--                                     <a href="oders.html" class="oderlist">결제내역 보러가기</a> -->
+                                	<textarea rows="20" cols="50"  name="noticeText"  class="noticeText"> <c:out value=" ${notice.noticeText}"/> </textarea>
                                 </div>
                             </div>
                         </td>
@@ -62,11 +57,42 @@
         </div>
     </div>
     <div class="board-button">
-        <button type="reset" class="btn board-edit"><a href='/notice/notice_modify?noticeNum=<c:out value="${notice.noticeNum}"/>'>수정</a></button>
-        <button type="submit" class="btn board-list"><a href='/notice/notice'>목록</a></button>
+        	<button class="btn board-edit" data-oper='modify'>수정</button>
+			<button class="btn board-list" data-oper='list'>목록</button>
+        	<button class="btn board-del" data-oper='remove'>삭제</button>
     </div>
+    </form>
 
+<script>
 
+$(document).ready(function() {
+	
+	var formObj = $("form");
+	
+	$('.btn').click(function(e){
+		
+		e.preventDefault();
+		
+		var operation = $(this).data("oper");
+		
+		console.log(operation);
+		
+		if(operation === 'list'){
+			self.location = "/notice/notice";
+		}else if(operation === 'remove'){
+			formObj.attr("action", "/notice/remove");
+			.attr("method", "post");
+			.formObj.submit();
+		}else if(operation === 'modify'){
+			formObj.attr("action", "/notice/notice_modify");
+			.attr("method", "post");
+			.formObj.submit();
+		}
+	})
+	
+})
+
+</script>
 
 <!-- footer -->
  <%@ include file="../includes/footer.jsp" %>
