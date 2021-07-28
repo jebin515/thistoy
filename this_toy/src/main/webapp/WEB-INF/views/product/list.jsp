@@ -10,10 +10,10 @@
 <script src="https://kit.fontawesome.com/a216194d9c.js"
 	crossorigin="anonymous"></script>
 <link rel="stylesheet" href="/css/style.css">
-<link rel="stylesheet" href="/css/list.css?ver=2">
+<link rel="stylesheet" href="/css/list.css?ver=1">
 <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'
 	rel='stylesheet'>
-<script src="/js/list.js" defer></script>
+<script src="/js/list.js?ver=2" defer></script>
 <title>전체글보기</title>
 </head>
 
@@ -21,9 +21,21 @@
 	<!--------------header---------S----->
 	<%@ include file="../includes/header.jsp"%>
 	<!-- ------------------리스트(article)----------------- -->
+	<div class="dcc" style="display:none">${dcname.downCaCode}</div>
 	<article>
 		<div class="title">
 			<c:out value="${dcname.downCaName}" />
+			<c:if test="${!empty dpv.search}">
+				<c:if test="${pageMaker.total+0 == 0}">
+					<c:out value="${dpv.search}" />에 대한 검색결과는 없습니다.
+				</c:if>
+				<c:if test="${pageMaker.total+0 != 0}">
+					<c:out value="${dpv.search}" />에 대한 검색결과 입니다.
+				</c:if>
+			</c:if>
+			<c:if test="${!empty dpv.bn}">
+				<c:out value="${dpv.bn}" />
+			</c:if>
 		</div>
 		<div class="line"></div>
 		<div class="list">
@@ -74,25 +86,27 @@
 					<button type="button" class="item drop"
 						value='<c:out value="${dcList[10].downCaCode}"/>'>굿즈</button>
 				</div>
-				<button type="button" class="item nodrop">Best</button>
-				<button type="button" class="item nodrop">New</button>
+				<button type="button" class="item nodrop" value='<c:out value="Best"/>'>Best</button>
+				<button type="button" class="item nodrop" value='<c:out value="New"/>'>New</button>
 			</div>
 			<div style="position: relative;">
 				<i class="fas fa-caret-left"></i>
 			</div>
 			<div class="gridContainer">
+				<c:if test="${pageMaker.total+0 == 0}">
+					<div class="noproduct">상품준비중입니다....</div>
+				</c:if>
 				<c:forEach var="pdinfo" items="${pdList}">
 					<c:set var="i" value='${fn:indexOf(pdinfo.productMainImg,",")}' />
-					<c:set var="mimg"
-						value="${fn:substring(pdinfo.productMainImg,0,i)}" />
+					<c:set var="mimg" value="${fn:substring(pdinfo.productMainImg,0,i)}" />
 					<div class="gridItem">
-						<a href="detail_main.html"> <img
-							src="/upload/product/main/${mimg}" alt="" class="mainImg" />
+						<a href="/product/detail_main?pc=${pdinfo.productCode}"> 
+						<img src="/upload/product/main/${mimg}" alt="" class="mainImg" />
 						</a>
 						<div class="product_info">
-							<a href="#"> <span class="product_name"><span
-									class="product_logo">This Toy</span> <c:out
-										value='${pdinfo.productName}' /></span>
+							<a href="/product/detail_main?pc=${pdinfo.productCode}"> <span
+								class="product_name"><span class="product_logo">This
+										Toy</span> <c:out value='${pdinfo.productName}' /></span>
 							</a>
 							<div class="product_price">
 								가격 :
@@ -119,48 +133,28 @@
 				</c:forEach>
 			</div>
 		</div>
-		<c:if test="${!empty pageMaker}">
+		<c:if test="${!empty pageMaker and empty dpv.bn}">
 			<div class="page">
-				<a href="/product/list?dcc=${dcname.downCaCode}&p=1"><i
+				<a
+					href="/product/list?dcc=${dcname.downCaCode}&p=1&search=${dpv.search}"><i
 					class="fas fa-angle-double-left"></i></a> <a
-					href="/product/list?dcc=${dcname.downCaCode}&p=${pageMaker.startPage-1}"><i
+					href="/product/list?dcc=${dcname.downCaCode}&p=${pageMaker.startPage-1}&search=${dpv.search}"><i
 					class="fas fa-angle-left"></i></a>
 				<c:forEach var="num" begin="${pageMaker.startPage}"
 					end="${pageMaker.endPage}">
-					<a href="/product/list?dcc=${dcname.downCaCode}&p=${num}"
+					<a
+						href="/product/list?dcc=${dcname.downCaCode}&p=${num}&search=${dpv.search}"
 						class="${pageMaker.pageNum==num? 'pageNum':''}">${num}</a>
 				</c:forEach>
 				<a
-					href="/product/list?dcc=${dcname.downCaCode}&p=${pageMaker.endPage+1}"><i
+					href="/product/list?dcc=${dcname.downCaCode}&p=${pageMaker.endPage+1}&search=${dpv.search}"><i
 					class="fas fa-angle-right"></i></a> <a
-					href="/product/list?dcc=${dcname.downCaCode}&p=${pageMaker.realEnd}"><i
+					href="/product/list?dcc=${dcname.downCaCode}&p=${pageMaker.realEnd}&search=${dpv.search}"><i
 					class="fas fa-angle-double-right"></i></a>
 			</div>
 		</c:if>
 	</article>
 	<!-- -----------------footer----------------- -->
 	<%@ include file="../includes/footer.jsp"%>
-	<script>
-		let downca = document.querySelectorAll('.drop');
-		let downcode = '${dcname.downCaCode}';
-		function category() {
-			for (let i = 0; i < downca.length; i++) {
-				if (downcode == downca[i].value) {
-					let parent1 = downca[i].parentElement;
-					downca[i].parentElement.style.display = "block";
-					downca[i].style.background = 'rgb(162, 109, 236)';
-					downca[i].parentElement.previousElementSibling.children[0].style.display = "none";
-					downca[i].parentElement.previousElementSibling.children[1].style.display = "block";
-				}
-			}
-		}
-		category();
-		for (let i = 0; i < downca.length; i++) {
-			downca[i].addEventListener('click', function() {
-				let dcn = downca[i].value;
-				location.href = "/product/list?dcc=" + dcn;
-			})
-		}
-	</script>
 </body>
 </html>

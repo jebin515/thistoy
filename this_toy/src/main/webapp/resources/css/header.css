@@ -8,6 +8,9 @@
   padding: 10px 0;
   height: 150px;
 }
+td, tr{
+	    word-break: break-all;
+}
 #header .header-full {
   position: relative;
   display: flex;

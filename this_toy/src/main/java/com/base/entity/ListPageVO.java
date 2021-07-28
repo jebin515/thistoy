@@ -4,7 +4,6 @@ import lombok.Data;
 
 @Data
 public class ListPageVO {
-	
 	private int startPage;
 	private int endPage;
 	private boolean prev, next;
@@ -12,6 +11,7 @@ public class ListPageVO {
 	
 	private int total;
 	private int pageNum;
+	
 	public ListPageVO(int total, int pageNum) {
 		this.total = total;
 		this.pageNum = pageNum;
@@ -25,6 +25,7 @@ public class ListPageVO {
 		this.prev = this.startPage>1;
 		this.next = this.endPage<realEnd;
 	}
+
 	
 	
 }
