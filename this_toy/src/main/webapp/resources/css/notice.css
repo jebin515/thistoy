@@ -93,4 +93,9 @@ main {
     color: plum;
     text-decoration: underline;
   }
-  
+    .board-write{
+    border: 1px solid rgba(88, 113, 253, 0.75);
+    background-color: rgba(197, 137, 199, 0.75);
+    color: white;
+    font-size: 23px;
+  }

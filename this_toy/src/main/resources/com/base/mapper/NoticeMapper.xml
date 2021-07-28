@@ -36,7 +36,7 @@
 	set notice_title = #{noticeTitle},
 	notice_text = #{noticeText},
 	user_id = #{userId},
-	updatedate = sysdate
+	notice_date = sysdate
 	where notice_num = #{noticeNum}
 	</update>
 	
