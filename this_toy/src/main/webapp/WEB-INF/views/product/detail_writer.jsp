@@ -17,6 +17,15 @@
 <link rel="stylesheet" href="/css/style.css">
 <link rel="stylesheet" href="/css/detail-writer.css?ver=3" />
 </head>
+<script defer>
+	var result = "<c:out value='${fail}'/>";
+	function fail() {
+		alert('최소 하나의 슬라이드이미지와 설명이미지가 필요합니다.');
+	}
+	if (result == 'noimg') {
+		fail();
+	}
+</script>
 
 <body>
 	<!-- ------------------재빈 상품 판매글 작업------------------ -->

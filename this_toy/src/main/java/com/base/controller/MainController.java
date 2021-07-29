@@ -20,12 +20,6 @@ import lombok.AllArgsConstructor;
 @RequestMapping("/*")
 public class MainController {
 	private MainService service;
-	
-	@GetMapping("search")
-	public void getSearch(String search, Model model) {
-		model.addAttribute("search", service.searchList(search));
-	}
-	
 	@GetMapping("main")
 	public void getBest(Model model) {
 		model.addAttribute("best", service.bestList());

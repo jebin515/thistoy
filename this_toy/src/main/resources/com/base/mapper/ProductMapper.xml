@@ -4,7 +4,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- namespace는 인터페이스와 동일하게 해줘야한다. -->
 <mapper namespace="com.base.mapper.ProductMapper">
- <!-- id : 메서드 이름  -->
+	<!-- id : 메서드 이름 -->
 	<insert id="insert">
 	<![CDATA[
 	insert into product 
@@ -14,17 +14,77 @@
 	]]>
 	</insert>
 	<select id="getList" resultType="ProductVO">
-	<![CDATA[
-	select * from(
-    select rownum num , n.* from 
-	(select * from product where down_ca_code=#{downCaCode} order by product_date desc) n
-    )
-    where num between (#{pageNum}-1)*15+1 and #{pageNum}*15
-	]]>
+		select * from(
+		select rownum num , n.* from
+		(select * from product
+		<choose>
+			<when test="downCaCode != null and !downCaCode.equals('')">
+				where down_ca_code=#{downCaCode} order by
+				product_date desc) n
+				)
+			</when>
+			<when test="search != null and !search.equals('')">
+				<![CDATA[
+				where
+				product_name like '%'||#{search}||'%' order by product_date desc) n
+				)
+				]]>
+			</when>
+			<when test="bn.equals('Best')">
+			<![CDATA[
+			order by sell_count desc) n)
+        	]]>
+			</when>
+			<otherwise>
+        	<![CDATA[
+			order by product_date desc) n)
+        	]]>
+			</otherwise>
+		</choose>
+		where num between (#{pageNum}-1)*15+1 and #{pageNum}*15
 	</select>
 	<select id="getTotalCount" resultType="int">
-	<![CDATA[
-	select count(*) from product where down_ca_code=#{downCaCode}
-	]]>
+		select count(*) from
+		<choose>
+			<when test="downCaCode != null and !downCaCode.equals('')">
+				product where down_ca_code=#{downCaCode}
+			</when>
+			<when test="search != null and !search.equals('')">
+				<![CDATA[
+				 product where product_name like '%'||#{search}||'%'
+				  ]]>
+			</when>
+			<when test="bn.equals('Best')">
+			<![CDATA[
+				(select * from product order by sell_count desc) 
+				where rownum <=15
+		 	]]>
+			</when>
+			<otherwise>
+				<![CDATA[
+				(select * from product order by product_date desc) 
+				where rownum <=15
+		 	]]>
+			</otherwise>
+		</choose>
 	</select>
+	<select id="getProduct" resultType="ProductVO">
+		select * from product where
+		product_code = #{productCode}
+	</select>
+	<insert id="insertCart">
+	insert into cart values(cart_seq.nextval,#{productEa},#{productCode},#{userId})
+	</insert>
+	<select id="cartCount" resultType="int">
+	select count(*) from cart where product_code = #{productCode} and user_id=#{userId}
+	</select>
+	<insert id="insertWish">
+	insert into wish_list values(wish_seq.nextval,#{productCode},#{userId})
+	</insert>
+	<select id="wishCount" resultType="int">
+	select count(*) from wish_list where product_code = #{productCode} and user_id=#{userId}
+	</select>
+	<delete id="deleteWish">
+	delete from wish_list where product_code = #{productCode} and user_id=#{userId}
+	</delete>
 </mapper>

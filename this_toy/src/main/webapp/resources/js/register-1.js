@@ -58,5 +58,5 @@ checkAll.addEventListener("click", (e) => {
 });
 
 function next(){
-  location = "/register-2.html"
+  location = "/register/register-2"
 }
