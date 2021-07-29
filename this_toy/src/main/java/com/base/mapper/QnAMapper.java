@@ -8,7 +8,7 @@ public interface QnAMapper {
 	
 	int insertQnA(QnAVO vo);
 	
-	ArrayList<QnAVO> getQnA(String productCode);
+	ArrayList<QnAVO> getQnA(QnAVO vo);
 	
 	int QnATotalCount(String productCode);
 }

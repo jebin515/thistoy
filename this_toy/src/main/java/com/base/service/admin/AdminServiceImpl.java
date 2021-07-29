@@ -15,11 +15,17 @@ import lombok.AllArgsConstructor;
 public class AdminServiceImpl implements AdminService {
 
 	private AdminMapper mapper;
-	
+
 	@Override
 	public ArrayList<UserVO> admin() {
 		// TODO Auto-generated method stub
 		return mapper.admin();
 	}
-	
+
+	@Override
+	public String deleteMember(String userId) {
+		// TODO Auto-generated method stub
+		return mapper.deleteMember(userId);
+	}
+
 }

@@ -21,9 +21,9 @@ public class QnAServiceImpl implements QnAService {
 	}
 
 	@Override
-	public ArrayList<QnAVO> getQnA(String productCode) {
+	public ArrayList<QnAVO> getQnA(QnAVO vo) {
 		// TODO Auto-generated method stub
-		return mapper.getQnA(productCode);
+		return mapper.getQnA(vo);
 	}
 
 	@Override
