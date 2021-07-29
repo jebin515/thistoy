@@ -15,4 +15,13 @@ $(document).ready(function() {
 
 	}
 });
+$(document).ready(function() {
+	let page_url = window.location.href;
+	let page_id = page_url.substring(page_url.lastIndexOf("r"));
+	if(page_id=='reply'){
+	$('html, body').animate({ 
+	scrollTop: $('.write_QnA').offset().top }, 500);
+
+	}
+});
 

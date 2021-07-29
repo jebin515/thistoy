@@ -18,4 +18,12 @@
 	<select id="QnATotalCount" resultType="int">
 	select count(*) from question where product_code = #{productCode}
 	</select>
+	<update id="replyQnA">
+	update question set REPLY_SITUATION='답변완료', reply_text =#{replyText},reply_date=sysdate 
+	where question_code=#{questionCode}
+	</update>
+	<update id="deleteReply">
+	update question set REPLY_SITUATION='답변대기', reply_text ='',reply_date='' 
+	where question_code=#{questionCode}
+	</update>
 </mapper>
