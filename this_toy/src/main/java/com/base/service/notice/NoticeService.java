@@ -18,4 +18,6 @@ public interface NoticeService {
 	List<NoticeVO> getList();
 	
 	List<NoticeVO> getList(NoticeCriteria cri);
+	
+	int getTotal(NoticeCriteria cri);
 }

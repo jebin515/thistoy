@@ -55,4 +55,9 @@ public class NoticeServiceImpl implements NoticeService{
 	public List<NoticeVO> getList(NoticeCriteria cri) {
 		return mapper.getListwithPaging(cri);
 	}
+
+	@Override
+	public int getTotal(NoticeCriteria cri) {
+		return mapper.getTotalCount(cri);
+	}
 }

@@ -3,6 +3,7 @@ package com.base.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,7 +34,7 @@ public class NoticeController {
 			log.info("list................................................");
 			
 			model.addAttribute("list", service.getList(cri));
-			model.addAttribute("pageMaker", new NoticePageDTO(cri, 123));
+			model.addAttribute("pageMaker", new NoticePageDTO(cri, service.getTotal(cri)));
 		}
 		
 		@GetMapping("/notice_writer")
@@ -55,30 +56,37 @@ public class NoticeController {
 		}
 		
 		@GetMapping({"/notice_detail", "/notice_modify"})
-		public void get(@RequestParam("noticeNum") Long noticeNum, Model model) {
+		public void get(@RequestParam("noticeNum") Long noticeNum, @ModelAttribute("cri")NoticeCriteria cri, Model model) {
 			
 			model.addAttribute("notice", service.get(noticeNum));
 		}
 		
-		@PostMapping("/modify")
-		public String modify(NoticeVO notice, RedirectAttributes rttr) {
+		@PostMapping("/notice_modify")
+		public String modify(NoticeVO notice, NoticeCriteria cri, RedirectAttributes rttr) {
 			
 			int count = service.modify(notice);
 			
 			if(count == 1) {
 				rttr.addFlashAttribute("result", "success");
 			}
+			
+			rttr.addAttribute("pageNum", cri.getPageNum());
+			rttr.addAttribute("amount", cri.getAmount());
+			
 			return "redirect: /notice/notice";
 		}
 		
 		@PostMapping("/remove")
-		public String remove(@RequestParam("noticeNum")Long noticeNum, RedirectAttributes rttr) {
+		public String remove(@RequestParam("noticeNum")Long noticeNum, NoticeCriteria cri, RedirectAttributes rttr) {
 			
 			int count = service.remove(noticeNum);
 			
 			if(count == 1) {
 				rttr.addFlashAttribute("result", "success");
 			}
+			rttr.addAttribute("pageNum", cri.getPageNum());
+			rttr.addAttribute("amount", cri.getAmount());
+			
 			return "redirect: /notice/notice";
 		}
 		

@@ -5,7 +5,7 @@ import lombok.ToString;
 
 @ToString
 @Getter
-public class NoticePageDTO {
+public class NoticePageDTO {  
 
 	private int startPage, endPage;
 	private boolean prev, next;

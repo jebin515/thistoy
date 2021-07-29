@@ -12,8 +12,10 @@ public interface OrdersMapper {
 	ArrayList<ProductVO> getproduct(String productCode);
 	UserVO getaddr(String userId);
 	CartVO getcart(CartVO vo);
-	OrdersVO insertorder(OrdersVO vo); 
-	
+	void insertorder(OrdersVO vo); 
+	void deletecart(OrdersVO vo);
+	void updatestock(OrdersVO vo);
+	void updatesales(OrdersVO vo);
 	
 	
 }

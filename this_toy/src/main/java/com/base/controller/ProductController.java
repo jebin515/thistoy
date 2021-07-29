@@ -48,7 +48,7 @@ public class ProductController {
 	@GetMapping("detail_writer")
 	public String registerget(Model model, HttpServletRequest request, RedirectAttributes rttr) {
 		HttpSession session = request.getSession();
-		session.setAttribute("userId", "우편테스트2");
+		session.setAttribute("userId", "jin");
 		String userId = (String) session.getAttribute("userId");
 		if (userId == null) {
 			rttr.addFlashAttribute("fail", "fail");

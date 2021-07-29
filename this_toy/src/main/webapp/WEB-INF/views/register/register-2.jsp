@@ -123,7 +123,7 @@
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
 	<script src="https://smtpjs.com/v3/smtp.js"></script>
-	<script src="/js/email.js"></script>
+	<script src="/js/sendEmail.js"></script>
 	<script src="/js/address.js"></script>
 	<script src="/js/register-2.js"></script>
 	<script
