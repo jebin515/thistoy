@@ -41,72 +41,39 @@
                 <c:forEach items=" ${notice}" var="notice">
                     <tr>
                         <td>${notice.noticeNum}</td>
-                        <td><a class="subject-list"  href='/notice/notice_detail?noticeNum=<c:out value="${notice.noticeNum}" />' ><c:out value="${notice.noticeTitle}" /></a></td>
+                        <td><a class="subject-list"  href='<c:out value="${notice.noticeNum}" />' ><c:out value="${notice.noticeTitle}" /></td>
                         <td><fmt:formatDate pattern="yyyy-MM-dd" value="${notice.noticeDate}" ></fmt:formatDate></td>
                         <td>${notice.userId}</td>
                     </tr>
-<!--                     <tr> -->
-<!--                         <td>5</td> -->
-<!--                         <td><a class="subject-list">택배 파업으로 인한 배송 지연 안내</a></td> -->
-<!--                         <td>2021-10-09</td> -->
-<!--                         <td>작성자</td> -->
-<!--                     </tr> -->
-<!--                     <tr> -->
-<!--                         <td>4</td> -->
-<!--                         <td><a class="subject-list">택배 파업으로 인한 배송 지연 안내</a></td> -->
-<!--                         <td>2021-07-21</td> -->
-<!--                         <td>작성자</td> -->
-<!--                     </tr> -->
-<!--                     <tr> -->
-<!--                         <td>3</td> -->
-<!--                         <td><a class="subject-list">무통장입금계좌 안내</a></td> -->
-<!--                         <td>2021-06-30</td> -->
-<!--                         <td>작성자</td> -->
-<!--                     </tr> -->
-<!--                     <tr> -->
-<!--                         <td>2</td> -->
-<!--                         <td><a class="subject-list">THIS TOY 이용약관 개정안내</a></td> -->
-<!--                         <td>2021-05-18</td> -->
-<!--                         <td>작성자</td> -->
-<!--                     </tr> -->
-<!--                     <tr> -->
-<!--                         <td>1</td> -->
-<!--                         <td><a class="subject-list">개인정보취급방침 변경에 따른 공지사항</a></td> -->
-<!--                         <td>2021-05-15</td> -->
-<!--                         <td>작성자</td> -->
-<!--                     </tr> -->
                 </c:forEach>
                 </tbody>
             </table>
 
             <div class="page-number">
                 <tr>
-                ${pageMaker}
+		<%--  ${pageMaker} --%>
                 <div class = 'pull-right'>
                 	<ul class="pagination">
-                				<c:if test="${page.Maker.prev}">
+                				<c:if test="${pageMaker.prev}">
                 				<li class="page-item">
-                					<a class="page-link" href="#" tabindex="-1">이전</a>
+                					<a class="page-link" href="${pageMaker.startPage -1}" tabindex="-1">이전</a>
                 				</li>
                 				</c:if>
                 		<c:forEach begin="${pageMaker.startPage}"
                 						end="${pageMaker.endPage}" var="num">
-                				<li class="page-item ${pageMaker.cri.pageNum == num?"active":""}"><a class="page-number-ea page-link" href="#">${num}</a></li>
+                				<li class="page-item ${pageMaker.cri.pageNum == num?"active":""}"><a class="page-number-ea page-link" href="${num}">${num}</a></li>
                 		</c:forEach>
-                				<c:if test="${page.Maker.next}">
+                				<c:if test="${pageMaker.next}">
                 				<li class="page-item">
-                					<a class="page-link" href="#" tabindex="-1">다음</a>
+                					<a class="page-link" href="${pageMaker.endPage + 1}" tabindex="-1">다음</a>
                 				</li>
                 				</c:if>
                 	</ul>
                 </div>
-<!--                     <a href="#"></a> -->
-<!--                     <a class="page-number-ea" href="/" >1</a> -->
-<!--                     <a class="page-number-ea" href="/">2</a> -->
-<!--                     <a class="page-number-ea" href="/">3</a> -->
-<!--                     <a class="page-number-ea" href="/">4</a> -->
-<!--                     <a class="page-number-ea" href="/">5</a> -->
-<!--                     <a class="page-number-ea" href="#"></a> -->
+                <form id='actionForm' action="/notice/notice" method="get">
+                	<input type="hidden" name='pageNum' value='${pageMaker.cri.pageNum}'>
+                	<input type="hidden" name='amount' value='${pageMaker.cri.amount}'>
+                </form>
                 </tr>
             </div>
             </div>
@@ -182,6 +149,29 @@ $(document).ready(function() {
 	
 	$("#board-write").click(function() {
 		self.location = "/notice/notice_writer";
+	});
+	var actionForm = $("#actionForm");
+	$(".page-link").on("click", function(e) {
+		e.preventDefault();
+		
+		var targetPage = $(this).attr("href");
+		
+		console.log(targetPage);
+		
+		actionForm.find("input[name='pageNum']").val(targetPage);
+		actionForm.submit();
+	});
+	
+	$(".subject-list").on("click", function(e){
+		e.preventDefault();
+		
+		var targetNoticeNum = $(this).attr("href");
+		
+		console.log(targetNoticeNum);
+		
+		actionForm.append("<input type='hidden' name='noticeNum' value=' " +targetNoticeNum+" ' >' " );
+		actionForm.attr("action", "/notice/notice_detail").submit();
+		
 	});
 });
 </script>

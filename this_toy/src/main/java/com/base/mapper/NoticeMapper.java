@@ -1,8 +1,7 @@
 package com.base.mapper;
 
 import java.util.List;
-
-import org.apache.ibatis.annotations.Select;
+import java.util.Map;
 
 import com.base.entity.NoticeCriteria;
 import com.base.entity.NoticeVO;
@@ -22,4 +21,8 @@ public interface NoticeMapper {
 		int update(NoticeVO notice);
 		
 		List<NoticeVO> getListwithPaging(NoticeCriteria cri);
+		
+		int getTotalCount(NoticeCriteria cri);
+		
+		List<NoticeVO> searchTest(Map<String, Map<String,String>> map);
 }
