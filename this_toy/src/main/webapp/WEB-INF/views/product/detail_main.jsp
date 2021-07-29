@@ -21,7 +21,7 @@
 	crossorigin="anonymous"></script>
 <title>Document</title>
 <link rel="stylesheet" href="/css/style.css">
-<link rel="stylesheet" href="/css/detail-main.css?ver=4" />
+<link rel="stylesheet" href="/css/detail-main.css?ver=3" />
 </head>
 <body>
 	<%@ include file="../includes/header.jsp"%>
@@ -195,25 +195,29 @@
 				<button class="QnA_register">등록</button>
 			</div>
 			<div class="title">
-				<span class="QnA">QnA (${QnACount})</span>
+				<span>QnA (<span class="QnA">${QnACount}</span>)
+				</span>
 			</div>
 			<table>
-				<tr>
+				<tr class="QnInfo">
 					<th>답변상태</th>
 					<th>내용</th>
 					<th>작성시간</th>
 					<th>작성자</th>
 				</tr>
 				<c:forEach var="Qn" items="${QnA}">
-				<tr>
-					<td>${Qn.replySituation}</td>
-					<td><c:out value="${Qn.questionText}"/></td>
-					<td><fmt:formatDate var="date" value="${Qn.questionDate}"
+					<tr class="QnAbox">
+						<td>${Qn.replySituation}</td>
+						<td><c:out value="${Qn.questionText}" /></td>
+						<td><fmt:formatDate var="date" value="${Qn.questionDate}"
 								pattern="yyyy.MM.dd" /> ${date}</td>
-					<td>${Qn.userId}</td>
-				</tr>
+						<td>${Qn.userId}</td>
+					</tr>
 				</c:forEach>
 			</table>
+		</div>
+		<div class="add">
+			<span class="addQnA">더보기</span>
 		</div>
 		<div class="detail-content">
 			<div class="title">
@@ -267,11 +271,6 @@
 						})
 		/* ----------------------- 리뷰 작성 ajax 및 작성글 바로 띄우기 ----------------------   */
 		$(document).on('click',".review_register",function() {
-			let today = new Date();
-			let year = today.getFullYear();
-			let month = ('0' + (today.getMonth() + 1)).slice(-2);
-			let day = ('0' + today.getDate()).slice(-2);
-			let dateString = year + '.' + month + '.' + day;
 			let Text = $('.write_text').val();
 			let Rating = Number($('.ratingop').val());
 			let fullstar = "";
@@ -351,15 +350,59 @@
 		})
 		/* ----------------------- 문의글 작성 ajax ----------------------------*/
 		$(document).on('click','.QnA_register',function(){
+			let today = new Date();
+			let year = today.getFullYear();
+			let month = ('0' + (today.getMonth() + 1)).slice(-2);
+			let day = ('0' + today.getDate()).slice(-2);
+			let dateString = year + '.' + month + '.' + day;
 			let data = {
 				questionText : $('.QnA_text').val(),
 				productCode : '<c:out value="${product.productCode}"/>',
 				userId : '<c:out value="${userId}"/>'
 			}; 
+			if($('.QnA_text').val() == null || $('.QnA_text').val() == ""){
+				alert("문의를 입력해주세요");
+				return;
+			}
+			if (data["userId"] == null || data["userId"] == "") {
+				alert('로그인이 필요한 기능입니다.');
+				$('.QnA_text').val('');
+				return;
+			}
 			$.ajax({
 				type : 'post',
 				url : '/QnA/new',
 				data : JSON.stringify(data),
+				contentType : "application/json; charset=utf-8",
+				success : function(rs) {
+					$('.QnA_text').val('');
+					let QnANum= Number($('.QnA').html());
+					if(QnANum>=10){
+						$('.QnAbox').last().remove();
+					}
+					QnANum +=1;
+					let newQnA = '<tr>'+
+					'<td>답변대기</td>'+
+					'<td>'+data["questionText"]+'</td>'+
+					'<td>'+dateString+'</td>'+
+					'<td>'+data["userId"]+'</td>'+
+					'</tr>';
+					$(".QnInfo").after(newQnA);
+					$('.QnA').html(QnANum);
+					alert(rs);
+					
+				},
+				error : function(er) {
+					alert(er);
+				}
+			})
+		})
+		/* ----------------------- 문의글 더보기 ajax --------------------------*/
+		$(document).on('click','.addQnA',function(){
+			let QnANum = $('.QnAbox').length+10;
+			$.ajax({
+				type : 'get',
+				url : '/QnA/more/${product.productCode}/'+QnANum,
 				contentType : "application/json; charset=utf-8",
 				success : function(rs) {
 					alert(rs);
@@ -369,6 +412,7 @@
 				}
 			})
 		})
+		
 		/* ----------------------- 장바구니에 물건넣기 ajax ----------------------   */
 		$(".cart").click(function() {
 			let data = {
@@ -386,7 +430,7 @@
 				data : JSON.stringify(data),
 				contentType : "application/json; charset=utf-8",
 				success : function(result) {
-					alert('문의글을 등록하였습니다.');
+					alert(result[0].qnaCount);
 				},
 				error : function(er) {
 					alert(er);

@@ -297,6 +297,22 @@
 	width:100px;
 	padding:5px 0;
 }
+.add{
+	width:100px;
+	text-align:center;
+	margin:0 auto;
+}
+.addQnA{
+	margin-top:-3px;
+	border: 1px solid rgba(245, 96, 153, 0.9);
+	background-color:rgba(245, 96, 153, 0.9);
+	color:white;
+	border-radius:30px;
+	padding:5px;
+}
+.addQnA:hover{
+	cursor:pointer;
+}
 /* 메인 2 끝 */
 /* 슬라이드 */
 #main .img-section .swiper-container {
