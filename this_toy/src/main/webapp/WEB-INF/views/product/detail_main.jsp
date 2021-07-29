@@ -13,6 +13,7 @@
 	src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript"
 	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script src="/js/detail-main.js?ver=6" defer></script>
 <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'
 	rel='stylesheet'>
 <link rel="stylesheet"
@@ -132,8 +133,8 @@
 			<textarea name="reviewText" cols="30" rows="5" class="write_text"
 				maxlength="1000"></textarea>
 			<div class="img_rating">
-				<label class="file-button" for="input-file">+사진추가</label> <input
-					type="file" name="reviewImg" id="input-file" style="display: none;">
+				<!-- 				<label class="file-button" for="input-file">+사진추가</label> <input -->
+				<!-- 					type="file" name="reviewImg" id="input-file" style="display: none;"> -->
 				<select name="reviewRating" class="ratingop">
 					<option value="5">&#xf005&#xf005&#xf005&#xf005&#xf005</option>
 					<option value="4">&#xf005&#xf005&#xf005&#xf005</option>
@@ -206,17 +207,49 @@
 					<th>작성시간</th>
 				</tr>
 				<c:forEach var="Qn" items="${QnA}">
+				<input type="hidden" value="${Qn.questionCode}"/>
 					<tr class="QnAbox">
 						<td>${Qn.replySituation}</td>
-						<td><c:out value="${Qn.questionText}" /></td>
+						<td class="QnAText"><c:out value="${Qn.questionText}" /></td>
 						<td>${Qn.userId}</td>
 						<td><fmt:formatDate var="date" value="${Qn.questionDate}"
 								pattern="yyyy.MM.dd" /> ${date}</td>
 					</tr>
-					<tr>
-						<td><div class="reply"><i class="fas fa-reply"></i></div></td>
-						<td colspan="3"><textarea name="" id="" cols="30" rows="2"></textarea></td>
-					</tr>
+					<c:if
+						test="${!userId.equals(product.userId) and !empty Qn.replyText}">
+						<tr>
+							<td></td>
+							<td class="reply_td" colspan="3"><i class="fas fa-reply"></i>
+								<textarea cols="30" rows="2" class="reply_text" readonly>${Qn.replyText}</textarea></td>
+						</tr>
+					</c:if>
+					<c:if
+						test="${userId.equals(product.userId) and !empty userId and !empty Qn.replyText}">
+						<tr>
+							<td></td>
+							<td class="reply_td" colspan="3"><i class="fas fa-reply"></i>
+								<textarea name="replyText" cols="30" rows="2" class="reply_text"
+									readonly>${Qn.replyText}</textarea></td>
+						</tr>
+						<tr class="clickText">
+							<td colspan="4" class="reply_button">
+								<button class="delete_button" value="${Qn.questionCode}">삭제</button>
+							</td>
+						</tr>
+					</c:if>
+					<c:if
+						test="${userId.equals(product.userId) and !empty userId and empty Qn.replyText}">
+						<tr>
+							<td></td>
+							<td class="reply_td" colspan="3"><i class="fas fa-reply"></i>
+								<textarea name="replyText" cols="30" rows="2" class="reply_text reg"></textarea></td>
+						</tr>
+						<tr>
+							<td colspan="4" class="reply_button">
+								<button class="register_button" value="${Qn.questionCode}">등록</button>
+							</td>
+						</tr>
+					</c:if>
 				</c:forEach>
 			</table>
 		</div>
@@ -250,8 +283,7 @@
 	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 	<script src="/js/index.js" defer></script>
 	<script src="/js/detail-slide.js?ver=1" defer></script>
-	<script src="/js/detail-main.js?ver=4" defer></script>
-	<script type="text/javascript">
+	<script type="text/javascript" defer>
 		$(".fa-angle-right").click(function(){
 			let lastn=Number($(".pn").last().text())+1;
 			location.href="/product/detail_main?pc=${product.productCode}&p="+lastn;
@@ -267,6 +299,10 @@
 			$(".pn").first().css('color','rgba(245, 96, 153, 0.9)');
 		}
 		}
+		$(document).on('click','.register_button',function(){
+			let registerindex = $(".register_button").index(this);
+			location.href="/QnA/reply?qc="+$(this).val()+"&rt="+$('.reg').eq(registerindex).val()+"&pc=${QnA[0].productCode}";
+		})
 		$(".directbuy")
 				.click(
 						function() {
@@ -388,8 +424,8 @@
 					let newQnA = '<tr>'+
 					'<td>답변대기</td>'+
 					'<td>'+data["questionText"]+'</td>'+
-					'<td>'+dateString+'</td>'+
 					'<td>'+data["userId"]+'</td>'+
+					'<td>'+dateString+'</td>'+
 					'</tr>';
 					$(".QnInfo").after(newQnA);
 					$('.QnA').html(QnANum);
@@ -412,7 +448,8 @@
 					$('.QnAtotal').html('');
 					let QnAbox='<tr class="QnInfo"><th>답변상태</th><th>내용</th><th>작성자</th><th>작성시간</th></tr>';
 					for(let i=0; i<rs.length; i++){
-					QnAbox += '<tr class="QnAbox"><td>'
+					QnAbox += '<input type="hidden" value="'+rs[i].questionCode+'"/>'+
+						'<tr class="QnAbox"><td>'
 						+ rs[i].replySituation
 						+ '</td><td>'
 						+ rs[i].questionText
@@ -424,7 +461,30 @@
 								.format(
 										"YYYY.MM.DD")
 						+ '</td></tr>';
+					if(${!userId.equals(product.userId)} && rs[i].replyText != null){
+						QnAbox += '<tr class="clickText"><td></td>'+
+						'<td class="reply_td" colspan="3"><i class="fas fa-reply"></i>'+
+							'<textarea cols="30" rows="2" class="reply_text" readonly>'+rs[i].replyText+'</textarea></td></tr>';
+					}else if(${userId.equals(product.userId) and !empty userId} && rs[i].replyText!=null){
+						QnAbox += '<tr class="clickText"><td></td>+'
+						+'<td class="reply_td" colspan="3"><i class="fas fa-reply"></i>'+
+							'<textarea cols="30" rows="2" class="reply_text" readonly>'+rs[i].replyText+'</textarea></td></tr>'+
+					'<tr class="clickText">'+
+						'+<td colspan="4" class="reply_button"><button class="delete_button" value="'+rs[i].questionCode+'">삭제</button></td>'+
+					'</tr>'
+					}else if(${userId.equals(product.userId) and !empty userId} && rs[i].replyText == null){
+						QnAbox += 
+						'<tr class="clickText">'+
+							'<td></td>'+
+							'<td class="reply_td" colspan="3"><i class="fas fa-reply"></i>'+
+								'<textarea  cols="30" rows="2" class="reply_text reg"></textarea></td>'+
+						'</tr>'+
+					'<tr class="clickText">'+
+						'<td colspan="4" class="reply_button">'+
+						'<button name="questionCode"  class="register_button" value="'+rs[i].questionCode+'">등록</button></td>'+
+					'</tr>';
 					}
+				}
 					$('.QnAtotal').html(QnAbox);
 				},
 				error : function(er) {
@@ -432,7 +492,36 @@
 				}
 			})
 		})
-		
+		/* ----------------------- 답글 삭제 ajax ----------------------------------*/
+		$(document).on('click','.delete_button',function(){
+			let questionCode= $(this).val();
+			let code=$(this).parent().parent().prev().prev().prev().val();
+			$(this).parent().parent().prev().prev().children().first().html('답변대기');
+			$(this).parent().parent().prev().prev().after('<tr class="clickText">'+
+					'<td></td>'+
+					'<td class="reply_td" colspan="3"><i class="fas fa-reply"></i>'+
+						'<textarea  cols="30" rows="2" class="reply_text reg"></textarea></td>'+
+				'</tr>'+
+			'<tr class="clickText">'+
+				'<td colspan="4" class="reply_button">'+
+				'<button name="questionCode"  class="register_button" value="'+code+'">등록</button></td>'+
+			'</tr>');
+			$(this).parent().parent().prev().remove();
+			$(this).parent().parent().remove();
+			$.ajax({
+				type : 'delete',
+				url : '/QnA/reply/delete/'+questionCode,
+				contentType : "application/json; charset=utf-8",
+				success : function(rs) {
+					alert(rs);
+					
+				},
+				error : function(er) {
+					alert(er);
+				}
+			})
+			
+		})
 		/* ----------------------- 장바구니에 물건넣기 ajax ----------------------   */
 		$(".cart").click(function() {
 			let data = {

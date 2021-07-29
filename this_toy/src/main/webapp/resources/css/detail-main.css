@@ -166,6 +166,7 @@
 
 #main .detail-content .review_register {
 	width: 100px;
+	padding:5px;
 }
 
 #main .detail-content input[type="file"] {
@@ -251,7 +252,7 @@
 }
 
 #main .detail-content table tr th:nth-child(1) {
-	width: 20%;
+	width: 200px;
 }
 
 #main .detail-content table tr th:nth-child(2) {
@@ -271,7 +272,7 @@
 }
 
 #main .detail-content table tr td {
-	padding: 10px 0 10px 0
+	padding: 5px 0 5px 0
 }
 
 #main .detail-content table img {
@@ -293,51 +294,6 @@
 	margin-bottom: 10px;
 }
 
-#main .detail-content .QnA_text {
-	resize: none;
-	font-size: 20px;
-	outline-color: grey;
-	margin-bottom: 10px;
-}
-
-.QnA_buttonbox {
-	text-align: right;
-}
-.reply{
-	position:relative;
-	
-}
-.fa-reply {
-	transform: rotate(-180deg);
-	cursor:default;
-}
-.fa-reply:hover{
-	cursor:default;
-}
-
-.QnA_register {
-	width: 100px;
-	padding: 5px 0;
-}
-
-.add {
-	width: 100px;
-	text-align: center;
-	margin: 0 auto;
-}
-
-.addQnA {
-	margin-top: -3px;
-	border: 1px solid rgba(245, 96, 153, 0.9);
-	background-color: rgba(245, 96, 153, 0.9);
-	color: white;
-	border-radius: 30px;
-	padding: 5px;
-}
-
-.addQnA:hover {
-	cursor: pointer;
-}
 /* 메인 2 끝 */
 /* 슬라이드 */
 #main .img-section .swiper-container {
@@ -478,3 +434,73 @@
 }
 
 /* writer 끝 */
+#main .detail-content .QnA_text {
+	resize: none;
+	font-size: 20px;
+	outline-color: grey;
+	margin-bottom: 10px;
+}
+
+.QnA_buttonbox {
+	text-align: right;
+}
+
+.reply {
+	position: relative;
+}
+
+.fa-reply {
+	transform: rotate(-180deg);
+	cursor: default;
+	position: relative;
+	top: -20px;
+	left: -10px;
+}
+
+.fa-reply:hover {
+	cursor: default;
+}
+.reply_button,.delete_button{
+	text-align:right;
+	margin:0 20px 5px 0;
+	padding:3px;
+}
+.QnA_register {
+	width: 100px;
+	padding: 5px 0;
+}
+.add {
+	width: 100px;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.addQnA {
+	margin-top: -3px;
+	border: 1px solid rgba(245, 96, 153, 0.9);
+	background-color: rgba(245, 96, 153, 0.9);
+	color: white;
+	border-radius: 30px;
+	padding: 5px;
+}
+
+.addQnA:hover {
+	cursor: pointer;
+}
+
+.reply_td {
+	text-align: left;
+	margin-right:10px;
+}
+
+.reply_text {
+	width: 760px;
+	resize: none;
+}
+.register_button{
+	margin:0 20px 5px 0;
+	padding:3px;
+}
+.QnInfo th{
+	width:200px
+}
