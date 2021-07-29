@@ -34,7 +34,8 @@
 	<select id="viewUser" resultType="com.base.entity.UserVO">
 		select * from
 		usertable
-		where user_id = #{userId}
+		where
+		user_id = #{userId}
 		and
 		user_passwd = #{userPasswd}
 	</select>
@@ -66,14 +67,23 @@
 		<!-- 'xml테스트','xml테스트','xml테스트','xml테스트','xml테스트','xml테스트' -->
 	</insert>
 	<select id="selectById" resultType="com.base.entity.UserVO">
-<!--         <![CDATA[ -->
-          SELECT * FROM
-              usertable
-               WHERE 
-               user_id = #{userId}
-<!--               and -->
-<!--                user_passwd = #{userPasswd} -->
-<!--       ]]> -->
+		<!-- <![CDATA[ -->
+		select * from
+		usertable
+		where
+		user_id = #{userId}
+		<!-- and -->
+		<!-- user_passwd = #{userPasswd} -->
+		<!-- ]]> -->
 	</select>
+	<update id="userModify">
+		update usertable 
+		set
+		user_passwd = #{userPasswd},
+		user_name    = #{userName}
+		where 
+		user_id = #{userId}
+	</update>
+
 
 </mapper>
