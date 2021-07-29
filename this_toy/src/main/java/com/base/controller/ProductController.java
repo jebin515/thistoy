@@ -24,6 +24,7 @@ import com.base.entity.DccPageVO;
 import com.base.entity.ListPageVO;
 import com.base.entity.PageVO;
 import com.base.entity.ProductVO;
+import com.base.entity.QnAVO;
 import com.base.entity.WishlistVO;
 import com.base.service.QnA.QnAService;
 import com.base.service.Review.ReviewService;
@@ -149,6 +150,9 @@ public class ProductController {
 	@GetMapping("detail_main")
 	public void getDetailMain(@RequestParam(name = "pc") String productCode,
 			@RequestParam(name = "p", defaultValue = "1") int pageNum, Model model) {
+		QnAVO qnavo = new QnAVO();
+		qnavo.setQnaCount(10);
+		qnavo.setProductCode(productCode);
 		PageVO vo = new PageVO();
 		vo.setProductCode(productCode);
 		int count = rvService.getReviewTotalCount(productCode);
@@ -162,7 +166,7 @@ public class ProductController {
 		model.addAttribute("product", prService.getProduct(productCode)); // 선택된 상품 정보 가져가기
 		model.addAttribute("review", rvService.getReview(vo)); // 리뷰 가져가기
 		model.addAttribute("pageMaker", new PageVO(count, pageNum)); // 리뷰 페이징 처리
-		model.addAttribute("QnA",qnaService.getQnA(productCode)); // QnA 가져가기
+		model.addAttribute("QnA",qnaService.getQnA(qnavo)); // QnA 가져가기
 		model.addAttribute("QnACount",qnaService.QnATotalCount(productCode)); // QnA 총 개수 가져가기
 	}
 

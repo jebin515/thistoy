@@ -12,7 +12,7 @@
 	<![CDATA[
 	select * from (
 	select * from question where product_code = #{productCode} order by question_date desc)
-	where rownum <=10 
+	where rownum <=#{qnaCount} 
 	]]>
 	</select>
 	<select id="QnATotalCount" resultType="int">
