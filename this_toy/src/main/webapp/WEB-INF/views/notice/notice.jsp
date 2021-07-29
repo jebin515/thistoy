@@ -38,7 +38,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                <c:forEach items=" ${notice}" var="notice">
+                <c:forEach items="${list}" var="notice">
                     <tr>
                         <td>${notice.noticeNum}</td>
                         <td><a class="subject-list"  href='/notice/notice_detail?noticeNum=<c:out value="${notice.noticeNum}" />' ><c:out value="${notice.noticeTitle}" /></a></td>
@@ -81,10 +81,9 @@
 
             <div class="page-number">
                 <tr>
-                ${pageMaker}
                 <div class = 'pull-right'>
                 	<ul class="pagination">
-                				<c:if test="${page.Maker.prev}">
+                				<c:if test="${pageMaker.prev}">
                 				<li class="page-item">
                 					<a class="page-link" href="#" tabindex="-1">이전</a>
                 				</li>

@@ -21,7 +21,7 @@
 	crossorigin="anonymous"></script>
 <title>Document</title>
 <link rel="stylesheet" href="/css/style.css">
-<link rel="stylesheet" href="/css/detail-main.css?ver=3" />
+<link rel="stylesheet" href="/css/detail-main.css?ver=2" />
 </head>
 <body>
 	<%@ include file="../includes/header.jsp"%>
@@ -175,7 +175,7 @@
 					<i class="fas fa-angle-left"></i>
 					<span class="pageNumber"> <c:forEach var="num"
 							begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-							<span class="pn">${num}</span>
+							<span class="pn" id="${pageMaker.pageNum==num? 'pageNum':''}">${num}</span>
 						</c:forEach>
 					</span>
 					<i class="fas fa-angle-right" id="right"></i>
@@ -198,20 +198,24 @@
 				<span>QnA (<span class="QnA">${QnACount}</span>)
 				</span>
 			</div>
-			<table>
+			<table class="QnAtotal">
 				<tr class="QnInfo">
 					<th>답변상태</th>
 					<th>내용</th>
-					<th>작성시간</th>
 					<th>작성자</th>
+					<th>작성시간</th>
 				</tr>
 				<c:forEach var="Qn" items="${QnA}">
 					<tr class="QnAbox">
 						<td>${Qn.replySituation}</td>
 						<td><c:out value="${Qn.questionText}" /></td>
+						<td>${Qn.userId}</td>
 						<td><fmt:formatDate var="date" value="${Qn.questionDate}"
 								pattern="yyyy.MM.dd" /> ${date}</td>
-						<td>${Qn.userId}</td>
+					</tr>
+					<tr>
+						<td><div class="reply"><i class="fas fa-reply"></i></div></td>
+						<td colspan="3"><textarea name="" id="" cols="30" rows="2"></textarea></td>
 					</tr>
 				</c:forEach>
 			</table>
@@ -405,7 +409,23 @@
 				url : '/QnA/more/${product.productCode}/'+QnANum,
 				contentType : "application/json; charset=utf-8",
 				success : function(rs) {
-					alert(rs);
+					$('.QnAtotal').html('');
+					let QnAbox='<tr class="QnInfo"><th>답변상태</th><th>내용</th><th>작성자</th><th>작성시간</th></tr>';
+					for(let i=0; i<rs.length; i++){
+					QnAbox += '<tr class="QnAbox"><td>'
+						+ rs[i].replySituation
+						+ '</td><td>'
+						+ rs[i].questionText
+						+ '</td><td>'
+						+ rs[i].userId
+						+ '</td><td>'
+						+ moment(
+								rs[i].questionDate)
+								.format(
+										"YYYY.MM.DD")
+						+ '</td></tr>';
+					}
+					$('.QnAtotal').html(QnAbox);
 				},
 				error : function(er) {
 					alert(er);
@@ -485,6 +505,7 @@
 								$(this).css('color', 'rgba(245, 96, 153, 0.9)');
 							}else {
 								tag = 1;
+								$('.pn').first().css('color', 'rgba(245, 96, 153, 0.9)');
 							}
 							$
 									.ajax({

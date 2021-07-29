@@ -140,7 +140,7 @@
 	flex-direction: column;
 	justify-content: center;
 	text-align: center;
-	padding: 50px 0 50px 0;
+	padding: 50px 0 30px 0;
 	width: 1000px;
 	margin: 0 auto;
 }
@@ -163,9 +163,11 @@
 	display: flex;
 	justify-content: space-between;
 }
-#main .detail-content .review_register{
-	width:100px;
+
+#main .detail-content .review_register {
+	width: 100px;
 }
+
 #main .detail-content input[type="file"] {
 	width: 200px;
 }
@@ -197,15 +199,19 @@
 	color: white;
 	cursor: pointer;
 }
-.pn:hover{
-	cursor:pointer;
+
+.pn:hover {
+	cursor: pointer;
 }
-#pageNum{
-	color:rgba(245, 96, 153, 0.9);
+
+#pageNum {
+	color: rgba(245, 96, 153, 0.9);
 }
-.fas:hover{
-	cursor:pointer;
+
+.fas:hover {
+	cursor: pointer;
 }
+
 #main .detail-content .title {
 	width: 1000px;
 	position: relative;
@@ -218,10 +224,12 @@
 	color: rgba(245, 96, 153, 0.9);
 	height: 50px;
 }
-#main .detail-content .fa-star,.fa-star-o{
-	margin:-2px;
-	color:rgba(245, 96, 153, 0.9);
+
+#main .detail-content .fa-star, .fa-star-o {
+	margin: -2px;
+	color: rgba(245, 96, 153, 0.9);
 }
+
 #main .detail-content .title-plan {
 	font-size: 20px;
 	font-family: "Cafe24Ssurround", sans-serif;
@@ -277,6 +285,7 @@
 	align-items: center;
 	height: 100%;
 }
+
 #main .detail-content .write_QnA {
 	text-align: left;
 	color: rgba(245, 96, 153, 0.9);
@@ -290,28 +299,44 @@
 	outline-color: grey;
 	margin-bottom: 10px;
 }
-.QnA_buttonbox{
-	text-align:right;
+
+.QnA_buttonbox {
+	text-align: right;
 }
-.QnA_register{
-	width:100px;
-	padding:5px 0;
+.reply{
+	position:relative;
+	
 }
-.add{
-	width:100px;
-	text-align:center;
-	margin:0 auto;
+.fa-reply {
+	transform: rotate(-180deg);
+	cursor:default;
 }
-.addQnA{
-	margin-top:-3px;
+.fa-reply:hover{
+	cursor:default;
+}
+
+.QnA_register {
+	width: 100px;
+	padding: 5px 0;
+}
+
+.add {
+	width: 100px;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.addQnA {
+	margin-top: -3px;
 	border: 1px solid rgba(245, 96, 153, 0.9);
-	background-color:rgba(245, 96, 153, 0.9);
-	color:white;
-	border-radius:30px;
-	padding:5px;
+	background-color: rgba(245, 96, 153, 0.9);
+	color: white;
+	border-radius: 30px;
+	padding: 5px;
 }
-.addQnA:hover{
-	cursor:pointer;
+
+.addQnA:hover {
+	cursor: pointer;
 }
 /* 메인 2 끝 */
 /* 슬라이드 */
