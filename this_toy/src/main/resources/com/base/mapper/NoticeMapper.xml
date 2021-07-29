@@ -4,53 +4,84 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.base.mapper.NoticeMapper">
 
-	<select id="getList" resultType="NoticeVO">
-		select * from notice order by notice_num desc
-	</select>
-	
-	<insert id="insert">
-	insert INTO notice (notice_num, notice_title, notice_text, user_id)
-	VALUES (notice_seq.nextval, #{noticeTitle}, #{noticeText}, #{userId})
-	</insert>
-	
-	<insert id="insertSelectKey">
-	
-	<selectKey order="BEFORE" keyProperty="noticeNum" resultType="Long">
-	select notice_seq.nextval from dual
-	</selectKey>
+   <select id="getList" resultType="NoticeVO">
+      select * from notice order by notice_num desc
+   </select>
+   
+   <insert id="insert">
+   insert INTO notice (notice_num, notice_title, notice_text, user_id)
+   VALUES (notice_seq.nextval, #{noticeTitle}, #{noticeText}, #{userId})
+   </insert>
+   
+   <insert id="insertSelectKey">
+   
+   <selectKey order="BEFORE" keyProperty="noticeNum" resultType="Long">
+   select notice_seq.nextval from dual
+   </selectKey>
 
-	insert INTO notice (notice_num, notice_title, notice_text, user_id)
-	VALUES (#{noticeNum}, #{noticeTitle}, #{noticeText}, #{userId})
-	</insert>
-	
-	<select id="read"  resultType="NoticeVO">
-	select * from notice where notice_num = #{noticeNum}
-	</select>
-	
-	<delete id="delete">
-	delete from notice where notice_num = #{noticeNum}
-	</delete>
-	
-	<update id="update">
-	update notice
-	set notice_title = #{noticeTitle},
-	notice_text = #{noticeText},
-	user_id = #{userId},
-	notice_date = sysdate
-	where notice_num = #{noticeNum}
-	</update>
-	
-	<select id="getListwithPaging" resultType="NoticeVO">
-	<![CDATA[
-	select * from (
-    select /* + INDEX_DESC(notice pk_board) */ ROWNUM rn, notice_num, notice_title, user_id, notice_date
+   insert INTO notice (notice_num, notice_title, notice_text, user_id)
+   VALUES (#{noticeNum}, #{noticeTitle}, #{noticeText}, #{userId})
+   </insert>
+   
+   <select id="read"  resultType="NoticeVO">
+   select * from notice where notice_num = #{noticeNum}
+   </select>
+   
+   <delete id="delete">
+   delete from notice where notice_num = #{noticeNum}
+   </delete>
+   
+   <update id="update">
+   update notice
+   set notice_title = #{noticeTitle},
+   notice_text = #{noticeText},
+   user_id = #{userId},
+   notice_date = sysdate
+   where notice_num = #{noticeNum}
+   </update>
+   
+   <select id="getListwithPaging" resultType="NoticeVO">
+   <![CDATA[
+   select * from (
+    select /* + FULL(notice) */ ROWNUM rn, notice_num, notice_title, user_id, notice_date
     from notice
     where notice_num > 0
     and rownum > 0
     and rownum <= (#{pageNum} * #{amount})
     )where rn > (#{pageNum} - 1) * #{amount}
-    order by notice_num desc;
+    order by notice_num desc
     ]]>
-	</select>
-	
+   </select>
+   
+   <select id="getTotalCount" resultType="int">
+   select count(notice_num) from notice
+   </select>
+   
+   
+   <select id="searchTest" resultType="NoticeVO">
+      <![CDATA[
+      select * from notice
+      where
+       ]]>
+       <trim suffix="and">
+       <foreach collection="map"  index="key"  item="val"  separator="OR" open="(" close=")">
+          <if test="key == 'T'.toString()">
+          notice_title like #{val}
+          </if>
+          
+          <if test="key == 'C'.toString()">
+          notice_text like #{val}
+          </if>
+          
+          <if test="key == 'W'.toString()">
+          user_id like #{val}
+          </if>
+             
+       </foreach>
+       </trim>
+       <![CDATA[
+       rownum < 10
+       ]]>
+   </select>
+
 </mapper>
