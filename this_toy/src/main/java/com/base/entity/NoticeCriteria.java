@@ -24,5 +24,11 @@ public class NoticeCriteria {
 		this.pageNum = pageNum;
 		this.amount = amount;
 	}
-	
+	public String[] getTypeArr() {
+		
+		//System.out.println("==========================");
+		//System.out.println("getTypeArr............................."); //호출확인
+		
+		return type == null? new String[] { }: type.split("");
+	}
 }
