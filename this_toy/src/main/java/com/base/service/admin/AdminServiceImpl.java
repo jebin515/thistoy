@@ -23,9 +23,9 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public String deleteMember(String userId) {
+	public void deleteMember(String userId) {
 		// TODO Auto-generated method stub
-		return mapper.deleteMember(userId);
+		 mapper.deleteMember(userId);
 	}
 
 }

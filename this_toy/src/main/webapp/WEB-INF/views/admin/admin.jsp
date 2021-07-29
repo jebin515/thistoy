@@ -62,7 +62,7 @@
 							<td class="member_phone"><c:out value="${admin.userTel}" /></td>
 							<td class="member_email"><c:out value="${admin.userEmail}" /></td>
 							<td class="member_address"><c:out value="${admin.userAddress}" /></td>
-							<td class="delete"><a href="#" >삭제</a></td>
+							<td class="delete"><a onclick="if( confirm('정말 삭제하시겠습니까?') ){href='delete?userId=${admin.userId}'}">삭제</a></td>
 						</tr>
 					</c:forEach>
 

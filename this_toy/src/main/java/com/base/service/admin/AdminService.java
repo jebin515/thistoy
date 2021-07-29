@@ -8,6 +8,6 @@ public interface AdminService {
  
 	ArrayList<UserVO> admin();
 	
-	String deleteMember(String userId);
+	void deleteMember(String userId);
  }
  
