@@ -23,6 +23,8 @@
         <h1>NOTICE Modify/Delete</h1>
     </div>
     <form>
+    <input type="hidden" name='pageNum' value='${cri.pageNum}'>
+    <input type="hidden" name='amount' value='${cri.amount}'>
     <div class="board">
         <div class="base">
             <table>

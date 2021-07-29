@@ -47,12 +47,6 @@
                             <div class="detail">
                                 <div class="detail-text">
                                 	<textarea rows="20" cols="50"  name="noticeText"  class="noticeText""> <c:out value=" ${notice.noticeText}"/> </textarea>
-<!--                                     <p>안녕하세요, 디스토이(ThisToy)입니다.</p> -->
-<!--                                     <br> -->
-<!--                                     <p>신명준 회원님, 디스토이(ThisToy)를 이용해주셔서 감사합니다!</p><br> -->
-<!--                                     <p>결재 안내에 관하여 안내드립니다.</p><br> -->
-<!--                                     <p>결재 내역은 아래의 링크를 클릭하여 확인해주세요.</p> -->
-<!--                                     <a href="oders.html" class="oderlist">결제내역 보러가기</a> -->
                                 </div>
                             </div>
                         </td>
@@ -61,11 +55,33 @@
             </table>
         </div>
     </div>
+    
+   
+	<form id='actionForm' action="/notice/notice" method="get">
+       <input type="hidden" name='pageNum' value='${cri.pageNum}'>
+       <input type="hidden" name='amount' value='${cri.amount}'>
+       <input type="hidden" name='noticeNum' value='${notice.noticeNum}'>
+	</form>
+               
     <div class="board-button">
-        <button type="reset" class="btn board-edit"><a href='/notice/notice_modify?noticeNum=<c:out value="${notice.noticeNum}"/>'>수정</a></button>
-        <button type="submit" class="btn board-list"><a href='/notice/notice'>목록</a></button>
+        <button type="button" class="btn board-edit listBtn"><a href='/notice/notice_modify?noticeNum=<c:out value="${notice.noticeNum}"/>'>수정</a></button>
+        <button type="button" class="btn board-list modBtn"><a href='/notice/notice'>목록</a></button>
+		<script>
+			var actionForm = $("#actionForm");
+		
+			$(".listBtn").click(function(e) {
+				e.preventDefault();
+				actionForm.fin("input[name='noticeNum']").remove();
+				actionForm.submit();
+			});
+			
+				$(".modBtn").click(function(e) {
+				e.preventDefault();
+				actionForm.attr("action", "/notice/notice_modify");
+				actionForm.submit();
+			});
+		</script>
     </div>
-
 
 
 <!-- footer -->
