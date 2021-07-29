@@ -7,5 +7,5 @@ public class WishlistVO {
 
 	private int wishCode;
 	private String productCode;
-	private String userId;
+	private String userId; 
 }

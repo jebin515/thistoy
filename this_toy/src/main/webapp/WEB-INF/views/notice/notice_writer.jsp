@@ -20,32 +20,35 @@
         <h1>NOTICE</h1>
     </div>
     <div class="write-base">
-        <table class="write-board"> 
+    <form action="/notice/notice_writer" method="post">
+        <table class="write-board">
+           <tbody>
             <tr>
                 <th><div>글 제목</div></th>
-                <td><input type="text" class="board-title" placeholder="제목을 입력하세요."></td>
-            </tr>  
+                <td><input type="text" class="board-title" placeholder="제목을 입력하세요." name="noticeTitle"></td>
+            </tr> 
+           <tr>
+                <th> 작성자</th>
+                <td><input type="text" class="board-writer" placeholder="이름을 입력하세요." name="userId"></td>
+         </tr>
+	     <tr>
+	            <th>DATE</th>
+	            <td><input type="text" class="board-date" placeholder="날짜를 입력하세요."></td>
+	       </tr>
             <tr>
-                <th>
-                    <div>내용</div>
-                </th>
+                <td colspan="2">
+                	<textarea cols="50" rows="20" class="board-text" name="noticeText" placeholder="내용을 입력하세요."></textarea>
+                </td>
             </tr>
-            <tr>
-                <td colspan="2"> 
-                    <textarea cols="80" rows="30" class="textbox"></textarea>
-                </td>
-            </tr> 
-            <tr>
-                <td>
-                </td>
-            </tr> 
+          </tbody>
         </table>
+    </form>
     </div>
     <div class="under-button">
         <input type="submit" value="글쓰기" class="write" onclick="confirm('글을 등록하시겠습니까?');">
         <input type="reset" value="취소" class="cancel" onclick="confirm('글쓰기를 취소하시겠습니까?');">
     </div>
-
+ 
 
 
 <!-- footer -->

@@ -36,8 +36,21 @@
 	set notice_title = #{noticeTitle},
 	notice_text = #{noticeText},
 	user_id = #{userId},
-	updatedate = sysdate
+	notice_date = sysdate
 	where notice_num = #{noticeNum}
 	</update>
+	
+	<select id="getListwithPaging" resultType="NoticeVO">
+	<![CDATA[
+	select * from (
+    select /* + INDEX_DESC(notice pk_board) */ ROWNUM rn, notice_num, notice_title, user_id, notice_date
+    from notice
+    where notice_num > 0
+    and rownum > 0
+    and rownum <= (#{pageNum} * #{amount})
+    )where rn > (#{pageNum} - 1) * #{amount}
+    order by notice_num desc;
+    ]]>
+	</select>
 	
 </mapper>

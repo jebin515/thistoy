@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Select;
 
+import com.base.entity.NoticeCriteria;
 import com.base.entity.NoticeVO;
 
 public interface NoticeMapper {
@@ -19,4 +20,6 @@ public interface NoticeMapper {
 		int delete(Long noticeNum);
 		
 		int update(NoticeVO notice);
+		
+		List<NoticeVO> getListwithPaging(NoticeCriteria cri);
 }
