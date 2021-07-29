@@ -34,26 +34,26 @@
   line-height: 40px;
 }
 .table_head .member_date {
-  width: 130px;
+  width: 90px;
   height: 60px;
 }
 .table_head .member_id {
-  width: 150px;
-}
-.table_head .member_name {
   width: 100px;
 }
+.table_head .member_name {
+  width: 80px;
+}
 .table_head .member_phone {
-  width: 150px;
+  width: 100px;
 }
 .table_head .member_email {
-  width: 150px;
+  width: 180px;
 }
 .table_head .member_address {
   width: 200px;
 }
 .table_head .member_delete {
-  width: 130px;
+  width: 60px;
 }
 .delete {
   background-color: rgba(224, 185, 250, 0.781);

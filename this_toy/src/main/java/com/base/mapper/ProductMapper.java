@@ -18,10 +18,6 @@ public interface ProductMapper {
 	
 	ProductVO getProduct(String productCode);
 	
-	ArrayList<ReviewVO> getReview(String productCode);
-	
-	int reviewCount(String productCode);
-	
 	int insertCart(CartVO vo);
 	
 	int cartCount(CartVO vo);

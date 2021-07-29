@@ -163,7 +163,9 @@
 	display: flex;
 	justify-content: space-between;
 }
-
+#main .detail-content .review_register{
+	width:100px;
+}
 #main .detail-content input[type="file"] {
 	width: 200px;
 }
@@ -195,8 +197,15 @@
 	color: white;
 	cursor: pointer;
 }
-
-
+.pn:hover{
+	cursor:pointer;
+}
+#pageNum{
+	color:rgba(245, 96, 153, 0.9);
+}
+.fas:hover{
+	cursor:pointer;
+}
 #main .detail-content .title {
 	width: 1000px;
 	position: relative;
@@ -268,7 +277,42 @@
 	align-items: center;
 	height: 100%;
 }
+#main .detail-content .write_QnA {
+	text-align: left;
+	color: rgba(245, 96, 153, 0.9);
+	font-weight: bold;
+	margin-bottom: 10px;
+}
 
+#main .detail-content .QnA_text {
+	resize: none;
+	font-size: 20px;
+	outline-color: grey;
+	margin-bottom: 10px;
+}
+.QnA_buttonbox{
+	text-align:right;
+}
+.QnA_register{
+	width:100px;
+	padding:5px 0;
+}
+.add{
+	width:100px;
+	text-align:center;
+	margin:0 auto;
+}
+.addQnA{
+	margin-top:-3px;
+	border: 1px solid rgba(245, 96, 153, 0.9);
+	background-color:rgba(245, 96, 153, 0.9);
+	color:white;
+	border-radius:30px;
+	padding:5px;
+}
+.addQnA:hover{
+	cursor:pointer;
+}
 /* 메인 2 끝 */
 /* 슬라이드 */
 #main .img-section .swiper-container {

@@ -42,17 +42,6 @@ public class ProductServiceImpl implements ProductService{
 		return mapper.getProduct(productCode);
 	}
 
-	@Override
-	public ArrayList<ReviewVO> getReview(String productCode) {
-		// TODO Auto-generated method stub
-		return mapper.getReview(productCode);
-	}
-
-	@Override
-	public int reviewCount(String productCode) {
-		// TODO Auto-generated method stub
-		return mapper.reviewCount(productCode);
-	}
 
 	@Override
 	public int registerCart(CartVO vo) {
