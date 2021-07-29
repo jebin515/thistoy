@@ -36,9 +36,9 @@ public class OrdersServiceImpl implements OrdersService {
 		return mapper.getcart(vo);
 	}
 	@Override
-	public OrdersVO insertorder(OrdersVO vo) {
+	public void insertorder(OrdersVO vo) {
 		// TODO Auto-generated method stub
-		return mapper.insertorder(vo);
+		mapper.insertorder(vo);
 	}
 	
 }

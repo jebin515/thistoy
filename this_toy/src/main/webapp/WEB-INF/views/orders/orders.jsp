@@ -34,14 +34,14 @@
 									<c:set var="i" value='${fn:indexOf(pdc.productMainImg,",")}' />
 									<c:set var="mimg" value="${fn:substring(pdc.productMainImg,0,i)}" />
 									<tr>
-										<input type="hidden" name="productCode" value="010">
+										<input type="hidden" name="productCode" value="${pdc.productCode}">
 										<td><input type="hidden" name="productImg" value="dd">
 											<img src="/upload/product/main/${mimg}" />
 										</td>
-										<td><input type="hidden" name="productName" value="">
+										<td><input type="hidden" name="productName" value="${pdc.productName}">
 											<c:out value="${pdc.productName}" />
 										</td>
-										<td><input type="hidden" name="userId" value="판매자">
+										<td><input type="hidden" name="userId" value="${pdc.userId}">
 											<c:out value="${pdc.userId}" />
 										</td>
 										<td><input type="hidden" value="배송비">3000원</td>
@@ -68,26 +68,19 @@
 									<div class="addr_chk">
 										<ul>
 											<li><span>배송지선택</span></li>
-											<li>
-												<input type="radio" id="addr" name="addr_list" value="addr"
-													onclick="none()" checked />
-												<label for="addr">기본배송지</label>
+											<li><input type="radio" id="addr" name="addr_list" value="addr"
+													onclick="none()" checked /> <label for="addr">기본배송지</label>
 											</li>
-											<li>
-												<input type="radio" id="new_addr" name="addr_list" value="new_addr"
-													onclick="none()" />
-												<label for="new_addr">신규배송지</label>
+											<li><input type="radio" id="new_addr" name="addr_list" value="new_addr"
+													onclick="none()" /> <label for="new_addr">신규배송지</label>
 											</li>
 										</ul>
 									</div>
 									<div class="addr_main" id="addr_main">
 										<ul>
-											<li>
-												<input type="text" id="name" name="name"
-													value=" <c:out value='${user.userName}'/>" readonly />
-											</li>
-											<li>
-												<input type="text" id="old_member_post" name="orderAddressPost"
+											<li><input type="text" id="name" name="name"
+													value=" <c:out value='${user.userName}'/>" readonly /></li>
+											<li><input type="text" id="old_member_post" name="orderAddressPost"
 													value="<c:out value='${user.userAddressPost}'/>" readonly />
 												<input type="text" id="old_member_addr" name="orderAddress"
 													value="<c:out value='${user.userAddress}'/>" readonly />
@@ -98,19 +91,13 @@
 									</div>
 									<div class="addr_new_main" id="addr_new_main" style="display: none">
 										<ul>
-											<li>
-												<span>수령인</span> :
-												<input type="text" id="new_name" name="new_name" />
+											<li><span>수령인</span> : <input type="text" id="new_name" name="new_name" />
 											</li>
-											<li>
-												<span>배송지</span> :
-												<input id="member_post" name="orderAddressPost" type="text"
-													placeholder="지번" readonly onclick="findAddr()" />
-												<input id="member_addr" name="orderAddress" type="text" placeholder="주소"
-													readonly />
-												<input type="text" name="orderAddressDetail" id="member_detail"
-													placeholder="추가 주소" />
-											</li>
+											<li><span>배송지</span> : <input id="member_post" name="orderAddressPost"
+													type="text" placeholder="지번" readonly onclick="findAddr()" /> <input
+													id="member_addr" name="orderAddress" type="text" placeholder="주소"
+													readonly /> <input type="text" name="orderAddressDetail"
+													id="member_detail" placeholder="추가 주소" /></li>
 										</ul>
 									</div>
 									<p id="addrData"></p>
@@ -152,8 +139,7 @@
 									</ul>
 									<ul>
 										<li>총합</li>
-										<li>
-											<input type="text" class="price_total" value="${pricetotal + 3000}" /> 원
+										<li><input type="text" class="price_total" value="${pricetotal + 3000}" /> 원
 										</li>
 									</ul>
 								</div>
@@ -185,9 +171,12 @@
 								nameValue =
 									addrType == "addr" ? $("#name").val() : $("#new_name").val();
 								member_post =
-									addrType == "addr" ? $("#old_member_post").val() : $("#new_member_post").val();
+									addrType == "addr" ? $("#old_member_post").val() : $("#member_post").val();
 								member_addr =
-									addrType == "addr" ? $("#old_member_addr").val() : $("#new_member_addr").val();
+									addrType == "addr" ? $("#old_member_addr").val() : $("#member_addr").val();
+								member_detail =
+									addrType == "addr" ? $("#old_member_detail").val() : $("#member_detail").val();
+								console.log(member_post + "" + member_addr + "" + member_detail);
 								//가맹점 식별코드
 								IMP.init("imp76068644");
 								IMP.request_pay(
@@ -213,12 +202,21 @@
 													imp_uid: rsp.imp_uid,
 													merchant_uid: rsp.merchant_uid,
 													orderCode: $('input[name=productCode]').val(),
-													orderPrice: $('input[name=productCode]').val()
+													orderPrice: $('input[name=orderPrice]').val(),
+													productCode: $('input[name=productCode]').val(),
+													userId: 'admin',
+													productName: $('input[name=productName]').val(),
+													orderEa: $('input[name=orderEa]').val(),
+													productImg: $('input[name=productImg]').val(),
+													orderAddressPost: member_post,
+													orderAddress: member_addr,
+													orderAddressDetail: member_detail
 												}),
+
 											}).done(function (data) {
 												console.log(data);
 												if (rsp.paid_amount == data.response.amount) {
-													location.href = "/orders/orderssuccess";
+													/* location.href = "/orders/orderssuccess"; */
 													console.log(data);
 												} else {
 													alert("결제 검증 실패");
