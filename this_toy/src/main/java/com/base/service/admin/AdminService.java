@@ -7,5 +7,7 @@ import com.base.entity.UserVO;
 public interface AdminService {
  
 	ArrayList<UserVO> admin();
+	
+	String deleteMember(String userId);
  }
  
