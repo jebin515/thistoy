@@ -20,6 +20,7 @@ import lombok.AllArgsConstructor;
 @RequestMapping("/*")
 public class MainController {
 	private MainService service;
+	
 	@GetMapping("main")
 	public void getBest(Model model) {
 		model.addAttribute("best", service.bestList());
