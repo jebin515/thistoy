@@ -4,6 +4,22 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.base.mapper.NoticeMapper">
 
+<sql id="criteria">
+     <trim prefix="(" suffix=") AND">
+	     <foreach collection="typeArr"  item="type" separator="OR">
+	     	<if test="type == 'T'.toString()">
+	     	notice_title like '%' || #{keyword} || '%'
+	     	</if>
+	     	<if test="type == 'C'.toString()">
+	     	notice_text like '%' || #{keyword} || '%'
+	     	</if>
+	     	<if test="type == 'W'.toString()">
+	     	user_id like '%' || #{keyword} || '%'
+	     	</if>
+	     </foreach>
+     </trim>
+</sql>
+
    <select id="getList" resultType="NoticeVO">
       select * from notice order by notice_num desc
    </select>
@@ -45,16 +61,23 @@
    select * from (
     select /* + FULL(notice) */ ROWNUM rn, notice_num, notice_title, user_id, notice_date
     from notice
-    where notice_num > 0
+    where
+     ]]>
+     
+     <include refid="criteria"></include>
+
+     <![CDATA[
+    notice_num > 0
     and rownum > 0
     and rownum <= (#{pageNum} * #{amount})
     )where rn > (#{pageNum} - 1) * #{amount}
-    order by notice_num desc
     ]]>
    </select>
    
    <select id="getTotalCount" resultType="int">
-   select count(notice_num) from notice
+	   select count(notice_num) from notice where 
+	   <include refid="criteria"></include>
+	   notice_num > 0
    </select>
    
    
@@ -63,22 +86,7 @@
       select * from notice
       where
        ]]>
-       <trim suffix="and">
-       <foreach collection="map"  index="key"  item="val"  separator="OR" open="(" close=")">
-          <if test="key == 'T'.toString()">
-          notice_title like #{val}
-          </if>
-          
-          <if test="key == 'C'.toString()">
-          notice_text like #{val}
-          </if>
-          
-          <if test="key == 'W'.toString()">
-          user_id like #{val}
-          </if>
-             
-       </foreach>
-       </trim>
+
        <![CDATA[
        rownum < 10
        ]]>
