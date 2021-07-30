@@ -38,7 +38,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                <c:forEach items=" ${notice}" var="notice">
+                <c:forEach items="${list}" var="notice">
                     <tr>
                         <td>${notice.noticeNum}</td>
                         <td><a class="subject-list"  href='<c:out value="${notice.noticeNum}" />' ><c:out value="${notice.noticeTitle}" /></td>
@@ -81,22 +81,20 @@
 <!-- <input type="submit" value="글쓰기" class="board-write" onclick="location.href='notice_writer.html'"> -->
             <div>
             <div class="notice-search">
-                <form method="GET">
-                    <select name="date">
-                        <option value="week">일주일</option>
-                        <option value="amonth">한달</option>
-                        <option value="threemonth">세달</option>
-                        <option value="all">전체</option>
-                    </select>
-                    <select name="search-select">
-                        <option value="subject">제목</option>
-                        <option value="text">내용</option>
-                    </select>
-                    <input type="text" maxlength="30" class="search-text" required>
-                    <button type="submit">
-                        <i class='bx-fw bx bx-search bx-sm'></i>
-                    </button>
-                </form>
+            	<form id='searchForm'  action="/notice/notice"  method="get">
+            		<select name="type">
+            			<option value="">===</option>
+            			<option value="T">제목</option>
+            			<option value="C">내용</option>
+            			<option value="W">작성자</option>
+            			<option value="TC">제목+내용</option>
+            			<option value="TCW">제목+내용+작성자</option>
+            		</select>
+            		<input type='text' name='keyword'>
+            		<input type="hidden" name='pageNum' value=' ${pageMaker.cri.pageNum}'>
+            		<input type="hidden" name='amount' value=' ${pageMaker.cri.amount}'>
+            		<button class='btn btn-defauit'>검색</button>
+				</form>
             </div>
         </div>
     </main>
@@ -172,6 +170,17 @@ $(document).ready(function() {
 		actionForm.append("<input type='hidden' name='noticeNum' value=' " +targetNoticeNum+" ' >' " );
 		actionForm.attr("action", "/notice/notice_detail").submit();
 		
+	});
+	
+	var searchForm = $("#searchForm");
+	
+	$("#searchForm button").on("click", function(e) {
+		e.preventDefault();
+		console.log("............click......................");
+		
+		searchForm.find("input[name='pageNum']").val(1);
+		
+		searchForm.submit();
 	});
 });
 </script>

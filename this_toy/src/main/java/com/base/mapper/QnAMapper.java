@@ -11,4 +11,8 @@ public interface QnAMapper {
 	ArrayList<QnAVO> getQnA(QnAVO vo);
 	
 	int QnATotalCount(String productCode);
+	
+	int replyQnA(QnAVO vo);
+	
+	int deleteReply(int questionCode);
 }

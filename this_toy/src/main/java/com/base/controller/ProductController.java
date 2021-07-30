@@ -48,7 +48,7 @@ public class ProductController {
 	@GetMapping("detail_writer")
 	public String registerget(Model model, HttpServletRequest request, RedirectAttributes rttr) {
 		HttpSession session = request.getSession();
-		session.setAttribute("userId", "우편테스트2");
+		session.setAttribute("userId", "jin");
 		String userId = (String) session.getAttribute("userId");
 		if (userId == null) {
 			rttr.addFlashAttribute("fail", "fail");
@@ -148,7 +148,7 @@ public class ProductController {
 	}
 
 	@GetMapping("detail_main")
-	public void getDetailMain(@RequestParam(name = "pc") String productCode,
+	public void getDetailMain(@RequestParam(name = "pc", defaultValue = "1") String productCode,
 			@RequestParam(name = "p", defaultValue = "1") int pageNum, Model model) {
 		QnAVO qnavo = new QnAVO();
 		qnavo.setQnaCount(10);
