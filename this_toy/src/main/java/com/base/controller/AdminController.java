@@ -26,8 +26,8 @@ public class AdminController {
 		model.addAttribute("admin", service.admin());
 	}
 	
-	@PostMapping("delete")
-	public String delete(@RequestParam("userId") String userId) {
+	@PostMapping("delete/{userId}")
+	public String delete(@PathVariable("userId") String userId) {
 		System.out.println(userId);
 		service.deleteMember(userId);
 		return "redirect:/admin/admin";

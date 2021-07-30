@@ -10,10 +10,17 @@ import com.base.entity.UserVO;
 public interface OrdersService {
 	
 	ArrayList<ProductVO> getproduct(String productCode);
+	
 	UserVO getaddr(String userId);
-	CartVO getcart(CartVO vo);
+
+	ProductVO getcart(String productCode);
+	
 	void insertorder(OrdersVO vo);
+	
 	void deletecart(OrdersVO vo);
+	
 	void updatestock(OrdersVO vo);
+	
 	void updatesales(OrdersVO vo);
+
 }
