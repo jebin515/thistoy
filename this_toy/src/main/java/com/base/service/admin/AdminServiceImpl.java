@@ -16,16 +16,22 @@ public class AdminServiceImpl implements AdminService {
 
 	private AdminMapper mapper;
 
-	@Override
-	public ArrayList<UserVO> admin() {
-		// TODO Auto-generated method stub
-		return mapper.admin();
-	}
 
 	@Override
 	public void deleteMember(String userId) {
 		// TODO Auto-generated method stub
-		 mapper.deleteMember(userId);
+		mapper.deleteMember(userId);
 	}
 
+	@Override
+	public ArrayList<UserVO> userListPaging(int pageNum) {
+		// TODO Auto-generated method stub
+		return mapper.userListPaging(pageNum);
+	}
+	
+	@Override
+	public int getTotal() {
+		// TODO Auto-generated method stub
+		return mapper.getTotal();
+	}
 }
