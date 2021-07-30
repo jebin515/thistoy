@@ -6,8 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
 import com.base.entity.ListPageVO;
 import com.base.entity.PageVO;
 import com.base.entity.UserVO;
@@ -40,7 +38,6 @@ public class AdminController {
 	      service.deleteMember(userId);
 	       return "redirect:/admin/admin";
 	   }
-	
 }
 
 

@@ -49,7 +49,7 @@ let basket = {
     },
     //개별 수량 변경
     changePNum: function (pos) {
-        var item = document.querySelector('input[name=p_num' + pos + ']');
+        var item = document.querySelector('input[id=p_num' + pos + ']');
         var p_num = parseInt(item.getAttribute('value'));
         var newval = event.target.classList.contains('up') ? p_num + 1 : event.target.classList.contains('down') ? p_num - 1 : event.target.value;
         console.log(newval);

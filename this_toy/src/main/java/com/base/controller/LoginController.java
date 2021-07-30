@@ -8,8 +8,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +21,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -102,34 +107,41 @@ public class LoginController {
 		System.out.println("로그아웃 GET");
 		return "redirect:/";
 	}
-////	 int방식 로그인 id,pw 검색후 존재하면 로그인
-//	@PostMapping("/loginsuccess")
-//	public String loginPOST(UserVO userVO,HttpSession session, RedirectAttributes rttr) {
-//		//아이디&&비밀번호 검색후 모두 일치하면 result에 1 입력
-//		int result = userService.loginCheck(userVO);
-//		try {
-//			if(result == 1) {
-//				userService.login(userVO);
-//				System.out.println(userService.loginCheck(userVO)); //로그인 확인용
-//				session.setAttribute("loginId", userVO.getUserId());
-//				System.out.println("------------------로그인 POST 성공 -----------------------------------");
-//			}else if (result == 0) {
-//				System.out.println(userService.loginCheck(userVO));
-//				System.out.println("------------------로그인 POST 실패 -----------------------------------");
-//				return "/login/loginfail";
-//			}
-//		} catch (Exception e) {
-//			throw new RuntimeException();
+	
+	@GetMapping("/navercall")
+	public @ResponseBody String naverCallback(String code) { //@ResponseBody  ) data를 리턴해주는 컨트롤러 함수
+		System.out.println("네이버 콜백 페이지 띄움");
+//		// CSRF 방지를 위한 상태 토큰 검증 검증
+//		// 세션 또는 별도의 저장 공간에 저장된 상태 토큰과 콜백으로 전달받은 state 파라미터의 값이 일치해야 함
+//		// 콜백 응답에서 state 파라미터의 값을 가져옴
+//		String state = request.queryParams(“state”);
+//		// 세션 또는 별도의 저장 공간에서 상태 토큰을 가져옴
+//		String storedState = request.session().attribute(“state”);
+//		if( !state.euals( storedState ) ) {
+//		    return RESPONSE_UNAUTHORIZED; //401 unauthorized
+//		} else {
+//		    Return RESPONSE_SUCCESS; //200 success
 //		}
-//		return "/main";
-//	} //int 로그인 종료
-	@RequestMapping("/naver")
-	public void naver() {
-		System.out.println("네이버로그인 페이지 띄움");
+		return "네이버인증완료naver";
 	}
-	@RequestMapping("/kakao")
-	public void kakao() {
+	
+	@GetMapping("/kakaocallback")
+	public @ResponseBody String kakaoCallback(String code) { //@ResponseBody  ) data를 리턴해주는 컨트롤러 함수
 		System.out.println("카카오로그인 페이지 띄움");
+//		post방식으로 key=value 데이터 요청해야함 (카카오로)
+//		 예전자바에선 HttpsURLConnection url =new Http~ 로쓰기도함 (불편)  , Retrofit2 라이브러리, OkHttp 라이브러리 등등 있다
+		//http요청 편하게할수있는 라이브러리
+		RestTemplate rt = new RestTemplate();   
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8"); //헤더에 컨텐트타입을 담는다는 의미는  내가 전송할 http body 데이터가 key value 데이터라고 알려줌
+		
+		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+		params.add("grant_type", "authorization_code");  //원래는 값들을 변수로 바꿔서 넣는게 좋음
+		params.add("client_id", "46578e2a852ca11289c2da8422acc9ca");
+		params.add("redirect_uri", "http://localhost:9090/login/kakaocallback");
+		params.add("code", "authorization_code");
+		
+		return "kakao done CODE  : "+code;
 	}
 
 }// 클래스 종료

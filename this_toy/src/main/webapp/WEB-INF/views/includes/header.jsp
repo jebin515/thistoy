@@ -14,7 +14,7 @@
 </script>
 
 <header id="header">
-	<c:if test="${empty authInfo.userId}">
+	<c:if test="${empty authInfo}">
 	<div class="header-full">
 		<a href="/main" class="logo"></a>
 			<nav class="header_nav">
@@ -27,15 +27,15 @@
 			</nav>
 	</div>
 	</c:if>
-	<c:if test="${not empty authInfo.userId}">
+	<c:if test="${not empty authInfo}">
 	<div class="header-full">
 		<a href="#" class="logo"></a>
 			<nav class="header_nav">
 				<div class="header_menu">
 					<a href="/login/logout" class="header_login">  <i
-						class='bx-fw bx bxs-rocket bx-tada-hover'></i>로그아웃</a> <a href="#"
+						class='bx-fw bx bxs-rocket bx-tada-hover'></i>로그아웃</a> <a href="/edit/editmypage"
 						class="header_register"><i
-						class='bx-fw bx bxs-user-plus bx-tada-hover'></i>회원가입</a>
+						class='bx-fw bx bxs-user-plus bx-tada-hover'></i>마이페이지</a>
 						<p> 반갑습니다 ${authInfo.userName}님</p>
 				</div>
 			</nav>
