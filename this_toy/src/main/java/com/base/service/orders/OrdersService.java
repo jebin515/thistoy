@@ -11,6 +11,6 @@ public interface OrdersService {
 	
 	ArrayList<ProductVO> getproduct(String productCode);
 	UserVO getaddr(String userId);
-	CartVO getcart(CartVO vo);
+	ProductVO getcart(String productCode);
 	OrdersVO insertorder(OrdersVO vo); 
 }

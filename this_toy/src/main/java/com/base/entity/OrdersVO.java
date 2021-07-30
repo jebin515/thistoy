@@ -18,4 +18,6 @@ public class OrdersVO {
 	private String orderAddress;
 	private String orderAddressDetail;
 	private String userId;
+	private String userTel;
+	
 }
