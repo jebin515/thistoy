@@ -184,6 +184,7 @@ public class ProductController {
 	@ResponseBody
 	@PostMapping(value = "wishList", produces = "application/text; charset=UTF-8")
 	public String insertWishList(@RequestBody WishlistVO vo) {
+		System.out.println(vo);
 		int wishcount = prService.wishCount(vo);
 		if (wishcount >= 1) {
 			prService.deleteWish(vo);
