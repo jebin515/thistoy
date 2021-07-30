@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.base.entity.NoticeCriteria;
 import com.base.entity.NoticeVO;
 import com.base.mapper.NoticeMapper;
 
@@ -48,5 +49,15 @@ public class NoticeServiceImpl implements NoticeService{
 	public List<NoticeVO> getList() {
 
 		return mapper.getList();
+	}
+
+	@Override
+	public List<NoticeVO> getList(NoticeCriteria cri) {
+		return mapper.getListwithPaging(cri);
+	}
+
+	@Override
+	public int getTotal(NoticeCriteria cri) {
+		return mapper.getTotalCount(cri);
 	}
 }

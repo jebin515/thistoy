@@ -37,8 +37,8 @@
 }
 
 #main .txt-section .txt-main {
-	height: 300px;
-	margin: 20px 0 20px 0;
+	height: 400px;
+	margin: 20px 0 50px 0;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
@@ -140,7 +140,7 @@
 	flex-direction: column;
 	justify-content: center;
 	text-align: center;
-	padding: 50px 0 50px 0;
+	padding: 50px 0 30px 0;
 	width: 1000px;
 	margin: 0 auto;
 }
@@ -162,6 +162,11 @@
 #main .detail-content .img_rating {
 	display: flex;
 	justify-content: space-between;
+}
+
+#main .detail-content .review_register {
+	width: 100px;
+	padding:5px;
 }
 
 #main .detail-content input[type="file"] {
@@ -195,15 +200,19 @@
 	color: white;
 	cursor: pointer;
 }
-.pn:hover{
-	cursor:pointer;
+
+.pn:hover {
+	cursor: pointer;
 }
-#pageNum{
-	color:rgba(245, 96, 153, 0.9);
+
+#pageNum {
+	color: rgba(245, 96, 153, 0.9);
 }
-.fas:hover{
-	cursor:pointer;
+
+.fas:hover {
+	cursor: pointer;
 }
+
 #main .detail-content .title {
 	width: 1000px;
 	position: relative;
@@ -216,10 +225,12 @@
 	color: rgba(245, 96, 153, 0.9);
 	height: 50px;
 }
-#main .detail-content .fa-star,.fa-star-o{
-	margin:-2px;
-	color:rgba(245, 96, 153, 0.9);
+
+#main .detail-content .fa-star, .fa-star-o {
+	margin: -2px;
+	color: rgba(245, 96, 153, 0.9);
 }
+
 #main .detail-content .title-plan {
 	font-size: 20px;
 	font-family: "Cafe24Ssurround", sans-serif;
@@ -241,7 +252,7 @@
 }
 
 #main .detail-content table tr th:nth-child(1) {
-	width: 20%;
+	width: 200px;
 }
 
 #main .detail-content table tr th:nth-child(2) {
@@ -255,13 +266,16 @@
 #main .detail-content table tr th:nth-child(4) {
 	width: 20%;
 }
+#main .detail-content table tr th:nth-child(5) {
+	width: 10%;
+}
 
 #main .detail-content table tr th {
 	padding: 10px
 }
 
 #main .detail-content table tr td {
-	padding: 10px 0 10px 0
+	padding: 5px 0 5px 0
 }
 
 #main .detail-content table img {
@@ -274,6 +288,13 @@
 	justify-content: center;
 	align-items: center;
 	height: 100%;
+}
+
+#main .detail-content .write_QnA {
+	text-align: left;
+	color: rgba(245, 96, 153, 0.9);
+	font-weight: bold;
+	margin-bottom: 10px;
 }
 
 /* 메인 2 끝 */
@@ -416,3 +437,73 @@
 }
 
 /* writer 끝 */
+#main .detail-content .QnA_text {
+	resize: none;
+	font-size: 20px;
+	outline-color: grey;
+	margin-bottom: 10px;
+}
+
+.QnA_buttonbox {
+	text-align: right;
+}
+
+.reply {
+	position: relative;
+}
+
+.fa-reply {
+	transform: rotate(-180deg);
+	cursor: default;
+	position: relative;
+	top: -20px;
+	left: -10px;
+}
+
+.fa-reply:hover {
+	cursor: default;
+}
+.reply_button,.delete_button{
+	text-align:right;
+	margin:0 20px 5px 0;
+	padding:3px;
+}
+.QnA_register {
+	width: 100px;
+	padding: 5px 0;
+}
+.add {
+	width: 100px;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.addQnA {
+	margin-top: -3px;
+	border: 1px solid rgba(245, 96, 153, 0.9);
+	background-color: rgba(245, 96, 153, 0.9);
+	color: white;
+	border-radius: 30px;
+	padding: 5px;
+}
+
+.addQnA:hover {
+	cursor: pointer;
+}
+
+.reply_td {
+	text-align: left;
+	margin-right:10px;
+}
+
+.reply_text {
+	width: 760px;
+	resize: none;
+}
+.register_button{
+	margin:0 20px 5px 0;
+	padding:3px;
+}
+.QnInfo th{
+	width:200px
+}

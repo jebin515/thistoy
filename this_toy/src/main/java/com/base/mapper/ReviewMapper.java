@@ -13,5 +13,7 @@ public interface ReviewMapper {
 	ArrayList<ReviewVO> getReview(PageVO vo);
 
 	int getReviewTotalCount(String productCode);
+	
+	int deleteReview(int reviewCode);
 
 }

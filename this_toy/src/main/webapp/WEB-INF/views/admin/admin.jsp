@@ -75,7 +75,6 @@
 				</c:forEach>
             
          </div>
-   </section>
 
    <!-- -----------푸터------------- -->
    <%@ include file="../includes/footer.jsp"%>

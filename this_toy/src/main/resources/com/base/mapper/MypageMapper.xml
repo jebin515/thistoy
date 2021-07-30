@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 어떤 내용들이 들어가고 어떤게 들어가면 안되는지 알려주는게 dtd(자동완성기능이 지원된다) -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace는 인터페이스와 동일하게 해줘야한다. -->
+<mapper namespace="com.base.mapper.MypageMapper">
+
+	<select id="getProductCode" resultType="WishlistVO">
+	select * from wish_list where user_id = #{userId} order by wish_code desc
+	</select>
+	
+	<select id="getWishList" resultType="ProductVO">
+	select * from product where product_code = #{productCode}
+	</select>
+	
+	<select id="getSellbox" resultType="ProductVO">
+	select * from product where user_id = #{userId} order by product_date desc
+	</select>
+	
+	
+	<select id="getCart" resultType="ProductVO">
+	select * from product where product_code = #{productCode}
+	</select>
+	
+	<select id="getProductCode3" resultType="CartVO">
+	select * from cart where user_id = #{userId} order by cart_code desc
+	</select>
+	
+	<select id="getOrder" resultType="OrdersVO">
+	select * from orders where user_Id = #{userId} order by order_date desc
+	</select>
+	
+	<select id="getWish" resultType="WishlistVO">
+	select * from wish_list where product_code = #{productCode}
+	</select>
+	
+	
+	
+	
+</mapper>
