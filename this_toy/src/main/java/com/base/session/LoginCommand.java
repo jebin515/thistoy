@@ -11,4 +11,10 @@ public class LoginCommand {
 	private String userId;
 	@NotEmpty
 	private String userPasswd;
+	
+	//비밀번호 수정시 사용할 변수
+	@NotEmpty
+	private String newPassword;
+	@NotEmpty
+	private String oldPassword;
 }

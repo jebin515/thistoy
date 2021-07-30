@@ -28,7 +28,7 @@
         </div>
         <!-- 프로필 영역 -->
         <!-- 프로필 이미지 -->
-        <form name="editmypage" id="editmypage" method="post" class="editmypage" action="/Page">
+        <form name="editmypage" id="editmypage" method="post" class="editmypage" >
             <div class="change-form">
                 <div class="proimg">
                     <img src="/img/profile.jpg">
@@ -37,36 +37,44 @@
 
                 <div class="edit-form">
                     <table>
+                    	<tr class="form-control">
+                            <th><span>아이디</span></th>
+                            <td>
+<%--                             <span name="userId" class="userId" >${authInfo.userId}</span> --%>
+                            <input type="text" name="userId" value="${authInfo.userId}" class="userId" required>
+                            </td>
+                        </tr>
                         <tr class="form-control">
                             <th><span>이름</span></th>
-                            <td><input type="text" name="username" placeholder="이름을 입력하세요."></td>
+                            <td><input type="text" name="userName" value="${authInfo.userName}" required></td>
                         </tr>
                         <tr class="form-control">
-                            <th><span>비밀번호</span></th>
-                            <td><input type="password" id="password" name="password"
-                                    placeholder="특수문자/문자/숫자 포함 8자리 이상 입력하세요."></td>
+                            <th><span>현재 비밀번호</span></th>
+                            <td><input type="password" id="password" name="oldPassword" class="oldPassword"
+                                    placeholder="특수문자/문자/숫자 포함 8자리 이상 입력하세요." required></td>
                         </tr>
                         <tr class="form-control">
-                            <th><span>비밀번호 확인</span></th>
-                            <td><input type="password" name="password2" placeholder="비밀번호를 확인하세요."></td>
+                            <th><span>수정 비밀번호 확인</span></th>
+                            <td><input required type="password" name="newPassword" placeholder="특수문자/문자/숫자 포함 8자리 이상 입력하세요."></td>
                         </tr>
                         <tr class="form-control">
                             <th><span>이메일</span></th>
                             <td>
-                                <input type="email" name="email" id="email" placeholder="예)abc@abc.com" required>
+                                <input type="email" name="userEmail" id="email" value="${authInfo.userEmail}" required>
                             </td>
                         </tr>
                         <tr class="form-control">
                             <th><span>휴대폰 번호</span></th>
-                            <td><input type="tel" name="tel" placeholder="번호를 입력하세요."></td>
+                            <td><input type="tel" name="userTel" value="${authInfo.userTel}" required></td>
                         </tr>
                         <tr class="form-control">
                             <th><span>주소</span></th>
-                            <td><input id="member_post" name="member_post" type="text" placeholder="지번" readonly
-                                    onclick="findAddr()"><br>
-                                <input id="member_addr" name="member_addr" type="text" placeholder="주소"
-                                    readonly><br><input type="text" name="member_detail" id="member_detail"
-                                    placeholder="추가 주소">
+                            <td><input id="member_post" name="userAddressPost" type="text" placeholder="${authInfo.userAddressPost}" readonly
+                                    onclick="findAddr()" required><br>
+                                <input id="member_addr" name="userAddress" type="text" placeholder="${authInfo.userAddress}"
+                                    readonly required>
+                                    <br><input type="text" name="userAddressDetail" id="member_detail"
+                                    placeholder="${authInfo.userAddressDetail}" required>
                             </td>
                         </tr>
                     </table>
@@ -80,7 +88,7 @@
                 <input type='button' class="delet" value='회원탈퇴' onclick="location.href='delet.html'" />
 
 
-                <input type='button' class="save" value='저장하기' onclick='alert("저장되었습니다!")' />
+                <input type='submit' class="save" value='저장하기' />
 
             </div>
 
@@ -119,9 +127,14 @@
     </div>
     <div class="chat-bot-open"><i class='bx bx-message-rounded' onclick="openchat();"></i></div>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="/js/back-to-top.js"></script>
+    <script src="/js/address.js"></script>
+    <script src="/js/modifyCheck.js"></script>
     <script src="/js/chatbot.js"></script>
     <script type="text/javascript" src="js/editmypage.js"></script>
+    <script
+		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </body>
 
 </html>

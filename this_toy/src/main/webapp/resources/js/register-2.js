@@ -1,31 +1,34 @@
-$.validator.addMethod("regex", function(value, element, regexp) {
+$.validator.addMethod("regex", function (value, element, regexp) {
 	let re = new RegExp(regexp);
 	let res = re.test(value);
 	console.log(res, value, regexp, re)
 	return res;
 });
 
-$(function() {
+$(function () {
 	$(".form").validate({
 		rules: {
-			id: {
+			userId: {
 				required: true,
 				minlength: 3
 			},
-			username: {
+			userName: {
 				required: true,
 				minlength: 2
 			},
-			password: {
+			userPasswd: {
 				required: true,
-				regex: "^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$",
-				minlength: 8
+				// regex: "^.(?=^.{8,15}$)(?=.\d)(?=.[a-zA-Z])(?=.[!@#$%^&+=]).*$",
+				//기존정규식
+				regex: "^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$^])",
+				minlength: 8,
+				maxlength: 15
 			},
 			password2: {
 				required: true,
 				equalTo: '#password'
 			},
-			email: {
+			userEmail: {
 				required: true,
 				regex: "^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$",
 				email: true
@@ -44,7 +47,7 @@ $(function() {
 			member_detail: {
 				required: true
 			},
-			tel: {
+			userTel: {
 				required: true,
 				digits: true,
 				regex: "^(010|011)[-\\s]?\\d{3,4}?\\d{4}$"
@@ -52,29 +55,30 @@ $(function() {
 		},
 
 		messages: {
-			id: {
+			userId: {
 				required: "아이디는 필수 입력입니다.",
 				minlength: "최소 3글자 이상 입력해주세요."
 			},
-			username: {
+			userName: {
 				required: "이름은 필수 입력입니다.",
 				minlength: "최소 2글자 이상 입력해주세요."
 			},
-			password: {
+			userPasswd: {
 				required: "비밀번호는 필수 입력입니다.",
-				minlength: "최소 6자리 이상 입력해주세요",
-				regex: "비밀번호에 특수문자/문자/숫자를 포함해주세요"
+				minlength: "최소 8자리 이상 입력해주세요",
+				regex: "비밀번호에 3특수문자/문자/숫자를 포함해주세요",
+				maxlength: "15자리 이하로 입력하세요"
 			},
 			password2: {
 				required: "비밀번호를 확인하세요",
 				equalTo: "비밀번호가 틀립니다"
 			},
-			email: {
+			userEmail: {
 				required: "이메일은 필수 입력입니다.",
 				regex: "이메일 형식을 지켜주세요."
 			},
 			send_number: {
-				required: "인증번호를 확인해주세요",
+				required: "인증번호를 입력해주세요",
 				digits: "숫자만 입력하세요",
 				maxlength: "4자리만 입력하세요"
 			},
@@ -87,7 +91,7 @@ $(function() {
 			member_detail: {
 				required: "",
 			},
-			tel: {
+			userTel: {
 				required: "휴대폰 번호를 입력하세요",
 				digits: "숫자만 입력하세요",
 				regex: "전화번호 양식이 잘못되었습니다"

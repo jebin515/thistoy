@@ -55,6 +55,7 @@
 
 					<!-- 회원정보 -->
 					<c:forEach var="admin" items="${admin}">
+					<form action="/admin/delete/${admin.userId}" method="post">
 						<tr class="table_data">
 							<td class="member_date"><fmt:formatDate value="${admin.userDate}" type="both" pattern="yy-MM-dd" /></td>
 							<td class="member_id"><c:out value="${admin.userId}" /></td>
@@ -62,8 +63,9 @@
 							<td class="member_phone"><c:out value="${admin.userTel}" /></td>
 							<td class="member_email"><c:out value="${admin.userEmail}" /></td>
 							<td class="member_address"><c:out value="${admin.userAddress}" /></td>
-							<td class="delete"><a onclick="if( confirm('정말 삭제하시겠습니까?') ){href='delete?userId=${admin.userId}'}">삭제</a></td>
+							<td class="delete"><input type="submit" onclick="confirm('정말 삭제하시겠습니까?')"></td>
 						</tr>
+					</form>
 					</c:forEach>
 
 				</table>

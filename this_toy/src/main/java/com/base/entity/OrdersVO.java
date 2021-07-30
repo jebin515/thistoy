@@ -18,8 +18,9 @@ public class OrdersVO {
 	private String orderAddress;
 	private String orderAddressDetail;
 	private String userId;
-	
-	
+	private String userTel;
+
 	private int productStock; // 상품재고
 	private int sellCount; //판매량
-}
+
+  }
