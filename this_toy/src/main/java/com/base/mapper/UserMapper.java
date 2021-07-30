@@ -12,12 +12,6 @@ public interface UserMapper{
 	UserVO login(UserVO userVO);
 	
 	
-	boolean loginCheck2(UserVO userVO);
-	UserVO viewUser(UserVO userVO);
-	
-	
-	int loginCheck(UserVO userVO);
-	
 	//회원가입
 	void register(UserVO userVO);
 	
@@ -26,5 +20,11 @@ public interface UserMapper{
 	
 	//현재사용 로그인  매퍼
 	public UserVO selectById(String UserId);
+	//개인정보 수정
+	public void userModify(UserVO vo);
+	//정보수정시 현재비밀번호체크
+	public UserVO pwCheck(String UserPasswd);
 	
+	
+	int loginCheck(UserVO userVO);
 }

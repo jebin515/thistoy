@@ -16,25 +16,25 @@ import com.base.session.LoginCommand;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
-@Service  //controller처럼 동작해서 bean 등록
+@Service // controller처럼 동작해서 bean 등록
 @Log4j
 @RequiredArgsConstructor
-public class UserServiceImpl implements UserService{
-	
+public class UserServiceImpl implements UserService {
+
 	private final UserMapper userMapper;
-	
-	
+
 	@Override
 	public UserVO login(UserVO userVO) {
-		
+
 		return userMapper.login(userVO);
 	}
-	
-	//회원가입
+
+	// 회원가입
 	@Override
-	public void register(UserVO userVO){
+	public void register(UserVO userVO) {
 		userMapper.register(userVO);
 	}
+
 	@Override
 	public int idCheck(UserVO userVO) {
 		int result = userMapper.idCheck(userVO);
@@ -42,49 +42,47 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public int loginCheck(UserVO userVO) {
-		int result = userMapper.loginCheck(userVO);
-		return result;
+	public AuthInfo loginAuth(LoginCommand loginCommand) {
+		UserVO user = userMapper.selectById(loginCommand.getUserId());
+		if (user == null) {
+			throw new IdPasswordNotMatchingException();
+		}
+		if (!user.matchPassword(loginCommand.getUserPasswd())) {
+			throw new IdPasswordNotMatchingException();
+		}
+		return new AuthInfo(user.getUserId(), user.getUserName(), user.getUserEmail(), user.getUserTel(),
+				user.getUserAddressPost(), user.getUserAddress(), user.getUserAddressDetail());
 	}
 
+	// 개인정보수정
 	@Override
-    public AuthInfo loginAuth(LoginCommand loginCommand) {
-        UserVO user = userMapper.selectById(loginCommand.getUserId());
-        if(user == null) {
-            throw new IdPasswordNotMatchingException();
-        }
-        if(!user.matchPassword(loginCommand.getUserPasswd())) {
-            throw new IdPasswordNotMatchingException();
-        }
-        return new AuthInfo(user.getUserId(), user.getUserName());
-    }
-	//boolean 로그인
-//	@Override
-//	public boolean loginCheck2(UserVO userVO, HttpSession session) {
-//		boolean result = userMapper.loginCheck2(userVO);
-//		if(result) {
-//			UserVO userVO2 = viewUser(userVO);
-//			session.setAttribute("userId", userVO2.getUserId());
-//			session.setAttribute("userName", userVO2.getUserName());
-//		}
-//		return result;
-//	}
+	public void userModify(UserVO vo) {
+		userMapper.userModify(vo);
 
+		String pw = vo.getUserPasswd();
+		String mail = vo.getUserEmail();
+	}
 
-//	@Override
-//	public boolean loginCheck2(UserVO userVO, HttpSession session) {
-//		boolean result = userMapper.loginCheck2(userVO);
-//		if(result) {
-//		UserVO userVO2 = viewUser(userVO);
-//		session.setAttribute("userId", userVO2.getUserId());
-//		session.setAttribute("userName", userVO2.getUserName());
-//		}
-//	return result;
-//	}
-//	@Override
-//	public UserVO viewUser(UserVO userVO) {
-//		return userMapper.viewUser(userVO);
-//	}
+	// 개인정보 수정 비밀번호 체크
+	@Override
+	public AuthInfo pwCheck(LoginCommand loginCommand) {
 
+		UserVO user = userMapper.pwCheck(loginCommand.getUserId());
+
+		if (user == null) {
+			System.out.println("수정비번없음");
+
+			throw new IdPasswordNotMatchingException();
+		}
+		if (!user.matchPassword(loginCommand.getOldPassword())) {
+			System.out.println("수정비번틀림");
+			throw new IdPasswordNotMatchingException();
+		}
+		// 기본
+//      return new AuthInfo(user.getUserId(), user.getUserName());
+		// 유저수정 페이지 위해서 다른 정보들도 넣음
+		return new AuthInfo(user.getUserId(), user.getUserName(), user.getUserEmail(), user.getUserTel(),
+				user.getUserAddressPost(), user.getUserAddress(), user.getUserAddressDetail());
+	}
 
 }
