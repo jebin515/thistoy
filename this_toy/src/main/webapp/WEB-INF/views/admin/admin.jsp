@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
@@ -10,68 +10,84 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 <title>Document</title>
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-latest.js"></script>
 <link rel="stylesheet" href="/css/style.css">
 <link rel="stylesheet" href="/css/mypage_sellbox.css">
 <link rel="stylesheet" href="/css/admin.css">
 <script src="https://kit.fontawesome.com/a216194d9c.js"
-	crossorigin="anonymous"></script>
+   crossorigin="anonymous"></script>
 <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'
-	rel='stylesheet'>
+   rel='stylesheet'>
 </head>
 
 <body>
-	<%@ include file="../includes/header.jsp"%>
+   <%@ include file="../includes/header.jsp"%>
 
-	<!-- ------------ 관리자 페이지 ---------- -->
-	<section>
-		<div>
-			<h2 class="title">관리자 페이지</h2>
-		</div>
+   <!-- ------------ 관리자 페이지 ---------- -->
+   <section>
+      <div>
+         <h2 class="title">관리자 페이지</h2>
+      </div>
 
-		<div class="line"></div>
-		<div class="mypage_inner">
-			<div class="inner">
-				<a href="mypage_wishlist.html" class="item">판매글 관리</a> <a
-					href="mypage_sellbox.html" class="item">리뷰 관리</a> <a
-					href="mypage_cart.html" class="item">문의/답글 관리</a> <a
-					href="mypage_orderbox.html" class="item">회원관리</a>
-			</div>
-			<div style="position: relative;">
-				<i class="fas fa-caret-left"></i>
-			</div>
+      <div class="line"></div>
+      <div class="mypage_inner">
+         <div class="inner">
+            <a href="mypage_wishlist.html" class="item">판매글 관리</a> <a
+               href="mypage_sellbox.html" class="item">리뷰 관리</a> <a
+               href="mypage_cart.html" class="item">문의/답글 관리</a> <a
+               href="mypage_orderbox.html" class="item">회원관리</a>
+         </div>
+         <div style="position: relative;">
+            <i class="fas fa-caret-left"></i>
+         </div>
 
-			<div class="container">
-				<table class="delete_table">
-					<!-- 표 카테고리 -->
-					<tr class="table_head">
-						<td class="member_date">가입날짜</td>
-						<td class="member_id">아이디</td>
-						<td class="member_name">이름</td>
-						<td class="member_phone">핸드폰</td>
-						<td class="member_email">이메일</td>
-						<td class="member_address">주소</td>
-						<td class="member_delete">삭제</td>
-					</tr>
+         <div class="container">
+            <table class="delete_table">
+               <!-- 표 카테고리 -->
+               <tr class="table_head">
+                  <td class="member_date">가입날짜</td>
+                  <td class="member_id">아이디</td>
+                  <td class="member_name">이름</td>
+                  <td class="member_phone">핸드폰</td>
+                  <td class="member_email">이메일</td>
+                  <td class="member_address">주소</td>
+                  <td class="member_delete">삭제</td>
+               </tr>
 
-					<!-- 회원정보 -->
-					<c:forEach var="admin" items="${admin}">
-						<tr class="table_data">
-							<td class="member_date"><fmt:formatDate value="${admin.userDate}" type="both" pattern="yy-MM-dd" /></td>
-							<td class="member_id"><c:out value="${admin.userId}" /></td>
-							<td class="member_name"><c:out value="${admin.userName}" /></td>
-							<td class="member_phone"><c:out value="${admin.userTel}" /></td>
-							<td class="member_email"><c:out value="${admin.userEmail}" /></td>
-							<td class="member_address"><c:out value="${admin.userAddress}" /></td>
-							<td class="delete"><a href="#" >삭제</a></td>
-						</tr>
-					</c:forEach>
+               <!-- 회원정보 -->
+               <c:forEach var="admin" items="${admin}">
+               <form action="/admin/delete/${admin.userId}" method="post" class="admin_delete">
+                  <tr class="table_data">
+                     <td class="member_date"><fmt:formatDate value="${admin.userDate}" type="both" pattern="yy-MM-dd" /></td>
+                     <td class="member_id"><c:out value="${admin.userId}" /></td>
+                     <td class="member_name"><c:out value="${admin.userName}" /></td>
+                     <td class="member_phone"><c:out value="${admin.userTel}" /></td>
+                     <td class="member_email"><c:out value="${admin.userEmail}" /></td>
+                     <td class="member_address"><c:out value="${admin.userAddress}" /></td>
+                     <td class="delete"><input type="button" class="delete_button" value="삭제"></td>
+                  </tr>
+               </form>
+               </c:forEach>
+            </table>
+				<c:forEach var="page" begin="${userListPaging.startPage}" end="${userListPaging.endPage}">
+				${page}
+				</c:forEach>
+            
+         </div>
+   </section>
 
-				</table>
-			</div>
-	</section>
-
-	<!-- -----------푸터------------- -->
-	<%@ include file="../includes/footer.jsp"%>
+   <!-- -----------푸터------------- -->
+   <%@ include file="../includes/footer.jsp"%>
 </body>
 
 </html>
+<script>
+$(document).on('click','.delete_button',function(){
+	let ok = confirm('정말 삭제하시겠습니까?. 날 버릴건가요??><')
+	let index = $('.delete_button').index(this);
+	if(ok==true){
+		$('.admin_delete:eq('+index+')').submit();
+	}
+});
+</script>
