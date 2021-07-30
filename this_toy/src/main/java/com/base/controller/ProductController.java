@@ -24,7 +24,9 @@ import com.base.entity.DccPageVO;
 import com.base.entity.ListPageVO;
 import com.base.entity.PageVO;
 import com.base.entity.ProductVO;
+import com.base.entity.QnAVO;
 import com.base.entity.WishlistVO;
+import com.base.service.QnA.QnAService;
 import com.base.service.Review.ReviewService;
 import com.base.service.category.CategoryService;
 import com.base.service.product.ProductService;
@@ -40,12 +42,13 @@ public class ProductController {
 	private ProductService prService;
 	private CategoryService CaService;
 	private ReviewService rvService;
+	private QnAService qnaService;
 	
 	
 	@GetMapping("detail_writer")
 	public String registerget(Model model, HttpServletRequest request, RedirectAttributes rttr) {
 		HttpSession session = request.getSession();
-		session.setAttribute("userId", "우편테스트2");
+		session.setAttribute("userId", "jin");
 		String userId = (String) session.getAttribute("userId");
 		if (userId == null) {
 			rttr.addFlashAttribute("fail", "fail");
@@ -145,8 +148,11 @@ public class ProductController {
 	}
 
 	@GetMapping("detail_main")
-	public void getDetailMain(@RequestParam(name = "pc") String productCode,
+	public void getDetailMain(@RequestParam(name = "pc", defaultValue = "1") String productCode,
 			@RequestParam(name = "p", defaultValue = "1") int pageNum, Model model) {
+		QnAVO qnavo = new QnAVO();
+		qnavo.setQnaCount(10);
+		qnavo.setProductCode(productCode);
 		PageVO vo = new PageVO();
 		vo.setProductCode(productCode);
 		int count = rvService.getReviewTotalCount(productCode);
@@ -159,7 +165,9 @@ public class ProductController {
 		vo.setPageNum(pageNum);
 		model.addAttribute("product", prService.getProduct(productCode)); // 선택된 상품 정보 가져가기
 		model.addAttribute("review", rvService.getReview(vo)); // 리뷰 가져가기
-		model.addAttribute("pageMaker", new PageVO(count, pageNum)); // 페이징 처리
+		model.addAttribute("pageMaker", new PageVO(count, pageNum)); // 리뷰 페이징 처리
+		model.addAttribute("QnA",qnaService.getQnA(qnavo)); // QnA 가져가기
+		model.addAttribute("QnACount",qnaService.QnATotalCount(productCode)); // QnA 총 개수 가져가기
 	}
 
 	@ResponseBody

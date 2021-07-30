@@ -22,8 +22,44 @@
 
   .write-board {
     margin: 0 auto;
+    border: 1px solid pink;
   }
-.board-title {
+  
+  .write-board th:first-child {
+    text-align: center;
+    width: 150px;
+    background-color: rgb(253, 214, 219);
+  }
+  
+  .write-board td {
+    border: 1px solid rgba(88, 113, 253, 0.75);
+    padding-left: 5px;
+  }
+  
+  .write-board tbody th {
+    padding: 10px 15px 10px 10px;
+    border: 1px solid rgba(88, 113, 253, 0.75);
+  }
+  
+  .board-writer {
+    margin-top: 10px;
+    font-size: 20px
+  }
+
+  /* .board-title{
+    font-size: 23px;
+    border: 1px solid white;
+  } */
+
+  .board-title, .board-writer, .board-date, .board-text {
+    font-size: 23px;
+    border: 1px solid white;
+  }
+
+  /* input:focus{
+    outline: none;
+  } */
+  /* .board-title {
     width: 400px;
     font-size: 20px;
     text-align: center;
@@ -31,14 +67,14 @@
     margin-left: 15px;
     margin-bottom: 20px;
     border: 1px solid lightgray;
-}
-th>div {
+} */
+/* th>div {
   border-bottom: 1px solid lightgray;
   padding-bottom: 20px;
-}
-.textbox {
+} */
+/* .textbox {
   margin-top: 20px
-}
+} */
 
 .under-button {
   text-align: center;

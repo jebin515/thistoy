@@ -73,6 +73,12 @@ public class OrdersController {
 			) throws IamportResponseException, IOException
 	{	
 		System.out.println(vo);
+		
+		service.insertorder(vo);
+		service.deletecart(vo);
+		service.updatesales(vo);
+		service.updatestock(vo);
+		
 		System.out.println(api.paymentByImpUid(imp_uid));
 		return api.paymentByImpUid(imp_uid);
 	}

@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NOTICE상세보기</title>
+    <title>NOTICE수정/삭제</title>
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/notice_detail.css">
@@ -20,8 +20,11 @@
 
     <!-- ---------------------main---------------------------------  -->
     <div class="title">
-        <h1>NOTICE</h1>
+        <h1>NOTICE Modify/Delete</h1>
     </div>
+    <form>
+    <input type="hidden" name='pageNum' value='${cri.pageNum}'>
+    <input type="hidden" name='amount' value='${cri.amount}'>
     <div class="board">
         <div class="base">
             <table>
@@ -32,7 +35,7 @@
                     </tr>
                     <tr>
                         <th>제목</th>
-                        <td><input type="text" class="noticeTitle"  name="noticeTitle" readonly="readonly" value= '<c:out value="${notice.noticeTitle}"/>'></td>
+                        <td><input type="text" class="noticeTitle"  name="noticeTitle"  value= '<c:out value="${notice.noticeTitle}"/>'></td>
                     </tr>
                     <tr>
                         <th>작성자</th>
@@ -46,7 +49,7 @@
                         <td colspan="2">
                             <div class="detail">
                                 <div class="detail-text">
-                                	<textarea rows="20" cols="50"  name="noticeText"  class="noticeText""> <c:out value=" ${notice.noticeText}"/> </textarea>
+                                	<textarea rows="20" cols="50"  name="noticeText"  class="noticeText"> <c:out value=" ${notice.noticeText}"/> </textarea>
                                 </div>
                             </div>
                         </td>
@@ -55,34 +58,43 @@
             </table>
         </div>
     </div>
-    
-   
-	<form id='actionForm' action="/notice/notice" method="get">
-       <input type="hidden" name='pageNum' value='${cri.pageNum}'>
-       <input type="hidden" name='amount' value='${cri.amount}'>
-       <input type="hidden" name='noticeNum' value='${notice.noticeNum}'>
-	</form>
-               
     <div class="board-button">
-        <button type="button" class="btn board-edit listBtn"><a href='/notice/notice_modify?noticeNum=<c:out value="${notice.noticeNum}"/>'>수정</a></button>
-        <button type="button" class="btn board-list modBtn"><a href='/notice/notice'>목록</a></button>
-		<script>
-			var actionForm = $("#actionForm");
-		
-			$(".listBtn").click(function(e) {
-				e.preventDefault();
-				actionForm.fin("input[name='noticeNum']").remove();
-				actionForm.submit();
-			});
-			
-				$(".modBtn").click(function(e) {
-				e.preventDefault();
-				actionForm.attr("action", "/notice/notice_modify");
-				actionForm.submit();
-			});
-		</script>
+        	<button class="btn board-edit" data-oper='modify'>수정</button>
+			<button class="btn board-list" data-oper='list'>목록</button>
+        	<button class="btn board-del" data-oper='remove'>삭제</button>
     </div>
+    </form>
 
+<script>
+
+$(document).ready(function() {
+	
+	var formObj = $("form");
+	
+	$('.btn').click(function(e){
+		
+		e.preventDefault();
+		
+		var operation = $(this).data("oper");
+		
+		console.log(operation);
+		
+		if(operation === 'list'){
+			self.location = "/notice/notice";
+		}else if(operation === 'remove'){
+			formObj.attr("action", "/notice/remove");
+			.attr("method", "post");
+			.formObj.submit();
+		}else if(operation === 'modify'){
+			formObj.attr("action", "/notice/notice_modify");
+			.attr("method", "post");
+			.formObj.submit();
+		}
+	})
+	
+})
+
+</script>
 
 <!-- footer -->
  <%@ include file="../includes/footer.jsp" %>

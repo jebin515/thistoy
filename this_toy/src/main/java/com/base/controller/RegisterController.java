@@ -82,7 +82,7 @@ public class RegisterController {
 		Random random = new Random();
 		int num = random.nextInt(10000 - 1001) + 1000;
 		System.out.println("인증번호 :" + num);
-//		System.out.println("메일코드 :" + mailcode);
+		System.out.println("메일코드 :" + mailcode);
 
 		String setFrom = "gihadaim@gmail.com";
 		String toMail = semail;

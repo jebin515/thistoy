@@ -17,27 +17,7 @@
 		and
 		user_passwd = #{userPasswd}
 	</select>
-	<select id="loginCheck" resultType="int">
-		select count(*) from
-		usertable
-		where user_id = #{userId}
-		and
-		user_passwd = #{userPasswd}
-	</select>
-	<select id="loginCheck2" resultType="String">
-		select user_id from
-		usertable
-		where user_id = #{userId}
-		and
-		user_passwd = #{userPasswd}
-	</select>
-	<select id="viewUser" resultType="com.base.entity.UserVO">
-		select * from
-		usertable
-		where user_id = #{userId}
-		and
-		user_passwd = #{userPasswd}
-	</select>
+
 	<select id="idCheck" resultType="int">
 		select count(*) from usertable
 		where user_id = #{userId}
@@ -66,14 +46,36 @@
 		<!-- 'xml테스트','xml테스트','xml테스트','xml테스트','xml테스트','xml테스트' -->
 	</insert>
 	<select id="selectById" resultType="com.base.entity.UserVO">
-<!--         <![CDATA[ -->
-          SELECT * FROM
-              usertable
-               WHERE 
-               user_id = #{userId}
-<!--               and -->
-<!--                user_passwd = #{userPasswd} -->
-<!--       ]]> -->
+		<!-- <![CDATA[ -->
+		select * from
+		usertable
+		where
+		user_id = #{userId}
+		<!-- and -->
+		<!-- user_passwd = #{userPasswd} -->
+		<!-- ]]> -->
+	</select>
+	<update id="userModify">
+		update usertable
+		set
+		user_name = #{userName},
+		user_passwd = #{newPassword},
+		user_email =#{userEmail},
+		user_tel = #{userTel},
+		user_address_post = #{userAddressPost},
+		user_address = #{userAddress},
+		user_address_detail = #{userAddressDetail}
+		where
+		user_id = #{userId}
+		and
+		user_passwd =#{oldPassword}
+	</update>
+	<select id="pwCheck" resultType="com.base.entity.UserVO">
+		select
+		* from
+		usertable
+		where
+		user_id = #{userId}
 	</select>
 
 </mapper>

@@ -1,8 +1,13 @@
-/*
- * package com.base.service.admin;
- * 
- * public interface AdminService {
- * 
- * }
- */
+ package com.base.service.admin;
 
+import java.util.ArrayList;
+
+import com.base.entity.UserVO;
+
+public interface AdminService {
+ 
+	ArrayList<UserVO> admin();
+	
+	void deleteMember(String userId);
+ }
+ 
