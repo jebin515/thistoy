@@ -10,12 +10,18 @@ import com.base.entity.UserVO;
 public interface OrdersMapper {
 	
 	ArrayList<ProductVO> getproduct(String productCode);
+	
 	UserVO getaddr(String userId);
+
+	OrdersVO insertorder(OrdersVO vo); 
+	
+	ProductVO getcart(String productCode);
+
 	CartVO getcart(CartVO vo);
 	void insertorder(OrdersVO vo); 
 	void deletecart(OrdersVO vo);
 	void updatestock(OrdersVO vo);
 	void updatesales(OrdersVO vo);
-	
+
 	
 }

@@ -1,6 +1,7 @@
 package com.base.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.base.entity.CartVO;
 import com.base.entity.OrdersVO;
+import com.base.entity.ProductVO;
 import com.base.service.orders.OrdersService;
 import com.siot.IamportRestClient.IamportClient;
 import com.siot.IamportRestClient.exception.IamportResponseException;
@@ -30,9 +32,22 @@ public class OrdersController {
 	private IamportClient api = new IamportClient("9935225488488363",
 			"42VKSjQQgdnutTWiJq7BNN0vt2anFEPJGKuz4kplyNP2GLlpcs10f1vJ3G6JkWt1GXALi06QOVTuHeUT");
 
-	@RequestMapping(value = "cart")
-	public String cart(Model model,CartVO vo) {
-		model.addAttribute("pdc",service.getcart(vo));
+	@PostMapping(value = "cart")
+	public String cart(Model model, 
+			@RequestParam(name="pdc")String[] productCode,
+			@RequestParam(name="user")String userId,
+			@RequestParam(name="st")int[] productStock) {
+		
+		model.addAttribute("user",service.getaddr(userId));
+		ArrayList<ProductVO> vo = new ArrayList<ProductVO>();	
+		for(int i = 0; i < productCode.length; i++ ) {
+			ProductVO pVO = service.getcart(productCode[i]);
+			pVO.setProductEa(productStock[i]);
+			vo.add(pVO);
+		}
+		model.addAttribute("pdc",vo);
+		
+		
 		return "orders/orders";
 	}
 	

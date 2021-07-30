@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 
@@ -18,7 +20,7 @@
 </head>
 
 <body>
-	<%@ include file="../includes/header.jsp" %>
+	<%@ include file="../includes/header.jsp"%>
 	<!-- ------------마이페이지---------- -->
 	<section>
 		<h3 class="mypage_logo">마이페이지</h3>
@@ -46,93 +48,25 @@
 				<i class="fas fa-caret-left"></i>
 			</div>
 			<div class="gridContainer">
-				<div class="gridItem">
-					<a href=""> <img src="https://via.placeholder.com/265x170"
-						alt="" />
-					</a>
-					<div class="product_info">
-						<a href="#"> <span class="product_name"><span
-								class="product_logo">This Toy</span> 하기싫다</span>
-						</a>
-						<div class="product_price">가격 : 9,900원</div>
-						<div class="product_deliver_price">배송비 : 3,000원</div>
+				<c:forEach var="sb" items="${sellbox}">
+					<c:set var="i" value='${fn:indexOf(sb.productMainImg,",")}' />
+					<c:set var="simg" value="${fn:substring(sb.productMainImg,0,i)}" />
+					<div class="gridItem">
+						<a href="/product/detail_main?pc=${sb.productCode}"><img
+							src="/upload/product/main/${simg}" alt="" class="sellImg" /> </a>
+						<div class="product_info">
+							<a href="/product/detail_main?pc=${sb.productCode}"> <span class="product_name"><span
+									class="product_logo">This Toy</span>${sb.productName}</span>
+							</a>
+							<div class="product_price">가격 : ${sb.productPrice}원</div>
+							<div class="product_deliver_price">배송비 : 3,000원</div>
+						</div>
 					</div>
-				</div>
-				<div class="gridItem">
-					<a href=""> <img src="https://via.placeholder.com/265x170"
-						alt="" />
-					</a>
-					<div class="product_info">
-						<a href="#"> <span class="product_name"><span
-								class="product_logo">This Toy</span> 하기싫다</span>
-						</a>
-						<div class="product_price">가격 : 9,900원</div>
-						<div class="product_deliver_price">배송비 : 3,000원</div>
-					</div>
-				</div>
-				<div class="gridItem">
-					<a href=""> <img src="https://via.placeholder.com/265x170"
-						alt="" />
-					</a>
-					<div class="product_info">
-						<a href="#"> <span class="product_name"><span
-								class="product_logo">This Toy</span> 하기싫다</span>
-						</a>
-						<div class="product_price">가격 : 9,900원</div>
-						<div class="product_deliver_price">배송비 : 3,000원</div>
-					</div>
-				</div>
-				<div class="gridItem">
-					<a href=""> <img src="https://via.placeholder.com/265x170"
-						alt="" />
-					</a>
-					<div class="product_info">
-						<a href="#"> <span class="product_name"><span
-								class="product_logo">This Toy</span> 하기싫다</span>
-						</a>
-						<div class="product_price">가격 : 9,900원</div>
-						<div class="product_deliver_price">배송비 : 3,000원</div>
-					</div>
-				</div>
-				<div class="gridItem">
-					<a href=""> <img src="https://via.placeholder.com/265x170"
-						alt="" />
-					</a>
-					<div class="product_info">
-						<a href="#"> <span class="product_name"><span
-								class="product_logo">This Toy</span> 하기싫다</span>
-						</a>
-						<div class="product_price">가격 : 9,900원</div>
-						<div class="product_deliver_price">배송비 : 3,000원</div>
-					</div>
-				</div>
-				<div class="gridItem">
-					<a href=""> <img src="https://via.placeholder.com/265x170"
-						alt="" />
-					</a>
-					<div class="product_info">
-						<a href="#"> <span class="product_name"><span
-								class="product_logo">This Toy</span> 하기싫다</span>
-						</a>
-						<div class="product_price">가격 : 9,900원</div>
-						<div class="product_deliver_price">배송비 : 3,000원</div>
-					</div>
-				</div>
-				<div class="gridItem">
-					<a href=""> <img src="https://via.placeholder.com/265x170"
-						alt="" />
-					</a>
-					<div class="product_info">
-						<a href="#"> <span class="product_name"><span
-								class="product_logo">This Toy</span> 하기싫다</span>
-						</a>
-						<div class="product_price">가격 : 9,900원</div>
-						<div class="product_deliver_price">배송비 : 3,000원</div>
-					</div>
-				</div>
+				</c:forEach>
 			</div>
+		</div>
 	</section>
-	<%@ include file="../includes/footer.jsp" %>
+	<%@ include file="../includes/footer.jsp"%>
 </body>
 
 </html>

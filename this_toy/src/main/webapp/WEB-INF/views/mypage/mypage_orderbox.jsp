@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,17 +45,18 @@
                 <i class="fas fa-caret-left"></i>
             </div>
             <div class="flexcollum">
+	            <c:forEach var="ob" items="${orderbox}">
                 <div class="orderbox">
                     <a href="mypage_detailorderbox.html">
-                        <img src="/img/mable.jpg" alt="" class="orderimg">
+                        <img src="/upload/product/main/${ob.productImg}" alt="" class="orderimg">
                     </a>
                     <div class="order_info">
                         <a href="detailorderbox.html">
                             <div class="product_logo">This Toy</div>
-                            <div class="product_name">마블 아이언맨</div>
+                            <div class="product_name">${ob.productName}</div>
                         </a>
-                        <span class="product_price">3,000원</span>
-                        <span>2021-07-15</span>
+                        <span class="product_price">${ob.orderPrice}원</span>
+                        <span>${ob.orderDate}</span>
                         <div class="order_line"></div>
                         <div class=" buytext">주문이 완료되었습니다. 이용해주셔서 감사합니다.</div>
                     </div>
@@ -63,73 +66,8 @@
                     </div>
                     <a href="" class="onemore">재구매</a>
                 </div>
-                <div class="orderbox">
-                    <a href="">
-                        <img src="/img/mable.jpg" alt="" class="orderimg">
-                    </a>
-                    <div class="order_info">
-                        <a href="">
-                            <div class="product_logo">This Toy</div>
-                            <div class="product_name">마블 아이언맨</div>
-                        </a>
-                        <span class="product_price">3,000원</span>
-                        <span>2021-07-15</span>
-                        <div class="order_line"></div>
-                        <div class=" buytext">주문이 완료되었습니다. 이용해주셔서 감사합니다.</div>
-                    </div>
-                    <div class="seller_info">
-                        <div>jebin515(아이디)</div>
-                        <div>010-1234-5678(전화번호)</div>
-                    </div>
-                    <a href="" class="onemore">재구매</a>
+                </c:forEach>
                 </div>
-                <div class="orderbox">
-                    <a href="">
-                        <img src="/img/mable.jpg" alt="" class="orderimg">
-                    </a>
-                    <div class="order_info">
-                        <a href="">
-                            <div class="product_logo">This Toy</div>
-                            <div class="product_name">마블 아이언맨</div>
-                        </a>
-                        <span class="product_price">3,000원</span>
-                        <span>2021-07-15</span>
-                        <div class="order_line"></div>
-                        <div class=" buytext">주문이 완료되었습니다. 이용해주셔서 감사합니다.</div>
-                    </div>
-                    <div class="seller_info">
-                        <div>jebin515(아이디)</div>
-                        <div>010-1234-5678(전화번호)</div>
-                    </div>
-                    <a href="" class="onemore">재구매</a>
-                </div>
-            </div>
-            <!-- <div class="order_table">
-                <tr class="ordertr">
-                    <td>
-                        <a href="">
-                            <img src="img/mable.jpg" alt="" class="orderimg">
-                        </a>
-                    </td>
-                    <td class="order_info">
-                        <a href="">
-                            <div class="product_logo">This Toy</div>
-                            <div>마블 아이언맨</div>
-                        </a>
-                        <span class="product_price">3,000원</span>
-                        <span>2021-07-15</span>
-                        <div class="order_line"></div>
-                        <div class=" buytext">주문이 완료되었습니다. 이용해주셔서 감사합니다.</div>
-                    </td>
-                    <td>
-                        <div>jebin515(아이디)</div>
-                        <div>010-1234-5678(전화번호)</div>
-                    </td>
-                    <td>
-                        <a href="" class="onemore">재구매</a>
-                    </td>
-                </tr>
-            </div> -->
     </section>
     
     <%@ include file="../includes/footer.jsp" %>
