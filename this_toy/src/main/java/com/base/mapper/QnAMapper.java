@@ -15,4 +15,6 @@ public interface QnAMapper {
 	int replyQnA(QnAVO vo);
 	
 	int deleteReply(int questionCode);
+	
+	int deleteQnA(int questionCode);
 }

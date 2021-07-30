@@ -29,5 +29,10 @@ public class ReviewServiceImpl implements ReviewService {
 		// TODO Auto-generated method stub
 		return mapper.getReviewTotalCount(productCode);
 	}
+	@Override
+	public int removeReview(int reviewCode) {
+		// TODO Auto-generated method stub
+		return mapper.deleteReview(reviewCode);
+	}
 
 }

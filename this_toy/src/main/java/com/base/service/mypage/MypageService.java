@@ -19,6 +19,8 @@ public interface MypageService {
 	ArrayList<CartVO> getProductCode3(String userId);
 	ProductVO getCart(String productCode);
 	
+	ArrayList<WishlistVO> getWish(String productCode);
+	
 	
 	
 }
