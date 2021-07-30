@@ -149,7 +149,9 @@ public class ProductController {
 
 	@GetMapping("detail_main")
 	public void getDetailMain(@RequestParam(name = "pc", defaultValue = "1") String productCode,
-			@RequestParam(name = "p", defaultValue = "1") int pageNum, Model model) {
+			@RequestParam(name = "p", defaultValue = "1") int pageNum, Model model,HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String userId = (String) session.getAttribute("userId");
 		QnAVO qnavo = new QnAVO();
 		qnavo.setQnaCount(10);
 		qnavo.setProductCode(productCode);

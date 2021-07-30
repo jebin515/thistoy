@@ -239,7 +239,7 @@
 						</tr>
 					</c:if>
 					<c:if
-						test="${userId.equals(product.userId) and !empty userId and !empty Qn.replyText or userId.equals(Qn.userId)}">
+						test="${(userId==product.userId || userId== Qn.userId) and !empty userId and !empty Qn.replyText}">
 						<tr>
 							<td></td>
 							<td class="reply_td" colspan="3"><i class="fas fa-reply"></i>
@@ -655,7 +655,9 @@
 																.format(
 																		"YYYY.MM.DD")
 														+ '</td>'
+														if(${userId.equals(result[i].userId) or userId.equals(product.userId)}){
 														+'<td><button class="delete_review" value="'+result[i].reviewCode+'">삭제</button></tr>';
+														}
 											}
 											$(".reviewAll").html(rvtable);
 										},
