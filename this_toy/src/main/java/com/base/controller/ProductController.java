@@ -29,6 +29,7 @@ import com.base.entity.WishlistVO;
 import com.base.service.QnA.QnAService;
 import com.base.service.Review.ReviewService;
 import com.base.service.category.CategoryService;
+import com.base.service.mypage.MypageService;
 import com.base.service.product.ProductService;
 
 import lombok.AllArgsConstructor;
@@ -43,6 +44,7 @@ public class ProductController {
 	private CategoryService CaService;
 	private ReviewService rvService;
 	private QnAService qnaService;
+	private MypageService myService;
 	
 	
 	@GetMapping("detail_writer")
@@ -165,6 +167,8 @@ public class ProductController {
 			pageNum = vo2.getRealEnd();
 		}
 		vo.setPageNum(pageNum);
+		System.out.println(myService.getWish(productCode)+"hi");
+		model.addAttribute("wish",myService.getWish(productCode));
 		model.addAttribute("product", prService.getProduct(productCode)); // 선택된 상품 정보 가져가기
 		model.addAttribute("review", rvService.getReview(vo)); // 리뷰 가져가기
 		model.addAttribute("pageMaker", new PageVO(count, pageNum)); // 리뷰 페이징 처리

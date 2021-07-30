@@ -47,5 +47,10 @@ public class MypageServiceImpl implements MypageService{
 		// TODO Auto-generated method stub
 		return mapper.getProductCode3(userId);
 	}
+	@Override
+	public ArrayList<WishlistVO> getWish(String productCode) {
+		// TODO Auto-generated method stub
+		return mapper.getWish(productCode);
+	}
 	
 }

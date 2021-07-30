@@ -100,6 +100,13 @@
 				<div class="detail-head-button">
 					<button class="directbuy">바로구매</button>
 					<button class="cart">장바구니</button>
+					<c:forEach var="ws" items="${wish}">
+						<c:if test="${!empty userId}">
+							<c:if test="${userId==ws.userId}">
+								<input type="hidden" class="wishtrue" />
+							</c:if>
+						</c:if>
+					</c:forEach>
 					<button class="hart">하트</button>
 				</div>
 			</div>
@@ -151,8 +158,9 @@
 				<button class="review_register">등록</button>
 			</div>
 			<div class="title">
-				<span>상품리뷰 (<span class="review">${pageMaker.total}</span>)
+				<span>상품리뷰 (<span class="review">${pageMaker.total} </span>)
 				</span>
+
 			</div>
 			<table class="reviewAll">
 				<tr class="reviewlist">
@@ -226,7 +234,8 @@
 						<td>${Qn.userId}</td>
 						<td><fmt:formatDate var="date" value="${Qn.questionDate}"
 								pattern="yyyy.MM.dd" /> ${date}</td>
-						<c:if test="${userId.equals(Qn.userId) or userId.equals(product.userId)}">
+						<c:if
+							test="${userId.equals(Qn.userId) or userId.equals(product.userId)}">
 							<td><button class="delete_QnA" value="${Qn.questionCode}">삭제</button></td>
 						</c:if>
 					</tr>
@@ -327,6 +336,9 @@
 			let registerindex = $(".register_button").index(this);
 			location.href="/QnA/reply?qc="+$(this).val()+"&rt="+$('.reg').eq(registerindex).val()+"&pc=${QnA[0].productCode}";
 		})
+		if($('input').hasClass('wishtrue')){
+			$('.hart').css('background-color','red');
+		}
 		$(".directbuy")
 				.click(
 						function() {
