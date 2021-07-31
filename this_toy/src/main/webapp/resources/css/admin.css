@@ -2,6 +2,10 @@
 	margin: 0;
 	padding: 0;
 }
+a {
+  text-decoration: none;
+  color: black;
+}
 .title {
 	font-family: "Cafe24SsurroundAir", sans-serif;
 	letter-spacing: 10px;
@@ -16,7 +20,7 @@
 	height: 100%;
 }
 .delete_table {
-	width: 1100px;
+	width: 1200px;
 	text-align: center;
 	margin-top: 50px;
 	margin-bottom: 50px;
@@ -34,7 +38,7 @@
 	line-height: 40px;
 }
 .table_head .member_date {
-	width: 90px;
+	width: 120px;
 	height: 60px;
 }
 .table_head .member_id {
@@ -44,10 +48,10 @@
 	width: 80px;
 }
 .table_head .member_phone {
-	width: 100px;
+	width: 90px;
 }
 .table_head .member_email {
-	width: 180px;
+	width: 165px;
 }
 .table_head .member_address {
 	width: 200px;
@@ -74,4 +78,8 @@
 	position: relative;
 	white-space: nowrap;
 	padding: 10px 10px 10px 10px;
+}
+.pageNum{
+	color:rgb(193, 122, 241);
+	font-weight:bold;
 }

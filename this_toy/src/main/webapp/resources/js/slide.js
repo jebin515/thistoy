@@ -1,29 +1,29 @@
 var swiper = new Swiper(".mySwiper", {
-    slidesPerView: 8,
-    spaceBetween: 50,
-    width : 2000,
-    loop : false,
-    centeredSlides: true,
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-    autoplay : {
-        delay: 3500,
-        disableOnInteraction : true,
-    }
-  });
-  var swiper = new Swiper(".mySwiper-main", {
-    slidesPerView: 1,
-    spaceBetween: 30,
-    loop : true,
-    centeredSlides: true,
-    pagination: {
-      el: ".swiper-pagination-main",
-      clickable: true,
-    },
-    autoplay : {
-        delay: 3500,
-        disableOnInteraction : true,
-    }
-  });
+  slidesPerView: 5,
+  spaceBetween: 40,
+  width: 2000,
+  loop: true,
+  centeredSlides: true,
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+  autoplay: {
+    delay: 3500,
+    disableOnInteraction: true,
+  },
+});
+var swiper = new Swiper(".mySwiper-main", {
+  slidesPerView: 1,
+  spaceBetween: 30,
+  loop: true,
+  centeredSlides: true,
+  pagination: {
+    el: ".swiper-pagination-main",
+    clickable: true,
+  },
+  autoplay: {
+    delay: 3500,
+    disableOnInteraction: true,
+  },
+});
