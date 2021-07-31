@@ -96,3 +96,23 @@
   border-radius: 10px;
   margin-top: 15px;
 }
+
+
+main .register-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+main .register-main .register-menu {
+  height: 50px;
+}
+main .register-main .register-menu span {
+  font-family: "Cafe24Ssurround", sans-serif;
+  height: 50px;
+  font-size: 25px;
+}
+main .register-main .register-menu .one {
+  font-size: 35px;
+  color: rgba(245, 96, 153, 0.9);
+}

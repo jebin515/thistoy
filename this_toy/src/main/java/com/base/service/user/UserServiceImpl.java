@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public UserVO login(UserVO userVO) {
-
+		System.out.println("서비스VO : "+userVO);
 		return userMapper.login(userVO);
 	}
 
@@ -35,12 +35,13 @@ public class UserServiceImpl implements UserService {
 		userMapper.register(userVO);
 	}
 
+	// 회원가입시 id중복확인
 	@Override
 	public int idCheck(UserVO userVO) {
 		int result = userMapper.idCheck(userVO);
 		return result;
 	}
-
+	
 	@Override
 	public AuthInfo loginAuth(LoginCommand loginCommand) {
 		UserVO user = userMapper.selectById(loginCommand.getUserId());
