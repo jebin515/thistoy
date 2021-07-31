@@ -14,7 +14,7 @@ public interface UserService {
 	//회원가입
 	void register(UserVO userVO);
 	
-	//id체크
+	//회원가입시 id확인
 	int idCheck(UserVO userVO);
 	
 	//로그인

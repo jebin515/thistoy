@@ -15,7 +15,7 @@ public interface UserMapper{
 	//회원가입
 	void register(UserVO userVO);
 	
-	//아이디 중복체크
+	//가입시 아이디 중복체크
 	int idCheck(UserVO userVO);
 	
 	//현재사용 로그인  매퍼

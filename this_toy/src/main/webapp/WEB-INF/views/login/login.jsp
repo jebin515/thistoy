@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
-
 <head>
 <title>Animated Login Form</title>
 <link rel="stylesheet" type="text/css" href="/css/login.css">
@@ -13,7 +13,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="google-signin-client_id"
 	content="1035257445971-ak3jovlghqfiqi6hf6mu310d4dhed13n.apps.googleusercontent.com">
-
+<style>
+.gomid {
+	padding-right: 100px;
+}
+</style>
 </head>
 
 <body>
@@ -121,13 +125,19 @@
 							<input type="password" class="input" name="userPasswd">
 						</div>
 					</div>
-					<div class="checkbox">
-						<label>
-						 <a><input type="checkbox" path="rememberId" /> 아이디 기억</a>
-						</label>
+					<div class="gomid">
+						<div class="checkbox">
+							<label> <a><input type="checkbox" id="idSaveCheck" />
+									아이디 기억</a>
+							</label>
+						</div>
+						<div>
+							<a href="../register/register-1">회원가입</a>
+						</div>
+						<a href="../login/findpw" onclick="window.open(this.href, '_blank', 'width=900px,height=500px,toolbars=no,scrollbars=no'); return false;"
+						>비밀번호 찾기</a>
 					</div>
-					<a href="#">비밀번호 찾기</a> <input type="submit" class="btn"
-						value="로그인">
+					<input type="submit" class="btn" value="로그인">
 					<div class="login-api">
 						<!-- <a href="#"><img src="/img/naver1.png"></a> -->
 						<a id="naver_id_login" class="api">네이버로그인</a>
@@ -141,8 +151,10 @@
 				</form>
 		</div>
 	</div>
+	<script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-	<script type="text/javascript" src="/js/login.js"></script>
+		<script type="text/javascript" src="/js/login.js"></script>
+	<script type="text/javascript" src="/js/loginremember.js"></script>
 	<script type="text/javascript" src="/js/login-slide.js"></script>
 	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 	<script
