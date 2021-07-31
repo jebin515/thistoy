@@ -42,16 +42,16 @@ public class RegisterController {
 	}
 	@PostMapping("/register-2")
 	public String registerPOST(UserVO userVO,RedirectAttributes rttr) throws Exception {
-		//암호화 저장
-//		String hashedPw = BCrypt.hashpw(userVO.getUserPasswd(), BCrypt.gensalt());
-//		userVO.setUserPasswd(hashedPw);
 //        연속등록 불가능하도록 플래시어트리뷰트 후 리다이렉트
         rttr.addFlashAttribute("result", "success");
 		int result = userService.idCheck(userVO);
+		int result2 = userService.emailCheck(userVO);
 		try {
-			if(result == 1) {
-				return "/register/register-2";
-			}else if (result == 0) {
+			if(result >= 1) {
+				return "/register/alreadyid";
+			}else if (result2 >= 1) {
+				return "/register/alreadyemail";
+			}else if (result ==0 && result2==0) {
 				userService.register(userVO);
 			}
 		} catch (Exception e) {
@@ -70,20 +70,22 @@ public class RegisterController {
 	public void register3() {
 		System.out.println("가입완료페이지-3");
 	}
-	private final JavaMailSender mailSender;
 	
+	
+	
+	private final JavaMailSender mailSender;
 	@GetMapping("/mailCheck")
 	@ResponseBody
-	public String mailCheckGET(String semail, String mailcode) throws Exception {
+	public String mailCheckGET(String semail) throws Exception {
 
 		/* 뷰(View)로부터 넘어온 데이터 확인 */
 		System.out.println("GET이메일 데이터 전송 확인");
 		System.out.println("이메일: " + semail);
 		Random random = new Random();
-		int num = random.nextInt(9999)+1;
+		int num = random.nextInt(8999)+1000;
 		System.out.println("인증번호 :" + num);
-		System.out.println("메일코드 :" + mailcode);
-
+		
+		
 		String setFrom = "gihadaim@gmail.com";
 		String toMail = semail;
 		String title = "디스토이에 오신 것을 환영합니다!";

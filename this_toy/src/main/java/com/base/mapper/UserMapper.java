@@ -17,7 +17,8 @@ public interface UserMapper{
 	
 	//가입시 아이디 중복체크
 	int idCheck(UserVO userVO);
-	
+	//가입시 이메일체크
+	int emailCheck(UserVO userVO);
 	//현재사용 로그인  매퍼
 	public UserVO selectById(String UserId);
 	//개인정보 수정
