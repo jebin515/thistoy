@@ -105,7 +105,7 @@
 </html>
 <script>
 	$(document).on('click', '.delete_button', function() {
-		let ok = confirm('정말 삭제하시겠습니까?)
+		let ok = confirm('정말 삭제하시겠습니까?');
 		let index = $('.delete_button').index(this);
 		if (ok == true) {
 			$('.admin_delete:eq(' + index + ')').submit();
