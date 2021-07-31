@@ -27,7 +27,7 @@
 			</nav>
 	</div>
 	</c:if>
-	<c:if test="${not empty authInfo}">
+	<c:if test="${not empty userId}">
 	<div class="header-full">
 		<a href="#" class="logo"></a>
 			<nav class="header_nav">
@@ -36,7 +36,7 @@
 						class='bx-fw bx bxs-rocket bx-tada-hover'></i>로그아웃</a> <a href="/edit/editmypage"
 						class="header_register"><i
 						class='bx-fw bx bxs-user-plus bx-tada-hover'></i>마이페이지</a>
-						<p> 반갑습니다 ${authInfo.userName}님</p>
+						<p> 반갑습니다 ${userId}님</p>
 				</div>
 			</nav>
 	</div>

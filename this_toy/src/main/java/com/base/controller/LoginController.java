@@ -84,7 +84,7 @@ public class LoginController {
 		}
 		try {
 			AuthInfo authInfo = userService.loginAuth(loginCommand);
-			session.setAttribute("authInfo", authInfo);
+			session.setAttribute("userId", authInfo.getUserId());
 		} catch (IdPasswordNotMatchingException e) {
 			return "/login/loginfail";
 		}
