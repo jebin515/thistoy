@@ -25,10 +25,10 @@ public class QnAController {
 	private QnAService service;
 	
 	@ResponseBody
-	@PostMapping(value = "new", produces = "application/text; charset=UTF-8")
-	public String registerQnA(@RequestBody QnAVO vo) {
+	@PostMapping(value = "new")
+	public QnAVO registerQnA(@RequestBody QnAVO vo) {
 		int count = service.registerQnA(vo);
-		return count==1? "문의글을 등록하였습니다.":"등록에 실패했습니다.";
+		return service.getLastQnA();
 	}
 	@ResponseBody
 	@GetMapping(value = "more/{productCode}/{QnANum}")
@@ -59,6 +59,6 @@ public class QnAController {
 	@GetMapping(value = "delete")
 	public String deleteQnA(@RequestParam(name="qc")int questionCode,@RequestParam(name="pc") String productCode) {
 		int count = service.removeQnA(questionCode);
-		return "redirect:/product/detail_main?pc="+productCode;
+		return "redirect:/product/detail_main?pc="+productCode+"&reply";
 	}
 }

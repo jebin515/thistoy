@@ -50,4 +50,10 @@ public class QnAServiceImpl implements QnAService {
 		return mapper.deleteQnA(questionCode);
 	}
 
+	@Override
+	public QnAVO getLastQnA() {
+		// TODO Auto-generated method stub
+		return mapper.getLastQnA();
+	}
+
 }
