@@ -57,6 +57,7 @@
 
 					<!-- 회원정보 -->
 					<c:forEach var="admin" items="${admin}">
+
 						<form action="/admin/delete/${admin.userId}" method="post"
 							class="admin_delete">
 							<tr class="table_data">
@@ -69,6 +70,7 @@
 								<td class="delete"><button class="delete_button">삭제</button></td>
 							</tr>
 						</form>
+
 					</c:forEach>
 				</table>
 				<div class="paging">

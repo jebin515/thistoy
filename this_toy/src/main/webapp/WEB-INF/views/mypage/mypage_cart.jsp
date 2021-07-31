@@ -51,11 +51,12 @@
 					<c:set var="i" value='${fn:indexOf(cl.productMainImg,",")}' />
 					<c:set var="cimg" value="${fn:substring(cl.productMainImg,0,i)}" />
 					<c:set var="cnum" value="${cnum + 1}" />
-					<input type="hidden" name="pdc" value="${cl.productCode}">
+					
 					<tr class="row data">
 						<!-- 선택 -->
 						<td class="check"><input type="checkbox" name="buy"
 							value="260" checked="" onclick="javascript:basket.checkItem();">
+							<input type="hidden" name="pdc" value="<c:out value="${cl.productCode}"/>">
 							&nbsp;</td>
 
 						<!-- 제품 이미지 -->

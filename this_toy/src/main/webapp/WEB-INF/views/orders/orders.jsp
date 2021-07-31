@@ -29,8 +29,8 @@
 									<th>수량</th>
 									<th>상품금액</th>
 								</tr>
+								<c:set var="count" value="0" />
 								<c:forEach var="pdc" items="${pdc}" varStatus="stauts">
-									<c:set var="pricetotal" value="0" />
 									<c:set var="i" value='${fn:indexOf(pdc.productMainImg,",")}' />
 									<c:set var="mimg" value="${fn:substring(pdc.productMainImg,0,i)}" />
 									<tr>
@@ -45,18 +45,20 @@
 											<c:out value="${pdc.userId}" />
 										</td>
 										<td><input type="hidden" value="배송비">3000원</td>
-										<td><input type="hidden" name="orderEa" value="${st}">
-											<c:out value="${st}" />
+
+										<td><input type="hidden" name="orderEa" value="${pdc.productEa}">
+											<c:out value="${pdc.productEa}" />
 										</td>
-										<td><input type="hidden" name="orderPrice" value="${st * pdc.productPrice}">
-											<c:out value="${st * pdc.productPrice}" />
+										<td><input type="hidden" name="orderPrice" value="${pdc.productPrice}">
+											<c:out value="${pdc.productPrice}" />
 										</td>
 									</tr>
-									<c:set var="pricetotal" value="${pricetotal + (st * pdc.productPrice)}" />
+									<c:set var="count" value="${count + (pdc.productPrice * pdc.productEa)}" />
 									<c:set var="pricecount" value="${stauts.count-1}" />
 									<c:if test="${stauts.index ==0}">
 										<c:set var="pricefirstname" value="${pdc.productName}" />
 									</c:if>
+
 								</c:forEach>
 							</table>
 							<hr />
@@ -109,9 +111,13 @@
 									</div>
 									<div class="user_main">
 										<ul>
-											<li>이진웅</li>
-											<li>이진웅</li>
-											<li>이진웅</li>
+											<li>
+												<c:out value="${user.userId}" />
+											</li>
+											<li>
+												<c:out value="${user.userName}" />
+											</li>
+											<li id="postuser"></li>
 										</ul>
 									</div>
 								</div>
@@ -123,7 +129,7 @@
 								<div class="totle_main">
 									<ul>
 										<li>상품금액</li>
-										<li>${pricetotal}</li>
+										<li>${count}</li>
 									</ul>
 									<ul>
 										<li>+</li>
@@ -139,7 +145,7 @@
 									</ul>
 									<ul>
 										<li>총합</li>
-										<li><input type="text" class="price_total" value="${pricetotal + 3000}" /> 원
+										<li><input type="text" class="price_total" value="${count + 3000}" /> 원
 										</li>
 									</ul>
 								</div>
@@ -150,7 +156,7 @@
 						</div>
 					</main>
 					<%@ include file="../includes/footer.jsp" %>
-					
+
 						<script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
 						<script src="/js/address.js"></script>
 						<script src="/js/orders.js"></script>
@@ -163,10 +169,16 @@
 						<script type="text/javascript"
 							src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 						<script type="text/javascript">
+
 							var nameValue = "";
 							var member_post = "";
 							var member_addr = "";
 							var member_detail = "";
+							$(document).ready(function () {
+								$("#new_name").keyup(function () {
+									$("#postuser").text($("#new_name").val());
+								});
+							});
 							$("#check_module").click(function () {
 								var addrType = $("input[name='addr_list']:checked").val();
 								nameValue =
@@ -186,7 +198,7 @@
 										pay_method: "card",
 										merchant_uid: "merchant_" + new Date().getTime(),
 										name: ('${pricecount}' == 0) ? '${pricefirstname}' : '${pricefirstname}' + '외' + '${pricecount}' + '개', //결제창에서 보여질 이름 // 상품 이름
-										amount: '${pricetotal + 100}', //실제 결제되는 가격
+										amount: '${count + 3000}', //실제 결제되는 가격
 										buyer_email: "${user.userEmail}",
 										buyer_name: nameValue, // 구매자
 									},
