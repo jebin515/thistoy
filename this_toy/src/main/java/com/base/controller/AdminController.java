@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.base.entity.ListPageVO;
 import com.base.entity.PageVO;
 import com.base.entity.UserVO;
 import com.base.service.admin.AdminService;
