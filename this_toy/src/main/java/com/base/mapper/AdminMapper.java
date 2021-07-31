@@ -6,8 +6,10 @@ import com.base.entity.UserVO;
 
 public interface AdminMapper {
 
-	ArrayList<UserVO> admin();
-
 	void deleteMember(String userId);
+
+	ArrayList<UserVO> userListPaging(int pageNum);
+
+	int getTotal();
 
 }
