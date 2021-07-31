@@ -80,7 +80,7 @@ public class RegisterController {
 		System.out.println("GET이메일 데이터 전송 확인");
 		System.out.println("이메일: " + semail);
 		Random random = new Random();
-		int num = random.nextInt(9999)+1;
+		int num = random.nextInt(9999)+1000;
 		System.out.println("인증번호 :" + num);
 		System.out.println("메일코드 :" + mailcode);
 
