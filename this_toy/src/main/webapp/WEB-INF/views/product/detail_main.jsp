@@ -13,6 +13,7 @@
 	src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript"
 	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script src="/js/detail-main.js?ver=5" defer></script>
 <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'
 	rel='stylesheet'>
 <link rel="stylesheet"
@@ -75,9 +76,15 @@
 							<td>피규어</td>
 						</tr>
 						<tr>
+							<th><span>재고</span></th>
+							<td><div class="stock">
+									<c:out value="${product.productStock}" />
+								</div>개</td>
+						</tr>
+						<tr>
 							<th><span>주문수량</span></th>
-							<td><input type="text" class="product_num" value="1"
-								oninput="inputnumber();" min="1" max="99" />
+							<td><input type="number" class="product_num" value="1"
+								oninput="inputnumber();" min="1" max="10" readonly />
 								<button type="button" class="ea_btn" onclick="plus()">+</button>
 								<button type="button" class="ea_btn" onclick="minus()">-</button>
 							</td>
@@ -93,6 +100,13 @@
 				<div class="detail-head-button">
 					<button class="directbuy">바로구매</button>
 					<button class="cart">장바구니</button>
+					<c:forEach var="ws" items="${wish}">
+						<c:if test="${!empty userId}">
+							<c:if test="${userId==ws.userId}">
+								<input type="hidden" class="wishtrue" />
+							</c:if>
+						</c:if>
+					</c:forEach>
 					<button class="hart">하트</button>
 				</div>
 			</div>
@@ -132,8 +146,8 @@
 			<textarea name="reviewText" cols="30" rows="5" class="write_text"
 				maxlength="1000"></textarea>
 			<div class="img_rating">
-				<label class="file-button" for="input-file">+사진추가</label> <input
-					type="file" name="reviewImg" id="input-file" style="display: none;">
+				<!-- 				<label class="file-button" for="input-file">+사진추가</label> <input -->
+				<!-- 					type="file" name="reviewImg" id="input-file" style="display: none;"> -->
 				<select name="reviewRating" class="ratingop">
 					<option value="5">&#xf005&#xf005&#xf005&#xf005&#xf005</option>
 					<option value="4">&#xf005&#xf005&#xf005&#xf005</option>
@@ -144,8 +158,9 @@
 				<button class="review_register">등록</button>
 			</div>
 			<div class="title">
-				<span>상품리뷰 (<span class="review">${pageMaker.total}</span>)
+				<span>상품리뷰 (<span class="review">${pageMaker.total} </span>)
 				</span>
+
 			</div>
 			<table class="reviewAll">
 				<tr class="reviewlist">
@@ -153,6 +168,7 @@
 					<th>내용</th>
 					<th>작성자</th>
 					<th>작성시간</th>
+					<th></th>
 				</tr>
 				<c:forEach var="rv" items="${review}">
 					<tr class="rv">
@@ -165,6 +181,10 @@
 						<td><c:out value="${rv.userId}" /></td>
 						<td><fmt:formatDate var="date" value="${rv.reviewDate}"
 								pattern="yyyy.MM.dd" /> ${date}</td>
+						<c:if
+							test="${userId.equals(rv.userId) or userId.equals(product.userId)}">
+							<td><button class="delete_review" value="${rv.reviewCode}">삭제</button></td>
+						</c:if>
 					</tr>
 				</c:forEach>
 			</table>
@@ -175,7 +195,7 @@
 					<i class="fas fa-angle-left"></i>
 					<span class="pageNumber"> <c:forEach var="num"
 							begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-							<span class="pn">${num}</span>
+							<span class="pn" id="${pageMaker.pageNum==num? 'pageNum':''}">${num}</span>
 						</c:forEach>
 					</span>
 					<i class="fas fa-angle-right" id="right"></i>
@@ -198,21 +218,63 @@
 				<span>QnA (<span class="QnA">${QnACount}</span>)
 				</span>
 			</div>
-			<table>
+			<table class="QnAtotal">
 				<tr class="QnInfo">
 					<th>답변상태</th>
 					<th>내용</th>
-					<th>작성시간</th>
 					<th>작성자</th>
+					<th>작성시간</th>
+					<th></th>
 				</tr>
 				<c:forEach var="Qn" items="${QnA}">
+					<input type="hidden" value="${Qn.questionCode}" />
 					<tr class="QnAbox">
 						<td>${Qn.replySituation}</td>
-						<td><c:out value="${Qn.questionText}" /></td>
+						<td class="QnAText"><c:out value="${Qn.questionText}" /></td>
+						<td>${Qn.userId}</td>
 						<td><fmt:formatDate var="date" value="${Qn.questionDate}"
 								pattern="yyyy.MM.dd" /> ${date}</td>
-						<td>${Qn.userId}</td>
+						<c:if
+							test="${userId.equals(Qn.userId) or userId.equals(product.userId)}">
+							<td><button class="delete_QnA" value="${Qn.questionCode}">삭제</button></td>
+						</c:if>
 					</tr>
+					<c:if
+						test="${!userId.equals(product.userId) and !empty Qn.replyText and !userId.equals(Qn.userId)}">
+						<tr>
+							<td></td>
+							<td class="reply_td" colspan="3"><i class="fas fa-reply"></i>
+								<textarea cols="30" rows="2" class="reply_text" readonly>${Qn.replyText}</textarea></td>
+						</tr>
+					</c:if>
+					<c:if
+						test="${(userId==product.userId || userId== Qn.userId) and !empty userId and !empty Qn.replyText}">
+						<tr>
+							<td></td>
+							<td class="reply_td" colspan="3"><i class="fas fa-reply"></i>
+								<textarea name="replyText" cols="30" rows="2" class="reply_text"
+									readonly>${Qn.replyText}</textarea></td>
+						</tr>
+						<tr class="clickText">
+							<td colspan="4" class="reply_button">
+								<button class="delete_button" value="${Qn.questionCode}">삭제</button>
+							</td>
+						</tr>
+					</c:if>
+					<c:if
+						test="${userId.equals(product.userId) and !empty userId and empty Qn.replyText}">
+						<tr>
+							<td></td>
+							<td class="reply_td" colspan="3"><i class="fas fa-reply"></i>
+								<textarea name="replyText" cols="30" rows="2"
+									class="reply_text reg"></textarea></td>
+						</tr>
+						<tr>
+							<td colspan="4" class="reply_button">
+								<button class="register_button" value="${Qn.questionCode}">등록</button>
+							</td>
+						</tr>
+					</c:if>
 				</c:forEach>
 			</table>
 		</div>
@@ -244,10 +306,9 @@
 	</div>
 	<%@ include file="../includes/footer.jsp"%>
 	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-	<script src="/js/index.js" defer></script>
+	<!-- 	<script src="/js/index.js" defer></script> -->
 	<script src="/js/detail-slide.js?ver=1" defer></script>
-	<script src="/js/detail-main.js?ver=4" defer></script>
-	<script type="text/javascript">
+	<script type="text/javascript" defer>
 		$(".fa-angle-right").click(function(){
 			let lastn=Number($(".pn").last().text())+1;
 			location.href="/product/detail_main?pc=${product.productCode}&p="+lastn;
@@ -262,6 +323,21 @@
 		}else if(${pageMaker.pageNum%5==1}){
 			$(".pn").first().css('color','rgba(245, 96, 153, 0.9)');
 		}
+		}
+		$(document).on('click','.delete_review',function(){
+			let reviewNum = $(this).val();
+			location.href="/review/delete?rc="+reviewNum+"&pc=${QnA[0].productCode}";
+		})
+		$(document).on('click','.delete_QnA',function(){
+			let QnANum = $(this).val();
+			location.href="/QnA/delete?qc="+QnANum+"&pc=${QnA[0].productCode}";
+		})
+		$(document).on('click','.register_button',function(){
+			let registerindex = $(".register_button").index(this);
+			location.href="/QnA/reply?qc="+$(this).val()+"&rt="+$('.reg').eq(registerindex).val()+"&pc=${QnA[0].productCode}";
+		})
+		if($('input').hasClass('wishtrue')){
+			$('.hart').css('background-color','red');
 		}
 		$(".directbuy")
 				.click(
@@ -384,8 +460,8 @@
 					let newQnA = '<tr>'+
 					'<td>답변대기</td>'+
 					'<td>'+data["questionText"]+'</td>'+
-					'<td>'+dateString+'</td>'+
 					'<td>'+data["userId"]+'</td>'+
+					'<td>'+dateString+'</td>'+
 					'</tr>';
 					$(".QnInfo").after(newQnA);
 					$('.QnA').html(QnANum);
@@ -405,14 +481,86 @@
 				url : '/QnA/more/${product.productCode}/'+QnANum,
 				contentType : "application/json; charset=utf-8",
 				success : function(rs) {
-					alert(rs);
+					$('.QnAtotal').html('');
+					let QnAbox='<tr class="QnInfo"><th>답변상태</th><th>내용</th><th>작성자</th><th>작성시간</th><th></th></tr>';
+					for(let i=0; i<rs.length; i++){
+					QnAbox += '<input type="hidden" value="'+rs[i].questionCode+'"/>'+
+						'<tr class="QnAbox"><td>'
+						+ rs[i].replySituation
+						+ '</td><td>'
+						+ rs[i].questionText
+						+ '</td><td>'
+						+ rs[i].userId
+						+ '</td><td>'
+						+ moment(
+								rs[i].questionDate)
+								.format(
+										"YYYY.MM.DD")
+						+ '</td>';
+						if(${userId.equals(rs[i].userId) or userId.equals(product.userId)}){
+							QnAbox+='<td><button class="delete_QnA" value="'+rs[i].questionCode+'">삭제</button></td></tr>';
+						}
+					if(${!userId.equals(product.userId)} && rs[i].replyText != null && ${!userId.equals(Qn.userId)}){
+						QnAbox += '<tr class="clickText"><td></td>'+
+						'<td class="reply_td" colspan="3"><i class="fas fa-reply"></i>'+
+							'<textarea cols="30" rows="2" class="reply_text" readonly>'+rs[i].replyText+'</textarea></td></tr>';
+					}else if(${userId.equals(product.userId) and !empty userId} && rs[i].replyText!=null || ${userId.equals(Qn.userId)}){
+						QnAbox += '<tr class="clickText"><td></td>+'
+						+'<td class="reply_td" colspan="3"><i class="fas fa-reply"></i>'+
+							'<textarea cols="30" rows="2" class="reply_text" readonly>'+rs[i].replyText+'</textarea></td></tr>'+
+					'<tr class="clickText">'+
+						'+<td colspan="4" class="reply_button"><button class="delete_button" value="'+rs[i].questionCode+'">삭제</button></td>'+
+					'</tr>'
+					}else if(${userId.equals(product.userId) and !empty userId} && rs[i].replyText == null){
+						QnAbox += 
+						'<tr class="clickText">'+
+							'<td></td>'+
+							'<td class="reply_td" colspan="3"><i class="fas fa-reply"></i>'+
+								'<textarea  cols="30" rows="2" class="reply_text reg"></textarea></td>'+
+						'</tr>'+
+					'<tr class="clickText">'+
+						'<td colspan="4" class="reply_button">'+
+						'<button name="questionCode"  class="register_button" value="'+rs[i].questionCode+'">등록</button></td>'+
+					'</tr>';
+					}
+				}
+					$('.QnAtotal').html(QnAbox);
 				},
 				error : function(er) {
 					alert(er);
 				}
 			})
 		})
-		
+		/* ----------------------- 답글 삭제 ajax ----------------------------------*/
+		$(document).on('click','.delete_button',function(){
+			let questionCode= $(this).val();
+			let code=$(this).parent().parent().prev().prev().prev().val();
+			$(this).parent().parent().prev().prev().children().first().html('답변대기');
+			$(this).parent().parent().prev().prev().after('<tr class="clickText">'+
+					'<td></td>'+
+					'<td class="reply_td" colspan="3"><i class="fas fa-reply"></i>'+
+						'<textarea  cols="30" rows="2" class="reply_text reg"></textarea></td>'+
+				'</tr>'+
+			'<tr class="clickText">'+
+				'<td colspan="4" class="reply_button">'+
+				'<button name="questionCode"  class="register_button" value="'+code+'">등록</button></td>'+
+			'</tr>');
+			$(this).parent().parent().prev().remove();
+			$(this).parent().parent().remove();
+			$.ajax({
+				type : 'delete',
+				url : '/QnA/reply/delete/'+questionCode,
+				contentType : "application/json; charset=utf-8",
+				success : function(rs) {
+					alert(rs);
+					
+				},
+				error : function(er) {
+					alert(er);
+				}
+			})
+			
+		})
 		/* ----------------------- 장바구니에 물건넣기 ajax ----------------------   */
 		$(".cart").click(function() {
 			let data = {
@@ -430,7 +578,7 @@
 				data : JSON.stringify(data),
 				contentType : "application/json; charset=utf-8",
 				success : function(result) {
-					alert(result[0].qnaCount);
+					alert(result);
 				},
 				error : function(er) {
 					alert(er);
@@ -485,6 +633,7 @@
 								$(this).css('color', 'rgba(245, 96, 153, 0.9)');
 							}else {
 								tag = 1;
+								$('.pn').first().css('color', 'rgba(245, 96, 153, 0.9)');
 							}
 							$
 									.ajax({
@@ -495,7 +644,7 @@
 										success : function(result) {
 											let rvtable = "";
 											let starRating = "";
-											rvtable += '<tr class="reviewlist"><th>별점</th><th>내용</th><th>작성자</th><th>작성시간</th></tr>';
+											rvtable += '<tr class="reviewlist"><th>별점</th><th>내용</th><th>작성자</th><th>작성시간</th><th></tr></tr>';
 											$(".reviewAll").html("");
 											for (let i = 0; i < result.length; i++) {
 												
@@ -517,7 +666,10 @@
 																result[i].reviewDate)
 																.format(
 																		"YYYY.MM.DD")
-														+ '</td></tr>'
+														+ '</td>'
+														if(${userId.equals(result[i].userId) or userId.equals(product.userId)}){
+														+'<td><button class="delete_review" value="'+result[i].reviewCode+'">삭제</button></tr>';
+														}
 											}
 											$(".reviewAll").html(rvtable);
 										},

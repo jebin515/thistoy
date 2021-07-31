@@ -32,4 +32,22 @@ public class QnAServiceImpl implements QnAService {
 		return mapper.QnATotalCount(productCode);
 	}
 
+	@Override
+	public int replyQnA(QnAVO vo) {
+		// TODO Auto-generated method stub
+		return mapper.replyQnA(vo);
+	}
+
+	@Override
+	public int removeReply(int questionCode) {
+		// TODO Auto-generated method stub
+		return mapper.deleteReply(questionCode);
+	}
+
+	@Override
+	public int removeQnA(int questionCode) {
+		// TODO Auto-generated method stub
+		return mapper.deleteQnA(questionCode);
+	}
+
 }

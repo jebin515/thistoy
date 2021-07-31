@@ -13,5 +13,6 @@ public interface ReviewService {
 
 	int getReviewTotalCount(String productCode);
 
+	int removeReview(int reviewCode);
 	
 }

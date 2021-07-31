@@ -6,6 +6,8 @@ import lombok.Data;
 public class CartVO {
 	private int cartCode;
 	private String productCode;
-	private String productEa;
+	private int productEa;
 	private String userId;
+	
+	
 }

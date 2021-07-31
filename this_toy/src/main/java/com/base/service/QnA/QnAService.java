@@ -11,4 +11,10 @@ public interface QnAService {
 	ArrayList<QnAVO> getQnA(QnAVO vo);
 	
 	int QnATotalCount(String productCode);
+	
+	int replyQnA(QnAVO vo);
+	
+	int removeReply(int questionCode);
+	
+	int removeQnA(int questionCode);
 }

@@ -38,7 +38,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                <c:forEach items=" ${notice}" var="notice">
+                <c:forEach items="${list}" var="notice">
                     <tr>
                         <td>${notice.noticeNum}</td>
                         <td><a class="subject-list"  href='<c:out value="${notice.noticeNum}" />' ><c:out value="${notice.noticeTitle}" /></td>

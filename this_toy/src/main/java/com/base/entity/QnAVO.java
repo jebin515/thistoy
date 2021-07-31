@@ -13,5 +13,7 @@ public class QnAVO {
 	private Date questionDate;
 	private String replySituation;
 	private String userId;
+	private String replyText;
+	private Date replyDate;
 	private int qnaCount;
 }

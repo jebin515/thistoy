@@ -31,14 +31,30 @@ public class OrdersServiceImpl implements OrdersService {
 	}
 	
 	@Override
-	public CartVO getcart(CartVO vo) {
+	public ProductVO getcart(String productCode) {
 		// TODO Auto-generated method stub
-		return mapper.getcart(vo);
+		return mapper.getcart(productCode);
 	}
 	@Override
 	public void insertorder(OrdersVO vo) {
 		// TODO Auto-generated method stub
 		mapper.insertorder(vo);
+	}
+	@Override
+	public void deletecart(OrdersVO vo) {
+		// TODO Auto-generated method stub
+		mapper.deletecart(vo);
+		
+	}
+	@Override
+	public void updatesales(OrdersVO vo) {
+		// TODO Auto-generated method stub
+		mapper.updatesales(vo);
+	}
+	@Override
+	public void updatestock(OrdersVO vo) {
+		// TODO Auto-generated method stub
+		mapper.updatestock(vo);
 	}
 	
 }

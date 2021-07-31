@@ -2,12 +2,15 @@ package com.base.controller;
 
 import java.util.ArrayList;
 
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.base.entity.QnAVO;
@@ -36,5 +39,26 @@ public class QnAController {
 		System.out.println(vo);
 		System.out.println(service.getQnA(vo));
 		return service.getQnA(vo);
+	}
+	@GetMapping(value = "reply")
+	public String replyQnA(@RequestParam(name="qc")int questionCode,@RequestParam(name="rt") String replyText,@RequestParam(name="pc") String productCode) {
+		QnAVO vo = new QnAVO();
+		vo.setQuestionCode(questionCode);
+		vo.setReplyText(replyText);
+		System.out.println(vo);
+		int count = service.replyQnA(vo);
+		return "redirect:/product/detail_main?pc="+productCode+"&reply";
+	}
+	@ResponseBody
+	@DeleteMapping(value = "reply/delete/{questionCode}",produces = "application/text; charset=UTF-8")
+	public String deleteQnA(@PathVariable("questionCode")int questionCode) {
+		int count = service.removeReply(questionCode);
+		System.out.println(count);
+		return "답글을 삭제하였습니다.";
+	}
+	@GetMapping(value = "delete")
+	public String deleteQnA(@RequestParam(name="qc")int questionCode,@RequestParam(name="pc") String productCode) {
+		int count = service.removeQnA(questionCode);
+		return "redirect:/product/detail_main?pc="+productCode;
 	}
 }

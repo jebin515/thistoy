@@ -11,13 +11,6 @@ import com.base.session.LoginCommand;
 public interface UserService {
 	//로그인
 	UserVO login(UserVO userVO);
-	//체크2
-//	boolean loginCheck2(UserVO userVO,HttpSession session);
-	
-	int loginCheck(UserVO userVO);
-	
-//	UserVO viewUser(UserVO userVO);
-	
 	//회원가입
 	void register(UserVO userVO);
 	
@@ -26,4 +19,9 @@ public interface UserService {
 	
 	//로그인
 	AuthInfo loginAuth(LoginCommand loginCommand);
+	
+	//개인정보수정
+	public void userModify(UserVO vo);
+	//수정시 비밀번호체크
+	AuthInfo pwCheck(LoginCommand loginCommand);
 }

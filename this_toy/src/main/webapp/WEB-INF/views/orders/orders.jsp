@@ -35,7 +35,7 @@
 									<c:set var="mimg" value="${fn:substring(pdc.productMainImg,0,i)}" />
 									<tr>
 										<input type="hidden" name="productCode" value="${pdc.productCode}">
-										<td><input type="hidden" name="productImg" value="dd">
+										<td><input type="hidden" name="productImg" value="${mimg}">
 											<img src="/upload/product/main/${mimg}" />
 										</td>
 										<td><input type="hidden" name="productName" value="${pdc.productName}">
@@ -45,7 +45,7 @@
 											<c:out value="${pdc.userId}" />
 										</td>
 										<td><input type="hidden" value="배송비">3000원</td>
-										<td><input type="hidden" name="orderEa" value="3">
+										<td><input type="hidden" name="orderEa" value="${st}">
 											<c:out value="${st}" />
 										</td>
 										<td><input type="hidden" name="orderPrice" value="${st * pdc.productPrice}">
@@ -150,6 +150,7 @@
 						</div>
 					</main>
 					<%@ include file="../includes/footer.jsp" %>
+					
 						<script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
 						<script src="/js/address.js"></script>
 						<script src="/js/orders.js"></script>
@@ -198,13 +199,14 @@
 												type: "POST",
 												url: "/orders/" + rsp.imp_uid,
 												contentType: "application/json",
+												traditional: true,
 												data: JSON.stringify({
 													imp_uid: rsp.imp_uid,
 													merchant_uid: rsp.merchant_uid,
 													orderCode: $('input[name=productCode]').val(),
 													orderPrice: $('input[name=orderPrice]').val(),
 													productCode: $('input[name=productCode]').val(),
-													userId: 'admin',
+													userId: nameValue,
 													productName: $('input[name=productName]').val(),
 													orderEa: $('input[name=orderEa]').val(),
 													productImg: $('input[name=productImg]').val(),
@@ -216,7 +218,7 @@
 											}).done(function (data) {
 												console.log(data);
 												if (rsp.paid_amount == data.response.amount) {
-													/* location.href = "/orders/orderssuccess"; */
+													location.href = "/orders/orderssuccess";
 													console.log(data);
 												} else {
 													alert("결제 검증 실패");
