@@ -55,13 +55,16 @@ main {
     padding: 20px 15px;
     letter-spacing: 5px;
   }
+  ul li{  /* 숫자 가로정렬 */
+    float: left;
+  }
   .page-number-ea:hover{
     color: blue;
     text-decoration: underline;
   }
-  .container .notice-search {
+  .notice-search {
     position: relative;
-    padding: 20px 20px;
+    margin-bottom: 70px;
   }
   .container .notice-search input {
     outline: none;
@@ -98,4 +101,20 @@ main {
     background-color: rgba(197, 137, 199, 0.75);
     color: white;
     font-size: 23px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+  }
+  
+  /* ============= Modal CSS ===================== */
+  .modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1050;
+    display: none;
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
   }
