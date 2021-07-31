@@ -17,11 +17,12 @@
 .write-base {
     position: relative;
     font-size: 21px;
-    display: flex;
+/*     display: flex; */
   }
 
   .write-board {
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
     border: 1px solid pink;
   }
   
@@ -54,6 +55,7 @@
   .board-title, .board-writer, .board-date, .board-text {
     font-size: 23px;
     border: 1px solid white;
+    resize: none;
   }
 
   /* input:focus{
