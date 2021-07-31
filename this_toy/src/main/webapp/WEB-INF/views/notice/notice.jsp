@@ -41,7 +41,7 @@
                 <c:forEach items="${list}" var="notice">
                     <tr>
                         <td>${notice.noticeNum}</td>
-                        <td><a class="subject-list"  href='<c:out value="${notice.noticeNum}" />' ><c:out value="${notice.noticeTitle}" /></td>
+                        <td><a class="subject-list"  href='notice_detail?noticeNum=<c:out value="${notice.noticeNum}" />' ><c:out value="${notice.noticeTitle}" /></td>
                         <td><fmt:formatDate pattern="yyyy-MM-dd" value="${notice.noticeDate}" ></fmt:formatDate></td>
                         <td>${notice.userId}</td>
                     </tr>
@@ -79,8 +79,7 @@
                 </tr>
             </div>
             </div>
-            <button id='board-write' type="button" class="board-write">글쓰기</button>
-<!-- <input type="submit" value="글쓰기" class="board-write" onclick="location.href='notice_writer.html'"> -->
+            <button id='board-write' type="button" class="board-write" >글쓰기</button>
             <div>
             <div class="notice-search">
             	<form id='searchForm'  action="/notice/notice"  method="get">
