@@ -37,8 +37,8 @@
 }
 
 #main .txt-section .txt-main {
-	height: 300px;
-	margin: 20px 0 20px 0;
+	height: 400px;
+	margin: 20px 0 50px 0;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
@@ -265,6 +265,9 @@
 
 #main .detail-content table tr th:nth-child(4) {
 	width: 20%;
+}
+#main .detail-content table tr th:nth-child(5) {
+	width: 10%;
 }
 
 #main .detail-content table tr th {
