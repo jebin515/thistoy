@@ -77,7 +77,7 @@ public class LoginController {
 		} catch (IdPasswordNotMatchingException e) {
 			return "/login/loginfail";
 		}
-		return "/main";
+		return "redirect:/main";
 	} //기존 로그인 
 	
 	
