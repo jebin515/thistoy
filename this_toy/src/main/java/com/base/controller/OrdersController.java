@@ -31,66 +31,44 @@ import com.siot.IamportRestClient.response.Payment;
 public class OrdersController {
 	@Autowired
 	private OrdersService service;
-	
+
 	private IamportClient api = new IamportClient("9935225488488363",
 			"42VKSjQQgdnutTWiJq7BNN0vt2anFEPJGKuz4kplyNP2GLlpcs10f1vJ3G6JkWt1GXALi06QOVTuHeUT");
 
 	@PostMapping(value = "cart")
-	public String cart(Model model, 
-			@RequestParam(name="pdc")String[] productCode,
-			HttpServletRequest request,
-			@RequestParam(name="st")int[] productStock) {
-		
+	public String cart(Model model, @RequestParam(name = "pdc") String[] productCode, HttpServletRequest request,
+			@RequestParam(name = "st") int[] productStock) {
+
 		HttpSession session = request.getSession();
-		String userId = (String)session.getAttribute("userId");
-		model.addAttribute("user",service.getaddr(userId));
-		ArrayList<ProductVO> vo = new ArrayList<ProductVO>();	
-		for(int i = 0; i < productCode.length; i++ ) {
+		String userId = (String) session.getAttribute("userId");
+		model.addAttribute("user", service.getaddr(userId));
+		ArrayList<ProductVO> vo = new ArrayList<ProductVO>();
+		for (int i = 0; i < productCode.length; i++) {
 			ProductVO pVO = service.getcart(productCode[i]);
 			pVO.setProductEa(productStock[i]);
 			vo.add(pVO);
 		}
-		model.addAttribute("pdc",vo);
-		
-		
+		model.addAttribute("pdc", vo);
+
 		return "orders/orders";
 	}
-	
-	/*
-	 * @GetMapping(value = "direct") public String direct(Model model,
-	 * 
-	 * @RequestParam(name="pdc")String productCode,
-	 * 
-	 * @RequestParam(name="user")String userId,
-	 * 
-	 * @RequestParam(name="st")String productStock) {
-	 * 
-	 * System.out.println(productCode);
-	 * model.addAttribute("pdc",service.getproduct(productCode));
-	 * model.addAttribute("user",service.getaddr(userId));
-	 * System.out.println(service.getaddr(userId)+"hi");
-	 * model.addAttribute("st",productStock); return "orders/orders"; }
-	 */
-	
+
 	@ResponseBody
-	@PostMapping(value="/orders/{imp_uid}")
+	@PostMapping(value = "/orders/{imp_uid}")
 	public IamportResponse<Payment> paymentByImpUid(
-			@PathVariable("imp_uid") String imp_uid,
-			@RequestBody OrdersVO[] vo
-			) throws IamportResponseException, IOException
-	{	
+			@PathVariable("imp_uid") String imp_uid, 
+			@RequestBody OrdersVO vo)
+			throws IamportResponseException, IOException {
 		System.out.println(vo);
 		
-		OrdersVO[] orderlist = vo;
-		for(int i = 0; i<vo.length; i++) {	
-		service.insertorder(vo[i]);
-		service.deletecart(vo[i]);
-		service.updatesales(vo[i]);
-		service.updatestock(vo[i]);
-		}
-		
+		service.insertorder(vo);
+		service.deletecart(vo);
+		service.updatesales(vo);
+		service.updatestock(vo);
+
 		System.out.println(api.paymentByImpUid(imp_uid));
 		return api.paymentByImpUid(imp_uid);
+
 	}
 
 	@RequestMapping("/orderssuccess")

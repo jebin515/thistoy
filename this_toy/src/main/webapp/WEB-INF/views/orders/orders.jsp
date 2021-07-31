@@ -156,15 +156,14 @@
 						</div>
 					</main>
 					<%@ include file="../includes/footer.jsp" %>
-
+						
+						<!-- jQuery -->
+						<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 						<script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
 						<script src="/js/address.js"></script>
 						<script src="/js/orders.js"></script>
 						<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-						<!-- jQuery -->
-						<script src="https://code.jquery.com/jquery-1.12.4.min.js"
-							integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
-							crossorigin="anonymous"></script>
+						
 						<!-- iamport.payment.js -->
 						<script type="text/javascript"
 							src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
@@ -174,6 +173,12 @@
 							var member_post = "";
 							var member_addr = "";
 							var member_detail = "";
+							var orderCode = new Array();
+							var orderPrice = new Array();
+							var productCode = new Array();
+							var productName = new Array();
+							var orderEa = new Array();
+							var productImg = new Array();
 							$(document).ready(function () {
 								$("#new_name").keyup(function () {
 									$("#postuser").text($("#new_name").val());
@@ -189,7 +194,26 @@
 									addrType == "addr" ? $("#old_member_addr").val() : $("#member_addr").val();
 								member_detail =
 									addrType == "addr" ? $("#old_member_detail").val() : $("#member_detail").val();
+
 								console.log(member_post + "" + member_addr + "" + member_detail);
+								$('input[name=productCode]').each(function (index, item) {
+									orderCode.push($(item).val());
+									productCode.push($(item).val());
+								});
+								$('input[name=orderPrice]').each(function (index, item) {
+									orderPrice.push($(item).val());
+								});
+								$('input[name=productName]').each(function (index, item) {
+									productName.push($(item).val());
+								});
+								$('input[name=orderEa]').each(function (index, item) {
+									orderEa.push($(item).val());
+								});
+								$('input[name=productImg]').each(function (index, item) {
+									productImg.push($(item).val());
+								});
+								
+								alert(orderCode + " " + orderPrice + " " + productCode + " " + productName + " " + orderEa + " " + productImg);
 								//가맹점 식별코드
 								IMP.init("imp76068644");
 								IMP.request_pay(
@@ -198,7 +222,7 @@
 										pay_method: "card",
 										merchant_uid: "merchant_" + new Date().getTime(),
 										name: ('${pricecount}' == 0) ? '${pricefirstname}' : '${pricefirstname}' + '외' + '${pricecount}' + '개', //결제창에서 보여질 이름 // 상품 이름
-										amount: '${count + 3000}', //실제 결제되는 가격
+										amount: '${count + 100}', //실제 결제되는 가격
 										buyer_email: "${user.userEmail}",
 										buyer_name: nameValue, // 구매자
 									},
@@ -215,13 +239,13 @@
 												data: JSON.stringify({
 													imp_uid: rsp.imp_uid,
 													merchant_uid: rsp.merchant_uid,
-													orderCode: $('input[name=productCode]').val(),
-													orderPrice: $('input[name=orderPrice]').val(),
-													productCode: $('input[name=productCode]').val(),
+													orderCode: orderCode,
+													orderPrice: orderPrice,
+													productCode: productCode,
 													userId: nameValue,
-													productName: $('input[name=productName]').val(),
-													orderEa: $('input[name=orderEa]').val(),
-													productImg: $('input[name=productImg]').val(),
+													productName: productName,
+													orderEa: orderEa,
+													productImg: productImg,
 													orderAddressPost: member_post,
 													orderAddress: member_addr,
 													orderAddressDetail: member_detail
@@ -237,6 +261,7 @@
 												}
 											});
 										} else {
+											console.log(data);
 											alert("결제 실패")
 										}
 									}

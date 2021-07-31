@@ -14,7 +14,7 @@
 </script>
 
 <header id="header">
-	<c:if test="${empty userId and empty social}">
+	<c:if test="${empty userId}">
 		<div class="header-full">
 			<a href="/main" class="logo"></a>
 			<nav class="header_nav">
@@ -27,14 +27,14 @@
 			</nav>
 		</div>
 	</c:if>
-	<c:if test="${not empty userId and not empty social}">
+	<c:if test="${not empty userId}">
 	<div class="header-full">
-		<a href="#" class="logo"></a>
+		<a href="/main" class="logo"></a>
 			<nav class="header_nav">
 				<div class="header_menu">
 					<a href="/login/logout" class="header_login"> <i
 						class='bx-fw bx bxs-rocket bx-tada-hover'></i>로그아웃
-					</a> <a href="/edit/editmypage" class="header_register"><i
+					</a> <a href="/mypage/mypage" class="header_register"><i
 						class='bx-fw bx bxs-user-plus bx-tada-hover'></i>마이페이지</a>
 					<p>반갑습니다 ${userId}님</p>
 				</div>
@@ -42,6 +42,7 @@
 		</div>
 	</c:if>
 </header>
+
 <div class="menu">
 	<ul>
 		<li class="drop-down"><a href="#"><i
