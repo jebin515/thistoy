@@ -55,7 +55,9 @@ main {
     padding: 20px 15px;
     letter-spacing: 5px;
   }
-ul>li {	/* 가로정렬 */
+
+ul>li {	/* 숫자 가로정렬 */
+
     float: left;
 }
   .page-number-ea:hover{
