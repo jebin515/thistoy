@@ -57,6 +57,7 @@
 
 					<!-- 회원정보 -->
 					<c:forEach var="admin" items="${admin}">
+
 						<form action="/admin/delete/${admin.userId}" method="post"
 							class="admin_delete">
 							<tr class="table_data">
@@ -69,6 +70,7 @@
 								<td class="delete"><button class="delete_button">삭제</button></td>
 							</tr>
 						</form>
+
 					</c:forEach>
 				</table>
 				<div class="paging">
@@ -105,7 +107,7 @@
 </html>
 <script>
 	$(document).on('click', '.delete_button', function() {
-		let ok = confirm('정말 삭제하시겠습니까?)
+		let ok = confirm('정말 삭제하시겠습니까?');
 		let index = $('.delete_button').index(this);
 		if (ok == true) {
 			$('.admin_delete:eq(' + index + ')').submit();

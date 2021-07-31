@@ -25,11 +25,11 @@ $(".btn_confirm").click(function () {
     var checkResult = $(".code_check");    // 비교 결과
     submitBtn2.disable = false;
     if (inputCode == code) {                            // 일치할 경우
-        checkResult.html("인증 성공3!");
+        checkResult.html("인증 성공!");
 
         $(submitBtn).removeAttr('disabled');
     } else {                                            // 일치하지 않을 경우
-        checkResult.html("인증 실패4.");
+        checkResult.html("인증 실패.");
 
         // checkfail();
 

@@ -22,6 +22,6 @@ public interface OrdersMapper {
    void updatestock(OrdersVO vo);
    
    void updatesales(OrdersVO vo);
- 
+
    
 }

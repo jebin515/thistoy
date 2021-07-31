@@ -8,25 +8,20 @@ $.validator.addMethod("regex", function (value, element, regexp) {
 $(function () {
 	$(".form").validate({
 		rules: {
-			userId: {
-				required: true,
-				minlength: 3
-			},
 			userName: {
 				required: true,
 				minlength: 2
 			},
-			userPasswd: {
+			oldPassword: {
 				required: true,
-				// regex: "^.(?=^.{8,15}$)(?=.\d)(?=.[a-zA-Z])(?=.[!@#$%^&+=]).*$",
-				//기존정규식
-				regex: "^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$^])",
 				minlength: 8,
 				maxlength: 15
 			},
-			password2: {
+			newPassword: {
 				required: true,
-				equalTo: '#password'
+				regex: "^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$^])",
+				minlength: 8,
+				maxlength: 15
 			},
 			userEmail: {
 				required: true,
@@ -55,23 +50,20 @@ $(function () {
 		},
 
 		messages: {
-			userId: {
-				required: "아이디는 필수 입력입니다.",
-				minlength: "최소 3글자 이상 입력해주세요."
-			},
 			userName: {
 				required: "이름은 필수 입력입니다.",
 				minlength: "최소 2글자 이상 입력해주세요."
 			},
-			userPasswd: {
+			oldPassword: {
 				required: "비밀번호는 필수 입력입니다.",
 				minlength: "최소 8자리 이상 입력해주세요",
-				regex: "비밀번호에 특수문자/문자/숫자를 포함해주세요",
 				maxlength: "15자리 이하로 입력하세요"
 			},
-			password2: {
-				required: "비밀번호를 확인하세요",
-				equalTo: "비밀번호가 틀립니다"
+			newPassword: {
+				required: "비밀번호는 필수 입력입니다.",
+				minlength: "최소 8자리 이상 입력해주세요",
+				regex: "비밀번호에 3특수문자/문자/숫자를 포함해주세요",
+				maxlength: "15자리 이하로 입력하세요"
 			},
 			userEmail: {
 				required: "이메일은 필수 입력입니다.",

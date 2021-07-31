@@ -72,17 +72,21 @@
 										<tr class="form-control">
 											<th><span>이메일</span></th>
 											<td><input type="email" name="userEmail" id="email"
-												placeholder="예)abc@abc.com" required></td>
+												class="mail_input" placeholder="예)abc123@naver.com" required></td>
 											<td>
-												<button class="btn_confirm" onclick="sendEmail()" type="button">인증번호
+												<button class="btn_send" onclick="sendEmail()" type="button">인증번호
 													발송</button>
 											</td>
 										</tr>
 										<tr class="form-control">
 											<th><span>인증번호 확인</span></th>
 											<td><input type="text" class="send_number"
-												name="send_number" placeholder="4자리를 입력하세요."></td>
-											<td><button class="btn_send" type="button">확인</button></td>
+												name="send_number" placeholder="인증번호를 정확히 입력하세요."
+												id="mail_check_input"></td>
+											<td><button class="btn_confirm" type="button">확인</button></td>
+										</tr>
+										<tr class="form-control">
+											<th><span class="code_check"></span></th>
 										</tr>
 										<tr class="form-control">
 											<th><span>휴대폰 번호</span></th>
@@ -108,7 +112,7 @@
 								</div>
 							</div>
 							<div class="btn_wrap">
-								<input type="submit" id="idCheck"  class="button" value="확인">
+								<input type="submit" id="next_button"  class="button" value="확인" disabled>
 							</div>
 						</form>
 					</div>

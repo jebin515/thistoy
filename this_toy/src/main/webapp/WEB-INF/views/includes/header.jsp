@@ -14,7 +14,7 @@
 </script>
 
 <header id="header">
-	<c:if test="${empty authInfo}">
+	<c:if test="${empty authInfo and empty social}">
 	<div class="header-full">
 		<a href="/main" class="logo"></a>
 			<nav class="header_nav">
@@ -27,7 +27,7 @@
 			</nav>
 	</div>
 	</c:if>
-	<c:if test="${not empty userId}">
+	<c:if test="${not empty userId || not empty social}">
 	<div class="header-full">
 		<a href="#" class="logo"></a>
 			<nav class="header_nav">
