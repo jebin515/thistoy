@@ -41,7 +41,7 @@
                 <c:forEach items="${list}" var="notice">
                     <tr>
                         <td>${notice.noticeNum}</td>
-                        <td><a class="subject-list"  href='<c:out value="${notice.noticeNum}" />' ><c:out value="${notice.noticeTitle}" /></td>
+                        <td><a class="subject-list"  href='notice_detail?noticeNum=<c:out value="${notice.noticeNum}" />' ><c:out value="${notice.noticeTitle}" /></td>
                         <td><fmt:formatDate pattern="yyyy-MM-dd" value="${notice.noticeDate}" ></fmt:formatDate></td>
                         <td>${notice.userId}</td>
                     </tr>
@@ -73,24 +73,25 @@
                 <form id='actionForm' action="/notice/notice" method="get">
                 	<input type="hidden" name='pageNum' value='${pageMaker.cri.pageNum}'>
                 	<input type="hidden" name='amount' value='${pageMaker.cri.amount}'>
+                	<input type="hidden" name='type' value='${pageMaker.cri.type}'>
+                	<input type="hidden" name='keyword' value='${pageMaker.cri.keyword}'>
                 </form>
                 </tr>
             </div>
             </div>
-            <button id='board-write' type="button" class="board-write">글쓰기</button>
-<!-- <input type="submit" value="글쓰기" class="board-write" onclick="location.href='notice_writer.html'"> -->
+            <button id='board-write' type="button" class="board-write" >글쓰기</button>
             <div>
             <div class="notice-search">
             	<form id='searchForm'  action="/notice/notice"  method="get">
             		<select name="type">
-            			<option value="">===</option>
-            			<option value="T">제목</option>
-            			<option value="C">내용</option>
-            			<option value="W">작성자</option>
-            			<option value="TC">제목+내용</option>
-            			<option value="TCW">제목+내용+작성자</option>
+            			<option value="" ${pageMaker.cri.type == null?"selected":""}>===</option>
+            			<option value="T" ${pageMaker.cri.type eq 'T'?"selected":""}>제목</option>
+            			<option value="C" ${pageMaker.cri.type eq 'C'?"selected":""}>내용</option>
+            			<option value="W" ${pageMaker.cri.type eq 'W'?"selected":""}>작성자</option>
+            			<option value="TC" ${pageMaker.cri.type eq 'TC'?"selected":""}>제목+내용</option>
+            			<option value="TCW" ${pageMaker.cri.type eq 'TCW'?"selected":""}>제목+내용+작성자</option>
             		</select>
-            		<input type='text' name='keyword'>
+            		<input type='text' name='keyword' value=' ${pageMaker.cri.keyword}'>
             		<input type="hidden" name='pageNum' value=' ${pageMaker.cri.pageNum}'>
             		<input type="hidden" name='amount' value=' ${pageMaker.cri.amount}'>
             		<button class='btn btn-defauit'>검색</button>
@@ -101,7 +102,7 @@
     
     
 						<!--     modal	 -->
-<div id="myModal" class="modal" tabindex="-1" role="dialog">
+<div id="myModal" class="modal"  tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -121,7 +122,8 @@
   </div>
 </div>
 
-<script>
+<script type="text/javascript">
+
 $(document).ready(function() {
 	var result = '<c:out value="${result}"/>';
 	

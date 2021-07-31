@@ -27,18 +27,16 @@
 			</nav>
 	</div>
 	</c:if>
-	<c:if test="${not empty authInfo || not empty social}">
+	<c:if test="${not empty userId || not empty social}">
 	<div class="header-full">
 		<a href="#" class="logo"></a>
 			<nav class="header_nav">
 				<div class="header_menu">
-					<a href="/login/logout" class="header_login">  
-					<i class='bx-fw bx bxs-rocket bx-tada-hover'></i>로그아웃</a> 
-					<a href="/edit/modify" class="header_register">
-					<i class='bx-fw bx bxs-user-plus bx-tada-hover'></i>개인정보수정</a>
-					<a href="/mypage/mypage">
-					<i class='bx-fw bx bxs-rocket bx-tada-hover'></i>마이페이지</a>
-					<p> 반갑습니다 ${authInfo.userName}님</p>
+					<a href="/login/logout" class="header_login">  <i
+						class='bx-fw bx bxs-rocket bx-tada-hover'></i>로그아웃</a> <a href="/edit/editmypage"
+						class="header_register"><i
+						class='bx-fw bx bxs-user-plus bx-tada-hover'></i>마이페이지</a>
+						<p> 반갑습니다 ${userId}님</p>
 				</div>
 			</nav>
 	</div>
@@ -49,7 +47,7 @@
 		<li class="drop-down"><a href="#"><i
 				class='bx-fw bx bxs-directions bx-tada-hover bx-xs'></i>전체</a>
 			<ul>
-				<li><a href="#">공지사항</a></li>
+				<li><a href="/notice/notice">공지사항</a></li>
 				<li><a href="#">사이트안내</a></li>
 				<li><a href="/product/list?bn=New">신제품</a></li>
 				<li><a href="/product/list?bn=Best">인기제품</a></li>
@@ -118,7 +116,7 @@
 			</ul></li>
 	</ul>
 	<ul>
-		<li><a href="#">공지사항</a></li>
+		<li><a href="/notice/notice">공지사항</a></li>
 	</ul>
 	<ul>
 		<li><a href="#">사이트안내</a></li>

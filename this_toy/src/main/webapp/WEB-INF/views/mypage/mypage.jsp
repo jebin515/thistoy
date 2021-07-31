@@ -34,7 +34,7 @@
         <div class="line"></div>
         <div class="mypage_inner">
             <div class="inner">
-				<a href="/mypage/mypage" class="item">찜목록</a> <a
+				<a href="/mypage/mypage_wishlist" class="item">찜목록</a> <a
 					href="/mypage/mypage_sellbox" class="item">등록한 판매글</a> <a
 					href="/mypage/mypage_cart" class="item">장바구니</a> <a
 					href="/mypage/mypage_orderbox" class="item">주문목록</a> <a

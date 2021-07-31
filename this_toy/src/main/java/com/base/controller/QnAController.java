@@ -56,4 +56,9 @@ public class QnAController {
 		System.out.println(count);
 		return "답글을 삭제하였습니다.";
 	}
+	@GetMapping(value = "delete")
+	public String deleteQnA(@RequestParam(name="qc")int questionCode,@RequestParam(name="pc") String productCode) {
+		int count = service.removeQnA(questionCode);
+		return "redirect:/product/detail_main?pc="+productCode;
+	}
 }
