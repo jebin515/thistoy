@@ -30,7 +30,6 @@
 							<h4>거북이</h4>
 							<p>이진웅</p>
 							<div class="slide-link">
-								<a href="#"><i class="bx bx-plus"></i></a> 
 								<a href="#"><i class="bx bx-link"></i></a>
 							</div>
 						</div>
@@ -80,7 +79,6 @@
 							<h4>${nw.productName}</h4>
 							<p>${nw.productPrice}원</p>
 							<div class="slide-link">
-								<a href="#?ncc=${nw.productCode}"><i class="bx bx-plus"></i></a> 
 								<a href="#"><i class="bx bx-link"></i></a>
 							</div>
 						</div>
@@ -104,7 +102,6 @@
 							<h4>${bs.productName}</h4>
 							<p>${bs.productPrice}원</p>
 							<div class="slide-link">
-								<a href="#?ncc=${bs.productCode}"><i class="bx bx-plus"></i></a> 
 								<a href="#"><i class="bx bx-link"></i></a>
 							</div>
 							</div>

@@ -16,8 +16,8 @@ public class PageVO {
 	public PageVO(int total, int pageNum) {
 		this.total = total;
 		this.pageNum = pageNum;
-		this.endPage = (int) (Math.ceil(pageNum/5.0))*5;
-		this.startPage = this.endPage-4;
+		this.endPage = (int) (Math.ceil(pageNum/5.0))*5; 
+		this.startPage = this.endPage-4; 
 		realEnd = (int) (Math.ceil((total*1.0)/10));
 		
 		if(realEnd < this.endPage) {

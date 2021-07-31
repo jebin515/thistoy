@@ -47,7 +47,7 @@
 		<li class="drop-down"><a href="#"><i
 				class='bx-fw bx bxs-directions bx-tada-hover bx-xs'></i>전체</a>
 			<ul>
-				<li><a href="#">공지사항</a></li>
+				<li><a href="/notice/notice">공지사항</a></li>
 				<li><a href="#">사이트안내</a></li>
 				<li><a href="/product/list?bn=New">신제품</a></li>
 				<li><a href="/product/list?bn=Best">인기제품</a></li>
@@ -116,7 +116,7 @@
 			</ul></li>
 	</ul>
 	<ul>
-		<li><a href="#">공지사항</a></li>
+		<li><a href="/notice/notice">공지사항</a></li>
 	</ul>
 	<ul>
 		<li><a href="#">사이트안내</a></li>

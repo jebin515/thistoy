@@ -30,6 +30,10 @@
 	select * from orders where user_Id = #{userId} order by order_date desc
 	</select>
 	
+	<select id="getWish" resultType="WishlistVO">
+	select * from wish_list where product_code = #{productCode}
+	</select>
+	
 	
 	
 	

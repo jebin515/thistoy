@@ -10,6 +10,9 @@ import com.base.entity.WishlistVO;
 public interface MypageMapper {
 
 	ArrayList<WishlistVO> getProductCode(String userId);
+	
+	ArrayList<WishlistVO> getWish(String productCode);
+	
 	ProductVO getWishList(String productCode);
 
 	ArrayList<ProductVO> getSellbox(String userId);
