@@ -39,7 +39,7 @@
                     </tr>
                     <tr>
                         <th>작성자</th>
-                        <td><input class="userId"  name="userId" value='<c:out value="${notice.userId}"/>' ></td>
+                        <td><input class="userId"  name="userId" readonly="readonly"  value='<c:out value="${notice.userId}" />' ></td>
                     </tr>
                     <tr>
                         <th>DATE</th>

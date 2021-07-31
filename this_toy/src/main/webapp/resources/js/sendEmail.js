@@ -13,11 +13,12 @@ $(".btn_send").click(function () {
         url: "mailCheck?semail=" + semail,
         success: function (data) {
             console.log("data : " + data);
-
             code = data;
+            alert(semail + "주소로 메일이 발송되었습니다.");
         }
     });
 });
+
 
 $(".btn_confirm").click(function () {
 
