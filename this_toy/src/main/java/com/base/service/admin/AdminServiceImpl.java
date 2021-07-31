@@ -10,12 +10,10 @@ import com.base.mapper.AdminMapper;
 import lombok.AllArgsConstructor;
 
 @Service
-
 @AllArgsConstructor
 public class AdminServiceImpl implements AdminService {
 
 	private AdminMapper mapper;
-
 
 	@Override
 	public void deleteMember(String userId) {
@@ -28,10 +26,11 @@ public class AdminServiceImpl implements AdminService {
 		// TODO Auto-generated method stub
 		return mapper.userListPaging(pageNum);
 	}
-	
+
 	@Override
 	public int getTotal() {
 		// TODO Auto-generated method stub
 		return mapper.getTotal();
 	}
+
 }
