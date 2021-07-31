@@ -115,6 +115,7 @@
 							</div>
 							<div class="product_deliver_price">배송비 : 3,000원</div>
 							<div class="ratingbox">
+							${pdinfo.ratingAvg}
 								<div class="rating rating2">
 									<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
 										class="fa fa-star"></i> <i class="fa fa-star"></i> <i

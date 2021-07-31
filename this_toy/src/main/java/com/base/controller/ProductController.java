@@ -2,6 +2,7 @@ package com.base.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -140,7 +142,12 @@ public class ProductController {
 			pageNum = listvo.getRealEnd();
 		}
 		vo.setPageNum(pageNum);
-		model.addAttribute("pdList", prService.getList(vo)); // 페이지넘버와 하위카테고리 번호로 출력시킬 리스트 가져오기
+		ArrayList<ProductVO> pVO = prService.getList(vo);	
+		for(int i=0; i<15; i++) {
+			System.out.println(pVO.get(i).getProductCode());
+			pVO.get(i).setRatingAvg(rvService.getReviewAvg(pVO.get(i).getProductCode()));
+		}
+		model.addAttribute("pdList",pVO);
 		model.addAttribute("dpv", vo); // 검색어와 best,new값을 들고가기 위한설정
 		model.addAttribute("dcname", CaService.getDcName(downCaCode)); // 현재가 어떤 카테고리인지 이름을 띄워주기 위해 작업
 		model.addAttribute("dcList", CaService.getList()); // 각 카테고리에 value값을 주기 위한 설정

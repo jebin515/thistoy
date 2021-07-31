@@ -15,5 +15,7 @@ public interface ReviewMapper {
 	int getReviewTotalCount(String productCode);
 	
 	int deleteReview(int reviewCode);
+	
+	float getReviewAvg(String productCode);
 
 }
