@@ -14,9 +14,10 @@ public interface UserService {
 	//회원가입
 	void register(UserVO userVO);
 	
-	//id체크
+	//회원가입시 id 중복확인
 	int idCheck(UserVO userVO);
-	
+	//가입시 이메일 중복확인
+	int emailCheck(UserVO userVO);
 	//로그인
 	AuthInfo loginAuth(LoginCommand loginCommand);
 	
