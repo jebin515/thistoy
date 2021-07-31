@@ -49,14 +49,10 @@ public class ProductController {
 	private MypageService myService;
 
 	@GetMapping("detail_writer")
-	public String registerget(Model model, HttpServletRequest request, RedirectAttributes rttr) {
+	public String registerget(Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		session.setAttribute("userId", "jin");
 		String userId = (String) session.getAttribute("userId");
-		if (userId == null) {
-			rttr.addFlashAttribute("fail", "fail");
-			return "redirect:/main";
-		}
 		model.addAttribute("list", CaService.getList());
 		return "product/detail_writer";
 	}
@@ -181,6 +177,11 @@ public class ProductController {
 		model.addAttribute("QnACount", qnaService.QnATotalCount(productCode)); // QnA 총 개수 가져가기
 	}
 
+	@PostMapping("delete")
+	public  String deleteProduct(@RequestParam(name = "pc") String productCode) {
+		int count =  prService.removeProduct(productCode);
+		return "redirect:/main";
+	}
 	@ResponseBody
 	@PostMapping(value = "cart", produces = "application/text; charset=UTF-8")
 	public String insertCart(@RequestBody CartVO vo) {

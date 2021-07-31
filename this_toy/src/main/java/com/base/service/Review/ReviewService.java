@@ -16,4 +16,6 @@ public interface ReviewService {
 	int removeReview(int reviewCode);
 	
 	float getReviewAvg(String productCode);
+	
+	ReviewVO checkReview(ReviewVO vo);
 }

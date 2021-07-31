@@ -71,7 +71,7 @@ $(document).ready(function() {
 	
 	var formObj = $("form");
 	
-	$('.btn').click(function(e){
+	$(".btn").click(function(e){
 		
 		e.preventDefault();
 		
@@ -81,10 +81,12 @@ $(document).ready(function() {
 		
 		if(operation === 'list'){
 			self.location = "/notice/notice";
+			
 		}else if(operation === 'remove'){
 			formObj.attr("action", "/notice/remove");
 			.attr("method", "post");
 			.formObj.submit();
+			
 		}else if(operation === 'modify'){
 			formObj.attr("action", "/notice/notice_modify");
 			.attr("method", "post");

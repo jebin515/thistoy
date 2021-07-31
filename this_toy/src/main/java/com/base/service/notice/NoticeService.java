@@ -7,7 +7,7 @@ import com.base.entity.NoticeVO;
 
 public interface NoticeService {
 
-	Long register(NoticeVO notice);
+	Long register(NoticeVO notice);	//등록처리
 	
 	NoticeVO get(Long noticeNum);
 	
