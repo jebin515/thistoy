@@ -47,8 +47,7 @@ public class ProductController {
 	private ReviewService rvService;
 	private QnAService qnaService;
 	private MypageService myService;
-	
-	
+
 	@GetMapping("detail_writer")
 	public String registerget(Model model, HttpServletRequest request, RedirectAttributes rttr) {
 		HttpSession session = request.getSession();
@@ -142,12 +141,11 @@ public class ProductController {
 			pageNum = listvo.getRealEnd();
 		}
 		vo.setPageNum(pageNum);
-		ArrayList<ProductVO> pVO = prService.getList(vo);	
-		for(int i=0; i<15; i++) {
-			System.out.println(pVO.get(i).getProductCode());
+		ArrayList<ProductVO> pVO = prService.getList(vo);
+		for (int i = 0; i < pVO.size(); i++) {
 			pVO.get(i).setRatingAvg(rvService.getReviewAvg(pVO.get(i).getProductCode()));
 		}
-		model.addAttribute("pdList",pVO);
+		model.addAttribute("pdList", pVO);
 		model.addAttribute("dpv", vo); // 검색어와 best,new값을 들고가기 위한설정
 		model.addAttribute("dcname", CaService.getDcName(downCaCode)); // 현재가 어떤 카테고리인지 이름을 띄워주기 위해 작업
 		model.addAttribute("dcList", CaService.getList()); // 각 카테고리에 value값을 주기 위한 설정
@@ -158,7 +156,7 @@ public class ProductController {
 
 	@GetMapping("detail_main")
 	public void getDetailMain(@RequestParam(name = "pc", defaultValue = "1") String productCode,
-			@RequestParam(name = "p", defaultValue = "1") int pageNum, Model model,HttpServletRequest request) {
+			@RequestParam(name = "p", defaultValue = "1") int pageNum, Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		String userId = (String) session.getAttribute("userId");
 		QnAVO qnavo = new QnAVO();
@@ -174,13 +172,13 @@ public class ProductController {
 			pageNum = vo2.getRealEnd();
 		}
 		vo.setPageNum(pageNum);
-		System.out.println(myService.getWish(productCode)+"hi");
-		model.addAttribute("wish",myService.getWish(productCode));
+		System.out.println(myService.getWish(productCode) + "hi");
+		model.addAttribute("wish", myService.getWish(productCode));
 		model.addAttribute("product", prService.getProduct(productCode)); // 선택된 상품 정보 가져가기
 		model.addAttribute("review", rvService.getReview(vo)); // 리뷰 가져가기
 		model.addAttribute("pageMaker", new PageVO(count, pageNum)); // 리뷰 페이징 처리
-		model.addAttribute("QnA",qnaService.getQnA(qnavo)); // QnA 가져가기
-		model.addAttribute("QnACount",qnaService.QnATotalCount(productCode)); // QnA 총 개수 가져가기
+		model.addAttribute("QnA", qnaService.getQnA(qnavo)); // QnA 가져가기
+		model.addAttribute("QnACount", qnaService.QnATotalCount(productCode)); // QnA 총 개수 가져가기
 	}
 
 	@ResponseBody
