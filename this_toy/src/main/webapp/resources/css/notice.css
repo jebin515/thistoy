@@ -55,9 +55,9 @@ main {
     padding: 20px 15px;
     letter-spacing: 5px;
   }
-  ul li{  /* 숫자 가로정렬 */
+ul>li {
     float: left;
-  }
+}
   .page-number-ea:hover{
     color: blue;
     text-decoration: underline;
@@ -106,7 +106,7 @@ main {
   }
   
   /* ============= Modal CSS ===================== */
-  .modal {
+  modal {
     position: fixed;
     top: 0;
     right: 0;
