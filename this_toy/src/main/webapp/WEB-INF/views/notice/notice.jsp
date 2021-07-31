@@ -103,7 +103,7 @@
     
     
 						<!--     modal	 -->
-<div id="myModal" class="modal" tabindex="-1" role="dialog">
+<div id="myModal" class="modal"  tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -123,7 +123,8 @@
   </div>
 </div>
 
-<script>
+<script type="text/javascript">
+
 $(document).ready(function() {
 	var result = '<c:out value="${result}"/>';
 	
