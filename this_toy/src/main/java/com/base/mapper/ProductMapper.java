@@ -18,6 +18,8 @@ public interface ProductMapper {
 	
 	ProductVO getProduct(String productCode);
 	
+	int deleteProduct(String productCode);
+	
 	int insertCart(CartVO vo);
 	
 	int cartCount(CartVO vo);
@@ -27,4 +29,5 @@ public interface ProductMapper {
 	int wishCount(WishlistVO vo);
 	
 	int deleteWish(WishlistVO vo);
+	
 }
