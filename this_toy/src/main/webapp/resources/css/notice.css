@@ -112,7 +112,7 @@ ul>li { /* 숫자 가로정렬 */
 	text-decoration: underline;
 }
 
-.board-write {
+.board-writer {
 	border: 1px solid rgba(88, 113, 253, 0.75);
 	background-color: rgba(197, 137, 199, 0.75);
 	color: white;
