@@ -4,7 +4,7 @@
 <html lang="en">
 
 <head>
-	<style>
+<style>
 main .register-main {
   display: flex;
   flex-direction: column;
@@ -19,7 +19,11 @@ main .register-main .register-menu span {
   height: 50px;
   font-size: 25px;
 }
-
+main .register-main .register-menu .one {
+  font-size: 35px;
+  color: rgba(245, 96, 153, 0.9);
+}
+</style>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">

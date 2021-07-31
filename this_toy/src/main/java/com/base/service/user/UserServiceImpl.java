@@ -41,7 +41,13 @@ public class UserServiceImpl implements UserService {
 		int result = userMapper.idCheck(userVO);
 		return result;
 	}
-	
+	// 회원가입시 메일중복확인
+		@Override
+		public int emailCheck(UserVO userVO) {
+			int result = userMapper.emailCheck(userVO);
+			return result;
+		}
+		
 	@Override
 	public AuthInfo loginAuth(LoginCommand loginCommand) {
 		UserVO user = userMapper.selectById(loginCommand.getUserId());
