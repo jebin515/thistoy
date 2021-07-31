@@ -27,9 +27,9 @@
 			</nav>
 		</div>
 	</c:if>
-	<c:if test="${not empty userId || not empty social}">
-		<div class="header-full">
-			<a href="/main" class="logo"></a>
+	<c:if test="${not empty userId and not empty social}">
+	<div class="header-full">
+		<a href="#" class="logo"></a>
 			<nav class="header_nav">
 				<div class="header_menu">
 					<a href="/login/logout" class="header_login"> <i

@@ -18,4 +18,5 @@ public class ProductVO {
 	private String productInfoImg; //상품설명이미지
 	private Date productDate; //상품등록날짜
 	private int productEa;
+	private float ratingAvg;
 }

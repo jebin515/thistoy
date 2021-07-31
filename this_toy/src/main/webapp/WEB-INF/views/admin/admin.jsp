@@ -17,8 +17,7 @@
 <link rel="stylesheet" href="/css/admin.css">
 <script src="https://kit.fontawesome.com/a216194d9c.js"
 	crossorigin="anonymous"></script>
-<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'
-	rel='stylesheet'>
+<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
 <body>
@@ -31,16 +30,6 @@
 		</div>
 
 		<div class="line"></div>
-		<div class="mypage_inner">
-			<div class="inner">
-				<a href="mypage_wishlist.html" class="item">판매글 관리</a> <a
-					href="mypage_sellbox.html" class="item">리뷰 관리</a> <a
-					href="mypage_cart.html" class="item">문의/답글 관리</a> <a
-					href="mypage_orderbox.html" class="item">회원관리</a>
-			</div>
-			<div style="position: relative;">
-				<i class="fas fa-caret-left"></i>
-			</div>
 
 			<div class="container">
 				<table class="delete_table">
@@ -61,7 +50,7 @@
 						<form action="/admin/delete/${admin.userId}" method="post"
 							class="admin_delete">
 							<tr class="table_data">
-								<td class="member_date"><fmt:formatDate value="${admin.userDate}" type="both" pattern="yy-MM-dd" /></td>
+								<td class="member_date"><fmt:formatDate value="${admin.userDate}" pattern="yy-MM-dd HH:mm:ss" /></td>
 								<td class="member_id"><c:out value="${admin.userId}" /></td>
 								<td class="member_name"><c:out value="${admin.userName}" /></td>
 								<td class="member_phone"><c:out value="${admin.userTel}" /></td>
@@ -83,7 +72,7 @@
 							</a></li>
 
 							<c:forEach var="page" begin="${userListPaging.startPage}" end="${userListPaging.endPage}">
-								<li><a href="/admin/admin?p=${page}">${page}</a></li>
+								<li><a href="/admin/admin?p=${page}" class="${userListPaging.pageNum==page? 'pageNum':''}">${page}</a></li>
 							</c:forEach>
 
 							<li><a href="/admin/admin?p=${userListPaging.endPage+1}">
