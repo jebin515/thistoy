@@ -10,6 +10,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 <title>Document</title>
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-latest.js"></script>
 <link rel="stylesheet" href="/css/style.css">
 <link rel="stylesheet" href="/css/mypage_sellbox.css">
 <link rel="stylesheet" href="/css/admin.css">
@@ -50,30 +52,63 @@
 						<td class="member_phone">핸드폰</td>
 						<td class="member_email">이메일</td>
 						<td class="member_address">주소</td>
-						<td class="member_delete">삭제</td>
+						<td class="member_delete"></td>
 					</tr>
 
 					<!-- 회원정보 -->
 					<c:forEach var="admin" items="${admin}">
-					<form action="/admin/delete/${admin.userId}" method="post">
-						<tr class="table_data">
-							<td class="member_date"><fmt:formatDate value="${admin.userDate}" type="both" pattern="yy-MM-dd" /></td>
-							<td class="member_id"><c:out value="${admin.userId}" /></td>
-							<td class="member_name"><c:out value="${admin.userName}" /></td>
-							<td class="member_phone"><c:out value="${admin.userTel}" /></td>
-							<td class="member_email"><c:out value="${admin.userEmail}" /></td>
-							<td class="member_address"><c:out value="${admin.userAddress}" /></td>
-							<td class="delete"><input type="submit" onclick="confirm('정말 삭제하시겠습니까?')"></td>
-						</tr>
-					</form>
+						<form action="/admin/delete/${admin.userId}" method="post"
+							class="admin_delete">
+							<tr class="table_data">
+								<td class="member_date"><fmt:formatDate value="${admin.userDate}" type="both" pattern="yy-MM-dd" /></td>
+								<td class="member_id"><c:out value="${admin.userId}" /></td>
+								<td class="member_name"><c:out value="${admin.userName}" /></td>
+								<td class="member_phone"><c:out value="${admin.userTel}" /></td>
+								<td class="member_email"><c:out value="${admin.userEmail}" /></td>
+								<td class="member_address"><c:out value="${admin.userAddress}" /></td>
+								<td class="delete"><button class="delete_button">삭제</button></td>
+							</tr>
+						</form>
 					</c:forEach>
-
 				</table>
+				<div class="paging">
+					<div class="middle_page">
+						<ul>
+							<li><a href="/admin/admin?p=1"> 
+									<i class="fas fa-angle-double-left"></i></a></li>
+							<li><a href="/admin/admin?p=${userListPaging.startPage-1}">
+									<i class="fas fa-angle-left"></i>
+							</a></li>
+
+							<c:forEach var="page" begin="${userListPaging.startPage}" end="${userListPaging.endPage}">
+								<li><a href="/admin/admin?p=${page}">${page}</a></li>
+							</c:forEach>
+
+							<li><a href="/admin/admin?p=${userListPaging.endPage+1}">
+									<i class="fas fa-angle-right"></i>
+							</a></li>
+							<li><a href="/admin/admin?p=${userListPaging.realEnd}">
+									<i class="fas fa-angle-double-right"></i>
+							</a></li>
+						</ul>
+					</div>
+					<div class="right_page">
+						<a href="#"></a>
+					</div>
+				</div>
 			</div>
 	</section>
-
 	<!-- -----------푸터------------- -->
 	<%@ include file="../includes/footer.jsp"%>
 </body>
 
 </html>
+<script>
+	$(document).on('click', '.delete_button', function() {
+		let ok = confirm('정말 삭제하시겠습니까?)
+		let index = $('.delete_button').index(this);
+		if (ok == true) {
+			$('.admin_delete:eq(' + index + ')').submit();
+		}
+	});
+</script>

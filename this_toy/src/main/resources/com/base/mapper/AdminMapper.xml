@@ -4,10 +4,19 @@
 
 <mapper namespace="com.base.mapper.AdminMapper">
 
-<select id="admin" resultType="UserVO">
-	select * from usertable
-</select>
-<delete id="deleteMember">
-	delete from usertable where user_id = #{userId}
-</delete>
+	<select id="getTotal" resultType="int">
+		select count(*) from usertable
+	</select>
+	<delete id="deleteMember">
+		delete from usertable where user_id = #{userId}
+	</delete>
+	<select id="userListPaging" resultType="UserVO">
+	<![CDATA[
+	select * from(
+    select rownum num , n.* from 
+	(select * from usertable order by user_date desc) n
+    ) 
+    where num between (#{pageNum}-1)*10+1 and #{pageNum}*10
+	]]>
+	</select>
 </mapper>
