@@ -27,18 +27,16 @@
 			</nav>
 	</div>
 	</c:if>
-	<c:if test="${not empty authInfo || not empty social}">
+	<c:if test="${not empty userId || not empty social}">
 	<div class="header-full">
 		<a href="#" class="logo"></a>
 			<nav class="header_nav">
 				<div class="header_menu">
-					<a href="/login/logout" class="header_login">  
-					<i class='bx-fw bx bxs-rocket bx-tada-hover'></i>로그아웃</a> 
-					<a href="/edit/modify" class="header_register">
-					<i class='bx-fw bx bxs-user-plus bx-tada-hover'></i>개인정보수정</a>
-					<a href="/mypage/mypage">
-					<i class='bx-fw bx bxs-rocket bx-tada-hover'></i>마이페이지</a>
-					<p> 반갑습니다 ${authInfo.userName}님</p>
+					<a href="/login/logout" class="header_login">  <i
+						class='bx-fw bx bxs-rocket bx-tada-hover'></i>로그아웃</a> <a href="/edit/editmypage"
+						class="header_register"><i
+						class='bx-fw bx bxs-user-plus bx-tada-hover'></i>마이페이지</a>
+						<p> 반갑습니다 ${userId}님</p>
 				</div>
 			</nav>
 	</div>
