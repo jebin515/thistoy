@@ -3,6 +3,9 @@ package com.base.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,9 +38,11 @@ public class OrdersController {
 	@PostMapping(value = "cart")
 	public String cart(Model model, 
 			@RequestParam(name="pdc")String[] productCode,
-			@RequestParam(name="user")String userId,
+			HttpServletRequest request,
 			@RequestParam(name="st")int[] productStock) {
 		
+		HttpSession session = request.getSession();
+		String userId = (String)session.getAttribute("userId");
 		model.addAttribute("user",service.getaddr(userId));
 		ArrayList<ProductVO> vo = new ArrayList<ProductVO>();	
 		for(int i = 0; i < productCode.length; i++ ) {
@@ -51,20 +56,22 @@ public class OrdersController {
 		return "orders/orders";
 	}
 	
-	@GetMapping(value = "direct")
-		public String direct(Model model,
-				@RequestParam(name="pdc")String productCode,
-				@RequestParam(name="user")String userId,
-				@RequestParam(name="st")String productStock) {
-		
-		System.out.println(productCode);
-		model.addAttribute("pdc",service.getproduct(productCode));
-		model.addAttribute("user",service.getaddr(userId));
-		System.out.println(service.getaddr(userId)+"hi");
-		model.addAttribute("st",productStock);
-		return "orders/orders";
-	}
-
+	/*
+	 * @GetMapping(value = "direct") public String direct(Model model,
+	 * 
+	 * @RequestParam(name="pdc")String productCode,
+	 * 
+	 * @RequestParam(name="user")String userId,
+	 * 
+	 * @RequestParam(name="st")String productStock) {
+	 * 
+	 * System.out.println(productCode);
+	 * model.addAttribute("pdc",service.getproduct(productCode));
+	 * model.addAttribute("user",service.getaddr(userId));
+	 * System.out.println(service.getaddr(userId)+"hi");
+	 * model.addAttribute("st",productStock); return "orders/orders"; }
+	 */
+	
 	@ResponseBody
 	@PostMapping(value="/orders/{imp_uid}")
 	public IamportResponse<Payment> paymentByImpUid(

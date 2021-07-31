@@ -63,7 +63,7 @@
 							<td class="member_phone"><c:out value="${admin.userTel}" /></td>
 							<td class="member_email"><c:out value="${admin.userEmail}" /></td>
 							<td class="member_address"><c:out value="${admin.userAddress}" /></td>
-							<td class="delete"><input type="submit" onclick="confirm('정말 삭제하시겠습니까?')"></td>
+							<td class="delete"><input type="submit" onclick="if( confirm('정말 삭제하시겠습니까?') ){}else{windows.location.reload();}"></td>
 						</tr>
 					</form>
 					</c:forEach>
