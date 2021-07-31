@@ -53,65 +53,67 @@
 					</div>
 				</div>
 			</div>
-			<div class="txt-section">
-				<div class="txt-title">
-					<c:out value="${product.productName}" />
-				</div>
-				<div class="txt-main">
-					<table>
-						<tr>
-							<th><span>판매가</span></th>
-							<td>
-								<div class="price">
-									<c:out value="${product.productPrice}" />
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<th><span>판매자</span></th>
-							<td><c:out value="${product.userId}" /></td>
-						</tr>
-						<tr>
-							<th><span>카테고리</span></th>
-							<td>피규어</td>
-						</tr>
-						<tr>
-							<th><span>재고</span></th>
-							<td><div class="stock">
-									<c:out value="${product.productStock}" />
-								</div>개</td>
-						</tr>
-						<tr>
-							<th><span>주문수량</span></th>
-							<td><input type="number" class="product_num" value="1"
-								oninput="inputnumber();" min="1" max="10" readonly />
-								<button type="button" class="ea_btn" onclick="plus()">+</button>
-								<button type="button" class="ea_btn" onclick="minus()">-</button>
-							</td>
-						</tr>
-						<tr>
-							<th><span>총합</span></th>
-							<td>
-								<div class="total">원</div>
-							</td>
-						</tr>
-					</table>
-				</div>
-				<div class="detail-head-button">
-					<button class="directbuy">바로구매</button>
-					<button class="cart">장바구니</button>
-					<c:forEach var="ws" items="${wish}">
-						<c:if test="${!empty userId}">
-							<c:if test="${userId==ws.userId}">
-								<input type="hidden" class="wishtrue" />
+			<form action="/orders/cart" method="post" class="direct_order">
+				<div class="txt-section">
+					<div class="txt-title">
+						<c:out value="${product.productName}" />
+					</div>
+					<div class="txt-main">
+						<table>
+							<tr>
+								<th><span>판매가</span></th>
+								<td>
+									<div class="price">
+										<c:out value="${product.productPrice}" />
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th><span>판매자</span></th>
+								<td class="seller"><c:out value="${product.userId}" /></td>
+							</tr>
+							<tr>
+								<th><span>카테고리</span></th>
+								<td>피규어</td>
+							</tr>
+							<tr>
+								<th><span>재고</span></th>
+								<td><div class="stock">
+										<c:out value="${product.productStock}" />
+									</div>개</td>
+							</tr>
+							<tr>
+								<th><span>주문수량</span></th>
+								<td><input type="number" class="product_num" value="1"
+									name="st" oninput="inputnumber();" min="1" max="10" readonly />
+									<button type="button" class="ea_btn" onclick="plus()">+</button>
+									<button type="button" class="ea_btn" onclick="minus()">-</button>
+								</td>
+							</tr>
+							<tr>
+								<th><span>총합</span></th>
+								<td>
+									<div class="total">원</div>
+								</td>
+							</tr>
+						</table>
+						<input type="hidden" name="pdc" value="${product.productCode}" />
+					</div>
+					<div class="detail-head-button">
+						<button type="button" class="directbuy">바로구매</button>
+						<button class="cart">장바구니</button>
+						<c:forEach var="ws" items="${wish}">
+							<c:if test="${!empty userId}">
+								<c:if test="${userId==ws.userId}">
+									<input type="hidden" class="wishtrue" />
+								</c:if>
 							</c:if>
-						</c:if>
-					</c:forEach>
-					<button class="hart">하트</button>
+						</c:forEach>
+						<button class="hart">하트</button>
+					</div>
 				</div>
-			</div>
+			</form>
 		</div>
-
 		<!-- 메인 1 끝 -->
 
 		<!-- 메인 2 시작 -->
@@ -182,7 +184,7 @@
 						<td><fmt:formatDate var="date" value="${rv.reviewDate}"
 								pattern="yyyy.MM.dd" /> ${date}</td>
 						<c:if
-							test="${userId.equals(rv.userId) or userId.equals(product.userId)}">
+							test="${userId eq rv.userId or userId eq product.userId or userId eq 'admin'}">
 							<td><button class="delete_review" value="${rv.reviewCode}">삭제</button></td>
 						</c:if>
 					</tr>
@@ -235,12 +237,11 @@
 						<td><fmt:formatDate var="date" value="${Qn.questionDate}"
 								pattern="yyyy.MM.dd" /> ${date}</td>
 						<c:if
-							test="${userId.equals(Qn.userId) or userId.equals(product.userId)}">
+							test="${userId eq Qn.userId or userId eq product.userId or userId eq 'admin'}">
 							<td><button class="delete_QnA" value="${Qn.questionCode}">삭제</button></td>
 						</c:if>
 					</tr>
-					<c:if
-						test="${!userId.equals(product.userId) and !empty Qn.replyText and !userId.equals(Qn.userId)}">
+					<c:if test="${userId eq Qn.userId and !empty Qn.replyText}">
 						<tr>
 							<td></td>
 							<td class="reply_td" colspan="3"><i class="fas fa-reply"></i>
@@ -248,7 +249,7 @@
 						</tr>
 					</c:if>
 					<c:if
-						test="${(userId==product.userId || userId== Qn.userId) and !empty userId and !empty Qn.replyText}">
+						test="${(userId eq product.userId || userId eq 'admin') and !empty Qn.replyText}">
 						<tr>
 							<td></td>
 							<td class="reply_td" colspan="3"><i class="fas fa-reply"></i>
@@ -262,7 +263,7 @@
 						</tr>
 					</c:if>
 					<c:if
-						test="${userId.equals(product.userId) and !empty userId and empty Qn.replyText}">
+						test="${(userId eq product.userId || userId eq 'admin') and empty Qn.replyText}">
 						<tr>
 							<td></td>
 							<td class="reply_td" colspan="3"><i class="fas fa-reply"></i>
@@ -301,6 +302,8 @@
 				</tr>
 			</table>
 		</div>
+		<input type="text" value="${(empty userId)? null:userId}" class="user" />
+		${userId} 22
 		<!-- 메인 2 끝 -->
 
 	</div>
@@ -309,6 +312,9 @@
 	<!-- 	<script src="/js/index.js" defer></script> -->
 	<script src="/js/detail-slide.js?ver=1" defer></script>
 	<script type="text/javascript" defer>
+	let myName = $('.user').val();
+	console.log(myName);
+	let seller=$('.seller').text();
 		$(".fa-angle-right").click(function(){
 			let lastn=Number($(".pn").last().text())+1;
 			location.href="/product/detail_main?pc=${product.productCode}&p="+lastn;
@@ -342,8 +348,11 @@
 		$(".directbuy")
 				.click(
 						function() {
-							location.href = "/orders/direct?pdc=${product.productCode}&user=${userId}&st="
-									+ $(".product_num").val();
+							if(myName==null || myName==''){
+								alert("로그인이 필요한 기능입니다.");
+								return;
+							}
+							$('.direct_order').submit();
 						})
 		/* ----------------------- 리뷰 작성 ajax 및 작성글 바로 띄우기 ----------------------   */
 		$(document).on('click',".review_register",function() {
@@ -415,7 +424,6 @@
 						$(".reviewlist").nextAll().last().remove();
 					}
 					$(".review").html(rvNum);
-					$(".file-button").text("+사진추가");
 					
 					$('.pn').first().css('color', 'rgba(245, 96, 153, 0.9)');
 				},
@@ -497,21 +505,21 @@
 								.format(
 										"YYYY.MM.DD")
 						+ '</td>';
-						if(${userId.equals(rs[i].userId) or userId.equals(product.userId)}){
+						if(myName==(rs[i].userId) || myName==seller || myName=='admin'){
 							QnAbox+='<td><button class="delete_QnA" value="'+rs[i].questionCode+'">삭제</button></td></tr>';
 						}
-					if(${!userId.equals(product.userId)} && rs[i].replyText != null && ${!userId.equals(Qn.userId)}){
+					if(myName==rs[i].userId && rs[i].replyText != null){
 						QnAbox += '<tr class="clickText"><td></td>'+
 						'<td class="reply_td" colspan="3"><i class="fas fa-reply"></i>'+
 							'<textarea cols="30" rows="2" class="reply_text" readonly>'+rs[i].replyText+'</textarea></td></tr>';
-					}else if(${userId.equals(product.userId) and !empty userId} && rs[i].replyText!=null || ${userId.equals(Qn.userId)}){
+					}else if((myName==seller || myName=='admin') && rs[i].replyText!=null){
 						QnAbox += '<tr class="clickText"><td></td>+'
 						+'<td class="reply_td" colspan="3"><i class="fas fa-reply"></i>'+
 							'<textarea cols="30" rows="2" class="reply_text" readonly>'+rs[i].replyText+'</textarea></td></tr>'+
 					'<tr class="clickText">'+
 						'+<td colspan="4" class="reply_button"><button class="delete_button" value="'+rs[i].questionCode+'">삭제</button></td>'+
 					'</tr>'
-					}else if(${userId.equals(product.userId) and !empty userId} && rs[i].replyText == null){
+					}else if((myName==seller || myName=='admin') && rs[i].replyText == null){
 						QnAbox += 
 						'<tr class="clickText">'+
 							'<td></td>'+
@@ -667,7 +675,7 @@
 																.format(
 																		"YYYY.MM.DD")
 														+ '</td>'
-														if(${userId.equals(result[i].userId) or userId.equals(product.userId)}){
+														if(myName == result[i].userId || myName == seller || myName =='admin'){
 														+'<td><button class="delete_review" value="'+result[i].reviewCode+'">삭제</button></tr>';
 														}
 											}
