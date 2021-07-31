@@ -9,11 +9,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <script src="https://kit.fontawesome.com/a216194d9c.js"
 	crossorigin="anonymous"></script>
-<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/style.css?ver=1">
 <link rel="stylesheet" href="/css/list.css?ver=1">
 <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'
 	rel='stylesheet'>
-<script src="/js/list.js?ver=2" defer></script>
+<script src="/js/list.js?ver=4" defer></script>
 <title>전체글보기</title>
 </head>
 
@@ -126,7 +126,13 @@
 									<i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i
 										class="fa fa-star-o"></i> <i class="fa fa-star-o"></i>
 								</div>
-								<br />4.5
+								<br />
+								<c:if test="${pdinfo.ratingAvg!=0}">
+								<span class="ratingNum">${pdinfo.ratingAvg}</span>
+								</c:if>
+								<c:if test="${pdinfo.ratingAvg==0}">
+								<span class="ratingNum">리뷰없음</span>
+								</c:if>
 							</div>
 						</div>
 					</div>

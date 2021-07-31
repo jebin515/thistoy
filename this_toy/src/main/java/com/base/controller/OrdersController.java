@@ -76,15 +76,18 @@ public class OrdersController {
 	@PostMapping(value="/orders/{imp_uid}")
 	public IamportResponse<Payment> paymentByImpUid(
 			@PathVariable("imp_uid") String imp_uid,
-			@RequestBody OrdersVO vo
+			@RequestBody OrdersVO[] vo
 			) throws IamportResponseException, IOException
 	{	
 		System.out.println(vo);
 		
-		service.insertorder(vo);
-		service.deletecart(vo);
-		service.updatesales(vo);
-		service.updatestock(vo);
+		OrdersVO[] orderlist = vo;
+		for(int i = 0; i<vo.length; i++) {	
+		service.insertorder(vo[i]);
+		service.deletecart(vo[i]);
+		service.updatesales(vo[i]);
+		service.updatestock(vo[i]);
+		}
 		
 		System.out.println(api.paymentByImpUid(imp_uid));
 		return api.paymentByImpUid(imp_uid);
