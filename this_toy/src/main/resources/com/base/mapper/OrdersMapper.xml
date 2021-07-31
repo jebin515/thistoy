@@ -39,4 +39,4 @@
    where product_code = #{productCode}
 </update>
 
-</mapper>
+</mapper> 
