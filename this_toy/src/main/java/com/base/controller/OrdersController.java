@@ -81,7 +81,7 @@ public class OrdersController {
 				vo.setUserId((String)params.get("userId"));
 				vo.setProductName(productName.get(i));
 				vo.setOrderEa(Integer.valueOf(orderEa.get(i)));
-				vo.setProductImg(productImg.get(i));
+				vo.setProductMainImg(productImg.get(i));
 				vo.setOrderAddressPost((String)params.get("orderAddressPost"));
 				vo.setOrderAddress((String)params.get("orderAddress"));
 				vo.setOrderAddressDetail((String)params.get("orderAddressDetail"));
