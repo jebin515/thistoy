@@ -59,6 +59,7 @@ public class OrdersController {
 		return "orders/orders";
 	}
 
+	@SuppressWarnings("unchecked")
 	@ResponseBody
 	@PostMapping(value = "/orders/{imp_uid}")
 	public IamportResponse<Payment> paymentByImpUid(
