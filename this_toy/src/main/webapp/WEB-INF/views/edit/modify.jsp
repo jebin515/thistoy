@@ -38,8 +38,7 @@
 		<form name="form" id="form" method="post" class="form">
 			<div class="change-form">
 				<div class="proimg">
-					<img src="/img/profile.jpg"> <input type="file" name=""
-						value="">
+					<img src="/upload/user/${user.userImg}">
 				</div>
 
 				<div class="edit-form">

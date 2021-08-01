@@ -29,7 +29,8 @@
 		user_tel,
 		user_address_post,
 		user_address,
-		user_address_detail
+		user_address_detail,
+		user_img
 		) values (
 		#{userId},
 		#{userPasswd},
@@ -38,7 +39,8 @@
 		#{userTel},
 		#{userAddressPost},
 		#{userAddress},
-		#{userAddressDetail}
+		#{userAddressDetail},
+		#{userImg}
 		)
 		<!-- 'xml테스트','xml테스트','xml테스트','xml테스트','xml테스트','xml테스트' -->
 	</insert>
