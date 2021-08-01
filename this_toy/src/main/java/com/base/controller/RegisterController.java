@@ -50,21 +50,7 @@ public class RegisterController {
 	@PostMapping("/register-2")
 	public String registerPOST(UserVO userVO,HttpServletRequest request, RedirectAttributes rttr,MultipartHttpServletRequest mtrequest) throws Exception {
 //        연속등록 불가능하도록 플래시어트리뷰트 후 리다이렉트
-		ServletContext ctx = request.getServletContext();
-		
-		MultipartFile mf = mtrequest.getFile("file");
-		
-		String originFileName = mf.getOriginalFilename();
-		
-		String webPath = "/resources/upload/product/user";
-		String realPath = ctx.getRealPath(webPath);
-		System.out.println(realPath);
-		File savePath = new File(realPath);
-		if(!savePath.exists()) {
-			savePath.mkdir();
-		}
-		realPath += File.separator + originFileName;
-		File saveFile = new File(realPath);
+
 		
         rttr.addFlashAttribute("result", "success");
 		int result = userService.idCheck(userVO);

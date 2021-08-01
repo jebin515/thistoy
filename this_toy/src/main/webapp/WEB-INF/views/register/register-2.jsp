@@ -91,7 +91,7 @@
 										<tr class="form-control">
 											<th><span>휴대폰 번호</span></th>
 											<td><input type="tel" name="userTel"
-												placeholder="번호를 입력하세요."></td>
+												placeholder="예)010-XXXX-XXXX"></td>
 											<td></td>
 										</tr>
 										<tr class="form-control">
