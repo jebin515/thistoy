@@ -205,6 +205,12 @@
 // 		naver_id_login.setPopup();
 		naver_id_login.init_naver_id_login();
 	</script>
+	<script type="text/javascript">
+		window.history.forward();
+		function noBack() {
+			window.history.forward();
+		}
+	</script>
 </body>
 
 </html>

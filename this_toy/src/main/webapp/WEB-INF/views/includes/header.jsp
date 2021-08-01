@@ -38,9 +38,9 @@
 					<i class='bx-fw bx bxs-user-plus bx-tada-hover'></i>개인정보수정</a>
 					<a href="/mypage/mypage">
 					<i class='bx-fw bx bxs-rocket bx-tada-hover'></i>마이페이지</a>
-					<c:if test="${not empty userId}">
-					<p> 반갑습니다 ${userId.userName}님</p>
-					</c:if>
+<%-- 					<c:if test="${not empty userId}"> --%>
+<%-- 					<p> 반갑습니다 ${userId.userName}님</p> --%>
+<%-- 					</c:if> --%>
 				</div>
 			</nav>
 	</div>
