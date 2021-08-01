@@ -70,11 +70,12 @@ public class LoginController {
 		}
 		try {
 			AuthInfo authInfo = userService.loginAuth(loginCommand);
-			
+      
 			String sessionId = authInfo.getUserId();
 //			System.out.println("로그커맨드"+loginCommand.getUserId());
 //			session.setAttribute("userId", authInfo);
 			session.setAttribute("userId", sessionId);
+
 
 		} catch (IdPasswordNotMatchingException e) {
 			return "/login/loginfail";

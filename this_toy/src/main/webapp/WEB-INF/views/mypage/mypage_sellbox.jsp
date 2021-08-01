@@ -23,18 +23,6 @@
 	<%@ include file="../includes/header.jsp"%>
 	<!-- ------------마이페이지---------- -->
 	<section>
-		<h3 class="mypage_logo">마이페이지</h3>
-		<div class="mp">
-			<!-- 왼쪽 -->
-			<img class="left" src="/img/profile.jpg" alt="이미지없음">
-			<!-- 오른쪽  -->
-			<div class="right">
-				<div>이름 : 윤재빈</div>
-				<div>아이디 : jebin515</div>
-				<div>이메일 : jebin515@naver.com</div>
-				<div>기본 배송지 | 경기도 안양시 어쩌구 저쩌구 집이 멀어요 서울 사고싶다 도로명 주소는 뭐라고 써야하나</div>
-			</div>
-		</div>
 		<%@ include file="../includes/mypage.jsp"%>
 		<div class="gridContainer">
 			<c:forEach var="sb" items="${sellbox}">
@@ -46,7 +34,7 @@
 					<div class="product_info">
 						<a href="/product/detail_main?pc=${sb.productCode}"> <span
 							class="product_name"><span class="product_logo">This
-									Toy</span>${sb.productName}</span>
+									Toy </span>${sb.productName}</span>
 						</a>
 						<div class="product_price">가격 : ${sb.productPrice}원</div>
 						<div class="product_deliver_price">배송비 : 3,000원</div>

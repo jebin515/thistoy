@@ -8,8 +8,9 @@
 <insert id="insertorder" >
 <![CDATA[
    insert into orders
-   (order_code , order_price , product_code , user_id , product_name , order_ea , product_img , order_address_post , order_address , order_address_detail) values
-   (#{productCode}||orders_seq.nextval , #{orderPrice} , #{productCode} , #{userId} , #{productName} , #{orderEa} , #{productImg} , #{orderAddressPost} , #{orderAddress} , #{orderAddressDetail})
+   (order_code , order_price , product_code , user_id , product_name , order_ea , product_img , order_address_post , order_address , order_address_detail , newuser_name , newuser_tel) values
+   (#{productCode}||orders_seq.nextval , #{orderPrice} , #{productCode} , #{userId} , #{productName} , 
+   #{orderEa} , #{productImg} , #{orderAddressPost} , #{orderAddress} , #{orderAddressDetail} , #{newuserName} , #{newuserTel} )
    ]]>
 </insert> 
 

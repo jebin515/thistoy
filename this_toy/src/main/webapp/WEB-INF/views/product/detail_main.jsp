@@ -166,7 +166,7 @@
 				<button class="review_register">등록</button>
 			</div>
 			<div class="title">
-				<span>상품리뷰 (<span class="review">${pageMaker.total} </span>)
+				<span>상품리뷰 (<span class="review">${pageMaker.total}</span>)
 				</span>
 
 			</div>
@@ -175,7 +175,7 @@
 					<th>별점</th>
 					<th>내용</th>
 					<th>작성자</th>
-					<th>작성시간</th>
+					<th>작성일</th>
 					<th></th>
 				</tr>
 				<c:forEach var="rv" items="${review}">
@@ -231,7 +231,7 @@
 					<th>답변상태</th>
 					<th>내용</th>
 					<th>작성자</th>
-					<th>작성시간</th>
+					<th>작성일</th>
 					<th></th>
 				</tr>
 				<c:forEach var="Qn" items="${QnA}">
@@ -291,22 +291,24 @@
 		</div>
 		<div class="detail-content">
 			<div class="title last">
-				<span class="another">배송/교환/환불</span> <br/><br/>
-				<div><p>반품 및 교환 기간 반품 및 교환은 결제완료 후
-				15일 이내에만 가능합니다.</p><br/> 
-				<p>단, 제공받은 상품이 주문제품의 내용과 다르거나 계약 내용과 다르게 이행된 경우는
-				3개월 이내에 가능합니다.</p> <br/>
-				<p>반품 및 교환이 불가한 경우 단순 변심으로 인한 반품 또는 교환 요청이 결제완료 후
-				15일이 경과한 경우 상품이 훼손되거나 포장개봉 또는 제품의 사용으로 상품가치가 현저히 감소한 경우 제품 인도 시에
-				포함되어 있던 사은품이나 샘플이 누락된 경우 시간이 경과되어 재판매가 곤란할 정도로 상품 가치가 상실된 경우 </p>
-				<p>(예: 한정판매 제품, 제품 사용기한의 경과 등) 특별한 할인 혜택이 적용된 제품의 경우 교환 안내 교환 및 일부 품목의 교환은
-				전체 반품 후 재주문 하셔야 합니다.</p><br/> 
-				<p>단순 변심에 의한 동일 제품의 옵션 (색상 등) 교환 이더라도 전체 반품
-				후 재주문 부탁 드립니다.</p><br/> 
-				<p>환불 기간 반품 상품이 판매자에게 도착하고 반품사유와 반품비가 확인되면 주문하신
-				결제 수단에 따라 환불이 진행됩니다.</p><br/> 
-				처리 기간은 최대 2주 가량 소요될 수 있으며, 신용카드의 경우는 카드사
-				또는 고객님의 결제일에 따라 처리일정이 달라질 수 있습니다.
+				<span class="another">배송/교환/환불</span> <br /> <br />
+				<div>
+					<p>반품 및 교환 기간 반품 및 교환은 결제완료 후 15일 이내에만 가능합니다.</p>
+					<br />
+					<p>단, 제공받은 상품이 주문제품의 내용과 다르거나 계약 내용과 다르게 이행된 경우는 3개월 이내에 가능합니다.</p>
+					<br />
+					<p>반품 및 교환이 불가한 경우 단순 변심으로 인한 반품 또는 교환 요청이 결제완료 후 15일이 경과한 경우
+						상품이 훼손되거나 포장개봉 또는 제품의 사용으로 상품가치가 현저히 감소한 경우 제품 인도 시에 포함되어 있던 사은품이나
+						샘플이 누락된 경우 시간이 경과되어 재판매가 곤란할 정도로 상품 가치가 상실된 경우</p>
+					<p>(예: 한정판매 제품, 제품 사용기한의 경과 등) 특별한 할인 혜택이 적용된 제품의 경우 교환 안내 교환 및
+						일부 품목의 교환은 전체 반품 후 재주문 하셔야 합니다.</p>
+					<br />
+					<p>단순 변심에 의한 동일 제품의 옵션 (색상 등) 교환 이더라도 전체 반품 후 재주문 부탁 드립니다.</p>
+					<br />
+					<p>환불 기간 반품 상품이 판매자에게 도착하고 반품사유와 반품비가 확인되면 주문하신 결제 수단에 따라 환불이
+						진행됩니다.</p>
+					<br /> 처리 기간은 최대 2주 가량 소요될 수 있으며, 신용카드의 경우는 카드사 또는 고객님의 결제일에 따라
+					처리일정이 달라질 수 있습니다.
 				</div>
 			</div>
 		</div>
@@ -512,7 +514,7 @@
 				contentType : "application/json; charset=utf-8",
 				success : function(rs) {
 					$('.QnAtotal').html('');
-					let QnAbox='<tr class="QnInfo"><th>답변상태</th><th>내용</th><th>작성자</th><th>작성시간</th><th></th></tr>';
+					let QnAbox='<tr class="QnInfo"><th>답변상태</th><th>내용</th><th>작성자</th><th>작성일</th><th></th></tr>';
 					for(let i=0; i<rs.length; i++){
 					QnAbox += '<input type="hidden" value="'+rs[i].questionCode+'"/>'+
 						'<tr class="QnAbox"><td>'
@@ -679,7 +681,7 @@
 										success : function(result) {
 											let rvtable = "";
 											let starRating = "";
-											rvtable += '<tr class="reviewlist"><th>별점</th><th>내용</th><th>작성자</th><th>작성시간</th><th></tr></tr>';
+											rvtable += '<tr class="reviewlist"><th>별점</th><th>내용</th><th>작성자</th><th>작성일</th><th></tr></tr>';
 											$(".reviewAll").html("");
 											for (let i = 0; i < result.length; i++) {
 												
