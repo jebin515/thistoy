@@ -51,7 +51,7 @@ public class ProductController {
 	@GetMapping("detail_writer")
 	public String registerget(Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		session.setAttribute("userId", "jin");
+		session.setAttribute("userId", "우편테스트2");
 		String userId = (String) session.getAttribute("userId");
 		model.addAttribute("list", CaService.getList());
 		return "product/detail_writer";
