@@ -291,8 +291,7 @@
 		</div>
 		<div class="detail-content">
 			<div class="title last">
-				<span class="another">배송/교환/환불</span> <br />
-				<br />
+				<span class="another">배송/교환/환불</span> <br /> <br />
 				<div>
 					<p>반품 및 교환 기간 반품 및 교환은 결제완료 후 15일 이내에만 가능합니다.</p>
 					<br />
