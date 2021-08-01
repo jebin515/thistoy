@@ -1,120 +1,139 @@
 body {
-  min-width: 800x;
-  width: auto !important;
-  width: 1000px;
+	min-width: 800x;
+	width: auto !important;
+	width: 1000px;
 }
 /*----------body--------------*/
 section {
-  width: 1400px;
-  margin: 0 auto 30px auto;
+	width: 1400px;
+	margin: 0 auto 30px auto;
 }
+
 section .mypage_logo {
-  width: 80%;
-  margin: 0 auto;
+	width: 80%;
+	margin: 0 auto;
 }
+
 section .mp {
-  width: 80%;
-  margin: 0 auto;
-  margin-top: 15px;
-  display: flex;
-  height: 150px;
+	width: 80%;
+	margin: 0 auto;
+	margin-top: 15px;
+	display: flex;
+	height: 150px;
 }
+
 section .mp .left {
-  height: 150px;
+	height: 150px;
 }
+
 section .mp .right {
-  margin-left: 30px;
+	margin-left: 30px;
 }
+
 section .line {
-  height: 1px;
-  background-color: gray;
-  opacity: 0.3;
-  box-shadow: 0px 1px 5px 1px gray;
-  position: relative;
-  top: 15px;
-  margin-top: 30px;
-  z-index: -1;
+	height: 1px;
+	background-color: gray;
+	opacity: 0.3;
+	box-shadow: 0px 1px 5px 1px gray;
+	position: relative;
+	top: 15px;
+	margin-top: 30px;
+	z-index: -1;
 }
 /* section .inner {
     background-color: rgb(82, 113, 255);
   } */
 section .mypage_inner {
-  display: flex;
-  margin: 0 auto;
-  width: 1200px;
+	display: flex;
+	margin: 0 auto;
+	width: 1200px;
 }
+
 section .item {
-  margin: 0 30px 0 0;
-  background-color: rgb(193, 122, 241);
-  text-align: left;
-  height: 40px;
-  width: 120px;
-  color: white;
-  border-bottom: 1px solid none;
-  box-shadow: 0px 1px 7px 0px white;
-  padding: 20px 0 0 20px;
-  font-weight: bold;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  display: block;
+	margin: 0 30px 0 0;
+	background-color: rgb(193, 122, 241);
+	text-align: left;
+	height: 40px;
+	width: 120px;
+	color: white;
+	border-bottom: 1px solid none;
+	box-shadow: 0px 1px 7px 0px white;
+	padding: 20px 0 0 20px;
+	font-weight: bold;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	display: block;
 }
+
 section .item:nth-child(5) {
-  background-color: rgb(162, 109, 236);
+	background-color: rgb(162, 109, 236);
 }
+
 section .fa-caret-left {
-  transform: rotate(-45deg);
-  position: absolute;
-  top: -5px;
-  right: 21px;
-  font-size: 31px;
-  color: rgb(41, 37, 97);
+	transform: rotate(-45deg);
+	position: absolute;
+	top: -5px;
+	right: 21px;
+	font-size: 31px;
+	color: rgb(41, 37, 97);
 }
+
 section .flexcollum {
-  margin: 0 0 100px 50px;
+	margin: 0 0 100px 50px;
 }
+
 .order_table {
-  height: 160px;
+	height: 160px;
 }
+
 .question {
-  margin: 30px 0 0 50px;
+	margin: 30px 0 0 50px;
 }
-.questbox,
-.reviewbox {
-  width: 1000px;
-  margin: 10px auto;
-  border-top: 3px solid black;
-  border-collapse: collapse;
+
+.questbox, .reviewbox {
+	width: 1000px;
+	margin: 10px auto;
+	border-top: 3px solid black;
+	border-collapse: collapse;
 }
+
 .thead th {
-  padding: 10px 0 10px 0;
+	padding: 10px 0 10px 0;
 }
+
 .titem {
-  width: 150px;
-  text-align: center;
+	width: 150px;
+	text-align: center;
 }
 
 .titem2 {
-  width: 650px;
-  padding: 10px 0 10px 0;
+	width: 650px;
+	padding: 10px 0 10px 0;
 }
-.quest_list,
-.review_list {
-  border-top: 1px solid #eeeeef;
+
+.delete {
+	border: 1px solid white;
+	border-radius: 10px;
+	padding: 10px;
+	background-color: rgba(224, 185, 250, 0.781);
+	width: 50px;
+	text-align: center;
+	
 }
+
+.quest_list, .review_list {
+	border-top: 1px solid #eeeeef;
+}
+
 .review {
-  margin: 30px 0 0 50px;
+	margin: 30px 0 0 50px;
 }
+
 .ratingbox {
-  position: relative;
+	position: relative;
 }
+
 .rating {
-  position: absolute;
-  display: flex;
-  right: 23px;
-  top: -10px;
-  color: rgb(193, 122, 241);
-}
-.rating2 {
-  clip: rect(0px, 90px, 18px, 0);
+	color: rgb(193, 122, 241);
 }

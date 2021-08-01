@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="/css/header.css">
 <header id="header">
 	<c:if test="${empty userId}">
+
 	<div class="header-full">
 		<a href="/main" class="logo"></a>
 			<nav class="header_nav">
@@ -22,6 +23,7 @@
 		<a href="/main" class="logo"></a>
 			<nav class="header_nav">
 				<div class="header_menu">
+
 					<a href="/login/logout" class="header_login">  
 					<i class='bx-fw bx bxs-rocket bx-tada-hover'></i>로그아웃</a> 
 					<a href="/edit/modify" class="header_register">
@@ -33,6 +35,7 @@
 	</div>
 	</c:if>
 </header>
+
 <div class="menu">
 	<ul>
 		<li class="drop-down"><a href="#"><i

@@ -166,7 +166,7 @@
 				<button class="review_register">등록</button>
 			</div>
 			<div class="title">
-				<span>상품리뷰 (<span class="review">${pageMaker.total} </span>)
+				<span>상품리뷰 (<span class="review">${pageMaker.total}</span>)
 				</span>
 
 			</div>
@@ -175,7 +175,7 @@
 					<th>별점</th>
 					<th>내용</th>
 					<th>작성자</th>
-					<th>작성시간</th>
+					<th>작성일</th>
 					<th></th>
 				</tr>
 				<c:forEach var="rv" items="${review}">
@@ -231,7 +231,7 @@
 					<th>답변상태</th>
 					<th>내용</th>
 					<th>작성자</th>
-					<th>작성시간</th>
+					<th>작성일</th>
 					<th></th>
 				</tr>
 				<c:forEach var="Qn" items="${QnA}">
@@ -291,8 +291,7 @@
 		</div>
 		<div class="detail-content">
 			<div class="title last">
-				<span class="another">배송/교환/환불</span> <br />
-				<br />
+				<span class="another">배송/교환/환불</span> <br /> <br />
 				<div>
 					<p>반품 및 교환 기간 반품 및 교환은 결제완료 후 15일 이내에만 가능합니다.</p>
 					<br />
@@ -515,7 +514,7 @@
 				contentType : "application/json; charset=utf-8",
 				success : function(rs) {
 					$('.QnAtotal').html('');
-					let QnAbox='<tr class="QnInfo"><th>답변상태</th><th>내용</th><th>작성자</th><th>작성시간</th><th></th></tr>';
+					let QnAbox='<tr class="QnInfo"><th>답변상태</th><th>내용</th><th>작성자</th><th>작성일</th><th></th></tr>';
 					for(let i=0; i<rs.length; i++){
 					QnAbox += '<input type="hidden" value="'+rs[i].questionCode+'"/>'+
 						'<tr class="QnAbox"><td>'
@@ -682,7 +681,7 @@
 										success : function(result) {
 											let rvtable = "";
 											let starRating = "";
-											rvtable += '<tr class="reviewlist"><th>별점</th><th>내용</th><th>작성자</th><th>작성시간</th><th></tr></tr>';
+											rvtable += '<tr class="reviewlist"><th>별점</th><th>내용</th><th>작성자</th><th>작성일</th><th></tr></tr>';
 											$(".reviewAll").html("");
 											for (let i = 0; i < result.length; i++) {
 												
