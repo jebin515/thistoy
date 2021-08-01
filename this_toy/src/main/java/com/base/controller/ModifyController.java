@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.base.entity.UserVO;
 import com.base.service.user.UserService;
@@ -42,7 +43,8 @@ public class ModifyController {
 	}
 	
 	@PostMapping("/modify")
-	public String editmypagePOST(@Valid UserVO vo,HttpSession session,@Valid LoginCommand loginCommand,Model model) {
+	public String editmypagePOST(@Valid UserVO vo,HttpSession session,@Valid LoginCommand loginCommand
+			,Model model) {
 		System.out.println("내정보수정POST");
 		try {
 			userService.pwCheck(loginCommand);
