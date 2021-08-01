@@ -14,8 +14,6 @@ public interface MypageService {
 	
 	ArrayList<ProductVO> getSellbox(String userId);
 	
-	OrdersVO getOrder(String orderCode);
-	
 	ArrayList<CartVO> getProductCode3(String userId);
 	ProductVO getCart(String productCode);
 	
