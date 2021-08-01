@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,39 +23,30 @@
 	<%@ include file="../includes/header.jsp"%>
 	<!-- ------------마이페이지---------- -->
 	<section>
-		<h3 class="mypage_logo">마이페이지</h3>
-		<div class="mp">
-			<!-- 왼쪽 -->
-			<img class="left" src="/img/profile.jpg" alt="이미지없음">
-			<!-- 오른쪽  -->
-			<div class="right">
-				<div>이름 : 윤재빈</div>
-				<div>아이디 : jebin515</div>
-				<div>이메일 : jebin515@naver.com</div>
-				<div>기본 배송지 | 경기도 안양시 어쩌구 저쩌구 집이 멀어요 서울 사고싶다 도로명 주소는 뭐라고 써야하나</div>
-			</div>
-		</div>
 		<%@ include file="../includes/mypage.jsp"%>
 		<div class="flexcollum">
-			<c:forEach var="ob" items="${orderbox}">
+			<c:forEach var="ob" items="${orders}">
+				<c:set var="i" value='${fn:indexOf(ob.productMainImg,",")}' />
+				<c:set var="simg" value="${fn:substring(ob.productMainImg,0,i)}" />
 				<div class="orderbox">
 					<a href="mypage_detailorderbox.html"> <img
-						src="/upload/product/main/${ob.productImg}" alt=""
+						src="/upload/product/main/${simg}" alt=""
 						class="orderimg">
 					</a>
 					<div class="order_info">
-						<a href="detailorderbox.html">
+						<a href="/mypage/mypage_detailorderbox?pc=${ob.productCode}&oc=${ob.orderCode}&seller=${ob.userId}">
 							<div class="product_logo">This Toy</div>
 							<div class="product_name">${ob.productName}</div>
-						</a> <span class="product_price">${ob.orderPrice}원</span> <span>${ob.orderDate}</span>
+						</a> <span class="product_price">${ob.orderPrice*ob.orderEa}원</span> <span>
+						<fmt:formatDate var="date" value="${ob.orderDate}" pattern="yyyy.MM.dd" /> ${date}</span>
 						<div class="order_line"></div>
 						<div class=" buytext">주문이 완료되었습니다. 이용해주셔서 감사합니다.</div>
 					</div>
 					<div class="seller_info">
-						<div>아이디(판매자)</div>
-						<div>010-1234-5678(판매자)</div>
+						<div>${ob.userId}</div>
+						<div>${ob.userTel}</div>
 					</div>
-					<a href="" class="onemore">재구매</a>
+					<a href="/product/detail_main?pc=${ob.productCode}" class="onemore">재구매</a>
 				</div>
 			</c:forEach>
 		</div>
