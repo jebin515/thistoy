@@ -119,6 +119,12 @@ public class UserServiceImpl implements UserService {
 	 userMapper.insertKakaoId(vo);
 	}
 	
+	@Override
+	public UserVO getmodify(String userId) {
+		// TODO Auto-generated method stub
+		return userMapper.getmodify(userId);
+	}
+	
 	
 	
 }

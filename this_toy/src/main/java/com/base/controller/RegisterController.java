@@ -1,9 +1,14 @@
 package com.base.controller;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
+
+import java.io.File;
 import java.util.Random;
 
 import javax.mail.internet.MimeMessage;
 import javax.management.RuntimeErrorException;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -14,6 +19,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.base.entity.UserVO;
@@ -36,13 +43,29 @@ public class RegisterController {
 	}
 	//가입페이지로
 	@GetMapping("/register-2")
-	public String registerGET() throws Exception{
+	public void registerGET() throws Exception{
 		System.out.println("register - 2   -------------------------------- Get ---------------------------");
-		return "/register/register-2";
+//		return "/register/register-2";
 	}
 	@PostMapping("/register-2")
-	public String registerPOST(UserVO userVO,RedirectAttributes rttr) throws Exception {
+	public String registerPOST(UserVO userVO,HttpServletRequest request, RedirectAttributes rttr,MultipartHttpServletRequest mtrequest) throws Exception {
 //        연속등록 불가능하도록 플래시어트리뷰트 후 리다이렉트
+		ServletContext ctx = request.getServletContext();
+		
+		MultipartFile mf = mtrequest.getFile("file");
+		
+		String originFileName = mf.getOriginalFilename();
+		
+		String webPath = "/resources/upload/product/user";
+		String realPath = ctx.getRealPath(webPath);
+		System.out.println(realPath);
+		File savePath = new File(realPath);
+		if(!savePath.exists()) {
+			savePath.mkdir();
+		}
+		realPath += File.separator + originFileName;
+		File saveFile = new File(realPath);
+		
         rttr.addFlashAttribute("result", "success");
 		int result = userService.idCheck(userVO);
 		int result2 = userService.emailCheck(userVO);

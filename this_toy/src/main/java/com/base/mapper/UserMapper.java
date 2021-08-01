@@ -30,6 +30,8 @@ public interface UserMapper{
 	//zzk
 	void insertKakaoId(UserVO vo);
 	
+	UserVO getmodify(String userId);
+	
 	public UserVO findpw(String UserPasswd);
 	
 	int loginCheck(UserVO userVO);

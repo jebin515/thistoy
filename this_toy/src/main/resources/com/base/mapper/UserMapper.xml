@@ -106,5 +106,7 @@
 	
 	</insert>
 	
-	
+	<select id="getmodify" resultType="com.base.entity.UserVO">
+		select * from usertable where user_id = #{userId}
+	</select>
 </mapper>

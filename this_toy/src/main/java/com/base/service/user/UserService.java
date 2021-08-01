@@ -24,6 +24,8 @@ public interface UserService {
 	//zzk
 	void insertKakaoId(UserVO vo);
 	
+	UserVO getmodify(String userId);
+	
 	//개인정보수정
 	public void userModify(UserVO vo);
 	//수정시 비밀번호체크

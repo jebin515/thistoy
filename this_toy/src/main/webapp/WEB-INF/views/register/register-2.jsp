@@ -30,7 +30,7 @@
 			<div class="wrap wd668">
 				<div class="container">
 					<div class="form_txtInput">
-						<form id="form" class="form" method="post">
+						<form id="form" class="form" method="post" enctype="multipart/form-data">
 							<p class="exTxt">회원가입시 이메일 인증을 반드시 진행하셔야 합니다.</p>
 							<div class="join_form">
 								<table>
