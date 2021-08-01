@@ -143,7 +143,7 @@
 	</form>
 	</div>
 	<%@ include file="../includes/footer.jsp"%>
-	<script type="text/javascript" src="/js/cart_3.js"></script>
+	<script type="text/javascript" src="/js/cart_3.js?ver=2"></script>
 </body>
 
 </html>
