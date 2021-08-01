@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=980" />
 <link rel="stylesheet" href="/css/style.css">
-<link href="/css/main.css" rel="stylesheet">
+<link href="/css/main.css?ver=1" rel="stylesheet">
 <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'
 	rel='stylesheet'>
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />

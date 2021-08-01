@@ -4,26 +4,6 @@
 <html lang="en">
 
 <head>
-<style>
-main .register-main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-main .register-main .register-menu {
-  height: 50px;
-}
-main .register-main .register-menu span {
-  font-family: "Cafe24Ssurround", sans-serif;
-  height: 50px;
-  font-size: 25px;
-}
-main .register-main .register-menu .one {
-  font-size: 35px;
-  color: rgba(245, 96, 153, 0.9);
-}
-</style>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -66,15 +46,14 @@ main .register-main .register-menu .one {
 						<tr class="form-control">
 							<th><span>아이디</span></th>
 							<td>
-								<%--                             <span name="userId" class="userId" >${authInfo.userId}</span> --%>
-								<input type="text" name="userId" value="${authInfo.userId}"
+								<input type="text" name="userId" value="${userId.userId}"
 								class="userId" required readonly>
 							</td>
 						</tr>
 						<tr class="form-control">
 							<th><span>이름</span></th>
 							<td><input type="text" id="userName" class="userName"
-								name="userName" value="${authInfo.userName}" required></td>
+								name="userName" value="${userId.userName}" required></td>
 						</tr>
 						<tr class="form-control">
 							<th><span>현재 비밀번호</span></th>
@@ -90,23 +69,23 @@ main .register-main .register-menu .one {
 						<tr class="form-control">
 							<th><span>이메일</span></th>
 							<td><input type="email" name="userEmail" id="userEmail"
-								class="userEmail" value="${authInfo.userEmail}" required>
+								class="userEmail" value="${userId.userEmail}" required>
 							</td>
 						</tr>
 						<tr class="form-control">
 							<th><span>휴대폰 번호</span></th>
 							<td><input type="tel" name="userTel" class="userTel"
-								id="userTel" value="${authInfo.userTel}" required></td>
+								id="userTel" value="${userId.userTel}" required></td>
 						</tr>
 						<tr class="form-control">
 							<th><span>주소</span></th>
 							<td><input id="member_post" name="userAddressPost"
-								type="text" value="${authInfo.userAddressPost}" readonly
+								type="text" value="${userId.userAddressPost}" readonly
 								onclick="findAddr()" required><br> <input
 								id="member_addr" name="userAddress" type="text"
-								value="${authInfo.userAddress}" readonly required> <br>
+								value="${userId.userAddress}" readonly required> <br>
 							<input type="text" name="userAddressDetail" id="member_detail"
-								value="${authInfo.userAddressDetail}" required></td>
+								value="${userId.userAddressDetail}" required></td>
 						</tr>
 					</table>
 				</div>

@@ -59,8 +59,8 @@
 										</tr>
 										<tr class="form-control">
 											<th><span>비밀번호</span></th>
-											<td><input type="password" id="password" name="userPasswd"
-												placeholder="특수문자/문자/숫자 포함 8자리 이상 입력하세요."></td>
+											<td><input type="password" id="password"
+												name="userPasswd" placeholder="특수문자/문자/숫자 포함 8자리 이상 입력하세요."></td>
 											<td></td>
 										</tr>
 										<tr class="form-control">
@@ -101,8 +101,9 @@
 												type="text" placeholder="우편번호" readonly onclick="findAddr()"><br>
 												<br> <br> <input id="member_addr"
 												name="userAddress" type="text" placeholder="기본주소" readonly><br>
-												<br> <br> <input type="text" name="userAddressDetail"
-												id="member_detail" placeholder="상세 주소"></td>
+												<br> <br> <input type="text"
+												name="userAddressDetail" id="member_detail"
+												placeholder="상세 주소"></td>
 											<td></td>
 										</tr>
 									</tbody>
@@ -112,7 +113,8 @@
 								</div>
 							</div>
 							<div class="btn_wrap">
-								<input type="submit" id="next_button"  class="button" value="확인" disabled>
+								<input type="submit" id="next_button" class="button" value="확인"
+									disabled>
 							</div>
 						</form>
 					</div>
@@ -132,6 +134,13 @@
 	<script src="/js/register-2.js"></script>
 	<script
 		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+	<script type="text/javascript">
+		window.history.forward();
+		function noBack() {
+			window.history.forward();
+		}
+	</script>
 </body>
 
 </html>

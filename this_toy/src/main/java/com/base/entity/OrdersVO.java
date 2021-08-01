@@ -19,8 +19,11 @@ public class OrdersVO {
 	private String orderAddressDetail;
 	private String userId;
 	private String userTel;
+	private String newuserName;
+	private String newuserTel;
 
 	private int productStock; // 상품재고
 	private int sellCount; //판매량
+	
 
   }
