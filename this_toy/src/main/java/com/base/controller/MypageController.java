@@ -74,6 +74,18 @@ public class MypageController {
 		
 	}
 	
+	/*
+	 * @GetMapping("mypage_detailorderbox") public void getDOrderbox
+	 * (HttpServletRequest request, Model model) { HttpSession session =
+	 * request.getSession(); String userId = (String)
+	 * session.getAttribute("userId"); }
+	 * 
+	 * @GetMapping("mypage_review") public void getOrderbox (HttpServletRequest
+	 * request, Model model) { HttpSession session = request.getSession(); String
+	 * userId = (String) session.getAttribute("userId");
+	 * 
+	 * }
+	 */
 	
 	
 	
