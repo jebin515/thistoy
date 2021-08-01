@@ -61,7 +61,7 @@
                         <div class=" buytext">주문이 완료되었습니다. 이용해주셔서 감사합니다.</div>
                     </div>
                     <div class="seller_info">
-                        <div>jebin515(판매자)</div>
+                        <div>아이디(판매자)</div>
                         <div>010-1234-5678(판매자)</div>
                     </div>
                     <a href="" class="onemore">재구매</a>

@@ -79,7 +79,7 @@
                 </tr>
             </div>
             </div>
-            <button id='board-write' type="button" class="board-write" >글쓰기</button>
+            <button id='board-writer' type="button" class="board-writer" onclick="location.href='notice_writer' ">글쓰기</button>
             <div>
             <div class="notice-search">
             	<form id='searchForm'  action="/notice/notice"  method="get">
@@ -101,7 +101,7 @@
     </main>
     
     
-						<!--     modal	 -->
+						<!--     modal -->
 <div id="myModal" class="modal"  tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -122,34 +122,31 @@
   </div>
 </div>
 
-<script type="text/javascript">
+<script>
 
 $(document).ready(function() {
 	var result = '<c:out value="${result}"/>';
-	
 	checkModal(result);
-	
 	history.replaceState({}, null, null);
 	
-	function checkModal(result){
-		if (result === '' || history.state) {
-			return;
-		}
-		
-		if(result === 'success'){
-			$(".modal-body").html(
-					"정상적으로 처리되었습니다.");
-		}else if(parseInt(result)>0){
-			$(".modal-body").html(
-					"공지사항" + parseInt(result) + "번이 등록되었습니다.");
-		}
-		
-		$("#myModal").modal("show");
-	}
+		function checkModal(result){
+				if (result === '' || history.state) {
+					return;
+				}
+					if(result === 'success'){
+						$(".modal-body").html(
+								"정상적으로 처리되었습니다.");
+					}else if(parseInt(result)>0){
+						$(".modal-body").html(
+								"공지사항" + parseInt(result) + "번이 등록되었습니다.");
+					}
+			$("#myModal").modal("show");
+			}
 	
-	$("#board-write").click(function() {
+	$("#board-writer").click(function() {
 		self.location = "/notice/notice_writer";
 	});
+	
 	var actionForm = $("#actionForm");
 	$(".page-link").on("click", function(e) {
 		e.preventDefault();
@@ -164,26 +161,19 @@ $(document).ready(function() {
 	
 	$(".subject-list").on("click", function(e){
 		e.preventDefault();
-		
 		var targetNoticeNum = $(this).attr("href");
-		
 		console.log(targetNoticeNum);
-		
 		actionForm.append("<input type='hidden' name='noticeNum' value=' " +targetNoticeNum+" ' >' " );
 		actionForm.attr("action", "/notice/notice_detail").submit();
-		
-	});
+		});
 	
-	var searchForm = $("#searchForm");
-	
-	$("#searchForm button").on("click", function(e) {
-		e.preventDefault();
-		console.log("............click......................");
-		
-		searchForm.find("input[name='pageNum']").val(1);
-		
-		searchForm.submit();
-	});
+		var searchForm = $("#searchForm");
+		$("#searchForm button").on("click", function(e) {
+			e.preventDefault();
+			console.log("............click......................");
+			searchForm.find("input[name='pageNum']").val(1);
+			searchForm.submit();
+		});
 });
 </script>
 
