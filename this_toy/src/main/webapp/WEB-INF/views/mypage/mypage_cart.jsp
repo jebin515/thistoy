@@ -10,6 +10,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>나의장바구니</title>
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-latest.js"></script>
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
 	integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
@@ -51,13 +53,13 @@
 					<c:set var="i" value='${fn:indexOf(cl.productMainImg,",")}' />
 					<c:set var="cimg" value="${fn:substring(cl.productMainImg,0,i)}" />
 					<c:set var="cnum" value="${cnum + 1}" />
-					
+
 					<tr class="row data">
 						<!-- 선택 -->
 						<td class="check"><input type="checkbox" name="buy"
 							value="260" checked="" onclick="javascript:basket.checkItem();">
-							<input type="hidden" name="pdc" value="<c:out value="${cl.productCode}"/>">
-							&nbsp;</td>
+							<input type="hidden" name="pdc"
+							value="<c:out value="${cl.productCode}"/>"> &nbsp;</td>
 
 						<!-- 제품 이미지 -->
 						<td><input type="hidden" name="productImg" value="${cimg}" />
@@ -100,14 +102,12 @@
 						<td>
 							<div class="sum">${cl.productPrice}원</div>
 						</td>
-
 						<!-- 삭제 -->
-						<td>
+						<td><input type="hidden" value="${cl.productCode}" />
 							<div class="basketcmd">
 								<a href="javascript:void(0)" class="abutton"
 									onclick="javascript:basket.delItem();"> 삭제 </a>
-							</div>
-						</td>
+							</div></td>
 					</tr>
 				</c:forEach>
 
@@ -130,8 +130,7 @@
 				<div class="totalpay">
 					<i class="fab fa-creative-commons-nd"></i>
 				</div>
-				<div class="bigtext box blue summoney" id="sum_p_price">합계 :
-					87,600원</div>
+				<div class="bigtext box blue summoney" id="sum_p_price"></div>
 			</div>
 
 			<div id="goorder" class="">
@@ -144,7 +143,25 @@
 	</form>
 	</div>
 	<%@ include file="../includes/footer.jsp"%>
-	<script type="text/javascript" src="/js/cart_3.js"></script>
+	<input type="hidden" value="${userId}" class="uId"/>
+	<script type="text/javascript" src="/js/cart_3.js?ver=2"></script>
 </body>
 
 </html>
+<script defer>
+$(document).on('click','.abutton',function(){
+	let userId = $('.uId').val();
+	let pcode = $(this).parent().prev().val();
+	$.ajax({
+		type : 'delete',
+		url : '/mypage/cart/delete/'+pcode+'/'+userId,
+		contentType : "application/json; charset=utf-8",
+		success : function(result) {
+			alert(result);
+		},
+		error : function(er) {
+			alert(er);
+		}
+	});
+});
+</script>

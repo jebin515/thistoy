@@ -4,7 +4,8 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.base.mapper.QnAMapper">
 	<insert id="insertQnA">
-		insert into question (QUESTION_CODE,product_code,question_text,user_id)
+		insert into question
+		(QUESTION_CODE,product_code,question_text,user_id)
 		values
 		(QnA_seq.nextval,#{productCode},#{questionText},#{userId})
 	</insert>
@@ -16,17 +17,24 @@
 	]]>
 	</select>
 	<select id="QnATotalCount" resultType="int">
-	select count(*) from question where product_code = #{productCode}
+		select count(*) from question where product_code = #{productCode}
 	</select>
 	<update id="replyQnA">
-	update question set REPLY_SITUATION='답변완료', reply_text =#{replyText},reply_date=sysdate 
-	where question_code=#{questionCode}
+		update question set REPLY_SITUATION='답변완료', reply_text
+		=#{replyText},reply_date=sysdate
+		where question_code=#{questionCode}
 	</update>
 	<update id="deleteReply">
-	update question set REPLY_SITUATION='답변대기', reply_text ='',reply_date='' 
-	where question_code=#{questionCode}
+		update question set REPLY_SITUATION='답변대기', reply_text ='',reply_date=''
+		where question_code=#{questionCode}
 	</update>
 	<delete id="deleteQnA">
-		delete from question where QUESTION_CODE = #{questionCode}
+		delete from question where QUESTION_CODE =
+		#{questionCode}
 	</delete>
+	<select id="getLastQnA" resultType="QnAVO">
+		select * from(
+		select * from question order by question_code desc)
+		where rownum = 1
+	</select>
 </mapper>

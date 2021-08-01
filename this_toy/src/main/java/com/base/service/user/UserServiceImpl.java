@@ -51,14 +51,17 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public AuthInfo loginAuth(LoginCommand loginCommand) {
 		UserVO user = userMapper.selectById(loginCommand.getUserId());
+		System.out.println("서비스유저" + user);
 		if (user == null) {
 			throw new IdPasswordNotMatchingException();
 		}
 		if (!user.matchPassword(loginCommand.getUserPasswd())) {
 			throw new IdPasswordNotMatchingException();
 		}
-		return new AuthInfo(user.getUserId(), user.getUserName(), user.getUserEmail(), user.getUserTel(),
-				user.getUserAddressPost(), user.getUserAddress(), user.getUserAddressDetail());
+		return new AuthInfo(user.getUserId()
+				);
+//				, user.getUserName(), user.getUserEmail(), user.getUserTel(),
+//				user.getUserAddressPost(), user.getUserAddress(), user.getUserAddressDetail()
 	}
 
 	// 개인정보수정
@@ -88,8 +91,40 @@ public class UserServiceImpl implements UserService {
 		// 기본
 //      return new AuthInfo(user.getUserId(), user.getUserName());
 		// 유저수정 페이지 위해서 다른 정보들도 넣음
-		return new AuthInfo(user.getUserId(), user.getUserName(), user.getUserEmail(), user.getUserTel(),
-				user.getUserAddressPost(), user.getUserAddress(), user.getUserAddressDetail());
+		return new AuthInfo(user.getUserId()
+//				, user.getUserName(), user.getUserEmail(), user.getUserTel(),
+//				user.getUserAddressPost(), user.getUserAddress(), user.getUserAddressDetail()
+				);
 	}
 
+	@Override
+	public UserVO readUser(String userId) {
+		System.out.println("상속서비스 : ");
+		
+		UserVO vo = null;
+		
+		try {
+			vo = userMapper.readUser(userId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return vo;
+		
+	}
+
+	@Override
+	public void insertKakaoId(UserVO vo) {
+		
+	 userMapper.insertKakaoId(vo);
+	}
+	
+	@Override
+	public UserVO getmodify(String userId) {
+		// TODO Auto-generated method stub
+		return userMapper.getmodify(userId);
+	}
+	
+	
+	
 }

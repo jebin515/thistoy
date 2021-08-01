@@ -1,10 +1,10 @@
 package com.base.controller;
 
-import java.util.Locale;
+import java.io.IOException;
+import java.util.Random;
+import java.util.UUID;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -12,22 +12,19 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.base.entity.UserVO;
 import com.base.service.user.UserService;
@@ -39,6 +36,12 @@ import com.base.session.OAuthToken;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.scribejava.core.builder.ServiceBuilder;
+import com.github.scribejava.core.model.OAuth2AccessToken;
+import com.github.scribejava.core.model.OAuthRequest;
+import com.github.scribejava.core.model.Response;
+import com.github.scribejava.core.model.Verb;
+import com.github.scribejava.core.oauth.OAuth20Service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -51,12 +54,6 @@ public class LoginController {
 	
 	private final UserService userService;
 	
-//	@RequestMapping(value = "/home", method = RequestMethod.GET)
-//	public String home(Locale locale, Model model,HttpSession session) {
-//		// 세션에 있는 정보를 담아준다.
-//		model.addAttribute("userType", (String)session.getAttribute("userType") );
-//		return "/home";
-//	}
 	
 	@GetMapping("/login")
 	public String loginGET() {
@@ -73,7 +70,13 @@ public class LoginController {
 		}
 		try {
 			AuthInfo authInfo = userService.loginAuth(loginCommand);
-			session.setAttribute("userId", authInfo.getUserId());
+      
+			String sessionId = authInfo.getUserId();
+//			System.out.println("로그커맨드"+loginCommand.getUserId());
+//			session.setAttribute("userId", authInfo);
+			session.setAttribute("userId", sessionId);
+
+
 		} catch (IdPasswordNotMatchingException e) {
 			return "/login/loginfail";
 		}
@@ -81,10 +84,13 @@ public class LoginController {
 	} //기존 로그인 
 	
 	
-//	@GetMapping("/logincheck")
-//	public void loginCheck() {
-//		System.out.println("로그인 성공");
-//	}
+	@RequestMapping("/navercall")
+	public String navercall(HttpSession session) {
+		session.setAttribute("userId","네이버49482307");
+		
+		return "redirect:/main";
+	}
+	
 	@GetMapping("/loginsuccess")
 	public void loginsuccess() {
 		System.out.println("로그인 GET 성공");
@@ -96,29 +102,72 @@ public class LoginController {
 		System.out.println("로그아웃 GET");
 		return "redirect:/main";
 	}
+
+//	public String getAuthorizationUrl(HttpSession session) {
+//        /* 세션 유효성 검증을 위하여 난수를 생성 */
+//        String state = generateRandomString();
+//        /* 생성한 난수 값을 session에 저장 */
+//        setSession(session,state);
+//        /* Scribe에서 제공하는 인증 URL 생성 기능을 이용하여 네아로 인증 URL 생성 */
+//        OAuth20Service oauthService = new ServiceBuilder()
+//        .apiKey(CLIENT_ID)
+//        .apiSecret(CLIENT_SECRET)
+//        .callback(REDIRECT_URI)
+//        .state(state) //앞서 생성한 난수값을 인증 URL생성시 사용함
+//        .build(NaverLoginApi.instance());
+//        
+//        return oauthService.getAuthorizationUrl();
+//    }
+//    /* 네이버아이디로 Callback 처리 및 AccessToken 획득 Method */
+//	private  String CLIENT_ID = "5sh4TrG6DyRbb_FeQOmr";
+//    private  String CLIENT_SECRET = "2sdgFZvahW";
+//    private  String REDIRECT_URI = "http://localhost:8080/callback";
+//    private  String SESSION_STATE = "oauth_state";
+//    /* 프로필 조회 API URL */
+//    private String PROFILE_API_URL = "https://openapi.naver.com/v1/nid/me";
+//    
+//    public OAuth2AccessToken getAccessToken(HttpSession session, String code, String state) throws IOException{
+//    /* Callback으로 전달받은 세선검증용 난수값과 세션에 저장되어있는 값이 일치하는지 확인 */
+//    String sessionState = getSession(session);
+//        if(StringUtils.pathEquals(sessionState, state)){
+//            OAuth20Service oauthService = new ServiceBuilder()
+//            .apiKey(CLIENT_ID)
+//            .apiSecret(CLIENT_SECRET)
+//            .callback(REDIRECT_URI)
+//            .state(state)
+//            .build(NaverLoginApi.instance());
+//            /* Scribe에서 제공하는 AccessToken 획득 기능으로 네아로 Access Token을 획득 */
+//            OAuth2AccessToken accessToken = oauthService.getAccessToken(code);
+//            return accessToken;
+//        }
+//    return null;
+//    }
+//    /* 세션 유효성 검증을 위한 난수 생성기 */
+//    private String generateRandomString() {
+//        return UUID.randomUUID().toString();
+//    }
+//    /* http session에 데이터 저장 */
+//    private void setSession(HttpSession session,String state){
+//        session.setAttribute(SESSION_STATE, state);
+//    }
+//    /* http session에서 데이터 가져오기 */
+//    private String getSession(HttpSession session){
+//        return (String) session.getAttribute(SESSION_STATE);
+//    }
+//    /* Access Token을 이용하여 네이버 사용자 프로필 API를 호출 */
+//    public String getUserProfile(OAuth2AccessToken oauthToken) throws IOException{
+//        OAuth20Service oauthService =new ServiceBuilder()
+//        .apiKey(CLIENT_ID)
+//        .apiSecret(CLIENT_SECRET)
+//        .callback(REDIRECT_URI).build(NaverLoginApi.instance());
+//        OAuthRequest request = new OAuthRequest(Verb.GET, PROFILE_API_URL, oauthService);
+//        oauthService.signRequest(oauthToken, request);
+//        Response response = request.send();
+//        return response.getBody();
+//    }
 	
-	
-	@GetMapping("/navercall")
-	public @ResponseBody String naverCallback(String code) { //@ResponseBody  ) data를 리턴해주는 컨트롤러 함수
-		System.out.println("네이버 콜백 페이지 띄움");
-//		// CSRF 방지를 위한 상태 토큰 검증 검증
-//		// 세션 또는 별도의 저장 공간에 저장된 상태 토큰과 콜백으로 전달받은 state 파라미터의 값이 일치해야 함
-//		// 콜백 응답에서 state 파라미터의 값을 가져옴
-//		String state = request.queryParams(“state”);
-//		// 세션 또는 별도의 저장 공간에서 상태 토큰을 가져옴
-//		String storedState = request.session().attribute(“state”);
-//		if( !state.euals( storedState ) ) {
-//		    return RESPONSE_UNAUTHORIZED; //401 unauthorized
-//		} else {
-//		    Return RESPONSE_SUCCESS; //200 success
-//		}
-		return "네이버인증완료naver";
-	}
-	
-	@GetMapping("/kakaocallback")
-	public @ResponseBody String kakaoCallback(String code,Model model) { //@ResponseBody  ) data를 리턴해주는 컨트롤러 함수
-		System.out.println("카카오로그인 페이지GET 띄움");
-//		https://blog.naver.com/hj_kim97/222295259904 RestTemplate 사용한 api 사용 예시
+	@RequestMapping("/kakaocallback")
+	public @ResponseBody String kakaoCallback(String code,HttpSession session,UserVO vo) { //@ResponseBody  ) data를 리턴해주는 컨트롤러 함수
 		String grant_type = "authorization_code";
 		String client_id = "46578e2a852ca11289c2da8422acc9ca";
 		String redirect_uri = "http://localhost:9090/login/kakaocallback";
@@ -136,10 +185,8 @@ public class LoginController {
 		params.add("redirect_uri", redirect_uri);
 		params.add("code", code); //코드는 위에 get으로 받은 그거
 		
-//		params.add("grant_type", "authorization_code");  // 값들을 변수로 바꿔서 넣는게 좋음
-//		params.add("client_id", "46578e2a852ca11289c2da8422acc9ca");
-//		params.add("redirect_uri", "http://localhost:9090/login/kakaocallback");
-//		params.add("code", code);
+		
+		
 		//HttpHeader 와 HttpBody를 하나의 오브젝트에 담는다
 //		이유는 => exchange함수가 HttpEntity 오브젝트를 넣게 돼있어서!
 		HttpEntity<MultiValueMap<String,String>> kakaoTokenRequest  // kakao~ 변수를 http 바디와 헤더값을 가진 entity만듬
@@ -178,10 +225,6 @@ public class LoginController {
 				kakaoProfileRequest2,								//바디(액세스토큰등)와 헤더에 들어갈 값
 				String.class											//응답받을 타입 => response에 응답이 String
 				);
-		
-		
-		System.out.println("프로필 정보 : "+response2.getBody());
-		System.out.println(response2.getHeaders());
 		KakaoProfile kakaoProfile = null;
 		ObjectMapper objectMapper2 =new ObjectMapper(); //json 데이터를  오브젝트에 담는다
 		try {
@@ -192,17 +235,62 @@ public class LoginController {
 			e.printStackTrace();
 		}
 		
-//		user오브젝트 username password email
-		System.out.println("카카오아이디(번호) : "+kakaoProfile.getId());
-		System.out.println("카카오이메일 : "+kakaoProfile.getKakao_account().getEmail());
-		System.out.println("DB유저네임 : "+ kakaoProfile.getKakao_account().getEmail()+"_"+kakaoProfile.getId());
-		System.out.println("DB이메일 : "+kakaoProfile.getKakao_account().getEmail());
-		System.out.println("DB 닉네임 : "+kakaoProfile.properties.getNickname());
+		vo.setUserId (String.valueOf(kakaoProfile.getId()));
+		vo.setUserEmail(kakaoProfile.kakao_account.getEmail());
+		System.out.println(vo);
+		userService.insertKakaoId(vo);
 		
-//		userService.register(user)
-//		model.addAttribute("authInfo2",kakaoProfile);
-		
-		return response2.getBody();
-	}
+		//세션 부여
+		session.setAttribute("userId", "카카오유저"+kakaoProfile.getId());
 
+		return "<script>\r\n"
+				+ "        self.location = \"/main\";\r\n"
+				+ " </script>";
+	}
+	
+	@RequestMapping("/findpw")
+	public void registerPOST() throws Exception {
+		
+	}
+	
+	private final JavaMailSender mailSender;
+	@GetMapping("/findpassword")
+	@ResponseBody
+	public String findPassword(String semail) throws Exception {
+		
+
+		System.out.println("비번찾기 메일보냄페이지");
+		System.out.println("이메일: " + semail);
+		Random random = new Random();
+		int num = random.nextInt(8999)+1000;
+		System.out.println("인증번호 :" + num);
+		
+		
+		String setFrom = "gihadaim@gmail.com";
+		String toMail = semail;
+		String title = "디스토이 비밀번호찾기 인증번호입니다.";
+		String content = "안녕하세요! 인증번호는     "+num+"     입니다.";
+		try {
+			MimeMessage message = mailSender.createMimeMessage();
+			MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
+			helper.setFrom(setFrom);
+			helper.setTo(toMail);
+			helper.setSubject(title);
+			helper.setText(content, true);
+			mailSender.send(message);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		String Checkcode = Integer.toString(num);
+		
+		return Checkcode;
+	}
+	
+	
+	
+	
+	
+	
+	
 }// 클래스 종료

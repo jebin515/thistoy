@@ -26,8 +26,12 @@ public class ReviewController {
 	private ReviewService service;
 	
 	@ResponseBody
-	@PostMapping(value = "/new")
+	@PostMapping(value = "/new",produces = "application/text; charset=UTF-8")
 	public String create(@RequestBody ReviewVO vo) {
+		ReviewVO Rvo = service.checkReview(vo);
+		if(Rvo!=null) {
+			return "이미 리뷰를 작성하였습니다.";
+		}
 		int i = service.register(vo);
 		return i==1 ? "success":"fail";
 	}
@@ -44,7 +48,7 @@ public class ReviewController {
 	@GetMapping(value="delete")
 	public String deleteReview(@RequestParam(name="rc")int reviewCode,@RequestParam(name="pc") String productCode) {
 		int count = service.removeReview(reviewCode);
-		return  "redirect:/product/detail_main?pc="+productCode;
+		return  "redirect:/product/detail_main?pc="+productCode+"&review";
 	}
 	
 }

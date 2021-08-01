@@ -22,7 +22,7 @@
 	crossorigin="anonymous"></script>
 <title>Document</title>
 <link rel="stylesheet" href="/css/style.css">
-<link rel="stylesheet" href="/css/detail-main.css?ver=3" />
+<link rel="stylesheet" href="/css/detail-main.css?ver=5" />
 </head>
 <body>
 	<%@ include file="../includes/header.jsp"%>
@@ -53,13 +53,23 @@
 					</div>
 				</div>
 			</div>
-			<form action="/orders/cart" method="post" class="direct_order">
-				<div class="txt-section">
-					<div class="txt-title">
-						<c:out value="${product.productName}" />
-					</div>
-					<div class="txt-main">
+			<div class="txt-section">
+				<div class="txt-title">
+					<c:out value="${product.productName}" />
+					<form action="/product/delete" method="post" class="pd_delete">
+						<c:if test="${userId eq product.userId || userId eq 'admin'}">
+							<input type="hidden" name="pc" value="${product.productCode}" />
+							<button type="button" class="product_delete">삭제</button>
+						</c:if>
+					</form>
+				</div>
+				<div class="txt-main">
+					<form action="/orders/cart" method="post" class="direct_order">
 						<table>
+							<tr>
+								<th><span>판매자</span></th>
+								<td class="seller"><c:out value="${product.userId}" /></td>
+							</tr>
 							<tr>
 								<th><span>판매가</span></th>
 								<td>
@@ -69,12 +79,8 @@
 								</td>
 							</tr>
 							<tr>
-								<th><span>판매자</span></th>
-								<td class="seller"><c:out value="${product.userId}" /></td>
-							</tr>
-							<tr>
 								<th><span>카테고리</span></th>
-								<td>피규어</td>
+								<td>${product.downCaName}</td>
 							</tr>
 							<tr>
 								<th><span>재고</span></th>
@@ -98,21 +104,21 @@
 							</tr>
 						</table>
 						<input type="hidden" name="pdc" value="${product.productCode}" />
-					</div>
-					<div class="detail-head-button">
-						<button type="button" class="directbuy">바로구매</button>
-						<button class="cart">장바구니</button>
-						<c:forEach var="ws" items="${wish}">
-							<c:if test="${!empty userId}">
-								<c:if test="${userId==ws.userId}">
-									<input type="hidden" class="wishtrue" />
-								</c:if>
-							</c:if>
-						</c:forEach>
-						<button class="hart">하트</button>
-					</div>
+					</form>
 				</div>
-			</form>
+				<div class="detail-head-button">
+					<button type="button" class="directbuy">바로구매</button>
+					<button type="button" class="cart">장바구니</button>
+					<c:forEach var="ws" items="${wish}">
+						<c:if test="${!empty userId}">
+							<c:if test="${userId==ws.userId}">
+								<input type="hidden" class="wishtrue" />
+							</c:if>
+						</c:if>
+					</c:forEach>
+					<button type="button" class="hart">하트</button>
+				</div>
+			</div>
 		</div>
 		<!-- 메인 1 끝 -->
 
@@ -160,7 +166,7 @@
 				<button class="review_register">등록</button>
 			</div>
 			<div class="title">
-				<span>상품리뷰 (<span class="review">${pageMaker.total} </span>)
+				<span>상품리뷰 (<span class="review">${pageMaker.total}</span>)
 				</span>
 
 			</div>
@@ -169,7 +175,7 @@
 					<th>별점</th>
 					<th>내용</th>
 					<th>작성자</th>
-					<th>작성시간</th>
+					<th>작성일</th>
 					<th></th>
 				</tr>
 				<c:forEach var="rv" items="${review}">
@@ -225,7 +231,7 @@
 					<th>답변상태</th>
 					<th>내용</th>
 					<th>작성자</th>
-					<th>작성시간</th>
+					<th>작성일</th>
 					<th></th>
 				</tr>
 				<c:forEach var="Qn" items="${QnA}">
@@ -241,7 +247,8 @@
 							<td><button class="delete_QnA" value="${Qn.questionCode}">삭제</button></td>
 						</c:if>
 					</tr>
-					<c:if test="${userId eq Qn.userId and !empty Qn.replyText}">
+					<c:if
+						test="${userId eq Qn.userId and userId ne product.userId  and !empty Qn.replyText}">
 						<tr>
 							<td></td>
 							<td class="reply_td" colspan="3"><i class="fas fa-reply"></i>
@@ -283,27 +290,30 @@
 			<span class="addQnA">더보기</span>
 		</div>
 		<div class="detail-content">
-			<div class="title">
-				<span class="another">배송/교환/환불 (1)</span>
-				<button>문의하기</button>
+			<div class="title last">
+				<span class="another">배송/교환/환불</span> <br /> <br />
+				<div>
+					<p>반품 및 교환 기간 반품 및 교환은 결제완료 후 15일 이내에만 가능합니다.</p>
+					<br />
+					<p>단, 제공받은 상품이 주문제품의 내용과 다르거나 계약 내용과 다르게 이행된 경우는 3개월 이내에 가능합니다.</p>
+					<br />
+					<p>반품 및 교환이 불가한 경우 단순 변심으로 인한 반품 또는 교환 요청이 결제완료 후 15일이 경과한 경우
+						상품이 훼손되거나 포장개봉 또는 제품의 사용으로 상품가치가 현저히 감소한 경우 제품 인도 시에 포함되어 있던 사은품이나
+						샘플이 누락된 경우 시간이 경과되어 재판매가 곤란할 정도로 상품 가치가 상실된 경우</p>
+					<p>(예: 한정판매 제품, 제품 사용기한의 경과 등) 특별한 할인 혜택이 적용된 제품의 경우 교환 안내 교환 및
+						일부 품목의 교환은 전체 반품 후 재주문 하셔야 합니다.</p>
+					<br />
+					<p>단순 변심에 의한 동일 제품의 옵션 (색상 등) 교환 이더라도 전체 반품 후 재주문 부탁 드립니다.</p>
+					<br />
+					<p>환불 기간 반품 상품이 판매자에게 도착하고 반품사유와 반품비가 확인되면 주문하신 결제 수단에 따라 환불이
+						진행됩니다.</p>
+					<br /> 처리 기간은 최대 2주 가량 소요될 수 있으며, 신용카드의 경우는 카드사 또는 고객님의 결제일에 따라
+					처리일정이 달라질 수 있습니다.
+				</div>
 			</div>
-			<table>
-				<tr>
-					<th>번호</th>
-					<th>내용</th>
-					<th>작성시간</th>
-					<th>작성자</th>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>재뷘이 재뷘이 재뷘이 재뷘이 재뷘이 세빈이 ^^</td>
-					<td>2021-07-14</td>
-					<td>이진웅</td>
-				</tr>
-			</table>
 		</div>
-		<input type="text" value="${(empty userId)? null:userId}" class="user" />
-		${userId} 22
+		<input type="hidden" value="${(empty userId)? null:userId}"
+			class="user" />
 		<!-- 메인 2 끝 -->
 
 	</div>
@@ -313,7 +323,6 @@
 	<script src="/js/detail-slide.js?ver=1" defer></script>
 	<script type="text/javascript" defer>
 	let myName = $('.user').val();
-	console.log(myName);
 	let seller=$('.seller').text();
 		$(".fa-angle-right").click(function(){
 			let lastn=Number($(".pn").last().text())+1;
@@ -331,16 +340,28 @@
 		}
 		}
 		$(document).on('click','.delete_review',function(){
+			let ok=confirm('리뷰를 삭제하시겠습니까?');
+			if(ok==true){
 			let reviewNum = $(this).val();
 			location.href="/review/delete?rc="+reviewNum+"&pc=${QnA[0].productCode}";
+			}
 		})
 		$(document).on('click','.delete_QnA',function(){
+			let ok=confirm('문의내용을 삭제하시겠습니까?');
+			if(ok==true){
 			let QnANum = $(this).val();
 			location.href="/QnA/delete?qc="+QnANum+"&pc=${QnA[0].productCode}";
+			}
 		})
 		$(document).on('click','.register_button',function(){
 			let registerindex = $(".register_button").index(this);
 			location.href="/QnA/reply?qc="+$(this).val()+"&rt="+$('.reg').eq(registerindex).val()+"&pc=${QnA[0].productCode}";
+		})
+		$(document).on('click','.product_delete',function(){
+			let ok = confirm('판매글을 삭제하시겠습니까?');
+			if(ok==true){
+				$('.pd_delete').submit();
+			}
 		})
 		if($('input').hasClass('wishtrue')){
 			$('.hart').css('background-color','red');
@@ -380,6 +401,10 @@
 				data : JSON.stringify(data),
 				contentType : "application/json; charset=utf-8",
 				success : function(result) {
+					if(result=="이미 리뷰를 작성하였습니다."){
+						alert(result);
+						return;
+					}
 					alert('리뷰를 등록하였습니다.');
 					let pn="";
 					let lastnum=Number(${pageMaker.endPage});
@@ -470,11 +495,10 @@
 					'<td>'+data["questionText"]+'</td>'+
 					'<td>'+data["userId"]+'</td>'+
 					'<td>'+dateString+'</td>'+
+					'<td><button class="delete_review" value="'+rs.reviewCode+'">삭제</button><td></tr>'+
 					'</tr>';
 					$(".QnInfo").after(newQnA);
 					$('.QnA').html(QnANum);
-					alert(rs);
-					
 				},
 				error : function(er) {
 					alert(er);
@@ -490,7 +514,7 @@
 				contentType : "application/json; charset=utf-8",
 				success : function(rs) {
 					$('.QnAtotal').html('');
-					let QnAbox='<tr class="QnInfo"><th>답변상태</th><th>내용</th><th>작성자</th><th>작성시간</th><th></th></tr>';
+					let QnAbox='<tr class="QnInfo"><th>답변상태</th><th>내용</th><th>작성자</th><th>작성일</th><th></th></tr>';
 					for(let i=0; i<rs.length; i++){
 					QnAbox += '<input type="hidden" value="'+rs[i].questionCode+'"/>'+
 						'<tr class="QnAbox"><td>'
@@ -541,6 +565,10 @@
 		})
 		/* ----------------------- 답글 삭제 ajax ----------------------------------*/
 		$(document).on('click','.delete_button',function(){
+			let ok=confirm('문의답글을 삭제하시겠습니까?.');
+			if(ok==false){
+				return;
+			}
 			let questionCode= $(this).val();
 			let code=$(this).parent().parent().prev().prev().prev().val();
 			$(this).parent().parent().prev().prev().children().first().html('답변대기');
@@ -561,7 +589,8 @@
 				contentType : "application/json; charset=utf-8",
 				success : function(rs) {
 					alert(rs);
-					
+					$('html, body').animate({ 
+						scrollTop: $('.write_QnA').offset().top }, 500);
 				},
 				error : function(er) {
 					alert(er);
@@ -652,7 +681,7 @@
 										success : function(result) {
 											let rvtable = "";
 											let starRating = "";
-											rvtable += '<tr class="reviewlist"><th>별점</th><th>내용</th><th>작성자</th><th>작성시간</th><th></tr></tr>';
+											rvtable += '<tr class="reviewlist"><th>별점</th><th>내용</th><th>작성자</th><th>작성일</th><th></tr></tr>';
 											$(".reviewAll").html("");
 											for (let i = 0; i < result.length; i++) {
 												
@@ -674,9 +703,9 @@
 																result[i].reviewDate)
 																.format(
 																		"YYYY.MM.DD")
-														+ '</td>'
-														if(myName == result[i].userId || myName == seller || myName =='admin'){
-														+'<td><button class="delete_review" value="'+result[i].reviewCode+'">삭제</button></tr>';
+														+ '</td>';
+														if(myName == result[i].userId){
+															rvtable += '<td><button class="delete_review" value="'+result[i].reviewCode+'">삭제</button><td></tr>';
 														}
 											}
 											$(".reviewAll").html(rvtable);
