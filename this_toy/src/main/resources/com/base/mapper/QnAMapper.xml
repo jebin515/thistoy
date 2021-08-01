@@ -26,4 +26,7 @@
 	update question set REPLY_SITUATION='답변대기', reply_text ='',reply_date='' 
 	where question_code=#{questionCode}
 	</update>
+	<delete id="deleteQnA">
+		delete from question where QUESTION_CODE = #{questionCode}
+	</delete>
 </mapper>

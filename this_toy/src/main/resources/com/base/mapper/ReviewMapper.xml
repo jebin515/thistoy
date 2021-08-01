@@ -5,18 +5,26 @@
 <!-- namespace는 인터페이스와 동일하게 해줘야한다. -->
 <mapper namespace="com.base.mapper.ReviewMapper">
 	<insert id="insert">
-	insert into review (review_code,review_text,review_rating,product_code,user_id)
-	values (review_seq.nextval,#{reviewText},#{reviewRating},#{productCode},#{userId})
+		insert into review
+		(review_code,review_text,review_rating,product_code,user_id)
+		values
+		(review_seq.nextval,#{reviewText},#{reviewRating},#{productCode},#{userId})
 	</insert>
 	<select id="getReview" resultType="ReviewVO">
 		select * from(
-		select rownum num , n.* from
+		select rownum
+		num , n.* from
 		(select * from review where
-		product_code = #{productCode} order by review_date desc) n
+		product_code = #{productCode}
+		order by review_date desc) n
 		)
-		where num between (#{pageNum}-1)*10+1 and #{pageNum}*10
+		where num between (#{pageNum}-1)*10+1 and
+		#{pageNum}*10
 	</select>
 	<select id="getReviewTotalCount" resultType="int">
-	select count(*) from review where product_code = #{productCode}
+		select count(*) from review where product_code = #{productCode}
 	</select>
+	<delete id="deleteReview">
+		delete from review where review_CODE = #{reviewCode}
+	</delete>
 </mapper>

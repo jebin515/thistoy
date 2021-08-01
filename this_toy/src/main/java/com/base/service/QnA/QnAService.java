@@ -15,4 +15,6 @@ public interface QnAService {
 	int replyQnA(QnAVO vo);
 	
 	int removeReply(int questionCode);
+	
+	int removeQnA(int questionCode);
 }
