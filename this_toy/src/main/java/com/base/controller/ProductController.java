@@ -168,7 +168,9 @@ public class ProductController {
 			pageNum = vo2.getRealEnd();
 		}
 		vo.setPageNum(pageNum);
+		if(userId!=null) {
 		model.addAttribute("order",myService.getOrderList(userId));
+		}
 		model.addAttribute("wish", myService.getWish(productCode));
 		model.addAttribute("product", prService.getProduct(productCode)); // 선택된 상품 정보 가져가기
 		model.addAttribute("review", rvService.getReview(vo)); // 리뷰 가져가기
