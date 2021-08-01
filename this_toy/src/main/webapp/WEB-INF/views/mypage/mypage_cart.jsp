@@ -130,8 +130,7 @@
 				<div class="totalpay">
 					<i class="fab fa-creative-commons-nd"></i>
 				</div>
-				<div class="bigtext box blue summoney" id="sum_p_price">합계 :
-					87,600원</div>
+				<div class="bigtext box blue summoney" id="sum_p_price"></div>
 			</div>
 
 			<div id="goorder" class="">
