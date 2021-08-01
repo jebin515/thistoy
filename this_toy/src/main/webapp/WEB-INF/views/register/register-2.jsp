@@ -30,7 +30,7 @@
 			<div class="wrap wd668">
 				<div class="container">
 					<div class="form_txtInput">
-						<form id="form" class="form" method="post">
+						<form id="form" class="form" method="post" enctype="multipart/form-data">
 							<p class="exTxt">회원가입시 이메일 인증을 반드시 진행하셔야 합니다.</p>
 							<div class="join_form">
 								<table>
@@ -41,8 +41,8 @@
 									<tbody>
 										<tr class="form-control">
 											<th><span>이미지</span></th>
-											<td><input type="file" name="img"
-												placeholder="아이디를 입력하세요." required></td>
+											<td><input type="file" name="file"
+												 required></td>
 											<td></td>
 										</tr>
 										<tr class="form-control">
@@ -74,7 +74,7 @@
 											<td><input type="email" name="userEmail" id="email"
 												class="mail_input" placeholder="예)abc123@naver.com" required></td>
 											<td>
-												<button class="btn_send" onclick="sendEmail()" type="button">인증번호
+												<button class="btn_send"  type="button">인증번호
 													발송</button>
 											</td>
 										</tr>
@@ -82,7 +82,7 @@
 											<th><span>인증번호 확인</span></th>
 											<td><input type="text" class="send_number"
 												name="send_number" placeholder="인증번호를 정확히 입력하세요."
-												id="mail_check_input"></td>
+												id="mail_check_input" required></td>
 											<td><button class="btn_confirm" type="button">확인</button></td>
 										</tr>
 										<tr class="form-control">
@@ -91,7 +91,7 @@
 										<tr class="form-control">
 											<th><span>휴대폰 번호</span></th>
 											<td><input type="tel" name="userTel"
-												placeholder="번호를 입력하세요."></td>
+												placeholder="예)010-XXXX-XXXX"></td>
 											<td></td>
 										</tr>
 										<tr class="form-control">
