@@ -34,5 +34,15 @@ public class ReviewServiceImpl implements ReviewService {
 		// TODO Auto-generated method stub
 		return mapper.deleteReview(reviewCode);
 	}
+	@Override
+	public float getReviewAvg(String productCode) {
+		// TODO Auto-generated method stub
+		return mapper.getReviewAvg(productCode);
+	}
+	@Override
+	public ReviewVO checkReview(ReviewVO vo) {
+		// TODO Auto-generated method stub
+		return mapper.checkReview(vo);
+	}
 
 }

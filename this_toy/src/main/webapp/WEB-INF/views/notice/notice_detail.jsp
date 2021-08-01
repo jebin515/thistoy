@@ -36,7 +36,7 @@
                     </tr>
                     <tr>
                         <th>작성자</th>
-                        <td><input class="userId"  name="userId" value='<c:out value="${notice.userId}"/>' ></td>
+                        <td><input class="userId"  name="userId" readonly="readonly"  value='<c:out value="${notice.userId}"/>' ></td>
                     </tr>
                     <tr>
                         <th>DATE</th>
@@ -46,7 +46,7 @@
                         <td colspan="2">
                             <div class="detail">
                                 <div class="detail-text">
-                                	<textarea rows="20" cols="50"  name="noticeText"  class="noticeText""> <c:out value=" ${notice.noticeText}"/> </textarea>
+                                	<textarea rows="20" cols="50"  name="noticeText"  class="noticeText"" readonly="readonly" > <c:out value=" ${notice.noticeText}"/> </textarea>
                                 </div>
                             </div>
                         </td>

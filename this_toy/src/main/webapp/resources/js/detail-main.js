@@ -83,5 +83,14 @@ $(document).ready(function() {
 
 	}
 });
+$(document).ready(function() {
+	let page_url = window.location.href;
+	let page_id = page_url.substring(page_url.lastIndexOf("r"));
+	if(page_id=='review'){
+	$('html, body').animate({ 
+	scrollTop: $('.write_review').offset().top }, 500);
+
+	}
+});
 
 

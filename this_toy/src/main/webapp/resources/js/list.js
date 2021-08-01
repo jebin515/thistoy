@@ -36,13 +36,25 @@ for (let i = 0; i < drop.length; i++) {
 	})
 }
 
-for (let i = bn.length-2; i < bn.length; i++) {
+for (let i = bn.length - 2; i < bn.length; i++) {
 	if (bn[i].value == document.querySelector('.title').innerText) {
 		bn[i].style.background = 'rgb(162, 109, 236)';
 	}
-	bn[i].style.cursor   = "pointer";
+	bn[i].style.cursor = "pointer";
 	bn[i].addEventListener('click', function() {
 		let bnv = bn[i].value;
 		location.href = "/product/list?bn=" + bnv;
 	})
+}
+
+let rating = document.querySelectorAll(".rating2");
+let ratingNum = document.querySelectorAll(".ratingNum");
+for (let i = 0; i < ratingNum.length; i++) {
+	if (ratingNum[i].innerText === ("리뷰없음")) {
+		let num = 0;
+		rating[i].style.clip = "rect(0px," + 18 * num + "px,18px,0px)";
+	} else {
+		let num = Number(ratingNum[i].innerText);
+		rating[i].style.clip = "rect(0px," + 18 * num + "px,18px,0px)";
+	}
 }

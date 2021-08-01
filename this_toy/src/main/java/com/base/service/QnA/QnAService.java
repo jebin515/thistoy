@@ -17,4 +17,6 @@ public interface QnAService {
 	int removeReply(int questionCode);
 	
 	int removeQnA(int questionCode);
+	
+	QnAVO getLastQnA();
 }

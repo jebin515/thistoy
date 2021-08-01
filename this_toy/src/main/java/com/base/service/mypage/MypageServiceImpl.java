@@ -31,11 +31,6 @@ public class MypageServiceImpl implements MypageService{
 		return mapper.getSellbox(userId);
 	}
 	
-	@Override
-	public OrdersVO getOrder(String orderCode) {
-		// TODO Auto-generated method stub
-		return mapper.getOrder(orderCode);
-	}
 	
 	@Override
 	public ProductVO getCart(String productCode) {
@@ -52,5 +47,4 @@ public class MypageServiceImpl implements MypageService{
 		// TODO Auto-generated method stub
 		return mapper.getWish(productCode);
 	}
-	
 }
