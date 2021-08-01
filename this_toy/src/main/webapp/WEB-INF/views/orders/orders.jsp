@@ -44,6 +44,9 @@
 										<td><input type="hidden" name="userId" value="${pdc.userId}">
 											<c:out value="${pdc.userId}" />
 										</td>
+										<td><input type="hidden" name="productName" value="${pdc.productName}">
+											<c:out value="${pdc.productName}" />
+										</td>
 										<td><input type="hidden" value="배송비">3000원</td>
 
 										<td><input type="hidden" name="orderEa" value="${pdc.productEa}">
