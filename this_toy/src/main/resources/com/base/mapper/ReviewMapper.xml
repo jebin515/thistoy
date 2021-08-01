@@ -32,4 +32,7 @@
 	 select NVL(round(avg(review_rating),1),0) from review where product_code= #{productCode}
 	 ]]>
 	</select>
+	<select id="checkReview" resultType="ReviewVO">
+	select * from review where product_code=#{productCode} and user_id=#{userId}
+	</select>
 </mapper>

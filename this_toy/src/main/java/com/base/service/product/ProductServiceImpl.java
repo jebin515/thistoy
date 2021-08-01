@@ -73,4 +73,10 @@ public class ProductServiceImpl implements ProductService{
 		return mapper.deleteWish(vo);
 	}
 
+	@Override
+	public int removeProduct(String productCode) {
+		// TODO Auto-generated method stub
+		return mapper.deleteProduct(productCode);
+	}
+
 }

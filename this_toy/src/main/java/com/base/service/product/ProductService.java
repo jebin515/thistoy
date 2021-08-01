@@ -18,6 +18,8 @@ public interface ProductService {
 
 	ProductVO getProduct(String productCode);
 	
+	int removeProduct(String productCode);
+	
 	int registerCart(CartVO vo);
 	
 	int cartCount(CartVO vo);

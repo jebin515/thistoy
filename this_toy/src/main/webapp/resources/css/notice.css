@@ -1,122 +1,136 @@
 main {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-  }
-  .container .title {
-    font-weight: bold;
-    font-family: "Bukhari Script", sans-serif;
-    font-size: 40px;
-    color: #484848;
-    letter-spacing: 10px;
-    padding: 20px 20px;
-  }
-  .container table {
-    border-collapse: collapse;
-    text-align: center;
-    width: 1000px;
-  }
-  .container th {
-    border-top: 1.5px solid #bebebe;
-    border-bottom: 1.5px solid #bebebe;
-    letter-spacing: 1px;
-    color: rgb(110, 110, 110);
-    font-family: "IBMPlexSansKR-ExtraLight", sans-serif;
-    font-size: 20px;
-    padding: 14px;
-    width: 200px;
-  }
-  .container tr {
-    vertical-align: middle;
-  }
-  .container td {
-    border-bottom: 1px solid #d4d4d4;
-    font-family: "Cafe24SsurroundAir", sans-serif;
-    font-weight: 100;
-    color: rgba(0, 0, 0, 1);
-    font-size: 15px;
-    width: 200px;
-    height: 50px;
-    vertical-align: inherit;
-  }
-  .container .page-number {
-    font-family: "IBMPlexSansKR-ExtraLight", sans-serif;
-    font-weight: bold;
-    font-size: 15px;
-    padding: 20px 15px;
-    letter-spacing: 5px;
-  }
-
-ul>li {	/* 숫자 가로정렬 */
-
-    float: left;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
-  .page-number-ea:hover{
-    color: blue;
-    text-decoration: underline;
-  }
-  .notice-search {
-    position: relative;
-    margin-bottom: 70px;
-  }
-  .container .notice-search input {
-    outline: none;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-bottom: 1px solid #d4d4d4;
-    width: 200px;
-    height: 30px;
-    font-size: 15px;
-  }
-  .container .notice-search button {
-    position: absolute;
-    border: none;
-    top: 30px;
-    right: 15px;
-    background-color: white;
-  }
-  .container .notice-search select {
-    border: 1px solid #d4d4d4;
-    height: 25px;
-    width: 62px;
-    color: #616161;
-  }
-  .subject-list {
-    color: black;
-  }
-  .subject-list:hover {
-    color: plum;
-    text-decoration: underline;
-  }
-    .board-write{
-    border: 1px solid rgba(88, 113, 253, 0.75);
-    background-color: rgba(197, 137, 199, 0.75);
-    color: white;
-    font-size: 23px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-  }
-  
-  /* ======== Modal CSS =============== */
-  modal {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1050;
-    display: none;
-    overflow: hidden;
-    -webkit-overflow-scrolling: touch;
-    outline: 0;
-  }
+
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
+.container .title {
+	font-weight: bold;
+	font-family: "Bukhari Script", sans-serif;
+	font-size: 40px;
+	color: #484848;
+	letter-spacing: 10px;
+	padding: 20px 20px;
+}
+
+.container table {
+	border-collapse: collapse;
+	text-align: center;
+	width: 1000px;
+}
+
+.container th {
+	border-top: 1.5px solid #bebebe;
+	border-bottom: 1.5px solid #bebebe;
+	letter-spacing: 1px;
+	color: rgb(110, 110, 110);
+	font-family: "IBMPlexSansKR-ExtraLight", sans-serif;
+	font-size: 20px;
+	padding: 14px;
+	width: 200px;
+}
+
+.container tr {
+	vertical-align: middle;
+}
+
+.container td {
+	border-bottom: 1px solid #d4d4d4;
+	font-family: "Cafe24SsurroundAir", sans-serif;
+	font-weight: 100;
+	color: rgba(0, 0, 0, 1);
+	font-size: 15px;
+	width: 200px;
+	height: 50px;
+	vertical-align: inherit;
+}
+
+.container .page-number {
+	font-family: "IBMPlexSansKR-ExtraLight", sans-serif;
+	font-weight: bold;
+	font-size: 15px;
+	padding: 20px 15px;
+	letter-spacing: 5px;
+}
+
+ul>li { /* 숫자 가로정렬 */
+	float: left;
+}
+
+.page-number-ea:hover {
+	color: blue;
+	text-decoration: underline;
+}
+
+.notice-search {
+	position: relative;
+	margin-bottom: 70px;
+}
+
+.container .notice-search input {
+	outline: none;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 1px solid #d4d4d4;
+	width: 200px;
+	height: 30px;
+	font-size: 15px;
+}
+
+.container .notice-search button {
+	position: absolute;
+	border: none;
+	top: 30px;
+	right: 15px;
+	background-color: white;
+}
+
+.container .notice-search select {
+	border: 1px solid #d4d4d4;
+	height: 25px;
+	width: 62px;
+	color: #616161;
+}
+
+.subject-list {
+	color: black;
+}
+
+.subject-list:hover {
+	color: plum;
+	text-decoration: underline;
+}
+
+.board-writer {
+	border: 1px solid rgba(88, 113, 253, 0.75);
+	background-color: rgba(197, 137, 199, 0.75);
+	color: white;
+	font-size: 23px;
+	margin-bottom: 20px;
+	border-radius: 5px;
+}
+
+/* ============= Modal CSS ===================== */
+.modal {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1050;
+	display: none;
+	overflow: hidden;
+	-webkit-overflow-scrolling: touch;
+	outline: 0;
+}

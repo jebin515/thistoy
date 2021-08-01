@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+        <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+        
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,12 +32,12 @@
             </tr> 
            <tr>
                 <th> 작성자</th>
-                <td><input type="text" class="board-writer" placeholder="이름을 입력하세요." name="userId"></td>
+                <td><input type="text" class="board-writer"  name="userId" readonly="readonly"  value='<c:out value="${userId}"/>' ></td>
          </tr>
-	     <tr>
-	            <th>DATE</th>
-	            <td><input type="text" class="board-date" placeholder="날짜를 입력하세요."></td>
-	       </tr>
+<!-- 	     <tr> -->
+<!-- 	            <th>DATE</th> -->
+<%-- 	            <td class="board-date" ><fmt:formatDate pattern="yyyy-MM-dd" value="${noticeDate}" ></fmt:formatDate></td> --%>
+<!-- 	       </tr> -->
             <tr>
                 <td colspan="2">
                 	<textarea cols="50" rows="20" class="board-text" name="noticeText" placeholder="내용을 입력하세요."></textarea>
@@ -45,10 +48,11 @@
     </form>
     </div>
     <div class="under-button">
-        <input type="submit" value="글쓰기" class="write" onclick="confirm('글을 등록하시겠습니까?');">
-        <input type="reset" value="취소" class="cancel" onclick="confirm('글쓰기를 취소하시겠습니까?');">
+        <input type="submit" value="글쓰기" class="write register" >
+        <input type="reset" value="취소" class="cancel" >
     </div>
- 
+
+
 
 
 <!-- footer -->
@@ -56,3 +60,4 @@
 
 </body>
 </html>
+

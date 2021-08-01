@@ -42,7 +42,7 @@ public class NoticeController {
 			
 		}
 		
-		@PostMapping("/notice_writer")
+		@PostMapping("/notice_writer")	//Post방식으로 처리, 데이터를 VO타입의 인스턴스로 바인딩해서 메서드 활용
 		public String register(NoticeVO notice, RedirectAttributes rttr) {
 			
 			log.info("notice: " + notice);
@@ -52,7 +52,7 @@ public class NoticeController {
 			log.info("NoticeNum: " + noticeNum);
 			rttr.addFlashAttribute("result", noticeNum);
 			
-			return "redirect: /notice/notice";
+			return "redirect: /notice/notice";	//다시목록으로 이동
 		}
 		
 		@GetMapping({"/notice_detail", "/notice_modify"})

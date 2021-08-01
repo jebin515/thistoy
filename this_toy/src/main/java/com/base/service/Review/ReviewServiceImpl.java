@@ -39,5 +39,10 @@ public class ReviewServiceImpl implements ReviewService {
 		// TODO Auto-generated method stub
 		return mapper.getReviewAvg(productCode);
 	}
+	@Override
+	public ReviewVO checkReview(ReviewVO vo) {
+		// TODO Auto-generated method stub
+		return mapper.checkReview(vo);
+	}
 
 }
