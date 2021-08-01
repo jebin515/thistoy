@@ -5,13 +5,9 @@
 <link rel="stylesheet" href="/css/header.css">
 <header id="header">
 	<c:if test="${empty userId}">
-<<<<<<< HEAD
-		<div class="header-full">
-			<a href="/main" class="logo"></a>
-=======
+
 	<div class="header-full">
 		<a href="/main" class="logo"></a>
->>>>>>> branch 'master' of https://github.com/hate7354/thistoy.git
 			<nav class="header_nav">
 				<div class="header_menu">
 					<a href="/login/login" class="header_login"><i
