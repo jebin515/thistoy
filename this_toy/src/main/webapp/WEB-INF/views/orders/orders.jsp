@@ -82,6 +82,8 @@
 										<ul>
 											<li><input type="text" id="name" name="name"
 													value=" <c:out value='${user.userName}'/>" readonly /></li>
+											<li><input type="text" id="userTel" name="userTel"
+													value=" <c:out value='${user.userTel}'/>" readonly /></li>
 											<li><input type="text" id="old_member_post" name="orderAddressPost"
 													value="<c:out value='${user.userAddressPost}'/>" readonly />
 												<input type="text" id="old_member_addr" name="orderAddress"
@@ -94,6 +96,8 @@
 									<div class="addr_new_main" id="addr_new_main" style="display: none">
 										<ul>
 											<li><span>수령인</span> : <input type="text" id="new_name" name="new_name" />
+											</li>
+											<li><span>전화번호</span> : <input type="text" id="new_tel" name="new_tel" />
 											</li>
 											<li><span>배송지</span> : <input id="member_post" name="orderAddressPost"
 													type="text" placeholder="지번" readonly onclick="findAddr()" /> <input
@@ -156,29 +160,30 @@
 						</div>
 					</main>
 					<%@ include file="../includes/footer.jsp" %>
-						
+
 						<!-- jQuery -->
 						<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 						<script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
 						<script src="/js/address.js"></script>
 						<script src="/js/orders.js"></script>
 						<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-						
+
 						<!-- iamport.payment.js -->
 						<script type="text/javascript"
 							src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 						<script type="text/javascript">
 
 							var nameValue = "";
+							var telValue = "";
 							var member_post = "";
 							var member_addr = "";
 							var member_detail = "";
-							var orderCode = new Array();
-							var orderPrice = new Array();
-							var productCode = new Array();
-							var productName = new Array();
-							var orderEa = new Array();
-							var productImg = new Array();
+							var orderCode = [];
+							var orderPrice = [];
+							var productCode = [];
+							var productName = [];
+							var orderEa = [];
+							var productImg = [];
 							$(document).ready(function () {
 								$("#new_name").keyup(function () {
 									$("#postuser").text($("#new_name").val());
@@ -188,32 +193,39 @@
 								var addrType = $("input[name='addr_list']:checked").val();
 								nameValue =
 									addrType == "addr" ? $("#name").val() : $("#new_name").val();
+								telValue =
+									addrType == "addr" ? $("#userTel").val() : $("#new_tel").val();
 								member_post =
 									addrType == "addr" ? $("#old_member_post").val() : $("#member_post").val();
 								member_addr =
 									addrType == "addr" ? $("#old_member_addr").val() : $("#member_addr").val();
 								member_detail =
 									addrType == "addr" ? $("#old_member_detail").val() : $("#member_detail").val();
-
-								console.log(member_post + "" + member_addr + "" + member_detail);
-								$('input[name=productCode]').each(function (index, item) {
-									orderCode.push($(item).val());
-									productCode.push($(item).val());
-								});
-								$('input[name=orderPrice]').each(function (index, item) {
-									orderPrice.push($(item).val());
-								});
-								$('input[name=productName]').each(function (index, item) {
-									productName.push($(item).val());
-								});
-								$('input[name=orderEa]').each(function (index, item) {
-									orderEa.push($(item).val());
-								});
-								$('input[name=productImg]').each(function (index, item) {
-									productImg.push($(item).val());
-								});
 								
-								alert(orderCode + " " + orderPrice + " " + productCode + " " + productName + " " + orderEa + " " + productImg);
+								console.log(nameValue + "" + telValue);
+								console.log(member_post + "" + member_addr + "" + member_detail);
+
+								$('input[name=productCode]').each(function (i) {
+									orderCode.push($(this).val());
+									productCode.push($(this).val());
+								});
+								$('input[name=orderPrice]').each(function (i) {
+									orderPrice.push($(this).val());
+								});
+								$('input[name=productName]').each(function (i) {
+									productName.push($(this).val());
+								});
+								$('input[name=orderEa]').each(function (i) {
+									orderEa.push($(this).val());
+								});
+								$('input[name=productImg]').each(function (i) {
+									productImg.push($(this).val());
+								});
+
+
+
+								alert(productName + "" + orderPrice);
+
 								//가맹점 식별코드
 								IMP.init("imp76068644");
 								IMP.request_pay(
@@ -228,28 +240,32 @@
 									},
 									function (rsp) {
 										if (rsp.success) {
-											console.log(rsp);
+
 											// rsp . 결제 번호
 											// 결제검증
 											$.ajax({
 												type: "POST",
 												url: "/orders/" + rsp.imp_uid,
-												contentType: "application/json",
+												dataType: "json",
+												contentType: "application/json; charset=UTF-8",
 												traditional: true,
-												data: JSON.stringify({
-													imp_uid: rsp.imp_uid,
-													merchant_uid: rsp.merchant_uid,
-													orderCode: orderCode,
-													orderPrice: orderPrice,
-													productCode: productCode,
-													userId: nameValue,
-													productName: productName,
-													orderEa: orderEa,
-													productImg: productImg,
-													orderAddressPost: member_post,
-													orderAddress: member_addr,
-													orderAddressDetail: member_detail
-												}),
+												data: JSON.stringify(
+													{
+														imp_uid: rsp.imp_uid,
+														merchant_uid: rsp.merchant_uid,
+														orderCode: orderCode,
+														orderPrice: orderPrice,
+														productCode: productCode,
+														userId: '<c:out value="${user.userId}" />',
+														newuser_Name: nameValue,
+														newuser_Tel: telValue,
+														productName: productName,
+														orderEa: orderEa,
+														productImg: productImg,
+														orderAddressPost: member_post,
+														orderAddress: member_addr,
+														orderAddressDetail: member_detail
+													}),
 
 											}).done(function (data) {
 												console.log(data);
@@ -261,7 +277,6 @@
 												}
 											});
 										} else {
-											console.log(data);
 											alert("결제 실패")
 										}
 									}

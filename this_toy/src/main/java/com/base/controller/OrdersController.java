@@ -2,6 +2,9 @@ package com.base.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -21,6 +24,9 @@ import com.base.entity.CartVO;
 import com.base.entity.OrdersVO;
 import com.base.entity.ProductVO;
 import com.base.service.orders.OrdersService;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.reflect.TypeToken;
 import com.siot.IamportRestClient.IamportClient;
 import com.siot.IamportRestClient.exception.IamportResponseException;
 import com.siot.IamportRestClient.response.IamportResponse;
@@ -57,16 +63,36 @@ public class OrdersController {
 	@PostMapping(value = "/orders/{imp_uid}")
 	public IamportResponse<Payment> paymentByImpUid(
 			@PathVariable("imp_uid") String imp_uid, 
-			@RequestBody OrdersVO vo)
+			@RequestBody Map<String,Object> params, OrdersVO vo)
 			throws IamportResponseException, IOException {
-		System.out.println(vo);
-		
-		service.insertorder(vo);
-		service.deletecart(vo);
-		service.updatesales(vo);
-		service.updatestock(vo);
+			
+			ArrayList<String> orderCode = (ArrayList<String>) params.get("orderCode");
+			ArrayList<String> orderPrice = (ArrayList<String>) params.get("orderPrice");
+			ArrayList<String> productCode = (ArrayList<String>) params.get("productCode");
+			ArrayList<String> productName = (ArrayList<String>) params.get("productName");
+			ArrayList<String> orderEa = (ArrayList<String>) params.get("orderEa");
+			ArrayList<String> productImg = (ArrayList<String>) params.get("productImg");
 
-		System.out.println(api.paymentByImpUid(imp_uid));
+			for(int i = 0; i < orderCode.size(); i++) {
+				vo.setOrderCode(orderCode.get(i));
+				vo.setOrderPrice(Integer.valueOf(orderPrice.get(i)));
+				vo.setProductCode(productCode.get(i));
+				vo.setUserId((String)params.get("userId"));
+				vo.setProductName(productName.get(i));
+				vo.setOrderEa(Integer.valueOf(orderEa.get(i)));
+				vo.setProductImg(productImg.get(i));
+				vo.setOrderAddressPost((String)params.get("orderAddressPost"));
+				vo.setOrderAddress((String)params.get("orderAddress"));
+				vo.setOrderAddressDetail((String)params.get("orderAddressDetail"));
+				vo.setNewuserName((String)params.get("newuser_Name"));
+				vo.setNewuserTel((String)params.get("newuser_Tel"));
+				System.out.println(orderCode.get(i));
+				System.out.println(orderPrice.get(i));
+				service.insertorder(vo);
+				service.deletecart(vo);
+				service.updatesales(vo);
+				service.updatestock(vo);
+			}
 		return api.paymentByImpUid(imp_uid);
 
 	}
