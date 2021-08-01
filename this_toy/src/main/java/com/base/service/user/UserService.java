@@ -21,8 +21,16 @@ public interface UserService {
 	//로그인
 	AuthInfo loginAuth(LoginCommand loginCommand);
 	
+	//zzk
+	void insertKakaoId(UserVO vo);
+	
 	//개인정보수정
 	public void userModify(UserVO vo);
 	//수정시 비밀번호체크
 	AuthInfo pwCheck(LoginCommand loginCommand);
+	
+	
+	public UserVO readUser(String userId);
+	
+	
 }

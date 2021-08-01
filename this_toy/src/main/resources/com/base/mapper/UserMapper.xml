@@ -84,5 +84,27 @@
 		where
 		user_id = #{userId}
 	</select>
-
+	<select id="findpw" resultType="com.base.entity.UserVO">
+		select
+		* from
+		usertable
+		where
+		user_id = #{userId}
+		and
+		user_email = #{userEmail}
+	</select>
+	
+	<insert id="insertKakaoId">
+	insert into 
+	usertable
+	(user_id,
+	user_email)
+	values(
+	#{userId},
+	#{userEmail}
+	)
+	
+	</insert>
+	
+	
 </mapper>

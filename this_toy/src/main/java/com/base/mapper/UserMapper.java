@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import com.base.entity.UserVO;
+import com.base.session.LoginCommand;
 
 public interface UserMapper{
 	
@@ -26,6 +27,15 @@ public interface UserMapper{
 	//정보수정시 현재비밀번호체크
 	public UserVO pwCheck(String UserPasswd);
 	
+	//zzk
+	void insertKakaoId(UserVO vo);
+	
+	public UserVO findpw(String UserPasswd);
 	
 	int loginCheck(UserVO userVO);
+	
+	
+	public UserVO readUser(String userid) throws Exception;
+	
+	
 }

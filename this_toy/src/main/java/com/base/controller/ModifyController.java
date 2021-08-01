@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +28,7 @@ public class ModifyController {
 	}
 	
 	@PostMapping("/modify")
-	public String editmypagePOST(@Valid UserVO vo,HttpSession session,@Valid LoginCommand loginCommand) {
+	public String editmypagePOST(@Valid UserVO vo,HttpSession session,@Valid LoginCommand loginCommand,Model model) {
 		System.out.println("내정보수정POST");
 		
 		//비밀번호 확인

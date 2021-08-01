@@ -5,7 +5,9 @@ import java.math.BigInteger;
 import java.net.URLEncoder;
 import java.security.SecureRandom;
 import java.util.Locale;
+import java.util.Random;
 
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,6 +18,8 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.LinkedMultiValueMap;
@@ -70,8 +74,11 @@ public class LoginController {
 		}
 		try {
 			AuthInfo authInfo = userService.loginAuth(loginCommand);
-
-			session.setAttribute("userId", authInfo);
+			
+			String sessionId = authInfo.getUserId();
+//			System.out.println("로그커맨드"+loginCommand.getUserId());
+//			session.setAttribute("userId", authInfo);
+			session.setAttribute("userId", sessionId);
 
 		} catch (IdPasswordNotMatchingException e) {
 			return "/login/loginfail";
@@ -106,7 +113,7 @@ public class LoginController {
 
 	
 	@RequestMapping("/kakaocallback")
-	public @ResponseBody String kakaoCallback(String code,HttpSession session) { //@ResponseBody  ) data를 리턴해주는 컨트롤러 함수
+	public @ResponseBody String kakaoCallback(String code,HttpSession session,UserVO vo) { //@ResponseBody  ) data를 리턴해주는 컨트롤러 함수
 		String grant_type = "authorization_code";
 		String client_id = "46578e2a852ca11289c2da8422acc9ca";
 		String redirect_uri = "http://localhost:9090/login/kakaocallback";
@@ -123,7 +130,9 @@ public class LoginController {
 		params.add("client_id", client_id);
 		params.add("redirect_uri", redirect_uri);
 		params.add("code", code); //코드는 위에 get으로 받은 그거
-
+		
+		
+		
 		//HttpHeader 와 HttpBody를 하나의 오브젝트에 담는다
 //		이유는 => exchange함수가 HttpEntity 오브젝트를 넣게 돼있어서!
 		HttpEntity<MultiValueMap<String,String>> kakaoTokenRequest  // kakao~ 변수를 http 바디와 헤더값을 가진 entity만듬
@@ -171,14 +180,63 @@ public class LoginController {
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
+		
+		vo.setUserId (String.valueOf(kakaoProfile.getId()));
+		vo.setUserEmail(kakaoProfile.kakao_account.getEmail());
+		System.out.println(vo);
+		userService.insertKakaoId(vo);
+		
 		//세션 부여
 		session.setAttribute("userId", "카카오유저"+kakaoProfile.getId());
-		
 
 		return "<script>\r\n"
 				+ "        self.location = \"/main\";\r\n"
 				+ " </script>";
 	}
+	
+	@RequestMapping("/findpw")
+	public void registerPOST() throws Exception {
+		
+	}
+	
+	private final JavaMailSender mailSender;
+	@GetMapping("/findpassword")
+	@ResponseBody
+	public String findPassword(String semail) throws Exception {
+		
+
+		System.out.println("비번찾기 메일보냄페이지");
+		System.out.println("이메일: " + semail);
+		Random random = new Random();
+		int num = random.nextInt(8999)+1000;
+		System.out.println("인증번호 :" + num);
+		
+		
+		String setFrom = "gihadaim@gmail.com";
+		String toMail = semail;
+		String title = "디스토이 비밀번호찾기 인증번호입니다.";
+		String content = "안녕하세요! 인증번호는     "+num+"     입니다.";
+		try {
+			MimeMessage message = mailSender.createMimeMessage();
+			MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
+			helper.setFrom(setFrom);
+			helper.setTo(toMail);
+			helper.setSubject(title);
+			helper.setText(content, true);
+			mailSender.send(message);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		String Checkcode = Integer.toString(num);
+		
+		return Checkcode;
+	}
+	
+	
+	
+	
+	
 	
 	
 }// 클래스 종료

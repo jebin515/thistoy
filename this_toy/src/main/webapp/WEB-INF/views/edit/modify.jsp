@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -69,7 +70,8 @@
 						<tr class="form-control">
 							<th><span>이메일</span></th>
 							<td><input type="email" name="userEmail" id="userEmail"
-								class="userEmail" value="${userId.userEmail}" required>
+								class="userEmail" value="${modifyEmail}" required>
+<%-- 								class="userEmail" value="${userId.userEmail}" required> --%>
 							</td>
 						</tr>
 						<tr class="form-control">

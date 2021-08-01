@@ -74,7 +74,7 @@
 											<td><input type="email" name="userEmail" id="email"
 												class="mail_input" placeholder="예)abc123@naver.com" required></td>
 											<td>
-												<button class="btn_send" onclick="sendEmail()" type="button">인증번호
+												<button class="btn_send"  type="button">인증번호
 													발송</button>
 											</td>
 										</tr>
@@ -82,7 +82,7 @@
 											<th><span>인증번호 확인</span></th>
 											<td><input type="text" class="send_number"
 												name="send_number" placeholder="인증번호를 정확히 입력하세요."
-												id="mail_check_input"></td>
+												id="mail_check_input" required></td>
 											<td><button class="btn_confirm" type="button">확인</button></td>
 										</tr>
 										<tr class="form-control">
