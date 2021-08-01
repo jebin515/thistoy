@@ -49,8 +49,7 @@ $(function () {
 			},
 			userTel: {
 				required: true,
-				digits: true,
-				regex: "^(010|011)[-\\s]?\\d{3,4}?\\d{4}$"
+				regex: "^01(?:0|1[6-9])[-](\\d{3}|\\d{4})[-](\\d{4})$"
 			}
 		},
 
@@ -93,7 +92,6 @@ $(function () {
 			},
 			userTel: {
 				required: "휴대폰 번호를 입력하세요",
-				digits: "숫자만 입력하세요",
 				regex: "전화번호 양식이 잘못되었습니다"
 			}
 		},

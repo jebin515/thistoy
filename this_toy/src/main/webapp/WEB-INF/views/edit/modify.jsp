@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,8 +38,7 @@
 		<form name="form" id="form" method="post" class="form">
 			<div class="change-form">
 				<div class="proimg">
-					<img src="/img/profile.jpg"> <input type="file" name=""
-						value="">
+					<img src="/upload/user/${user.userImg}">
 				</div>
 
 				<div class="edit-form">
@@ -46,14 +46,14 @@
 						<tr class="form-control">
 							<th><span>아이디</span></th>
 							<td>
-								<input type="text" name="userId" value="${userId.userId}"
+								<input type="text" name="userId" value="${user.userId}"
 								class="userId" required readonly>
 							</td>
 						</tr>
 						<tr class="form-control">
 							<th><span>이름</span></th>
 							<td><input type="text" id="userName" class="userName"
-								name="userName" value="${userId.userName}" required></td>
+								name="userName" value="${user.userName}" required></td>
 						</tr>
 						<tr class="form-control">
 							<th><span>현재 비밀번호</span></th>
@@ -69,23 +69,24 @@
 						<tr class="form-control">
 							<th><span>이메일</span></th>
 							<td><input type="email" name="userEmail" id="userEmail"
-								class="userEmail" value="${userId.userEmail}" required>
+								class="userEmail" value="${user.userEmail}" required>
+<%-- 								class="userEmail" value="${userId.userEmail}" required> --%>
 							</td>
 						</tr>
 						<tr class="form-control">
 							<th><span>휴대폰 번호</span></th>
 							<td><input type="tel" name="userTel" class="userTel"
-								id="userTel" value="${userId.userTel}" required></td>
+								id="userTel" value="${user.userTel}" required></td>
 						</tr>
 						<tr class="form-control">
 							<th><span>주소</span></th>
 							<td><input id="member_post" name="userAddressPost"
-								type="text" value="${userId.userAddressPost}" readonly
+								type="text" value="${user.userAddressPost}" readonly
 								onclick="findAddr()" required><br> <input
 								id="member_addr" name="userAddress" type="text"
-								value="${userId.userAddress}" readonly required> <br>
+								value="${user.userAddress}" readonly required> <br>
 							<input type="text" name="userAddressDetail" id="member_detail"
-								value="${userId.userAddressDetail}" required></td>
+								value="${user.userAddressDetail}" required></td>
 						</tr>
 					</table>
 				</div>
@@ -151,7 +152,7 @@
 	<script src="/js/address.js"></script>
 	<script src="/js/modifyCheck.js"></script>
 	<script src="/js/chatbot.js"></script>
-	<script type="text/javascript" src="js/editmypage.js"></script>
+<!-- 	<script type="text/javascript" src="js/editmypage.js"></script> -->
 	<script
 		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </body>

@@ -29,7 +29,8 @@
 		user_tel,
 		user_address_post,
 		user_address,
-		user_address_detail
+		user_address_detail,
+		user_img
 		) values (
 		#{userId},
 		#{userPasswd},
@@ -38,7 +39,8 @@
 		#{userTel},
 		#{userAddressPost},
 		#{userAddress},
-		#{userAddressDetail}
+		#{userAddressDetail},
+		#{userImg}
 		)
 		<!-- 'xml테스트','xml테스트','xml테스트','xml테스트','xml테스트','xml테스트' -->
 	</insert>
@@ -84,5 +86,29 @@
 		where
 		user_id = #{userId}
 	</select>
-
+	<select id="findpw" resultType="com.base.entity.UserVO">
+		select
+		* from
+		usertable
+		where
+		user_id = #{userId}
+		and
+		user_email = #{userEmail}
+	</select>
+	
+	<insert id="insertKakaoId">
+	insert into 
+	usertable
+	(user_id,
+	user_email)
+	values(
+	#{userId},
+	#{userEmail}
+	)
+	
+	</insert>
+	
+	<select id="getmodify" resultType="com.base.entity.UserVO">
+		select * from usertable where user_id = #{userId}
+	</select>
 </mapper>
