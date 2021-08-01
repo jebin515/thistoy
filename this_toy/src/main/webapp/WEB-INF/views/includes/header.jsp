@@ -14,7 +14,7 @@
 </script>
 
 <header id="header">
-	<c:if test="${empty authInfo and empty social}">
+	<c:if test="${empty userId}">
 	<div class="header-full">
 		<a href="/main" class="logo"></a>
 			<nav class="header_nav">
@@ -27,7 +27,7 @@
 			</nav>
 	</div>
 	</c:if>
-	<c:if test="${not empty authInfo || not empty social}">
+	<c:if test="${not empty userId}">
 	<div class="header-full">
 		<a href="#" class="logo"></a>
 			<nav class="header_nav">
@@ -38,7 +38,9 @@
 					<i class='bx-fw bx bxs-user-plus bx-tada-hover'></i>개인정보수정</a>
 					<a href="/mypage/mypage">
 					<i class='bx-fw bx bxs-rocket bx-tada-hover'></i>마이페이지</a>
-					<p> 반갑습니다 ${authInfo.userName}님</p>
+					<c:if test="${not empty userId}">
+					<p> 반갑습니다 ${userId.userName}님</p>
+					</c:if>
 				</div>
 			</nav>
 	</div>
