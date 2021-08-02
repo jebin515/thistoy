@@ -9,8 +9,7 @@ import com.base.session.LoginCommand;
 
 public interface UserMapper{
 	
-	// 로그인
-	UserVO login(UserVO userVO);
+//	UserVO login(UserVO userVO);
 	
 	
 	//회원가입
@@ -27,17 +26,14 @@ public interface UserMapper{
 	//정보수정시 현재비밀번호체크
 	public UserVO pwCheck(String UserPasswd);
 	
-	//zzk
-	void insertKakaoId(UserVO vo);
-	
+	//진웅의 개인정보수정 
 	UserVO getmodify(String userId);
+	
 	
 	public UserVO findpw(String UserPasswd);
 	
 	int loginCheck(UserVO userVO);
 	
-	
-	public UserVO readUser(String userid) throws Exception;
 	
 	
 }

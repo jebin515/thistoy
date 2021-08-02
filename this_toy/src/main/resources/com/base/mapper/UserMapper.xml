@@ -29,8 +29,8 @@
 		user_tel,
 		user_address_post,
 		user_address,
-		user_address_detail,
-		user_img
+		user_address_detail
+<!-- 		user_img -->
 		) values (
 		#{userId},
 		#{userPasswd},
@@ -39,8 +39,8 @@
 		#{userTel},
 		#{userAddressPost},
 		#{userAddress},
-		#{userAddressDetail},
-		#{userImg}
+		#{userAddressDetail}
+<!-- 		#{userImg} -->
 		)
 		<!-- 'xml테스트','xml테스트','xml테스트','xml테스트','xml테스트','xml테스트' -->
 	</insert>
@@ -55,14 +55,14 @@
 		<!-- ]]> -->
 	</select>
 	<!-- 로그인 -->
-	<select id="login" resultType="com.base.entity.UserVO">
-		select user_id,user_passwd from
-		usertable
-		where
-		user_id = #{userId}
-		and
-		user_passwd = #{userPasswd}
-	</select>
+<!-- 	<select id="login" resultType="com.base.entity.UserVO"> -->
+<!-- 		select user_id,user_passwd from -->
+<!-- 		usertable -->
+<!-- 		where -->
+<!-- 		user_id = #{userId} -->
+<!-- 		and -->
+<!-- 		user_passwd = #{userPasswd} -->
+<!-- 	</select> -->
 	<update id="userModify">
 		update usertable
 		set
@@ -96,19 +96,8 @@
 		user_email = #{userEmail}
 	</select>
 	
-	<insert id="insertKakaoId">
-	insert into 
-	usertable
-	(user_id,
-	user_email)
-	values(
-	#{userId},
-	#{userEmail}
-	)
-	
-	</insert>
-	
 	<select id="getmodify" resultType="com.base.entity.UserVO">
 		select * from usertable where user_id = #{userId}
 	</select>
+	
 </mapper>
