@@ -82,9 +82,9 @@
 						<div class="notice-search">
 							<form id='searchForm' action="/notice/notice" method="get">
 								<select name="type">
-									<option value="T">제목</option>
-									<option value="C">내용</option>
-									<option value="TC">제목+내용</option>
+									<option value="1">제목</option>
+									<option value="2">내용</option>
+									<option value="3">제목+내용</option>
 								</select> <input type='text' name='keyword'>
 								<button class='btn btn-defauit'>검색</button>
 							</form>

@@ -35,23 +35,21 @@
 		select rownum
 		num , n.* from
 		(select * from notice
-		<choose>
-			<when test="title.equals('T')">
+			<if test="titleNum==1">
 			<![CDATA[
 				where notice_title like '%'||#{search}||'%'
 				]]>
-			</when>
-			<when test="title.equals('C')">
+			</if>
+			<if test="titleNum==2">
 			<![CDATA[
 				 where notice_text like '%'||#{search}||'%'
 				]]>
-			</when>
-			<when test="title.equals('TC')">
+			</if>
+			<if test="titleNum=3">
 			<![CDATA[
 				 where notice_title like '%'||#{search}||'%' or notice_text like '%'||#{search}||'%'
 				]]>
-			</when>
-		</choose>
+			</if>
 		order by notice_date desc) n
 		)
 		where

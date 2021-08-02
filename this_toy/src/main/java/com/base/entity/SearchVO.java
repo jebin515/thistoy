@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class SearchVO {
-	private String title;
+	private int titleNum;
 	private String search;
 	private int pageNum;
 }
