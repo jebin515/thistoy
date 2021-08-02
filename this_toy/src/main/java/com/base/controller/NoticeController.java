@@ -3,15 +3,13 @@ package com.base.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.base.entity.NoticeCriteria;
-import com.base.entity.NoticePageDTO;
 import com.base.entity.NoticeVO;
+import com.base.entity.PageVO;
+import com.base.entity.SearchVO;
 import com.base.service.notice.NoticeService;
 
 import lombok.RequiredArgsConstructor;
@@ -23,75 +21,50 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class NoticeController {
 
-		private final NoticeService service;
-	
-		
-		@GetMapping("/notice")
-		public void list(NoticeCriteria cri, Model model) {
-			
-			log.info("==========================");
-			log.info(cri);
-			log.info("list................................................");
-			
-			model.addAttribute("list", service.getList(cri));
-			model.addAttribute("pageMaker", new NoticePageDTO(cri, service.getTotal(cri)));
+	private final NoticeService service;
+
+	@GetMapping("/notice")
+	public void list(@RequestParam(name = "p", defaultValue = "1") int pageNum,
+			@RequestParam(name = "type", defaultValue = "T") String title,
+			@RequestParam(name = "keyword", defaultValue = "") String search, Model model) {
+		SearchVO svo = new SearchVO();
+		svo.setSearch(search);
+		svo.setTitle(title);
+		int count = service.getTotal();
+		PageVO vo = new PageVO(count, 1);
+		if (pageNum == 0) {
+			pageNum = 1;
+		} else if (pageNum > vo.getRealEnd()) {
+			pageNum = vo.getRealEnd();
 		}
-		
-		@GetMapping("/notice_writer")
-		public void registerGET() {
-			
-		}
-		
-		@PostMapping("/notice_writer")	//Post방식으로 처리, 데이터를 VO타입의 인스턴스로 바인딩해서 메서드 활용
-		public String register(NoticeVO notice, RedirectAttributes rttr) {
-			
-			log.info("notice: " + notice);
-			
-			Long noticeNum = service.register(notice);
-			
-			log.info("NoticeNum: " + noticeNum);
-			rttr.addFlashAttribute("result", noticeNum);
-			
-			return "redirect: /notice/notice";	//다시목록으로 이동
-		}
-		
-		@GetMapping({"/notice_detail", "/notice_modify"})
-		public void get(@RequestParam("noticeNum") Long noticeNum, @ModelAttribute("cri")NoticeCriteria cri, Model model) {
-			
-			model.addAttribute("notice", service.get(noticeNum));
-		}
-		
-		@PostMapping("/notice_modify")
-		public String modify(NoticeVO notice, NoticeCriteria cri, RedirectAttributes rttr) {
-			
-			int count = service.modify(notice);
-			
-			if(count == 1) {
-				rttr.addFlashAttribute("result", "success");
-			}
-			
-			rttr.addAttribute("pageNum", cri.getPageNum());
-			rttr.addAttribute("amount", cri.getAmount());
-			rttr.addAttribute("type", cri.getType());
-			rttr.addAttribute("keyword", cri.getKeyword());
-			
-			return "redirect: /notice/notice";
-		}
-		
-		@PostMapping("/remove")
-		public String remove(@RequestParam("noticeNum")Long noticeNum, NoticeCriteria cri, RedirectAttributes rttr) {
-			
-			int count = service.remove(noticeNum);
-			
-			if(count == 1) {
-				rttr.addFlashAttribute("result", "success");
-			}
-			rttr.addAttribute("pageNum", cri.getPageNum());
-			rttr.addAttribute("amount", cri.getAmount());
-			rttr.addAttribute("type", cri.getType());
-			rttr.addAttribute("keyword", cri.getKeyword());
-			
-			return "redirect: /notice/notice";
-		}
-		
+		svo.setPageNum(pageNum);
+		model.addAttribute("list", service.getListwithPaging(svo));
+		model.addAttribute("pageMaker", new PageVO(count, pageNum));
+	}
+
+	@PostMapping("/notice_writer")
+	public String register(NoticeVO notice) {
+		int count = service.register(notice);
+		return "redirect: /notice/notice"; // 다시목록으로 이동
+	}
+
+	@GetMapping({ "/notice_detail", "/notice_modify" })
+	public void get(@RequestParam("noticeNum") Long noticeNum, Model model) {
+
+		model.addAttribute("notice", service.get(noticeNum));
+	}
+
+	@PostMapping("/notice_modify")
+	public String modify(NoticeVO notice) {
+
+		int count = service.modify(notice);
+		return "redirect: /notice/notice";
+	}
+
+	@PostMapping("/remove")
+	public String remove(@RequestParam("noticeNum") Long noticeNum) {
+        service.remove(noticeNum);
+		return "redirect: /notice/notice";
+	}
+
 }

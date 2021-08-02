@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.base.entity.NoticeCriteria;
 import com.base.entity.NoticeVO;
+import com.base.entity.SearchVO;
 import com.base.mapper.NoticeMapper;
 
 import lombok.RequiredArgsConstructor;
@@ -21,11 +21,8 @@ public class NoticeServiceImpl implements NoticeService{
 	private final NoticeMapper mapper;
 
 	@Override
-	public Long register(NoticeVO notice) {
-		
-		mapper.insertSelectKey(notice);
-		
-		return notice.getNoticeNum();
+	public int register(NoticeVO notice) {
+		return mapper.insert(notice);
 	}
 
 	@Override
@@ -45,19 +42,16 @@ public class NoticeServiceImpl implements NoticeService{
 		return mapper.delete(noticeNum);
 	}
 
-	@Override
-	public List<NoticeVO> getList() {
 
-		return mapper.getList();
+	@Override
+	public int getTotal() {
+		return mapper.getTotalCount();
 	}
 
 	@Override
-	public List<NoticeVO> getList(NoticeCriteria cri) {
-		return mapper.getListwithPaging(cri);
+	public List<NoticeVO> getListwithPaging(SearchVO vo) {
+		// TODO Auto-generated method stub
+		return mapper.getListwithPaging(vo);
 	}
 
-	@Override
-	public int getTotal(NoticeCriteria cri) {
-		return mapper.getTotalCount(cri);
-	}
 }

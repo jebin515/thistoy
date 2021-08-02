@@ -79,3 +79,9 @@ margin-bottom: 20px;
 .btn {
     font-size: 25px;
 }
+.noticeText{
+	resize:none;
+}
+.btn:hover{
+	cursor:pointer;
+}
