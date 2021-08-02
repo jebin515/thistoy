@@ -62,5 +62,13 @@
 	delete from cart where product_code = #{productCode} and user_id = #{userId}
 	</delete>
 	
+	<delete id="alldeleteCart">
+	delete from cart where user_id = #{userId}
+	</delete>
+	
+	<delete id="deleteWish">
+	delete from wish_list where user_id = #{userId} and product_code=#{productCode}
+	</delete>
+	
 	
 </mapper>

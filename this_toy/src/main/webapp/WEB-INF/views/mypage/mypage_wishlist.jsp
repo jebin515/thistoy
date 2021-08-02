@@ -29,7 +29,7 @@
 					<c:set var="mimg"
 						value="${fn:substring(ws.productMainImg,0,i)}" />
 					<div class="gridItem">
-						<i class="fas fa-times"></i> <a
+						<a href="/mypage/wishdelete?pc=${ws.productCode}"><i class="fas fa-times"></i></a><a
 							href="/product/detail_main?pc=${ws.productCode}"> <img
 							src="/upload/product/main/${mimg}" alt="" class="wishImg"/>
 						</a>

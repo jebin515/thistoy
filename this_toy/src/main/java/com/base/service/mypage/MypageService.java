@@ -43,5 +43,9 @@ public interface MypageService {
 	int orderdelete(String orderCode);
 	
 	int deleteCart(CartVO vo);
+	
+	int alldeleteCart(String userId);
+	
+	int deleteWish(WishlistVO vo);
 
 }

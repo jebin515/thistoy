@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <h3 class="mypage_logo">마이페이지</h3>
 <div class="mp">
 	<!-- 왼쪽 -->
-	<img class="left" src="/img/profile.jpg" alt="이미지없음">
+	<img class="left" src="/upload/user/${user.userImg}" alt="이미지없음">
 	<!-- 오른쪽  -->
 	<div class="right">
 		<div>이름 : ${user.userName}</div>

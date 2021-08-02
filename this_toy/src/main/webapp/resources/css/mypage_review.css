@@ -111,7 +111,9 @@ section .flexcollum {
 	width: 650px;
 	padding: 10px 0 10px 0;
 }
-
+.plink:hover{
+	color:rgba(224, 185, 250, 0.781);
+}
 .delete {
 	border: 1px solid white;
 	border-radius: 10px;
