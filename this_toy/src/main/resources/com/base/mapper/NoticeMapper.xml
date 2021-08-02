@@ -35,33 +35,49 @@
 		select rownum
 		num , n.* from
 		(select * from notice
-		order by
-		notice_date desc) n
-		)
-		where
 		<choose>
-			<when test="title!=null">
+			<when test="title.equals('T')">
 			<![CDATA[
-				notice_title like '%'||${search}||'%' and
+				where notice_title like '%'||#{search}||'%'
 				]]>
 			</when>
 			<when test="title.equals('C')">
 			<![CDATA[
-				notice_text like '%'||${search}||'%' and
+				 where notice_text like '%'||#{search}||'%'
 				]]>
 			</when>
 			<when test="title.equals('TC')">
 			<![CDATA[
-				notice_title like '%'||${search}||'%' or notice_text like '%'||${search}||'%' and
+				 where notice_title like '%'||#{search}||'%' or notice_text like '%'||#{search}||'%'
 				]]>
 			</when>
 		</choose>
+		order by notice_date desc) n
+		)
+		where
 		num between (#{pageNum}-1)*10+1 and
 		#{pageNum}*10
 	</select>
 
 	<select id="getTotalCount" resultType="int">
 		select count(*) from
-		notice
+		notice 
+		<choose>
+			<when test="title.equals('T')">
+			<![CDATA[
+				where notice_title like '%'||${search}||'%'
+				]]>
+			</when>
+			<when test="title.equals('C')">
+			<![CDATA[
+				 where notice_text like '%'||${search}||'%'
+				]]>
+			</when>
+			<when test="title.equals('TC')">
+			<![CDATA[
+				 where notice_title like '%'||${search}||'%' or notice_text like '%'||${search}||'%'
+				]]>
+			</when>
+		</choose>
 	</select>
 </mapper>

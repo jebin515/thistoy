@@ -24,14 +24,15 @@ public class NoticeController {
 	private final NoticeService service;
 
 	@GetMapping("/notice")
-	public void list(@RequestParam(name = "p", defaultValue = "1") int pageNum, String title,
+	public void list(@RequestParam(name = "p", defaultValue = "1") int pageNum, 
+			@RequestParam(name = "type", defaultValue = "T") String title,
 			@RequestParam(name = "keyword", defaultValue = "") String search, Model model) {
 		System.out.println(title);
 		System.out.println(search);
 		SearchVO svo = new SearchVO();
 		svo.setSearch(search);
 		svo.setTitle(title);
-		int count = service.getTotal();
+		int count = service.getTotal(svo);
 		PageVO vo = new PageVO(count, 1);
 		if (pageNum == 0) {
 			pageNum = 1;

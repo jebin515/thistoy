@@ -44,8 +44,8 @@ public class NoticeServiceImpl implements NoticeService{
 
 
 	@Override
-	public int getTotal() {
-		return mapper.getTotalCount();
+	public int getTotal(SearchVO vo) {
+		return mapper.getTotalCount(vo);
 	}
 
 	@Override
