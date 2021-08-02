@@ -2,6 +2,7 @@ package com.base.controller;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
 
+import java.net.http.HttpClient.Redirect;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.base.entity.UserVO;
 import com.base.service.user.UserService;
@@ -36,10 +38,6 @@ public class ModifyController {
 		String userId = (String)session.getAttribute("userId");
 		model.addAttribute("user" , userService.getmodify(userId));
 		System.out.println("수정 유저 : "+userId);
-		//비밀번호 확인
-		
-		//수정 메소드
-		
 	}
 	
 	@PostMapping("/modify")
