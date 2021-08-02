@@ -12,7 +12,7 @@ public class OrdersVO {
 	private String productCode; //상품코드
 	private Date orderDate;//주문시간
 	private int orderEa;//주문갯수
-	private String productMainImg;//상품이미지
+	private String productImg;//상품이미지
 	private String orderSituation;//주문현황
 	private String orderAddressPost;//주소
 	private String orderAddress;
