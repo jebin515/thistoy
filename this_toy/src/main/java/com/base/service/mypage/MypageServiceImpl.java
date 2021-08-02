@@ -33,8 +33,6 @@ public class MypageServiceImpl implements MypageService{
 	public ArrayList<ProductVO> getSellbox(String userId) {
 		return mapper.getSellbox(userId);
 	}
-	
-	
 	@Override
 	public ProductVO getCart(String productCode) {
 		// TODO Auto-generated method stub
@@ -99,5 +97,15 @@ public class MypageServiceImpl implements MypageService{
 	public int deleteCart(CartVO vo) {
 		// TODO Auto-generated method stub
 		return mapper.deleteCart(vo);
+	}
+	@Override
+	public int alldeleteCart(String userId) {
+		// TODO Auto-generated method stub
+		return mapper.alldeleteCart(userId);
+	}
+	@Override
+	public int deleteWish(WishlistVO vo) {
+		// TODO Auto-generated method stub
+		return mapper.deleteWish(vo);
 	}
 }

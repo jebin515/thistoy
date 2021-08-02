@@ -2,12 +2,12 @@ package com.base.service.notice;
 
 import java.util.List;
 
-import com.base.entity.NoticeCriteria;
 import com.base.entity.NoticeVO;
+import com.base.entity.SearchVO;
 
 public interface NoticeService {
 
-	Long register(NoticeVO notice);	//등록처리
+	int register(NoticeVO notice);	//등록처리
 	
 	NoticeVO get(Long noticeNum);
 	
@@ -15,9 +15,10 @@ public interface NoticeService {
 	
 	int remove(Long noticeNum);
 	
-	List<NoticeVO> getList();
 	
-	List<NoticeVO> getList(NoticeCriteria cri);
+	int getSearchTotalCount(SearchVO vo);
 	
-	int getTotal(NoticeCriteria cri);
+	List<NoticeVO> getListwithPagingSearch(SearchVO vo);
+	
+
 }

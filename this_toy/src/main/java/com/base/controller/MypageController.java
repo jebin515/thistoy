@@ -34,10 +34,14 @@ public class MypageController {
 	private ReviewService reservice;
 
 	@GetMapping("mypage_wishlist")
-	public void getWishList(HttpServletRequest request, Model model) {
+	public String getWishList(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
 		String userId = (String) session.getAttribute("userId");
+		if(userId==null) {
+			return  "redirect:/main";
+		}
 		ArrayList<WishlistVO> vo = service.getProductCode(userId);
+		if(vo.size()>0) {
 		ArrayList<ProductVO> pvo = new ArrayList<>();
 		String productCode1 = vo.get(0).getProductCode();
 		System.out.println(productCode1);
@@ -47,22 +51,32 @@ public class MypageController {
 		}
 		System.out.println(pvo);
 		model.addAttribute("wishList", pvo);
+		}
 		model.addAttribute("user", service.getUser(userId));
+		return "mypage/mypage_wishlist";
 	}
 
 	@GetMapping("mypage_sellbox")
-	public void getSellbox(HttpServletRequest request, Model model) {
+	public String getSellbox(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
 		String userId = (String) session.getAttribute("userId");
+		if(userId==null) {
+			return  "redirect:/main";
+		}
 		model.addAttribute("sellbox", service.getSellbox(userId));
 		model.addAttribute("user", service.getUser(userId));
+		return "mypage/mypage_sellbox";
 	}
 
 	@GetMapping("mypage_cart")
-	public void getCart(HttpServletRequest request, Model model) {
+	public String getCart(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
 		String userId = (String) session.getAttribute("userId");
+		if(userId==null) {
+			return  "redirect:/main";
+		}
 		ArrayList<CartVO> vo = service.getProductCode3(userId);
+		if(vo.size()>0) {
 		ArrayList<ProductVO> pvo = new ArrayList<>();
 		String productCode3 = vo.get(0).getProductCode();
 		System.out.println(productCode3);
@@ -75,14 +89,20 @@ public class MypageController {
 		}
 		System.out.println(pvo);
 		model.addAttribute("cartlist", pvo);
+		}
+		return "mypage/mypage_cart";
 	}
 
 	@GetMapping("mypage_orderbox")
-	public void getOrderbox(HttpServletRequest request, Model model) {
+	public String getOrderbox(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
 		String userId = (String) session.getAttribute("userId");
+		if(userId==null) {
+			return  "redirect:/main";
+		}
 		ArrayList<OrdersVO> vo = service.getOrderList(userId);
 		ArrayList<OrdersVO> pVO = new ArrayList<OrdersVO>();
+		if(vo.size()>0) {
 		for (int i = 0; i < vo.size(); i++) {
 			OrdersVO oVO = new OrdersVO();
 			oVO.setProductCode(vo.get(i).getProductCode());
@@ -92,34 +112,52 @@ public class MypageController {
 			pVO.add(service.getProduct(oVO));
 		}
 		model.addAttribute("orders", pVO);
+		}
 		model.addAttribute("user", service.getUser(userId));
+		return "mypage/mypage_orderbox";
 	}
 	
 	
 	@GetMapping("mypage_detailorderbox")
-	public void getDOrderbox(HttpServletRequest request, Model model,
+	public String getDOrderbox(HttpServletRequest request, Model model,
 			@RequestParam(name="pc")String productCode,
 			@RequestParam(name="oc")String orderCode,
 			@RequestParam(name="seller")String seller) {
 		System.out.println(seller);
 		HttpSession session = request.getSession();
 		String userId = (String) session.getAttribute("userId");
+		if(userId==null) {
+			return  "redirect:/main";
+		}
 		model.addAttribute("order",service.getOrder(orderCode));
 		model.addAttribute("product",service.getProduct2(productCode));
 		model.addAttribute("user", service.getUser(userId));//주문자 정보
 		model.addAttribute("seller", service.getSeller(seller));//판매자정보
+		return "mypage/mypage_detailorderbox";
 		}
 	
 	@GetMapping("mypage_review")
-	public void getReview(HttpServletRequest request, Model model) {
+	public String getReview(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
 		String userId = (String) session.getAttribute("userId");
-		
+		if(userId==null) {
+			return  "redirect:/main";
+		}
 		model.addAttribute("review", service.getReviewList(userId));
 		model.addAttribute("qna", service.getQnaList(userId));
 		model.addAttribute("user", service.getUser(userId));
+		return "mypage/mypage_review";
 		
-		
+	}
+	@GetMapping("wishdelete")
+	public String wishDelete(@RequestParam(name="pc")String productCode,HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String userId = (String) session.getAttribute("userId");
+		WishlistVO vo = new WishlistVO();
+		vo.setProductCode(productCode);
+		vo.setUserId(userId);
+		service.deleteWish(vo);
+		return "redirect:/mypage/mypage_wishlist";
 	}
 	
 	@GetMapping("QnAdelete")
@@ -152,6 +190,12 @@ public class MypageController {
 		System.out.println(vo);
 		service.deleteCart(vo);
 		return "상품을 삭제하였습니다";
+	}
+	@ResponseBody
+	@DeleteMapping(value="cart/alldelete/{userId}",produces = "application/text; charset=UTF-8")
+	public String alldeleteCart(@PathVariable("userId")String userId) {
+		service.alldeleteCart(userId);
+		return "장바구니를 비웠습니다.";
 	}
 }
  

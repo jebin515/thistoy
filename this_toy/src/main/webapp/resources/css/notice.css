@@ -120,7 +120,13 @@ ul>li { /* 숫자 가로정렬 */
 	margin-bottom: 20px;
 	border-radius: 5px;
 }
-
+#pageNum{
+	color:rgb(193, 122, 241);
+	font-weight:bold;
+}
+.board-writer:hover{
+	cursor:pointer;
+}
 /* ============= Modal CSS ===================== */
 .modal {
 	position: fixed;

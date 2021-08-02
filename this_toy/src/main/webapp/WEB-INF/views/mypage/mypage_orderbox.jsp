@@ -26,10 +26,10 @@
 		<%@ include file="../includes/mypage.jsp"%>
 		<div class="flexcollum">
 			<c:forEach var="ob" items="${orders}">
-				<c:set var="i" value='${fn:indexOf(ob.productMainImg,",")}' />
-				<c:set var="simg" value="${fn:substring(ob.productMainImg,0,i)}" />
+				<c:set var="i" value='${fn:indexOf(ob.productImg,",")}' />
+				<c:set var="simg" value="${fn:substring(ob.productImg,0,i)}" />
 				<div class="orderbox">
-					<a href="mypage_detailorderbox.html"> <img
+					<a href="/mypage/mypage_detailorderbox?pc=${ob.productCode}&oc=${ob.orderCode}&seller=${ob.userId}"> <img
 						src="/upload/product/main/${simg}" alt=""
 						class="orderimg">
 					</a>
