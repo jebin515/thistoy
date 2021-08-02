@@ -67,7 +67,7 @@ public class ModifyController {
 		}
 		userService.deleteUser(userId);
 		session.invalidate();
-		return "main";
+		return "redirect:/";
 
 	}
 }
