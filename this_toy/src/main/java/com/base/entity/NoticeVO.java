@@ -12,4 +12,5 @@ public class NoticeVO {
 	private String noticeText; //내용
 	private int noticeView; //조회수
 	private String userId; //아이디
+	private int num;
 }

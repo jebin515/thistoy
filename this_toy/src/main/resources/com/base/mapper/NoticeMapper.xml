@@ -1,95 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper
- PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
+<!-- 어떤 내용들이 들어가고 어떤게 들어가면 안되는지 알려주는게 dtd(자동완성기능이 지원된다) -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace는 인터페이스와 동일하게 해줘야한다. -->
 <mapper namespace="com.base.mapper.NoticeMapper">
 
-<sql id="criteria">
-     <trim prefix="(" suffix=") AND">
-	     <foreach collection="typeArr"  item="type" separator="OR">
-	     	<if test="type == 'T'.toString()">
-	     	notice_title like '%' || #{keyword} || '%'
-	     	</if>
-	     	<if test="type == 'C'.toString()">
-	     	notice_text like '%' || #{keyword} || '%'
-	     	</if>
-	     	<if test="type == 'W'.toString()">
-	     	user_id like '%' || #{keyword} || '%'
-	     	</if>
-	     </foreach>
-     </trim>
-</sql>
+	<insert id="insert">
+		insert INTO notice (notice_num, notice_title,
+		notice_text, user_id)
+		VALUES (notice_seq.nextval, #{noticeTitle},
+		#{noticeText}, #{userId})
+	</insert>
 
-   <select id="getList" resultType="NoticeVO">
-      select * from notice order by notice_num desc
-   </select>
-   
-   <insert id="insert">
-   insert INTO notice (notice_num, notice_title, notice_text, user_id)
-   VALUES (notice_seq.nextval, #{noticeTitle}, #{noticeText}, #{userId})
-   </insert>
-   
-   <insert id="insertSelectKey">
-   
-   <selectKey order="BEFORE"  keyProperty="noticeNum" resultType="Long">
-   select notice_seq.nextval from dual
-   </selectKey>
+	<select id="read" resultType="NoticeVO">
+		select * from notice where
+		notice_num = #{noticeNum}
+	</select>
 
-   insert INTO notice (notice_num, notice_title, notice_text, user_id)
-   VALUES (#{noticeNum}, #{noticeTitle}, #{noticeText}, #{userId})
-   </insert>
-   
-   <select id="read"  resultType="NoticeVO">
-   select * from notice where notice_num = #{noticeNum}
-   </select>
-   
-   <delete id="delete">
-   delete from notice where notice_num = #{noticeNum}
-   </delete>
-   
-   <update id="update">
-   update notice
-   set notice_title = #{noticeTitle},
-   notice_text = #{noticeText},
-   user_id = #{userId},
-   notice_date = sysdate
-   where notice_num = #{noticeNum}
-   </update>
-   
-   <select id="getListwithPaging" resultType="NoticeVO">
-   <![CDATA[
-   select * from (
-    select /* + FULL(notice) */ ROWNUM rn, notice_num, notice_title, user_id, notice_date
-    from notice
-    where
-     ]]>
-     
-     <include refid="criteria"></include>
+	<delete id="delete">
+		delete from notice where notice_num = #{noticeNum}
+	</delete>
 
-     <![CDATA[
-    notice_num > 0
-    and rownum > 0
-    and rownum <= (#{pageNum} * #{amount})
-    )where rn > (#{pageNum} - 1) * #{amount}
-    ]]>
-   </select>
-   
-   <select id="getTotalCount" resultType="int">
-	   select count(notice_num) from notice where 
-	   <include refid="criteria"></include>
-	   notice_num > 0
-   </select>
-   
-   
-   <select id="searchTest" resultType="NoticeVO">
-      <![CDATA[
-      select * from notice
-      where
-       ]]>
+	<update id="update">
+		update notice
+		set notice_title = #{noticeTitle},
+		notice_text = #{noticeText},
+		user_id = #{userId},
+		notice_date = sysdate
+		where notice_num = #{noticeNum}
+	</update>
 
-       <![CDATA[
-       rownum < 10
-       ]]>
-   </select>
+	<select id="getListwithPagingSearch" resultType="NoticeVO">
+		select * from(
+		select rownum
+		num , n.* from
+		(select * from notice
+		<if test="titleNum==1">
+			<![CDATA[
+				where notice_title like '%'|| #{search} ||'%'
+				]]>
+		</if>
+		<if test="titleNum==2">
+			<![CDATA[
+				 where notice_text like '%'|| #{search} ||'%'
+				]]>
+		</if>
+		<if test="titleNum==3">
+			<![CDATA[
+				 where notice_title like '%'|| #{search} ||'%' or notice_text like '%' || #{search} || '%'
+				]]>
+		</if>
+		order by notice_date desc) n
+		)
+		where
+		num between (#{pageNum}-1)*10+1 and
+		#{pageNum}*10
+	</select>
 
+
+	<select id="getSearchTotalCount" resultType="int">
+		select count(*) from
+		notice
+		<choose>
+			<when test="titleNum==1">
+			<![CDATA[
+				where notice_title like '%'||#{search}||'%'
+				]]>
+			</when>
+			<when test="titleNum==2">
+			<![CDATA[
+				 where notice_text like '%'||#{search}||'%'
+				]]>
+			</when>
+			<when test="titleNum==3">
+			<![CDATA[
+				 where notice_title like '%'||#{search}||'%' or notice_text like '%'||#{search}||'%'
+				]]>
+			</when>
+		</choose>
+	</select>
 </mapper>

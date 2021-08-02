@@ -11,8 +11,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NOTICE상세보기</title>
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <script type="text/javascript"
+	src="http://code.jquery.com/jquery-latest.js"></script>
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/notice_detail.css">
+    <link rel="stylesheet" href="/css/notice_detail.css?ver=1">
 </head>
 <body>
 <!-- header -->
@@ -55,36 +57,12 @@
             </table>
         </div>
     </div>
-    
-   
-	<form id='actionForm' action="/notice/notice" method="get">
-       <input type="hidden" name='pageNum' value='${cri.pageNum}'>
-       <input type="hidden" name='amount' value='${cri.amount}'>
-       <input type="hidden" name='noticeNum' value='${notice.noticeNum}'>
-       <input type="hidden" name='type' value='${cri.type}'>
-       <input type="hidden" name='keyword' value='${cri.keyword}'>
-	</form>
-               
     <div class="board-button">
-        <button type="button" class="btn board-edit listBtn"><a href='/notice/notice_modify?noticeNum=<c:out value="${notice.noticeNum}"/>'>수정</a></button>
-        <button type="button" class="btn board-list modBtn"><a href='/notice/notice'>목록</a></button>
-		<script>
-			var actionForm = $("#actionForm");
-		
-			$(".listBtn").click(function(e) {
-				e.preventDefault();
-				actionForm.fin("input[name='noticeNum']").remove();
-				actionForm.submit();
-			});
-			
-				$(".modBtn").click(function(e) {
-				e.preventDefault();
-				actionForm.attr("action", "/notice/notice_modify");
-				actionForm.submit();
-			});
-		</script>
+    <c:if test="${userId eq 'admin'}">
+       <a href='/notice/notice_modify?noticeNum=<c:out value="${notice.noticeNum}"/>&p=${param.p}'><button type="button" class="btn board-edit listBtn">수정</button></a>
+    </c:if>
+        <a href='/notice/notice?p=${param.p}'><button type="button" class="btn board-list modBtn">목록</button></a>
     </div>
-
 
 <!-- footer -->
  <%@ include file="../includes/footer.jsp" %>

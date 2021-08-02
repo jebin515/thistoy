@@ -3,16 +3,13 @@ package com.base.mapper;
 import java.util.List;
 import java.util.Map;
 
-import com.base.entity.NoticeCriteria;
 import com.base.entity.NoticeVO;
+import com.base.entity.SearchVO;
 
 public interface NoticeMapper {
 
-		List<NoticeVO> getList();
 		
-		void insert(NoticeVO notice);
-		
-		void insertSelectKey(NoticeVO notice);
+		int insert(NoticeVO notice);
 		
 		NoticeVO read(Long noticeNum);
 		
@@ -20,9 +17,9 @@ public interface NoticeMapper {
 		
 		int update(NoticeVO notice);
 		
-		List<NoticeVO> getListwithPaging(NoticeCriteria cri);
+		List<NoticeVO> getListwithPagingSearch(SearchVO vo);
 		
-		int getTotalCount(NoticeCriteria cri);
+		int getSearchTotalCount(SearchVO vo);
 		
 		List<NoticeVO> searchTest(Map<String, Map<String,String>> map);
 }

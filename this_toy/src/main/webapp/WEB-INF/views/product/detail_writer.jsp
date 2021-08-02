@@ -107,9 +107,6 @@
 							</tbody>
 						</table>
 					</div>
-					<div class="write-text">
-						<textarea name="productText" required></textarea>
-					</div>
 				</div>
 			</div>
 

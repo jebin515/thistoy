@@ -10,9 +10,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NOTICE수정/삭제</title>
+    <script type="text/javascript"
+	src="http://code.jquery.com/jquery-latest.js"></script>
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/notice_detail.css">
+    <link rel="stylesheet" href="/css/notice_detail.css?ver=1">
 </head>
 <body>
 <!-- header -->
@@ -23,8 +25,6 @@
         <h1>NOTICE Modify/Delete</h1>
     </div>
     <form>
-    <input type="hidden" name='pageNum' value='${cri.pageNum}'>
-    <input type="hidden" name='amount' value='${cri.amount}'>
     <div class="board">
         <div class="base">
             <table>
@@ -80,17 +80,17 @@ $(document).ready(function() {
 		console.log(operation);
 		
 		if(operation === 'list'){
-			self.location = "/notice/notice";
+			self.location = "/notice/notice?p=${param.p}";
 			
 		}else if(operation === 'remove'){
-			formObj.attr("action", "/notice/remove");
-			.attr("method", "post");
-			.formObj.submit();
+			formObj.attr("action", "/notice/remove")
+			.attr("method", "post")
+			.submit();
 			
 		}else if(operation === 'modify'){
-			formObj.attr("action", "/notice/notice_modify");
-			.attr("method", "post");
-			.formObj.submit();
+			formObj.attr("action", "/notice/notice_modify")
+			.attr("method", "post")
+			.submit();
 		}
 	})
 	
