@@ -48,6 +48,10 @@ public class NoticeController {
 		int count = service.register(notice);
 		return "redirect: /notice/notice"; // 다시목록으로 이동
 	}
+	@GetMapping("/notice_writer")
+	public void register() {
+		
+	}
 
 	@GetMapping({ "/notice_detail", "/notice_modify" })
 	public void get(@RequestParam("noticeNum") Long noticeNum, Model model) {

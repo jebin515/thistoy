@@ -139,3 +139,19 @@ section .flexcollum {
 .rating {
 	color: rgb(193, 122, 241);
 }
+.reply_td {
+	text-align: left;
+	margin-right:10px;
+}
+
+.reply_text {
+	width: 760px;
+	resize: none;
+}
+.fa-reply {
+	transform: rotate(-180deg);
+	cursor: default;
+	position: relative;
+	top: -20px;
+	left: -10px;
+}

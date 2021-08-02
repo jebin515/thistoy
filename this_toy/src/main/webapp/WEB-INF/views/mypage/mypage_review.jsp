@@ -12,7 +12,7 @@
 <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 <title>Document</title>
 <link rel="stylesheet" href="/css/style.css">
-<link rel="stylesheet" href="/css/mypage_review.css?ver=2">
+<link rel="stylesheet" href="/css/mypage_review.css?ver=3">
 <script src="https://kit.fontawesome.com/a216194d9c.js"
 	crossorigin="anonymous"></script>
 <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'
@@ -23,7 +23,7 @@
 	<%@ include file="../includes/header.jsp"%>
 	<!-- ------------마이페이지---------- -->
 	<section>
-		
+
 		<%@ include file="../includes/mypage.jsp"%>
 		<div class="flexcollum">
 			<div class="review">리뷰</div>
@@ -50,7 +50,8 @@
 								</div>
 							</div>
 						</td>
-						<td class="titem titem2"><a href="/product/detail_main?pc=${re.productCode}" class="plink">${re.reviewText}</a></td>
+						<td class="titem titem2"><a
+							href="/product/detail_main?pc=${re.productCode}" class="plink">${re.reviewText}</a></td>
 						<td class="titem">${re.userId}</td>
 						<td class="titem"><fmt:formatDate var="date"
 								value="${re.reviewDate}" pattern="yyyy.MM.dd" /> ${date}</td>
@@ -71,13 +72,21 @@
 				<c:forEach var="qa" items="${qna}">
 					<tr class="quest_list">
 						<td class="titem">${qa.replySituation}</td>
-						<td class="titem titem2"><a href="/product/detail_main?pc=${qa.productCode}" class="plink">${qa.questionText}</a></td>
+						<td class="titem titem2"><a
+							href="/product/detail_main?pc=${qa.productCode}" class="plink">${qa.questionText}</a></td>
 						<td class="titem">${qa.userId}</td>
 						<td class="titem"><fmt:formatDate var="date"
 								value="${qa.questionDate}" pattern="yyyy.MM.dd" /> ${date}</td>
 						<td class="delete"><a
 							href="/mypage/QnAdelete?qc=${qa.questionCode}">삭제</a></td>
 					</tr>
+					<c:if test="${!empty qa.replyText}">
+					<tr>
+						<td></td>
+						<td class="reply_td" colspan="3"><i class="fas fa-reply"></i>
+							<textarea cols="30" rows="2" class="reply_text" readonly>${qa.replyText}</textarea></td>
+					</tr>
+					</c:if>
 				</c:forEach>
 			</table>
 		</div>
