@@ -50,7 +50,7 @@
 								</div>
 							</div>
 						</td>
-						<td class="titem titem2">${re.reviewText}</td>
+						<td class="titem titem2"><a href="/product/detail_main?pc=${re.productCode}" class="plink">${re.reviewText}</a></td>
 						<td class="titem">${re.userId}</td>
 						<td class="titem"><fmt:formatDate var="date"
 								value="${re.reviewDate}" pattern="yyyy.MM.dd" /> ${date}</td>
@@ -71,7 +71,7 @@
 				<c:forEach var="qa" items="${qna}">
 					<tr class="quest_list">
 						<td class="titem">${qa.replySituation}</td>
-						<td class="titem titem2">${qa.questionText}</td>
+						<td class="titem titem2"><a href="/product/detail_main?pc=${qa.productCode}" class="plink">${qa.questionText}</a></td>
 						<td class="titem">${qa.userId}</td>
 						<td class="titem"><fmt:formatDate var="date"
 								value="${qa.questionDate}" pattern="yyyy.MM.dd" /> ${date}</td>

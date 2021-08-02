@@ -24,7 +24,11 @@
             <tr>
                 <td>주문일자 <fmt:formatDate var="date" value="${order.orderDate}" pattern="yyyy.MM.dd" /> ${date}</td>
                 <td>주문번호 <c:out value="${order.orderCode}"/></td>
-                <td><a href="/mypage/orderdelete?oc=${order.orderCode}" class="order_remove">주문내역 삭제</a></td>
+                <td>
+                <c:if test="${order.orderSituation eq '배송완료'}">
+                <a href="/mypage/orderdelete?oc=${order.orderCode}" class="order_remove">주문내역 삭제</a>
+                </c:if>
+                </td>
             </tr>
         </table>
         <table class="ordermiddle">
@@ -58,7 +62,9 @@
                 </td>
                 <td>
                     <div class="delivering"><c:out value="${order.orderSituation}"/></div>
-                    <a href="" class="order_cancle">주문취소</a>
+                    <c:if test="${order.orderSituation ne '배송완료'}">
+                    <a href="/mypage/orderdelete?oc=${order.orderCode}" class="order_cancle">주문취소</a>
+                    </c:if>
                 </td>
                 <td></td>
             </tr>

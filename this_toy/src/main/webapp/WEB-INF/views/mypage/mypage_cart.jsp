@@ -17,7 +17,7 @@
 	integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
 	crossorigin="anonymous">
 <link rel="stylesheet" href="/css/style.css">
-<link rel="stylesheet" href="/css/mypage_cart.css">
+<link rel="stylesheet" href="/css/mypage_cart.css?ver=1">
 <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'
 	rel='stylesheet'>
 </head>
@@ -38,7 +38,6 @@
 			<table class="basketdiv" id="basket">
 				<!-- 표 카테고리 -->
 				<tr class="row head">
-					<td class="check">선택</td>
 					<td class="img">이미지</td>
 					<td class="pname">상품명</td>
 					<td class="basketprice">가격</td>
@@ -56,26 +55,21 @@
 
 					<tr class="row data">
 						<!-- 선택 -->
-						<td class="check"><input type="checkbox" name="buy"
-							value="260" checked="" onclick="javascript:basket.checkItem();">
-							<input type="hidden" name="pdc"
-							value="<c:out value="${cl.productCode}"/>"> &nbsp;</td>
 
 						<!-- 제품 이미지 -->
-						<td><input type="hidden" name="productImg" value="${cimg}" />
+						<td>
 							<div class="img">
 								<img src="/upload/product/main/${cimg}" width="100px">
 							</div></td>
 
 						<!-- 상품명 -->
-						<input type="hidden" name="productName" value="${cl.productName}" />
 						<td class="pname">${cl.productName}</td>
 
 						<!-- 가격 -->
 						<td>
 							<div class="basketprice">
 								<input type="hidden" name="productPrice" id="p_price${cnum}"
-									class="p_price" value="${cl.productPrice}">
+									class="bp" value="${cl.productPrice}">
 								${cl.productPrice}원
 							</div>
 						</td>
@@ -105,19 +99,18 @@
 						<!-- 삭제 -->
 						<td><input type="hidden" value="${cl.productCode}" />
 							<div class="basketcmd">
-								<a href="javascript:void(0)" class="abutton"
+								<a href="javascript:void(0)" class="abutton delete"
 									onclick="javascript:basket.delItem();"> 삭제 </a>
 							</div></td>
 					</tr>
 				</c:forEach>
 
 			</table>
-
+			<c:if test="${cartlist ne null}">
 			<!-- 전체 삭제 -->
 			<div class="right-align basketrowcmd">
-				<a href="javascript:void(0)" class="abutton"
-					onclick="javascript:basket.delCheckedItem();">선택상품삭제</a> <a
-					href="javascript:void(0)" class="abutton"
+				 <a
+					href="javascript:void(0)" class="abutton alldelete"
 					onclick="javascript:basket.delAllItem();">전체상품삭제</a>
 			</div>
 
@@ -139,22 +132,37 @@
 					<input type="submit" value="주문하기" />
 				</div>
 			</div>
+			</c:if>
 	</div>
 	</form>
 	</div>
 	<%@ include file="../includes/footer.jsp"%>
 	<input type="hidden" value="${userId}" class="uId"/>
-	<script type="text/javascript" src="/js/cart_3.js?ver=2"></script>
+	<script type="text/javascript" src="/js/cart_3.js?ver=3"></script>
 </body>
 
 </html>
 <script defer>
-$(document).on('click','.abutton',function(){
+$(document).on('click','.delete',function(){
 	let userId = $('.uId').val();
 	let pcode = $(this).parent().prev().val();
 	$.ajax({
 		type : 'delete',
 		url : '/mypage/cart/delete/'+pcode+'/'+userId,
+		contentType : "application/json; charset=utf-8",
+		success : function(result) {
+			alert(result);
+		},
+		error : function(er) {
+			alert(er);
+		}
+	});
+});
+$(document).on('click','.alldelete ',function(){
+	let userId = $('.uId').val();
+	$.ajax({
+		type : 'delete',
+		url : '/mypage/cart/alldelete/'+userId,
 		contentType : "application/json; charset=utf-8",
 		success : function(result) {
 			alert(result);

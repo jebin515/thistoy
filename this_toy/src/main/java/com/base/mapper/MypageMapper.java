@@ -43,5 +43,9 @@ public interface MypageMapper {
 	
 	int deleteCart(CartVO vo);
 	
+	int alldeleteCart(String userId);
+	
+	int deleteWish(WishlistVO vo);
+	
 }
 	
