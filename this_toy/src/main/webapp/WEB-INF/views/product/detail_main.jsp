@@ -613,8 +613,6 @@
 				contentType : "application/json; charset=utf-8",
 				success : function(rs) {
 					alert(rs);
-					$('html, body').animate({ 
-						scrollTop: $('.write_QnA').offset().top }, 500);
 				},
 				error : function(er) {
 					alert(er);
