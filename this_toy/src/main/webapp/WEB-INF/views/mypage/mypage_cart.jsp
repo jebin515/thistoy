@@ -17,7 +17,7 @@
 	integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
 	crossorigin="anonymous">
 <link rel="stylesheet" href="/css/style.css">
-<link rel="stylesheet" href="/css/mypage_cart.css?ver=1">
+<link rel="stylesheet" href="/css/mypage_cart.css?ver=2">
 <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'
 	rel='stylesheet'>
 </head>

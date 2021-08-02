@@ -1,118 +1,208 @@
 main {
-  margin: 0 auto;
+	margin: 0 auto;
 }
+
 main input[type="text"] {
-  border: none;
+	border: none;
 }
+
 main .container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
+
 main .container .title {
-  font-size: 30px;
-  font-family: "Cafe24Ssurround", sans-serif;
-  font-weight: 500;
-  margin-bottom: 10px;
+	font-size: 30px;
+	font-family: "Cafe24Ssurround", sans-serif;
+	font-weight: 500;
+	margin-bottom: 10px;
 }
+
 main .container table {
-  width: 1100px;
-  text-align: center;
-  margin: 30px;
+	width: 1100px;
+	text-align: center;
+	margin: 30px;
+	font-family: "Cafe24SsurroundAir", serif;
+	font-weight: bold;
 }
+
 main .container table tr {
-  height: 50px;
+	height: 50px;
 }
+
 main .container table tr th {
-  font-size: 20px;
-  font-family: "Cafe24Ssurround", sans-serif;
-  font-weight: 500;
-  background-color: rgba(245, 96, 153, 0.2);
-  vertical-align: middle;
-  padding: 10px;
+	font-size: 23px;
+	font-family: "Cafe24Ssurround", serif;
+	font-weight: bold;
+	background-color: rgba(245, 96, 153, 0.2);
+	vertical-align: middle;
+	padding: 10px;
+	
 }
+
+main .container table tr th:first-child{
+	width: 180px;
+	border-radius: 20px 0px 0px 20px;
+}
+main .container table tr th:last-child{
+	border-radius: 0px 20px 20px 0px;
+}
+
 main .container table tr td:first-child {
-  width: 200px;
+	width: 200px;
 }
+
 main .container table tr td img {
-  width: 150px;
-  height: 150px;
-  padding: 10px;
+	width: 150px;
+	height: 150px;
+	padding: 10px;
 }
+
 main .container table tr td {
-  height: 50px;
-  vertical-align: middle;
+	height: 50px;
+	vertical-align: middle;
 }
 
 main .container .list_main {
-  width: 1100px;
-  display: flex;
-  justify-content: center;
-  margin: 30px;
+	width: 1100px;
+	display: flex;
+	justify-content: center;
+	margin: 30px;
 }
+
 main .container .list_main .addr_list {
-  width: 850px;
+	background-color: rgba(245, 96, 153, 0.2);
+	border-radius : 20px;
+	padding:20px;
+	width: 750px;
+	margin-right: 70px;
 }
+
 main .container .list_main .user_list {
-  width: 200px;
-  text-align: center;
+	background-color: rgba(245, 96, 153, 0.2);
+	border-radius : 20px;
+	padding:20px;
+	width: 200px;
+	text-align: center;
 }
 
 main .container .list_main .addr_list .addr_chk ul {
-  display: flex;
-  justify-content: flex-start;
+	display: flex;
+	justify-content: flex-start;
 }
+
 main .container .list_main .addr_list .addr_chk ul li {
-  position: relative;
-  white-space: nowrap;
-  padding: 10px 22px 10px 0;
+	position: relative;
+	white-space: nowrap;
+	padding: 10px 22px 10px 0;
 }
+
 main .container .list_main .addr_list .addr_main ul li {
-  padding: 15px 10px 15px 0;
+	padding: 22px 10px 22px 0;
 }
+
+main .container .list_main .addr_list .addr_main ul li h6 {
+	display: inline-flex;
+	font-size: 23px;
+	letter-spacing: 2px;
+	font-family: "Cafe24SsurroundAir", serif;
+	font-weight: bold;
+	width: 120px;
+	
+}
+
 main .container .list_main .addr_list .addr_new_main ul li {
-  padding: 15px 10px 15px 0;
+	padding: 15px 10px 15px 0;
 }
-main .container .list_main .addr_list .addr_new_main ul li span {
-  font-size: 20px;
-  letter-spacing: 2px;
-  font-weight: bold;
+
+main .container .list_main .addr_list .addr_new_main ul li h6 {
+	display: inline-flex;
+	font-size: 23px;
+	letter-spacing: 2px;
+	font-family: "Cafe24SsurroundAir", serif;
+	font-weight: bold;
+	width: 120px;
 }
+
 main .container .list_main .addr_list .addr_new_main ul li input {
-  width: 200px;
-  padding: 8px;
-  border: none;
-  border: 1px solid black;
-  border-radius: 10px;
+	width: 180px;
+	padding: 8px;
+	border: none;
+	border: 1px solid black;
+	border-radius: 10px;
+	outline: none;
 }
+
 main .container .list_main .user_list ul li {
-  padding: 20px;
+	padding: 20px;
 }
+
 main .container .totle {
-  width: 1100px;
-  height: 200px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(245, 96, 153, 0.2);
-  margin: 20px 0 20px 0;
-  padding: 25px;
-  text-align: center;
+	width: 1100px;
+	height: 150px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(245, 96, 153, 0.2);
+	margin: 20px 0 20px 0;
+	padding: 20px 0px 20px 0px;
+	text-align: center;
+	border-radius : 20px;
 }
+
 main .container .totle .totle_main {
-  display: flex;
-  text-align: center;
+	display: flex;
+	text-align: center;
+}
+main .container .totle .totle_main ul {
+	display: flex;
+	justify-content: center;
+	text-align: center;
 }
 main .container .totle .totle_main ul li {
-  padding: 20px;
+	padding: 20px;
+	display: inline-flex;
+	position: relative;
 }
+main .container .totle .totle_main ul li h6{
+	
+	font-size: 20px;
+	letter-spacing: 2px;
+	font-family: "Cafe24SsurroundAir", serif;
+	font-weight: bold;
+}
+main .container .totle .totle_main ul li h5{
+	font-size: 15px;
+	letter-spacing: 2px;
+	font-family: "Cafe24SsurroundAir", serif;
+}
+main .container .totle .totle_main ul li h2{
+	font-size: 25px;
+	letter-spacing: 2px;
+	font-family: "Cafe24SsurroundAir", serif;
+	font-weight: bold;
+	color: red;
+	width: 100px;
+}
+
 main .container .totle input[type="submit"] {
-  background-color: rgba(245, 96, 153, 0.5);
-  padding: 10px 20px 10px 20px;
-  border-radius: 6px;
-  font-size: 15px;
-  font-family: "Cafe24Ssurround", sans-serif;
-  font-weight: 500;
+	background-color: rgba(245, 96, 153, 0.5);
+	padding: 10px 20px 10px 20px;
+	border-radius: 6px;
+	font-size: 15px;
+	font-family: "Cafe24Ssurround", sans-serif;
+	font-weight: 500;
+}
+main .totle_btn button{
+		  width: 100px;
+  height: 40px;
+  border: 1px solid #cfcfcf;
+  border-radius: 5px;
+  background-color: rgba(245, 96, 153, 0.9);
+  font-size : 18px;
+  font-weight:bold;
+  color: #ffffff;
 }
