@@ -49,24 +49,6 @@
 					<div class="swiper-slide">
 						<img src="/img/1.jpg">
 					</div>
-					<div class="swiper-slide">
-						<img src="/img/1.jpg">
-					</div>
-					<div class="swiper-slide">
-						<img src="/img/1.jpg">
-					</div>
-					<div class="swiper-slide">
-						<img src="/img/1.jpg">
-					</div>
-					<div class="swiper-slide">
-						<img src="/img/1.jpg">
-					</div>
-					<div class="swiper-slide">
-						<img src="/img/1.jpg">
-					</div>
-					<div class="swiper-slide">
-						<img src="/img/1.jpg">
-					</div>
 				</div>
 				<div class="swiper-pagination-main"></div>
 			</div>

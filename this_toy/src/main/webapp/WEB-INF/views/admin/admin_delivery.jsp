@@ -89,7 +89,7 @@
 								<td class="member_situation">
 								
 								<select name="orderSituation">
-									<option value="<c:out value="${admin.orderSituation}"/>"><c:out value="${admin.orderSituation}" /></option>
+									<option value="<c:out value="${admin.orderSituation}"/>">-<c:out value="${admin.orderSituation}" />-</option>
 									<option value="배송대기">배송대기</option>
 									<option value="배송중">배송중</option>
 									<option value="배송완료">배송완료</option>

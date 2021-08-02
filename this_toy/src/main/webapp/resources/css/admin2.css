@@ -85,3 +85,8 @@ a {
 	color:rgb(193, 122, 241);
 	font-weight:bold;
 }
+select{
+	
+	padding: 8px;
+	font-size: 13px;
+}
