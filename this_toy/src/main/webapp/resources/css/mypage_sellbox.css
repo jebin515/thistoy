@@ -97,3 +97,8 @@ section .fa-caret-left {
 .product_logo {
   color: rgb(193, 122, 241);
 }
+.empty{
+	width:500px;
+    margin: 120px 0 0 300px;
+    font-size: 40px;
+}
