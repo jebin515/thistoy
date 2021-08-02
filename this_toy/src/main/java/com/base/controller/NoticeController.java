@@ -29,7 +29,9 @@ public class NoticeController {
 			@RequestParam(name = "keyword", defaultValue = "") String search, Model model) {
 		SearchVO svo = new SearchVO();
 		svo.setTitleNum(titleNum);
-		int count = service.getTotal(svo);
+		svo.setSearch(search);
+		int count = 0;
+		count = service.getSearchTotalCount(svo);
 		PageVO vo = new PageVO(count, 1);
 		if (pageNum == 0) {
 			pageNum = 1;
@@ -37,14 +39,7 @@ public class NoticeController {
 			pageNum = vo.getRealEnd();
 		}
 		svo.setPageNum(pageNum);
-		System.out.println(svo);
-		if(search.length()>0) {
-			svo.setSearch(search);
-			System.out.println(svo);
-//			model.addAttribute("list", service.getListwithPagingSearch(svo));
-		}else {
-			model.addAttribute("list", service.getListwithPaging(svo));
-		}
+			model.addAttribute("list", service.getListwithPagingSearch(svo));
 		model.addAttribute("pageMaker", new PageVO(count, pageNum));
 	}
 

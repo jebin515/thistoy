@@ -19,9 +19,7 @@ public interface NoticeMapper {
 		
 		List<NoticeVO> getListwithPagingSearch(SearchVO vo);
 		
-		List<NoticeVO> getListwithPaging(SearchVO vo);
-		
-		int getTotalCount(SearchVO vo);
+		int getSearchTotalCount(SearchVO vo);
 		
 		List<NoticeVO> searchTest(Map<String, Map<String,String>> map);
 }

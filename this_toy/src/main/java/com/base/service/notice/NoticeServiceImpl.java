@@ -44,20 +44,15 @@ public class NoticeServiceImpl implements NoticeService{
 
 
 	@Override
-	public int getTotal(SearchVO vo) {
-		return mapper.getTotalCount(vo);
-	}
-
-	@Override
-	public List<NoticeVO> getListwithPaging(SearchVO vo) {
-		// TODO Auto-generated method stub
-		return mapper.getListwithPaging(vo);
-	}
-
-	@Override
 	public List<NoticeVO> getListwithPagingSearch(SearchVO vo) {
 		// TODO Auto-generated method stub
 		return mapper.getListwithPagingSearch(vo);
+	}
+
+	@Override
+	public int getSearchTotalCount(SearchVO vo) {
+		// TODO Auto-generated method stub
+		return mapper.getSearchTotalCount(vo);
 	}
 
 }

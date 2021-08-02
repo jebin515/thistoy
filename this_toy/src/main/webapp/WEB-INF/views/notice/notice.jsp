@@ -58,17 +58,17 @@
 			<div class="page-number">
 				<tr>
 					<div class='pull-right'>
-						<a href="/notice/notice"><i class="fas fa-angle-double-left"></i></a><a
-							href="/notice/notice?p=${pageMaker.startPage-1}"><i
+						<a href="/notice/notice?type=${param.type}&keyword=${param.keyword}"><i class="fas fa-angle-double-left"></i></a><a
+							href="/notice/notice?p=${pageMaker.startPage-1}&type=${param.type}&keyword=${param.keyword}"><i
 							class="fas fa-angle-left"></i></a> <span class="pageNumber"> <c:forEach
 								var="num" begin="${pageMaker.startPage}"
 								end="${pageMaker.endPage}">
-								<a href="/notice/notice?p=${num}" class="pn"
+								<a href="/notice/notice?p=${num}&type=${param.type}&keyword=${param.keyword}" class="pn"
 									id="${pageMaker.pageNum==num? 'pageNum':''}">${num}</a>
 							</c:forEach>
-						</span> <a href="/notice/notice?p=${pageMaker.endPage+1}"><i
+						</span> <a href="/notice/notice?p=${pageMaker.endPage+1}&type=${param.type}&keyword=${param.keyword}"><i
 							class="fas fa-angle-right" id="right"></i></a><a
-							href="/notice/notice?p=${pageMaker.realEnd}"><i
+							href="/notice/notice?p=${pageMaker.realEnd}&type=${param.type}&keyword=${param.keyword}"><i
 							class="fas fa-angle-double-right"></i></a>
 					</div>
 				</tr>

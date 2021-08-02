@@ -15,10 +15,10 @@ public interface NoticeService {
 	
 	int remove(Long noticeNum);
 	
-	int getTotal(SearchVO vo);
+	
+	int getSearchTotalCount(SearchVO vo);
 	
 	List<NoticeVO> getListwithPagingSearch(SearchVO vo);
 	
-	List<NoticeVO> getListwithPaging(SearchVO vo);
 
 }
