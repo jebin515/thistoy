@@ -246,6 +246,8 @@ input[type="number"]::-webkit-inner-spin-button {
   display: flex;
   justify-content: center;
   border-top: 2px solid rgba(245, 96, 153, 0.6);
+  border-bottom: 2px solid rgba(245, 96, 153, 0.6);
+  padding-bottom: 20px;
 }
 #write .write-form form{
   display: flex;
@@ -266,6 +268,11 @@ input[type="number"]::-webkit-inner-spin-button {
 #write .write-form .write-img table tr td{
   padding: 10px;
 }
+#write .write-form .write-img table td{
+  font-family: "맑은고딕", sans-serif;
+  color: black;
+  font-size: 20px;
+}
 #write .write-form .write-img table th{
   font-size: 20px;
   font-family: "Cafe24Ssurround", sans-serif;
@@ -284,6 +291,7 @@ input[type="number"]::-webkit-inner-spin-button {
   color: rgb(255, 255, 255);
   font-size: 20px;
   padding: 20px;
+  width: 190px;
 }
 #write .write-form .upload:hover{
   background: rgba(245, 96, 153, 0.8);

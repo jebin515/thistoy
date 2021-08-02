@@ -72,7 +72,7 @@
 						<form name="socialLogin">
 							<div class="social">
 								<div class="k-signin">
-									<img src="/img/kakao1.png" width=50; id="kao" onclick="kakaoLogin()">
+									<img src="/img/kakao.png" width=50; id="kao" onclick="kakaoLogin()">
 								</div>
 
 								<div class="g-signin2" data-onsuccess="onSignIn" data-width="50" data-height="50"

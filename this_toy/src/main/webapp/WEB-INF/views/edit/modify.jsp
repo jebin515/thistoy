@@ -16,7 +16,7 @@
 <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'
 	rel='stylesheet'>
 <link rel="stylesheet" href="/css/style.css">
-<link rel="stylesheet" href="/css/editmypage.css">
+<link rel="stylesheet" href="/css/editmypage.css?var=2">
 <link rel="stylesheet" href="/css/header.css">
 <link rel="stylesheet" href="/css/footer.css">
 </head>
@@ -96,9 +96,8 @@
 			<!-- 저장 하기 버튼 -->
 			<div class="button">
 
-				<input type='button' class="delet" value='회원탈퇴'
-					onclick="location.href='delet.html'" /> <input type='submit'
-					class="save" value='저장하기' />
+				<input type='button' class="delet" value='회원탈퇴' onclick="location.href='delet.html'" /> 
+				<input type='submit' class="save" value='저장하기' />
 
 			</div>
 

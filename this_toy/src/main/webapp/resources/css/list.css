@@ -114,7 +114,7 @@ article {
 .mainImg{
 	width:265px;
 	height:170px;
-	object-fit:cover;
+	object-fit:fill;
 }
 
 .product_info {

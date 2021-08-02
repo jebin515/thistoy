@@ -9,11 +9,17 @@
 	<img class="left" src="/upload/user/${user.userImg}" alt="이미지없음">
 	<!-- 오른쪽  -->
 	<div class="right">
-		<div>이름 : ${user.userName}</div>
-		<div>아이디 : ${user.userId}</div>
-		<div>이메일 : ${user.userEmail}</div>
+		<div><h6>이름</h6>${user.userName}</div>
+		<div><h6>아이디</h6>${user.userId}</div>
+		<div><h6>이메일</h6>${user.userEmail}</div>
 		<div>
-			기본 배송지 :<br /> ${user.userAddressPost}<br />${user.userAddress}<br />${user.userAddressDetail}</div>
+			<ul>
+			<li><h6>기본 배송지</h6></li>
+			<li> ${user.userAddressPost}</li>
+			<li>${user.userAddress}</li>
+			<li>${user.userAddressDetail}</li>
+			</ul>
+		</div>
 	</div>
 </div>
 <div class="line"></div>
