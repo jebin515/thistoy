@@ -6,12 +6,15 @@
 <mapper namespace="com.base.mapper.NoticeMapper">
 
 	<insert id="insert">
-		insert INTO notice (notice_num, notice_title, notice_text, user_id)
-		VALUES (notice_seq.nextval, #{noticeTitle}, #{noticeText}, #{userId})
+		insert INTO notice (notice_num, notice_title,
+		notice_text, user_id)
+		VALUES (notice_seq.nextval, #{noticeTitle},
+		#{noticeText}, #{userId})
 	</insert>
 
 	<select id="read" resultType="NoticeVO">
-		select * from notice where notice_num = #{noticeNum}
+		select * from notice where
+		notice_num = #{noticeNum}
 	</select>
 
 	<delete id="delete">
@@ -37,14 +40,20 @@
 		)
 		where
 		<choose>
-			<when test="title.equals('T')">
+			<when test="title!=null">
+			<![CDATA[
 				notice_title like '%'||${search}||'%' and
+				]]>
 			</when>
 			<when test="title.equals('C')">
+			<![CDATA[
 				notice_text like '%'||${search}||'%' and
+				]]>
 			</when>
 			<when test="title.equals('TC')">
+			<![CDATA[
 				notice_title like '%'||${search}||'%' or notice_text like '%'||${search}||'%' and
+				]]>
 			</when>
 		</choose>
 		num between (#{pageNum}-1)*10+1 and
@@ -52,6 +61,7 @@
 	</select>
 
 	<select id="getTotalCount" resultType="int">
-		select count(*) from notice
+		select count(*) from
+		notice
 	</select>
 </mapper>

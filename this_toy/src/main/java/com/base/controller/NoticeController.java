@@ -24,9 +24,10 @@ public class NoticeController {
 	private final NoticeService service;
 
 	@GetMapping("/notice")
-	public void list(@RequestParam(name = "p", defaultValue = "1") int pageNum,
-			@RequestParam(name = "type", defaultValue = "T") String title,
+	public void list(@RequestParam(name = "p", defaultValue = "1") int pageNum, String title,
 			@RequestParam(name = "keyword", defaultValue = "") String search, Model model) {
+		System.out.println(title);
+		System.out.println(search);
 		SearchVO svo = new SearchVO();
 		svo.setSearch(search);
 		svo.setTitle(title);
@@ -38,6 +39,7 @@ public class NoticeController {
 			pageNum = vo.getRealEnd();
 		}
 		svo.setPageNum(pageNum);
+		System.out.println(svo);
 		model.addAttribute("list", service.getListwithPaging(svo));
 		model.addAttribute("pageMaker", new PageVO(count, pageNum));
 	}
@@ -63,7 +65,7 @@ public class NoticeController {
 
 	@PostMapping("/remove")
 	public String remove(@RequestParam("noticeNum") Long noticeNum) {
-        service.remove(noticeNum);
+		service.remove(noticeNum);
 		return "redirect: /notice/notice";
 	}
 
