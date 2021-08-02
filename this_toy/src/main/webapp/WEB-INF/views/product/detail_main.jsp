@@ -163,6 +163,11 @@
 					<option value="2">&#xf005&#xf005
 					<option value="1">&#xf005</option>
 				</select>
+				<c:forEach var="order" items="${order}">
+				<c:if test="${order.productCode eq product.productCode}">
+				<input type="hidden" class="canReview"/>
+				</c:if>
+				</c:forEach>
 				<button class="review_register">등록</button>
 			</div>
 			<div class="title">
@@ -322,6 +327,11 @@
 	<!-- 	<script src="/js/index.js" defer></script> -->
 	<script src="/js/detail-slide.js?ver=1" defer></script>
 	<script type="text/javascript" defer>
+	let rv=false;
+	if($('input').hasClass('canReview')){
+		rv=true;
+	}
+	console.log(rv);
 	let myName = $('.user').val();
 	let seller=$('.seller').text();
 		$(".fa-angle-right").click(function(){
@@ -392,6 +402,11 @@
 			}
 			if (data["userId"] == null || data["userId"] == "") {
 				alert('로그인이 필요한 기능입니다.');
+				$(".write_text").val("");
+				return;
+			}
+			if(rv==false){
+				alert('상품을 구매하신분만 입력가능합니다.');
 				$(".write_text").val("");
 				return;
 			}

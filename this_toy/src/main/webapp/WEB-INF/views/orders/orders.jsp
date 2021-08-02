@@ -35,14 +35,15 @@
 									<c:set var="mimg" value="${fn:substring(pdc.productMainImg,0,i)}" />
 									<tr>
 										<input type="hidden" name="productCode" value="${pdc.productCode}">
+										
 										<td><input type="hidden" name="productImg" value="${mimg}">
 											<img src="/upload/product/main/${mimg}" />
 										</td>
-										<td><input type="hidden" name="productName" value="${pdc.productName}">
-											<c:out value="${pdc.productName}" />
-										</td>
 										<td><input type="hidden" name="userId" value="${pdc.userId}">
 											<c:out value="${pdc.userId}" />
+										</td>
+										<td><input type="hidden" name="productName" value="${pdc.productName}">
+											<c:out value="${pdc.productName}" />
 										</td>
 										<td><input type="hidden" value="배송비">3000원</td>
 
@@ -222,10 +223,6 @@
 									productImg.push($(this).val());
 								});
 
-
-
-								alert(productName + "" + orderPrice);
-
 								//가맹점 식별코드
 								IMP.init("imp76068644");
 								IMP.request_pay(
@@ -240,9 +237,6 @@
 									},
 									function (rsp) {
 										if (rsp.success) {
-
-											// rsp . 결제 번호
-											// 결제검증
 											$.ajax({
 												type: "POST",
 												url: "/orders/" + rsp.imp_uid,

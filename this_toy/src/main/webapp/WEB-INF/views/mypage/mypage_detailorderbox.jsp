@@ -17,8 +17,8 @@
 </head>
 
 <body>
-    <article>
 <%@ include file="../includes/header.jsp" %>
+    <article>
         <div>주문상세정보</div>
         <table class="ordertop">
             <tr>

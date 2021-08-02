@@ -18,7 +18,7 @@
 			</nav>
 	</div>
 	</c:if>
-	<c:if test="${not empty userId}">
+	<c:if test="${not empty userId and userId ne 'admin'}">
 	<div class="header-full">
 		<a href="/main" class="logo"></a>
 			<nav class="header_nav">
@@ -28,8 +28,22 @@
 					<i class='bx-fw bx bxs-rocket bx-tada-hover'></i>로그아웃</a> 
 					<a href="/edit/modify" class="header_register">
 					<i class='bx-fw bx bxs-user-plus bx-tada-hover'></i>개인정보수정</a>
-					<a href="/mypage/mypage">
+					<a href="/mypage/mypage_wishlist">
 					<i class='bx-fw bx bxs-rocket bx-tada-hover'></i>마이페이지</a>
+				</div>
+			</nav>
+	</div>
+	</c:if>
+	<c:if test="${userId eq 'admin'}">
+	<div class="header-full">
+		<a href="/main" class="logo"></a>
+			<nav class="header_nav">
+				<div class="header_menu">
+
+					<a href="/login/logout" class="header_login">  
+					<i class='bx-fw bx bxs-rocket bx-tada-hover'></i>로그아웃</a> 
+					<a href="/admin/admin">
+					<i class='bx-fw bx bxs-rocket bx-tada-hover'></i>관리자페이지</a>
 				</div>
 			</nav>
 	</div>

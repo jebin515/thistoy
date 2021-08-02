@@ -32,7 +32,9 @@ main .container table tr th {
   vertical-align: middle;
   padding: 10px;
 }
-
+main .container table tr td:first-child {
+  width: 200px;
+}
 main .container table tr td img {
   width: 150px;
   height: 150px;

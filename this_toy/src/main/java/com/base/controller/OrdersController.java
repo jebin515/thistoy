@@ -42,8 +42,9 @@ public class OrdersController {
 			"42VKSjQQgdnutTWiJq7BNN0vt2anFEPJGKuz4kplyNP2GLlpcs10f1vJ3G6JkWt1GXALi06QOVTuHeUT");
 
 	@PostMapping(value = "cart")
-	public String cart(Model model, @RequestParam(name = "pdc") String[] productCode, HttpServletRequest request,
-			@RequestParam(name = "st") int[] productStock) {
+	public String cart(Model model, 
+			@RequestParam(name = "pdc") String[] productCode, HttpServletRequest request,
+			@RequestParam(name = "st") int[] productEa) {
 
 		HttpSession session = request.getSession();
 		String userId = (String) session.getAttribute("userId");
@@ -51,7 +52,7 @@ public class OrdersController {
 		ArrayList<ProductVO> vo = new ArrayList<ProductVO>();
 		for (int i = 0; i < productCode.length; i++) {
 			ProductVO pVO = service.getcart(productCode[i]);
-			pVO.setProductEa(productStock[i]);
+			pVO.setProductEa(productEa[i]);
 			vo.add(pVO);
 		}
 		model.addAttribute("pdc", vo);
@@ -81,7 +82,7 @@ public class OrdersController {
 				vo.setUserId((String)params.get("userId"));
 				vo.setProductName(productName.get(i));
 				vo.setOrderEa(Integer.valueOf(orderEa.get(i)));
-				vo.setProductMainImg(productImg.get(i));
+				vo.setProductImg(productImg.get(i));
 				vo.setOrderAddressPost((String)params.get("orderAddressPost"));
 				vo.setOrderAddress((String)params.get("orderAddress"));
 				vo.setOrderAddressDetail((String)params.get("orderAddressDetail"));
