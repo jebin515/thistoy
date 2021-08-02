@@ -30,114 +30,120 @@
 		<!-- CART 글씨영역 -->
 		<div class="title">CART</div>
 		<!-- 장바구니 form 설정 -->
-		<form name="orderform" id="orderform" method="post" class="orderform"
-			action="/orders/cart">
-			<input type="hidden" name="cmd" value="order">
+		<c:if test="${cartlist eq null}">
+			<br />
+			<div>빈 페이지입니다.</div>
+		</c:if>
+		<c:if test="${cartlist ne null}">
+			<form name="orderform" id="orderform" method="post" class="orderform"
+				action="/orders/cart">
+				<input type="hidden" name="cmd" value="order">
 
-			<!-- 장바구니 표 -->
-			<table class="basketdiv" id="basket">
-				<!-- 표 카테고리 -->
-				<tr class="row head">
-					<td class="img">이미지</td>
-					<td class="pname">상품명</td>
-					<td class="basketprice">가격</td>
-					<td class="num">수량</td>
-					<td class="sum">합계</td>
-					<td class="basketcmd">삭제</td>
-				</tr>
-
-				<!-- 장바구니 내역 1번째 줄 -->
-				<c:set var="cnum" value="0" />
-				<c:forEach var="cl" items="${cartlist}">
-					<c:set var="i" value='${fn:indexOf(cl.productMainImg,",")}' />
-					<c:set var="cimg" value="${fn:substring(cl.productMainImg,0,i)}" />
-					<c:set var="cnum" value="${cnum + 1}" />
-
-					<tr class="row data">
-						<!-- 선택 -->
-
-						<!-- 제품 이미지 -->
-						<td>
-							<div class="img">
-								<img src="/upload/product/main/${cimg}" width="100px">
-							</div></td>
-
-						<!-- 상품명 -->
-						<td class="pname">${cl.productName}</td>
-
-						<!-- 가격 -->
-						<td>
-							<div class="basketprice">
-								<input type="hidden" name="productPrice" id="p_price${cnum}"
-									class="bp" value="${cl.productPrice}">
-								${cl.productPrice}원
-							</div>
-						</td>
-
-						<!-- 수량 -->
-						<td>
-							<div class="num">
-								<div class="updown">
-									<!-- 최대개수 99까지로 설정: maxlength="2" -->
-									<input type="text" name="st" id="p_num${cnum}" size="2"
-										maxlength="2" class="p_num" value="${cl.productEa}"
-										onkeyup="javascript:basket.changePNum(${cnum});">
-									<!-- 증가 -->
-									<i class="fas fa-chevron-circle-up up"
-										onclick="javascript:basket.changePNum(${cnum});"></i>
-									<!-- 감소 -->
-									<i class="fas fa-chevron-circle-down down"
-										onclick="javascript:basket.changePNum(${cnum});"></i>
-								</div>
-							</div>
-						</td>
-
-						<!-- 합계 -->
-						<td>
-							<div class="sum">${cl.productPrice}원</div>
-						</td>
-						<!-- 삭제 -->
-						<td><input type="hidden" value="${cl.productCode}" />
-							<div class="basketcmd">
-								<a href="javascript:void(0)" class="abutton delete"
-									onclick="javascript:basket.delItem();"> 삭제 </a>
-							</div></td>
+				<!-- 장바구니 표 -->
+				<table class="basketdiv" id="basket">
+					<!-- 표 카테고리 -->
+					<tr class="row head">
+						<td class="img">이미지</td>
+						<td class="pname">상품명</td>
+						<td class="basketprice">가격</td>
+						<td class="num">수량</td>
+						<td class="sum">합계</td>
+						<td class="basketcmd">삭제</td>
 					</tr>
-				</c:forEach>
 
-			</table>
-			<c:if test="${cartlist ne null}">
-			<!-- 전체 삭제 -->
-			<div class="right-align basketrowcmd">
-				 <a
-					href="javascript:void(0)" class="abutton alldelete"
-					onclick="javascript:basket.delAllItem();">전체상품삭제</a>
-			</div>
+					<!-- 장바구니 내역 1번째 줄 -->
+					<c:set var="cnum" value="0" />
+					<c:forEach var="cl" items="${cartlist}">
+						<c:set var="i" value='${fn:indexOf(cl.productMainImg,",")}' />
+						<c:set var="cimg" value="${fn:substring(cl.productMainImg,0,i)}" />
+						<c:set var="cnum" value="${cnum + 1}" />
 
-			<div class="total">
-				<div class="bigtext sumcount" id="sum_p_num">총 4개의 상품 금액</div>
-				<div class="plusicon">
-					<i class="fas fa-plus-circle"></i>
-				</div>
-				<div class="delpay">배송비 3,000원</div>
-				<div class="totalpay">
-					<i class="fab fa-creative-commons-nd"></i>
-				</div>
-				<div class="bigtext box blue summoney" id="sum_p_price"></div>
-			</div>
+						<tr class="row data">
+							<!-- 선택 -->
 
-			<div id="goorder" class="">
-				<div class="clear"></div>
-				<div class="buttongroup center-align cmd">
-					<input type="submit" value="주문하기" />
+							<!-- 제품 이미지 -->
+							<td>
+								<div class="img">
+									<img src="/upload/product/main/${cimg}" width="100px">
+								</div>
+							</td>
+
+							<!-- 상품명 -->
+							<td class="pname">${cl.productName}</td>
+
+							<!-- 가격 -->
+							<td>
+								<div class="basketprice">
+									<input type="hidden" name="productPrice" id="p_price${cnum}"
+										class="bp" value="${cl.productPrice}">
+									${cl.productPrice}원
+								</div>
+							</td>
+
+							<!-- 수량 -->
+							<td>
+								<div class="num">
+									<div class="updown">
+										<!-- 최대개수 99까지로 설정: maxlength="2" -->
+										<input type="text" name="st" id="p_num${cnum}" size="2"
+											maxlength="2" class="p_num" value="${cl.productEa}"
+											onkeyup="javascript:basket.changePNum(${cnum});">
+										<!-- 증가 -->
+										<i class="fas fa-chevron-circle-up up"
+											onclick="javascript:basket.changePNum(${cnum});"></i>
+										<!-- 감소 -->
+										<i class="fas fa-chevron-circle-down down"
+											onclick="javascript:basket.changePNum(${cnum});"></i>
+									</div>
+								</div>
+							</td>
+
+							<!-- 합계 -->
+							<td>
+								<div class="sum">${cl.productPrice}원</div>
+							</td>
+							<!-- 삭제 -->
+							<td><input type="hidden" value="${cl.productCode}" name="pdc" />
+								<div class="basketcmd">
+									<a href="javascript:void(0)" class="abutton delete"
+										onclick="javascript:basket.delItem();"> 삭제 </a>
+								</div></td>
+						</tr>
+					</c:forEach>
+
+				</table>
+				<!-- 전체 삭제 -->
+				<div class="cart_bottom">
+					<div class="right-align basketrowcmd">
+						<a href="javascript:void(0)" class="abutton alldelete"
+							onclick="javascript:basket.delAllItem();">전체상품삭제</a>
+					</div>
+
+					<div class="total">
+						<div class="bigtext sumcount" id="sum_p_num">총 4개의 상품 금액</div>
+						<div class="plusicon">
+							<i class="fas fa-plus-circle"></i>
+						</div>
+						<div class="delpay">배송비 3,000원</div>
+						<div class="totalpay">
+							<i class="fab fa-creative-commons-nd"></i>
+						</div>
+						<div class="bigtext box blue summoney" id="sum_p_price"></div>
+					</div>
+
+					<div id="goorder" class="">
+						<div class="clear"></div>
+						<div class="buttongroup center-align cmd">
+							<input type="submit" value="주문하기" />
+						</div>
+					</div>
 				</div>
-			</div>
-			</c:if>
+		</c:if>
 	</div>
 	</form>
 	</div>
 	<%@ include file="../includes/footer.jsp"%>
-	<input type="hidden" value="${userId}" class="uId"/>
+	<input type="hidden" value="${userId}" class="uId" />
 	<script type="text/javascript" src="/js/cart_3.js?ver=3"></script>
 </body>
 
@@ -152,6 +158,11 @@ $(document).on('click','.delete',function(){
 		contentType : "application/json; charset=utf-8",
 		success : function(result) {
 			alert(result);
+			if($('.data').length==0){
+				$('.basketdiv').remove();
+				$('.cart_bottom').remove();
+				$('.title').after('<br/>빈 페이지입니다');
+			}
 		},
 		error : function(er) {
 			alert(er);
@@ -166,6 +177,9 @@ $(document).on('click','.alldelete ',function(){
 		contentType : "application/json; charset=utf-8",
 		success : function(result) {
 			alert(result);
+			$('.basketdiv').remove();
+			$('.cart_bottom').remove();
+			$('.title').after('<br/>빈 페이지입니다');
 		},
 		error : function(er) {
 			alert(er);

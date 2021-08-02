@@ -14,7 +14,7 @@
 	src="http://code.jquery.com/jquery-latest.js"></script>
 <link rel="stylesheet" href="/css/style.css">
 <link rel="stylesheet" href="/css/mypage_sellbox.css">
-<link rel="stylesheet" href="/css/admin.css">
+<link rel="stylesheet" href="/css/admin.css?var=2">
 <script src="https://kit.fontawesome.com/a216194d9c.js"
 	crossorigin="anonymous"></script>
 <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -30,6 +30,14 @@
 		</div>
 
 		<div class="line"></div>
+		<div class="mypage_inner">
+			<div class="inner">
+				<a href="/admin/admin" class="item">회원 관리</a> 
+				<a href="/admin/admin_delivery" class="item">배송 관리</a> 
+			</div>
+			<div style="position: relative;">
+				<i class="fas fa-caret-left"></i>
+			</div>
 
 			<div class="container">
 				<table class="delete_table">
@@ -101,5 +109,9 @@
 		if (ok == true) {
 			$('.admin_delete:eq(' + index + ')').submit();
 		}
+	});
+	$(function(){
+		$(".item:nth-child(1)").css("background-color" , "rgb(162, 109, 236)");
+		$(".item:nth-child(2)").css("background-color" , "rgb(193, 122, 241)");
 	});
 </script>

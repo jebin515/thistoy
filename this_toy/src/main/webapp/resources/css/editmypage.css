@@ -58,7 +58,7 @@
   font-size: 20px;
 }
 .main form .edit-form table .form-control th {
-  width: 120px;
+  width: 180px;
   padding: 10px;
 }
 .main form .edit-form table .form-control td input {
@@ -66,6 +66,7 @@
   border: none;
   border: 1px solid rgba(170, 170, 170, 0.6);
   border-radius: 10px;
+  width: 180px;
 }
 .adress {
   margin-top: 5px;
@@ -80,23 +81,32 @@
 }
 
 .delet {
-  font-size: 20px;
-  background-color: white;
-  color: black;
-  padding: 5px;
-  border-radius: 10px;
-  margin-top: 15px;
+  width: 100px;
+  height: 40px;
+  border: 1px solid #cfcfcf;
+  border-radius: 5px;
+  background-color: rgba(245, 96, 153, 0.9);
+  font-size : 18px;
+  font-weight:bold;
+  color: #ffffff;
+}
+.delet:hover{
+	background-color: rgba(245, 96, 153, 0.7);
 }
 
 .save {
-  font-size: 20px;
-  background-color: pink;
-  color: black;
-  padding: 5px;
-  border-radius: 10px;
-  margin-top: 15px;
+  width: 100px;
+  height: 40px;
+  border: 1px solid #cfcfcf;
+  border-radius: 5px;
+  background-color: rgba(245, 96, 153, 0.9);
+  font-size : 18px;
+  font-weight:bold;
+  color: #ffffff;
 }
-
+.save:hover{
+	background-color: rgba(245, 96, 153, 0.7);
+}
 
 main .register-main {
   display: flex;
@@ -104,15 +114,21 @@ main .register-main {
   justify-content: center;
   align-items: center;
 }
+
 main .register-main .register-menu {
   height: 50px;
 }
+
 main .register-main .register-menu span {
   font-family: "Cafe24Ssurround", sans-serif;
   height: 50px;
   font-size: 25px;
 }
+
 main .register-main .register-menu .one {
   font-size: 35px;
   color: rgba(245, 96, 153, 0.9);
+}
+.btn:hover{
+	cursor:pointer;
 }

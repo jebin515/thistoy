@@ -9,8 +9,8 @@ import com.base.session.AuthInfo;
 import com.base.session.LoginCommand;
 
 public interface UserService {
-	//로그인
-	UserVO login(UserVO userVO);
+	
+//	UserVO login(UserVO userVO);
 	//회원가입
 	void register(UserVO userVO);
 	
@@ -18,11 +18,9 @@ public interface UserService {
 	int idCheck(UserVO userVO);
 	//가입시 이메일 중복확인
 	int emailCheck(UserVO userVO);
+	
 	//로그인
 	AuthInfo loginAuth(LoginCommand loginCommand);
-	
-	//zzk
-	void insertKakaoId(UserVO vo);
 	
 	UserVO getmodify(String userId);
 	
@@ -31,8 +29,12 @@ public interface UserService {
 	//수정시 비밀번호체크
 	AuthInfo pwCheck(LoginCommand loginCommand);
 	
+	public int selectSocialLogin(UserVO vo);
 	
-	public UserVO readUser(String userId);
+	public int insertSocialLogin(UserVO vo);
 	
+	int passwdUpdate(UserVO vo);
+	
+	int deleteUser(String userId);
 	
 }

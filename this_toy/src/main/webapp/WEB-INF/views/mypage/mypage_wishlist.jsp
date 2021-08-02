@@ -10,7 +10,7 @@
 <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 <title>Document</title>
 <link rel="stylesheet" href="/css/style.css">
-<link rel="stylesheet" href="/css/mypage_wishlist.css?ver=1">
+<link rel="stylesheet" href="/css/mypage_wishlist.css?ver=2">
 <!-- <script src="js/mypage.js" defer></script> -->
 <script src="https://kit.fontawesome.com/a216194d9c.js"
 	crossorigin="anonymous"></script>
@@ -23,15 +23,19 @@
 	<!-- ------------마이페이지---------- -->
 	<section>
 		<%@ include file="../includes/mypage.jsp"%>
-			<div class="gridContainer">
+		<div class="gridContainer">
+			<c:if test="${empty wishList}">
+				<div class="empty">찜한 상품이 없습니다.</div>
+			</c:if>
+			<c:if test="${!empty wishList}">
 				<c:forEach var="ws" items="${wishList}">
 					<c:set var="i" value='${fn:indexOf(ws.productMainImg,",")}' />
-					<c:set var="mimg"
-						value="${fn:substring(ws.productMainImg,0,i)}" />
+					<c:set var="mimg" value="${fn:substring(ws.productMainImg,0,i)}" />
 					<div class="gridItem">
-						<a href="/mypage/wishdelete?pc=${ws.productCode}"><i class="fas fa-times"></i></a><a
+						<a href="/mypage/wishdelete?pc=${ws.productCode}"><i
+							class="fas fa-times"></i></a><a
 							href="/product/detail_main?pc=${ws.productCode}"> <img
-							src="/upload/product/main/${mimg}" alt="" class="wishImg"/>
+							src="/upload/product/main/${mimg}" alt="" class="wishImg" />
 						</a>
 						<div class="product_info">
 							<a href="/product/detail_main?pc=${ws.productCode}"> <span
@@ -43,7 +47,7 @@
 						</div>
 					</div>
 				</c:forEach>
-			</div>
+			</c:if>
 		</div>
 	</section>
 	<!-- -----------푸터------------- -->

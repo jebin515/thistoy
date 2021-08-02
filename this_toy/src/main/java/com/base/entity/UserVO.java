@@ -18,6 +18,7 @@ public class UserVO {
 	private String userCode; // 코드
 	private String userImg; // 이미지
 	private Date userDate; // 생성날짜
+	private String userSocial;
 	// /* private boolean useCookie; */
 	// 정보수정시 필요한 값
 	private String newPassword;

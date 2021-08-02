@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <!DOCTYPE html>
     <html lang="kr">
 
@@ -13,15 +13,6 @@
         <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
         <title>Document</title>
     </head>
-    <script defer>
-	var result = "<c:out value='${fail}'/>";
-	function fail() {
-		alert('아이디가 틀립니다.');
-	}
-	if (result == '틀림') {
-		fail();
-	}
-</script>
 
     <body>
         <main>
@@ -32,7 +23,7 @@
                 <!-- <div class="wrap wd668"> -->
                 <div class="container">
                     <div class="form_txtInput">
-                        <form id="form" class="form" method="post" action="/login/findpwcheck">
+                        <form id="form" class="form" method="post" action="/login/pwchangesuccess">
                             <div class="join_form">
                                 <table>
                                     <colgroup>
@@ -42,30 +33,27 @@
                                     <tbody>
                                         <tr class="form-control">
                                             <th><span>아이디</span></th>
-                                            <td><input type="text" name="userId" id="userId" class="id_input" placeholder="아이디를 입력하세요."
-                                                    required></td>
+                                            <td><input type="text" name="userId" id="userId" class="id_input" value="<c:out value="${userId}"/>"
+                                                    readonly></td>
                                             <td></td>
                                         </tr>
                                         <tr class="form-control">
-                                            <th><span>이메일</span></th>
-                                            <td><input type="email" name="userEmail" id="email" class="mail_input"
-                                                    placeholder="예)abc123@naver.com" required></td>
-                                            <td>
-                                                <button class="btn_send"  type="button">인증번호
-                                                    발송</button>
-                                            </td>
-                                        </tr>
-                                        <tr class="form-control">
-                                            <th><span>인증번호 확인</span></th>
-                                            <td><input type="text" class="send_number" name="send_number"
-                                                    placeholder="인증번호를 정확히 입력하세요." id="mail_check_input" required></td>
-                                            <td><button class="btn_confirm" type="button">확인</button></td>
-                                        </tr>
+											<th><span>변경비밀번호</span></th>
+											<td><input type="password" id="password"
+												name="userPasswd" placeholder="특수문자/문자/숫자 포함 8자리 이상 입력하세요."></td>
+											<td></td>
+										</tr>
+										<tr class="form-control">
+											<th><span>변경비밀번호 확인</span></th>
+											<td><input type="password" name="password2"
+												placeholder="비밀번호를 확인하세요."></td>
+											<td></td>
+										</tr>
                                     </tbody>
                                 </table>
                             </div>
                             <div class="btn_wrap">
-                                <input type="submit" id="next_button" class="button" value="확인" disabled>
+                                <input type="submit" id="next_button" class="button" value="확인" onclick="opener.window.location='/'; window.close();">
                             </div>
                         </form>
                     </div>
@@ -78,8 +66,6 @@
             <script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
             <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
-            <script src="https://smtpjs.com/v3/smtp.js"></script>
-            <script src="/js/findpw.js?ver=1"></script>
             <script src="/js/register-2.js"></script>
             <script type="text/javascript">
                 window.history.forward();

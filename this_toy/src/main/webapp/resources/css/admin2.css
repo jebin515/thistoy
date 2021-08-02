@@ -17,7 +17,6 @@ a {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	width:1400px;
 	height: 100%;
 }
 .delete_table {
@@ -39,35 +38,38 @@ a {
 	line-height: 40px;
 }
 .table_head .member_date {
-	width: 140px;
+	width: 70px;
 	height: 60px;
 }
-.table_head .member_id {
-	width: 100px;
+.table_head .member_orderCode {
+	width: 80px;
 }
 .table_head .member_name {
-	width: 50px;
+	width: 60px;
 }
 .table_head .member_phone {
 	width: 100px;
 }
 .table_head .member_email {
-	width: 150px;
+	width: 30px;
 }
 .table_head .member_address {
-	width: 200px;
+	width: 150px;
+}
+.table_head .member_situation{
+	width: 100px;
 }
 .table_head .member_delete {
 	width: 30px;
 }
-.delete button {
+.update button {
 	background-color: rgba(224, 185, 250, 0.781);
 	font-family: "Cafe24Ssurround", sans-serif;
 	font-size: 17px;
 	color: white;
 	border: 1px solid white;
 	border-radius: 10px;
-	padding : 10px 15px 10px 15px;
+	padding : 10px 30px 10px 30px;
 	margin : 5px 0 5px 0;
 	cursor: pointer;
 }
@@ -76,7 +78,6 @@ a {
 }
 .paging .middle_page ul {
 	display: flex;
-	
 }
 .paging .middle_page ul li {
 	position: relative;
@@ -86,4 +87,9 @@ a {
 .pageNum{
 	color:rgb(193, 122, 241);
 	font-weight:bold;
+}
+select{
+	
+	padding: 8px;
+	font-size: 13px;
 }

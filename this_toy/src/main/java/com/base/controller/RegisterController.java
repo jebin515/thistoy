@@ -43,7 +43,7 @@ public class RegisterController {
 	@PostMapping("/register-2")
 	public String registerPOST(UserVO userVO,HttpServletRequest request, RedirectAttributes rttr,MultipartFile file) throws Exception {
 //        연속등록 불가능하도록 플래시어트리뷰트 후 리다이렉트
-
+		
 		ServletContext ctx = request.getServletContext();
 		String fileName = file.getOriginalFilename();
 		String webPath = "/resources/upload/user";
@@ -57,7 +57,6 @@ public class RegisterController {
 		File saveFile = new File(realPath);
 		file.transferTo(saveFile);
 		userVO.setUserImg(fileName);
-
 		
         rttr.addFlashAttribute("result", "success");
 		int result = userService.idCheck(userVO);

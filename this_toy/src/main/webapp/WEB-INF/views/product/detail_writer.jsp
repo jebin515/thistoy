@@ -15,7 +15,7 @@
 	href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 <title>Document</title>
 <link rel="stylesheet" href="/css/style.css">
-<link rel="stylesheet" href="/css/detail-writer.css?ver=3" />
+<link rel="stylesheet" href="/css/detail-writer.css?ver=1" />
 </head>
 <script defer>
 	var result = "<c:out value='${fail}'/>";
@@ -24,6 +24,10 @@
 	}
 	if (result == 'noimg') {
 		fail();
+	}
+	if(${userId eq null}){
+		alert('로그인이 필요한 기능입니다.')
+		location.href="/";
 	}
 </script>
 
@@ -39,13 +43,13 @@
 					<div class="write-img">
 						<table>
 							<thead>
-								<th>순서</th>
+								
 								<th>슬라이드</th>
 								<th>상품설명</th>
 							</thead>
 							<tbody>
 								<tr>
-									<td>1</td>
+									
 									<td><input type="file" id="slide-1" name="mainFiles">
 										<label for="slide-1" id="slide-1-view">
 											<div class="upload">
@@ -60,7 +64,7 @@
 									</label></td>
 								</tr>
 								<tr>
-									<td>2</td>
+									
 									<td><input type="file" id="slide-2" name="mainFiles">
 										<label for="slide-2" id="slide-2-view">
 											<div class="upload">
@@ -75,7 +79,7 @@
 									</label></td>
 								</tr>
 								<tr>
-									<td>3</td>
+								
 									<td><input type="file" id="slide-3" name="mainFiles">
 										<label for="slide-3" id="slide-3-view">
 											<div class="upload">
@@ -90,7 +94,7 @@
 									</label></td>
 								</tr>
 								<tr>
-									<td>4</td>
+									
 									<td><input type="file" id="slide-4" name="mainFiles">
 										<label for="slide-4" id="slide-4-view">
 											<div class="upload">

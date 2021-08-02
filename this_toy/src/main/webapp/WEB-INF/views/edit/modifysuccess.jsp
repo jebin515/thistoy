@@ -9,7 +9,7 @@
 <body>
 <script>
         alert("개인정보 수정완료. 다시 로그인 해주세요");
-        self.location = "/main";
+        self.location = "/";
     </script>
 </body>
 </html>

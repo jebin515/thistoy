@@ -8,15 +8,16 @@
 <!-- #{변수명} : preparestatement를 사용한다 변수명은 VO의 getter를 사용하는것과 같음 -->
 <mapper namespace="com.base.mapper.UserMapper">
 
-	
-<!-- 		가입시 아이디 중복체크 반환값 -->
+
+	<!-- 가입시 아이디 중복체크 반환값 -->
 	<select id="idCheck" resultType="int">
 		select count(*) from usertable
 		where user_id = #{userId}
 	</select>
-<!-- 	가입시 메일중복체크 반환값 -->
+	<!-- 가입시 메일중복체크 반환값 -->
 	<select id="emailCheck" resultType="int">
-		select count(*) from usertable
+		select count(*) from
+		usertable
 		where user_email = #{userEmail}
 	</select>
 	<!-- 회원가입 -->
@@ -42,26 +43,12 @@
 		#{userAddressDetail},
 		#{userImg}
 		)
-		<!-- 'xml테스트','xml테스트','xml테스트','xml테스트','xml테스트','xml테스트' -->
 	</insert>
 	<select id="selectById" resultType="com.base.entity.UserVO">
-		<!-- <![CDATA[ -->
 		select * from
 		usertable
 		where
 		user_id = #{userId}
-		<!-- and -->
-		<!-- user_passwd = #{userPasswd} -->
-		<!-- ]]> -->
-	</select>
-	<!-- 로그인 -->
-	<select id="login" resultType="com.base.entity.UserVO">
-		select user_id,user_passwd from
-		usertable
-		where
-		user_id = #{userId}
-		and
-		user_passwd = #{userPasswd}
 	</select>
 	<update id="userModify">
 		update usertable
@@ -69,16 +56,19 @@
 		user_name = #{userName},
 		user_passwd = #{newPassword},
 		user_email =#{userEmail},
-		user_tel = #{userTel},
+		user_tel =
+		#{userTel},
 		user_address_post = #{userAddressPost},
-		user_address = #{userAddress},
+		user_address =
+		#{userAddress},
 		user_address_detail = #{userAddressDetail}
 		where
-		user_id = #{userId}
+		user_id
+		= #{userId}
 		and
 		user_passwd =#{oldPassword}
 	</update>
-<!-- 	로그인시  비밀번호 체크-->
+	<!-- 로그인시 비밀번호 체크 -->
 	<select id="pwCheck" resultType="com.base.entity.UserVO">
 		select
 		* from
@@ -95,20 +85,26 @@
 		and
 		user_email = #{userEmail}
 	</select>
-	
-	<insert id="insertKakaoId">
-	insert into 
-	usertable
-	(user_id,
-	user_email)
-	values(
-	#{userId},
-	#{userEmail}
-	)
-	
-	</insert>
-	
+
 	<select id="getmodify" resultType="com.base.entity.UserVO">
-		select * from usertable where user_id = #{userId}
+		select * from usertable where
+		user_id = #{userId}
 	</select>
+
+	<insert id="insertSocialLogin" parameterType="UserVO">
+		insert into usertable (user_id , user_social) values (#{userId} , #{userSocial})
+	</insert>
+
+	<select id="selectSocialLogin" resultType="Integer"
+		parameterType="UserVO">
+		select count(*) from usertable where user_id = #{userId}
+	</select>
+	
+	<update id="passwdUpdate">
+		update usertable set user_passwd = #{userPasswd} where user_id = #{userId}
+	</update>
+	<delete id="deleteUser">
+	delete from usertable where user_id=#{userId}
+	</delete>
+
 </mapper>

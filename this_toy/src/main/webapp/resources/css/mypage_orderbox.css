@@ -59,25 +59,52 @@ body {
 /*-----------------------*/
 /*----------body--------------*/
 section {
-  width: 1400px;
-  margin: 0 auto 30px auto;
+	width: 1400px;
+	margin: 0 auto 30px auto;
+	display: flex;
+	flex-direction: column;
 }
+
 section .mypage_logo {
-  width: 80%;
-  margin: 0 auto;
+	width: 80%;
+	margin: 0 auto;
+	margin-bottom : 40px;
+	font-size: 40px;
+	text-align: center;
+	font-weight:bold;
+	color: rgba(245, 96, 153, 0.9);
 }
 section .mp {
-  width: 80%;
-  margin: 0 auto;
-  margin-top: 15px;
-  display: flex;
-  height: 150px;
+	margin-top: 15px;
+	display: flex;
+	justify-content:ceter;
+	margin: 0 auto;
 }
+
 section .mp .left {
-  height: 150px;
+	width : 350px;
+	height: 350px;
+	
 }
+
 section .mp .right {
-  margin-left: 30px;
+	width:350px;
+	margin-left: 30px;
+	font-size: 16px;
+	
+}
+section .mp .right h6{
+	font-size: 22px;
+	margin-bottom: 13px;
+	color: rgba(245, 96, 153, 0.9);
+}
+section .mp .right div{
+	margin-bottom:20px;
+	font-family: "맑은고딕",sans-serif;
+	font-weight: bold;
+}
+section .mp .right ul li:nth-child(1),section .mp .right ul li:nth-child(2),section .mp .right ul li:nth-child(3){
+	margin-bottom: 17px;
 }
 section .line {
   height: 1px;
@@ -167,320 +194,7 @@ section .onemore {
   height: 20px;
   margin-top: 30px;
 }
-/* section .order_table {
-  margin-left: 50px;
-  border-collapse: collapse;
-}
-.ordertr_line {
-  border-bottom: 1px solid #eeeeef;
-}
-section .order_table td {
-  padding-left: 30px;
-}
-section .orderimg {
-  width: 90px;
-  height: 90px;
-  object-fit: cover;
-  margin-top: 15px;
-}
-.product_logo {
-  color: rgb(193, 122, 241);
-}
-section .order_info {
-  padding-top: 8px;
-}
-section .order_line {
-  border-top: 1px solid #eeeeef;
-  margin: 5px 0 5px 0;
-}
-section .product_price {
-  border-right: 1px solid #f2f3f4;
-  margin-right: 5px;
-  padding-right: 10px;
-}
-section .onemore {
-  border: 1px solid white;
-  border-radius: 10px;
-  padding: 10px;
-  background-color: rgba(224, 185, 250, 0.781);
-} */
-/* td {
-  border: 1px solid grey;
-} */
-.order_table {
-  height: 160px;
-}
-/*---- back-to-top 시작 ----*/
-.back-to-top {
-  background-color: rgba(245, 96, 153, 0.75);
-  border: none;
-  border-radius: 50%;
-  text-align: center;
-  color: white;
-  cursor: pointer;
-  font-size: 16px;
-  line-height: 48px;
-  width: 48px;
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  z-index: 100;
-  opacity: 0;
-  transform: translateY(100px);
-  transition: all 0.5s ease;
-}
-.showBtn {
-  opacity: 1;
-  transform: translateY(0);
-}
-/*-----------------------*/
-
-/*---- footer 시작 ----*/
-footer {
-  height: 220px;
-  background: rgba(197, 137, 199, 0.75);
-  display: flex;
-  flex-direction: column;
-}
-.footer-icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: rgb(255, 255, 255);
-  margin-top: 40px;
-}
-.i1 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  background: rgba(88, 113, 253, 0.5);
-  border-radius: 50%;
-  margin: 5px;
-}
-.footer-icon i {
-  font-size: 20px;
-  text-align: center;
-}
-.footer-business {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: rgba(77, 75, 75, 0.7);
-  transition: 0.3s;
-  font-size: 14px;
-  font-family: "IBMPlexSansKR-ExtraLight", sans-serif;
-  font-weight: bold;
-  margin-top: 20px;
-  text-transform: uppercase;
-}
-.footer-team {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: rgba(77, 75, 75, 0.7);
-  transition: 0.3s;
-  font-size: 14px;
-  font-family: "IBMPlexSansKR-ExtraLight", sans-serif;
-  font-weight: bold;
-  margin-top: 20px;
-  text-transform: uppercase;
-}
-.footer-create {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: rgba(77, 75, 75, 0.5);
-  transition: 0.3s;
-  font-size: 14px;
-  font-family: "IBMPlexSansKR-ExtraLight", sans-serif;
-  font-weight: bold;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-}
-
-/*-----------------------*/
-
-/*-----chat bot------*/
-.chat {
-  z-index: 9999;
-  background-color: white;
-  width: 325px;
-  height: 500px;
-  display: none;
-  right: 30px;
-  bottom: 15px;
-  position: fixed;
-  border-radius: 25px;
-  box-shadow: 5px 5px 10px 3px gray;
-}
-.chat .chat_header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: linear-gradient(
-      103deg,
-      rgb(221, 157, 247) 0%,
-      rgb(175, 100, 237) 50%,
-      rgb(86, 127, 242)
-    )
-    100% center;
-  border-radius: 25px 25px 0 0;
-  box-shadow: 0px 1px 5px 1px gray;
-}
-.chat .chat_logo {
-  margin-top: 10px;
-  margin-left: 20px;
-  width: 150px;
-  height: 150px;
-  background: url("/img/2.png") no-repeat 0 0 / auto 150px;
-}
-.chat .chat_logo:hover {
-  margin-top: 10px;
-  margin-left: 20px;
-  width: 150px;
-  height: 150px;
-  background: url("/img/2.png") no-repeat 0 0 / auto 150px;
-  animation: logo_ani 1s infinite steps(17);
-}
-.chat .fa-times {
-  margin: 10px 20px 0 0;
-  font-size: 25px;
-  color: lightgrey;
-}
-.chat .fa-times:hover {
-  cursor: pointer;
-  color: white;
-}
-.chat .chat_main {
-  overflow-y: scroll;
-  height: 335px;
-  /* overflow-x: hidden; */
-  width: 320px;
-}
-.chat .chat_main::-webkit-scrollbar {
-  width: 10px;
-}
-.chat .chat_main::-webkit-scrollbar-thumb {
-  border-radius: 50px;
-  background: linear-gradient(
-      103deg,
-      rgb(92, 116, 250) 0%,
-      rgb(82, 90, 230) 50%,
-      rgb(82, 113, 200)
-    )
-    100% center;
-}
-.chat .chat_info {
-  display: flex;
-  margin: 15px 0 0 10px;
-}
-.chat .chat_profile {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border: 1px solid none;
-  box-shadow: 0px 1px 5px 1px gray;
-  border-radius: 50%;
-  text-align: center;
-  margin: 8px 3px 0 0;
-  font-size: 30px;
-  color: rgb(82, 70, 255);
-}
-.chat .dito {
-  max-width: 250px;
-}
-.chat .dito_name {
-  margin-left: 15px;
-  font-family: "Middleschool_student", sans-serif;
-  font-size: 25px;
-}
-.chat .dito_text {
-  margin-left: 10px;
-  font-size: 20px;
-  font-family: "Middleschool_student", sans-serif;
-  position: relative;
-  background-color: rgb(88, 113, 253, 0.1);
-  padding: 7px;
-  border: 1px solid rgba(88, 113, 253, 0.75);
-  border-radius: 10px;
-}
-.chat .dito_text:after {
-  border-top: 15px solid rgba(88, 113, 253, 0.75);
-  border-left: 15px solid transparent;
-  border-right: 0px solid transparent;
-  border-bottom: 0px solid transparent;
-  content: "";
-  position: absolute;
-  top: 10px;
-  left: -15px;
-}
-.chat .question {
-  margin-right: 13px;
-  margin-top: 10px;
-  text-align: right;
-}
-.chat .question .ask {
-  margin: 5px 0 5px 0;
-  border-radius: 7px;
-  padding: 3px;
-  text-align: center;
-  width: 100px;
-  background-color: white;
-  border: 0;
-  outline: 0;
-  box-shadow: 0px 1px 5px 1px grey;
-  font-family: "Middleschool_student", sans-serif;
-  font-size: 20px;
-}
-.chat .question .ask:hover {
-  cursor: pointer;
-  background: linear-gradient(
-      103deg,
-      rgb(221, 157, 247) 0%,
-      rgb(175, 100, 237) 50%,
-      rgb(86, 127, 242)
-    )
-    100% center;
-  color: white;
-}
-.ask_text {
-  background: rgba(88, 113, 253, 0.75) 100% center;
-  border: 1px solid white;
-  border-radius: 7px;
-  padding: 5px 10px 10px 10px;
-  font-family: "Middleschool_student", sans-serif;
-  font-size: 20px;
-  color: white;
-  box-shadow: 0px 1px 5px 1px grey;
-}
-.chat-bot-open {
-  background-color: rgba(88, 113, 253, 0.75);
-  border: none;
-  border-radius: 50%;
-  text-align: center;
-  color: white;
-  cursor: pointer;
-  font-size: 28px;
-  line-height: 65px;
-  width: 65px;
-  position: fixed;
-  bottom: 80px;
-  right: 22px;
-  z-index: 100;
-  transform: scale(0.75);
-  border-radius: 50%;
-  /* transform: scaleX(-1); */
-}
-.chat-bot-open:hover {
-  transition: transform 0.2s linear;
-  transform: scale(1);
-  cursor: pointer;
-}
-.chat .fa-times::before {
-  display: none;
+.empty{
+    margin: 120px 0 0 300px;
+    font-size: 40px;
 }

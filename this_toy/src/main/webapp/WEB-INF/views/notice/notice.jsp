@@ -15,7 +15,7 @@
 <script src="https://kit.fontawesome.com/a216194d9c.js"
 	crossorigin="anonymous"></script>
 <link href="/css/style.css" rel="stylesheet">
-<link href="/css/notice.css?ver=1" rel="stylesheet">
+<link href="/css/notice.css?ver=2" rel="stylesheet">
 <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'
 	rel='stylesheet'>
 <title>공지사항</title>
@@ -58,18 +58,17 @@
 			<div class="page-number">
 				<tr>
 					<div class='pull-right'>
-						<a href="/notice/notice?type=${param.type}&keyword=${param.keyword}"><i class="fas fa-angle-double-left"></i></a><a
-							href="/notice/notice?p=${pageMaker.startPage-1}&type=${param.type}&keyword=${param.keyword}"><i
-							class="fas fa-angle-left"></i></a> <span class="pageNumber"> <c:forEach
-								var="num" begin="${pageMaker.startPage}"
-								end="${pageMaker.endPage}">
-								<a href="/notice/notice?p=${num}&type=${param.type}&keyword=${param.keyword}" class="pn"
-									id="${pageMaker.pageNum==num? 'pageNum':''}">${num}</a>
+					<ul>
+						<li><a href="/notice/notice?type=${param.type}&keyword=${param.keyword}"><i class="fas fa-angle-double-left"></i></a></li>
+						<li><a href="/notice/notice?p=${pageMaker.startPage-1}&type=${param.type}&keyword=${param.keyword}"><i class="fas fa-angle-left"></i></a></li> 
+ 
+							<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+								<li><a href="/notice/notice?p=${num}&type=${param.type}&keyword=${param.keyword}" class="pn" id="${pageMaker.pageNum==num? 'pageNum':''}">${num}</a></li>
 							</c:forEach>
-						</span> <a href="/notice/notice?p=${pageMaker.endPage+1}&type=${param.type}&keyword=${param.keyword}"><i
-							class="fas fa-angle-right" id="right"></i></a><a
-							href="/notice/notice?p=${pageMaker.realEnd}&type=${param.type}&keyword=${param.keyword}"><i
-							class="fas fa-angle-double-right"></i></a>
+						<li><a href="/notice/notice?p=${pageMaker.endPage+1}&type=${param.type}&keyword=${param.keyword}"><i class="fas fa-angle-right" id="right"></i></a></li>
+						<li><a href="/notice/notice?p=${pageMaker.realEnd}&type=${param.type}&keyword=${param.keyword}"><i class="fas fa-angle-double-right"></i></a></li>
+						
+					</ul>
 					</div>
 				</tr>
 			</div>
@@ -85,8 +84,9 @@
 									<option value="1">제목</option>
 									<option value="2">내용</option>
 									<option value="3">제목+내용</option>
-								</select> <input type='text' name='keyword'>
-								<button class='btn btn-defauit'>검색</button>
+								</select> 
+								<input type='text' class="keyword" name='keyword'>
+								<button class='btn-defauit'>검색</button>
 							</form>
 						</div>
 		</div>

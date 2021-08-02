@@ -12,7 +12,7 @@
 <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 <title>Document</title>
 <link rel="stylesheet" href="/css/style.css">
-<link rel="stylesheet" href="/css/mypage_orderbox.css">
+<link rel="stylesheet" href="/css/mypage_orderbox.css?ver=1">
 <script src="https://kit.fontawesome.com/a216194d9c.js"
 	crossorigin="anonymous"></script>
 <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'
@@ -25,6 +25,10 @@
 	<section>
 		<%@ include file="../includes/mypage.jsp"%>
 		<div class="flexcollum">
+		<c:if test="${empty orders}">
+		<div class="empty">주문목록이 없습니다.</div>
+		</c:if>
+		<c:if test="${orders ne null}">
 			<c:forEach var="ob" items="${orders}">
 				<c:set var="i" value='${fn:indexOf(ob.productImg,",")}' />
 				<c:set var="simg" value="${fn:substring(ob.productImg,0,i)}" />
@@ -49,6 +53,7 @@
 					<a href="/product/detail_main?pc=${ob.productCode}" class="onemore">재구매</a>
 				</div>
 			</c:forEach>
+			</c:if>
 		</div>
 	</section>
 

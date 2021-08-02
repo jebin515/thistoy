@@ -17,7 +17,15 @@
 	href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 <title>Document</title>
 </head>
-
+<script defer>
+	var result = "<c:out value='${passupdate}'/>";
+	function success() {
+		alert('비밀번호가 변경이 깔끔하게 성공했습니다 ^^.');
+	}
+	if (result == '성공') {
+		success();
+	}
+</script>
 <body>
 	<%@ include file="includes/header.jsp"%>
 	<main>
@@ -25,9 +33,9 @@
 			<div class="swiper-container-main mySwiper-main">
 				<div class="swiper-wrapper">
 					<div class="swiper-slide">
-						<img src="/img/KakaoTalk_20210705_213510675.jpg">
+						<img src="/img/디지니.png">
 						<div class="slide-info">
-							<h4>거북이</h4>
+							<h4>디지니</h4>
 							<p>이진웅</p>
 							<div class="slide-link">
 								<a href="/product/detail_main?pc=${productCode}"><i class="bx bx-link"></i></a>
@@ -35,29 +43,13 @@
 						</div>
 					</div>
 					<div class="swiper-slide">
-						<img src="/img/1.jpg">
-						<div class="title">dadad</div>
+						<img src="/img/고양이.png">
 					</div>
 					<div class="swiper-slide">
-						<img src="/img/1.jpg">
+						<img src="/img/디지니.png">
 					</div>
 					<div class="swiper-slide">
-						<img src="/img/1.jpg">
-					</div>
-					<div class="swiper-slide">
-						<img src="/img/1.jpg">
-					</div>
-					<div class="swiper-slide">
-						<img src="/img/1.jpg">
-					</div>
-					<div class="swiper-slide">
-						<img src="/img/1.jpg">
-					</div>
-					<div class="swiper-slide">
-						<img src="/img/1.jpg">
-					</div>
-					<div class="swiper-slide">
-						<img src="/img/1.jpg">
+						<img src="/img/고양이.png">
 					</div>
 				</div>
 				<div class="swiper-pagination-main"></div>

@@ -2,27 +2,50 @@
 section {
 	width: 1400px;
 	margin: 0 auto 30px auto;
+	display: flex;
+	flex-direction: column;
 }
 
 section .mypage_logo {
 	width: 80%;
 	margin: 0 auto;
+	margin-bottom : 40px;
+	font-size: 40px;
+	text-align: center;
+	font-weight:bold;
+	color: rgba(245, 96, 153, 0.9);
 }
-
 section .mp {
-	width: 80%;
-	margin: 0 auto;
 	margin-top: 15px;
 	display: flex;
-	height: 150px;
+	justify-content:ceter;
+	margin: 0 auto;
 }
 
 section .mp .left {
-	height: 150px;
+	width : 350px;
+	height: 350px;
+	
 }
 
 section .mp .right {
+	width:350px;
 	margin-left: 30px;
+	font-size: 16px;
+	
+}
+section .mp .right h6{
+	font-size: 22px;
+	margin-bottom: 13px;
+	color: rgba(245, 96, 153, 0.9);
+}
+section .mp .right div{
+	margin-bottom:20px;
+	font-family: "맑은고딕",sans-serif;
+	font-weight: bold;
+}
+section .mp .right ul li:nth-child(1),section .mp .right ul li:nth-child(2),section .mp .right ul li:nth-child(3){
+	margin-bottom: 17px;
 }
 
 section .line {
@@ -104,4 +127,9 @@ section .fa-caret-left {
 
 .product_logo {
 	color: rgb(193, 122, 241);
+}
+.empty{
+	width:500px;
+    margin: 120px 0 0 300px;
+    font-size: 40px;
 }

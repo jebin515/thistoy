@@ -38,7 +38,7 @@ public class MypageController {
 		HttpSession session = request.getSession();
 		String userId = (String) session.getAttribute("userId");
 		if(userId==null) {
-			return  "redirect:/main";
+			return  "redirect:/";
 		}
 		ArrayList<WishlistVO> vo = service.getProductCode(userId);
 		if(vo.size()>0) {
@@ -61,7 +61,7 @@ public class MypageController {
 		HttpSession session = request.getSession();
 		String userId = (String) session.getAttribute("userId");
 		if(userId==null) {
-			return  "redirect:/main";
+			return  "redirect:/";
 		}
 		model.addAttribute("sellbox", service.getSellbox(userId));
 		model.addAttribute("user", service.getUser(userId));
@@ -73,7 +73,7 @@ public class MypageController {
 		HttpSession session = request.getSession();
 		String userId = (String) session.getAttribute("userId");
 		if(userId==null) {
-			return  "redirect:/main";
+			return  "redirect:/";
 		}
 		ArrayList<CartVO> vo = service.getProductCode3(userId);
 		if(vo.size()>0) {
@@ -82,6 +82,7 @@ public class MypageController {
 		System.out.println(productCode3);
 		for (int i = 0; i < vo.size(); i++) {
 			int productEa = vo.get(i).getProductEa();
+			System.out.println(productEa);
 			String productCode = vo.get(i).getProductCode();
 			ProductVO productvo = service.getCart(productCode);
 			productvo.setProductEa(productEa);
@@ -98,7 +99,7 @@ public class MypageController {
 		HttpSession session = request.getSession();
 		String userId = (String) session.getAttribute("userId");
 		if(userId==null) {
-			return  "redirect:/main";
+			return  "redirect:/";
 		}
 		ArrayList<OrdersVO> vo = service.getOrderList(userId);
 		ArrayList<OrdersVO> pVO = new ArrayList<OrdersVO>();
@@ -127,7 +128,7 @@ public class MypageController {
 		HttpSession session = request.getSession();
 		String userId = (String) session.getAttribute("userId");
 		if(userId==null) {
-			return  "redirect:/main";
+			return  "redirect:/";
 		}
 		model.addAttribute("order",service.getOrder(orderCode));
 		model.addAttribute("product",service.getProduct2(productCode));
@@ -141,7 +142,7 @@ public class MypageController {
 		HttpSession session = request.getSession();
 		String userId = (String) session.getAttribute("userId");
 		if(userId==null) {
-			return  "redirect:/main";
+			return  "redirect:/";
 		}
 		model.addAttribute("review", service.getReviewList(userId));
 		model.addAttribute("qna", service.getQnaList(userId));
