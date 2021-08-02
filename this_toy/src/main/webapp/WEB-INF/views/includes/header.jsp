@@ -1,52 +1,83 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link rel="stylesheet" href="/css/header.css">
+
+
+<meta name="google-signin-scope" content="profile email">
+<meta name="google-signin-client_id"
+	content="1035257445971-ak3jovlghqfiqi6hf6mu310d4dhed13n.apps.googleusercontent.com">
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+	function signOut() {
+		var auth2 = gapi.auth2.getAuthInstance();
+		auth2.signOut().then(function() {
+			console.log('User signed out.');
+		});
+		auth2.disconnect();
+		$(document).ready(function() {
+			location.replace("/login/logout");
+		});
+	}
+
+	function onLoad() {
+		gapi.load('auth2', function() {
+			gapi.auth2.init();
+		});
+	}
+</script>
+<script src="https://apis.google.com/js/platform.js?onload=onLoad" async
+	defer></script>
+
+
+
 <header id="header">
 	<c:if test="${empty userId}">
 
-	<div class="header-full">
-		<a href="/main" class="logo"></a>
+		<div class="header-full">
+			<a href="/main" class="logo"></a>
 			<nav class="header_nav">
 				<div class="header_menu">
 					<a href="/login/login" class="header_login"><i
-						class='bx-fw bx bxs-rocket bx-tada-hover'></i>로그인</a> <a href="/register/register-1"
-						class="header_register"><i
+						class='bx-fw bx bxs-rocket bx-tada-hover'></i>로그인</a> <a
+						href="/register/register-1" class="header_register"><i
 						class='bx-fw bx bxs-user-plus bx-tada-hover'></i>회원가입</a>
 				</div>
 			</nav>
-	</div>
+		</div>
 	</c:if>
 	<c:if test="${not empty userId and userId ne 'admin'}">
-	<div class="header-full">
-		<a href="/main" class="logo"></a>
+		<div class="header-full">
+			<a href="/main" class="logo"></a>
 			<nav class="header_nav">
 				<div class="header_menu">
 
-					<a href="/login/logout" class="header_login">  
-					<i class='bx-fw bx bxs-rocket bx-tada-hover'></i>로그아웃</a> 
-					<a href="/edit/modify" class="header_register">
-					<i class='bx-fw bx bxs-user-plus bx-tada-hover'></i>개인정보수정</a>
-					<a href="/mypage/mypage_wishlist">
-					<i class='bx-fw bx bxs-rocket bx-tada-hover'></i>마이페이지</a>
+					<a href="#" class="header_login" onclick="signOut();"> <i
+						class='bx-fw bx bxs-rocket bx-tada-hover'></i>로그아웃
+					</a> <a href="/edit/modify" class="header_register"> <i
+						class='bx-fw bx bxs-user-plus bx-tada-hover'></i>개인정보수정
+					</a> <a href="/mypage/mypage_wishlist"> <i
+						class='bx-fw bx bxs-rocket bx-tada-hover'></i>마이페이지
+					</a>
 				</div>
 			</nav>
-	</div>
+		</div>
 	</c:if>
 	<c:if test="${userId eq 'admin'}">
-	<div class="header-full">
-		<a href="/main" class="logo"></a>
+		<div class="header-full">
+			<a href="/main" class="logo"></a>
 			<nav class="header_nav">
 				<div class="header_menu">
 
-					<a href="/login/logout" class="header_login">  
-					<i class='bx-fw bx bxs-rocket bx-tada-hover'></i>로그아웃</a> 
-					<a href="/admin/admin">
-					<i class='bx-fw bx bxs-rocket bx-tada-hover'></i>관리자페이지</a>
+					<a href="/login/logout" class="header_login"> <i
+						class='bx-fw bx bxs-rocket bx-tada-hover'></i>로그아웃
+					</a> <a href="/admin/admin"> <i
+						class='bx-fw bx bxs-rocket bx-tada-hover'></i>관리자페이지
+					</a>
 				</div>
 			</nav>
-	</div>
+		</div>
 	</c:if>
 </header>
 

@@ -7,14 +7,30 @@
 	<select id="getTotal" resultType="int">
 		select count(*) from usertable
 	</select>
+	
 	<delete id="deleteMember">
 		delete from usertable where user_id = #{userId}
 	</delete>
+	
+	<update id="updateMember">
+		update orders set order_situation = #{orderSituation} where order_Code = #{orderCode} 
+	</update>
+	
 	<select id="userListPaging" resultType="UserVO">
 	<![CDATA[
 	select * from(
     select rownum num , n.* from 
 	(select * from usertable order by user_date desc) n
+    ) 
+    where num between (#{pageNum}-1)*10+1 and #{pageNum}*10
+	]]>
+	</select>
+	
+	<select id="orderListPaging" resultType="OrdersVO">
+	<![CDATA[
+	select * from(
+    select rownum num , n.* from 
+	(select * from orders order by order_date desc) n
     ) 
     where num between (#{pageNum}-1)*10+1 and #{pageNum}*10
 	]]>

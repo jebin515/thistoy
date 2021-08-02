@@ -29,5 +29,10 @@ public interface UserService {
 	//수정시 비밀번호체크
 	AuthInfo pwCheck(LoginCommand loginCommand);
 	
+	public int selectSocialLogin(UserVO vo);
+	
+	public int insertSocialLogin(UserVO vo);
+	
+	int passwdUpdate(UserVO vo);
 	
 }
