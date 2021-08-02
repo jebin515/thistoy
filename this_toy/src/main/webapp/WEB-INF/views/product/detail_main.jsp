@@ -243,7 +243,13 @@
 					<input type="hidden" value="${Qn.questionCode}" />
 					<tr class="QnAbox">
 						<td>${Qn.replySituation}</td>
-						<td class="QnAText"><c:out value="${Qn.questionText}" /></td>
+						<td class="QnAText">
+						<c:if test="${userId ne Qn.userId and userId ne 'admin'}">
+						비밀글 입니다.
+						</c:if>
+						<c:if test="${userId eq Qn.userId || userId eq 'admin'}">
+						<c:out value="${Qn.questionText}" />
+						</c:if></td>
 						<td>${Qn.userId}</td>
 						<td><fmt:formatDate var="date" value="${Qn.questionDate}"
 								pattern="yyyy.MM.dd" /> ${date}</td>
@@ -534,10 +540,13 @@
 					QnAbox += '<input type="hidden" value="'+rs[i].questionCode+'"/>'+
 						'<tr class="QnAbox"><td>'
 						+ rs[i].replySituation
-						+ '</td><td>'
-						+ rs[i].questionText
-						+ '</td><td>'
-						+ rs[i].userId
+						+ '</td><td>';
+						if(myName==rs[i].userId || myName == 'admin'){
+							QnAbox += rs[i].questionText + '</td><td>';
+						}else{
+							QnAbox += '비밀글 입니다.</td><td>';
+						}
+						QnAbox += rs[i].userId
 						+ '</td><td>'
 						+ moment(
 								rs[i].questionDate)
