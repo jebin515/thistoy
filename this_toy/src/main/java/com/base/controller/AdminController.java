@@ -27,7 +27,7 @@ public class AdminController {
 	public String admin(Model model, @RequestParam(name = "p", defaultValue = "1") int pageNum,HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		String userId = (String) session.getAttribute("userId");
-		if(!userId.equals("admin") || userId==null) {
+		if(!userId.equals("admin")) {
 			return "redirect:/main";
 		}
 		int count = service.getTotal();
