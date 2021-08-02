@@ -103,7 +103,7 @@
 								<div class="sum">${cl.productPrice}원</div>
 							</td>
 							<!-- 삭제 -->
-							<td><input type="hidden" value="${cl.productCode}" />
+							<td><input type="hidden" value="${cl.productCode}" name="pdc" />
 								<div class="basketcmd">
 									<a href="javascript:void(0)" class="abutton delete"
 										onclick="javascript:basket.delItem();"> 삭제 </a>

@@ -82,6 +82,7 @@ public class MypageController {
 		System.out.println(productCode3);
 		for (int i = 0; i < vo.size(); i++) {
 			int productEa = vo.get(i).getProductEa();
+			System.out.println(productEa);
 			String productCode = vo.get(i).getProductCode();
 			ProductVO productvo = service.getCart(productCode);
 			productvo.setProductEa(productEa);
