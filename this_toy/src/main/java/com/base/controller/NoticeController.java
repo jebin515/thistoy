@@ -27,10 +27,7 @@ public class NoticeController {
 	public void list(@RequestParam(name = "p", defaultValue = "1") int pageNum, 
 			@RequestParam(name = "type", defaultValue = "1") int titleNum,
 			@RequestParam(name = "keyword", defaultValue = "") String search, Model model) {
-		System.out.println(titleNum);
-		System.out.println(search);
 		SearchVO svo = new SearchVO();
-		svo.setSearch(search);
 		svo.setTitleNum(titleNum);
 		int count = service.getTotal(svo);
 		PageVO vo = new PageVO(count, 1);
@@ -41,7 +38,13 @@ public class NoticeController {
 		}
 		svo.setPageNum(pageNum);
 		System.out.println(svo);
-		model.addAttribute("list", service.getListwithPaging(svo));
+		if(search.length()>0) {
+			svo.setSearch(search);
+			System.out.println(svo);
+//			model.addAttribute("list", service.getListwithPagingSearch(svo));
+		}else {
+			model.addAttribute("list", service.getListwithPaging(svo));
+		}
 		model.addAttribute("pageMaker", new PageVO(count, pageNum));
 	}
 

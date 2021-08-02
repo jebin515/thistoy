@@ -30,27 +30,39 @@
 		where notice_num = #{noticeNum}
 	</update>
 
-	<select id="getListwithPaging" resultType="NoticeVO">
+	<select id="getListwithPagingSearch" resultType="NoticeVO">
 		select * from(
 		select rownum
 		num , n.* from
 		(select * from notice
-			<if test="titleNum==1">
+		<if test="titleNum==1">
 			<![CDATA[
-				where notice_title like '%'||#{search}||'%'
+				where notice_title like '%' || #{search} || '%'
 				]]>
-			</if>
-			<if test="titleNum==2">
+		</if>
+		<if test="titleNum==2">
 			<![CDATA[
-				 where notice_text like '%'||#{search}||'%'
+				 where notice_text like '%' || #{search} || '%'
 				]]>
-			</if>
-			<if test="titleNum=3">
+		</if>
+		<if test="titleNum==3">
 			<![CDATA[
-				 where notice_title like '%'||#{search}||'%' or notice_text like '%'||#{search}||'%'
+				 where notice_title like '%' || #{search} || '%' or notice_text like '%' || #{search} || '%'
 				]]>
-			</if>
+		</if>
 		order by notice_date desc) n
+		)
+		where
+		num between (#{pageNum}-1)*10+1 and
+		#{pageNum}*10
+	</select>
+
+	<select id="getListwithPaging" resultType="NoticeVO">
+		select * from(
+		select
+		rownum
+		num , n.* from
+		(select * from notice order by notice_date desc) n
 		)
 		where
 		num between (#{pageNum}-1)*10+1 and
@@ -59,19 +71,19 @@
 
 	<select id="getTotalCount" resultType="int">
 		select count(*) from
-		notice 
+		notice
 		<choose>
-			<when test="title.equals('T')">
+			<when test="titleNum==1">
 			<![CDATA[
 				where notice_title like '%'||${search}||'%'
 				]]>
 			</when>
-			<when test="title.equals('C')">
+			<when test="titleNum==2">
 			<![CDATA[
 				 where notice_text like '%'||${search}||'%'
 				]]>
 			</when>
-			<when test="title.equals('TC')">
+			<when test="titleNum==3">
 			<![CDATA[
 				 where notice_title like '%'||${search}||'%' or notice_text like '%'||${search}||'%'
 				]]>

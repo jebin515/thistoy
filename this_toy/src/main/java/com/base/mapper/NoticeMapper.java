@@ -17,6 +17,8 @@ public interface NoticeMapper {
 		
 		int update(NoticeVO notice);
 		
+		List<NoticeVO> getListwithPagingSearch(SearchVO vo);
+		
 		List<NoticeVO> getListwithPaging(SearchVO vo);
 		
 		int getTotalCount(SearchVO vo);

@@ -17,6 +17,8 @@ public interface NoticeService {
 	
 	int getTotal(SearchVO vo);
 	
+	List<NoticeVO> getListwithPagingSearch(SearchVO vo);
+	
 	List<NoticeVO> getListwithPaging(SearchVO vo);
 
 }

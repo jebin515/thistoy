@@ -54,4 +54,10 @@ public class NoticeServiceImpl implements NoticeService{
 		return mapper.getListwithPaging(vo);
 	}
 
+	@Override
+	public List<NoticeVO> getListwithPagingSearch(SearchVO vo) {
+		// TODO Auto-generated method stub
+		return mapper.getListwithPagingSearch(vo);
+	}
+
 }
