@@ -1,0 +1,87 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+.title {
+	font-family: "Cafe24SsurroundAir", sans-serif;
+	letter-spacing: 10px;
+	font-size: 50px;
+	margin: 20px 30px 30px 510px;
+}
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+.delete_table {
+	width: 1200px;
+	text-align: center;
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+.table_head {
+	letter-spacing: 5px;
+	height: 45px;
+	background: rgba(193, 122, 241, 0.75);
+	color: white;
+	font-size: 20px;
+	font-weight: bold;
+}
+.table_data {
+	border-bottom: 1px solid rgb(194, 194, 194);
+	line-height: 40px;
+}
+.table_head .member_date {
+	width: 80px;
+	height: 60px;
+}
+.table_head .member_orderCode {
+	width: 80px;
+}
+.table_head .member_name {
+	width: 80px;
+}
+.table_head .member_phone {
+	width: 90px;
+}
+.table_head .member_email {
+	width: 50px;
+}
+.table_head .member_address {
+	width: 130px;
+}
+.table_head .member_situation{
+	width: 80px;
+}
+.table_head .member_delete {
+	width: 10px;
+}
+.update button {
+	background-color: rgba(224, 185, 250, 0.781);
+	font-family: "Cafe24Ssurround", sans-serif;
+	font-size: 17px;
+	color: white;
+	border: 1px solid white;
+	border-radius: 10px;
+	padding : 10px 20px 10px 20px;
+	margin : 5px 0 5px 0;
+	cursor: pointer;
+}
+.paging .middle_page ul {
+	display: flex;
+}
+.paging .middle_page ul li {
+	position: relative;
+	white-space: nowrap;
+	padding: 10px 10px 10px 10px;
+}
+.pageNum{
+	color:rgb(193, 122, 241);
+	font-weight:bold;
+}

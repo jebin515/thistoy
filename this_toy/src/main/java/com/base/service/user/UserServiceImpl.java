@@ -95,5 +95,21 @@ public class UserServiceImpl implements UserService {
 		return userMapper.getmodify(userId);
 	}
 	
+	@Override
+	public int insertSocialLogin(UserVO vo) {
+		// TODO Auto-generated method stub
+		return userMapper.insertSocialLogin(vo);
+	}
+	@Override
+	public int selectSocialLogin(UserVO vo) {
+		// TODO Auto-generated method stub
+		return userMapper.selectSocialLogin(vo);
+	}
+	@Override
+	public int passwdUpdate(UserVO vo) {
+		// TODO Auto-generated method stub
+		return userMapper.passwdUpdate(vo);
+	}
+	
 	
 }

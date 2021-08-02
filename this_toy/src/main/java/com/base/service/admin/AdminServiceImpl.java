@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.springframework.stereotype.Service;
 
+import com.base.entity.OrdersVO;
 import com.base.entity.UserVO;
 import com.base.mapper.AdminMapper;
 
@@ -31,6 +32,18 @@ public class AdminServiceImpl implements AdminService {
 	public int getTotal() {
 		// TODO Auto-generated method stub
 		return mapper.getTotal();
+	}
+	
+	@Override
+	public ArrayList<OrdersVO> orderListPaging(int pageNum) {
+		// TODO Auto-generated method stub
+		return mapper.orderListPaging(pageNum);
+	}
+	
+	@Override
+	public void updateMember(OrdersVO vo) {
+		
+		mapper.updateMember(vo);
 	}
 
 }

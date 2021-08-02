@@ -21,10 +21,13 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.base.entity.UserVO;
 import com.base.service.user.UserService;
@@ -99,6 +102,35 @@ public class LoginController {
 	public void findPassword() throws Exception {
 		
 	}
+	@PostMapping("/findpwcheck")
+	public String findpwcheck(UserVO vo , RedirectAttributes rttr) {
+		String userId = vo.getUserId();
+		int rs = userService.idCheck(vo);
+		if(rs == 0) {
+			System.out.println("결과 : "+rs);
+			rttr.addFlashAttribute("fail","틀림");
+			return "redirect:/login/findpw";
+		} else {
+			rttr.addAttribute("userId",userId);
+			return "redirect:/login/pwchange";
+		}
+		
+	}
+	
+	@GetMapping("/pwchange")
+	public void pwchange(@RequestParam(value = "userId") String userId, Model model) {
+		model.addAttribute("userId",userId);
+		
+	}
+	
+	@PostMapping("/pwchangesuccess")
+	public String pwchangesuccess(UserVO vo , RedirectAttributes rttr){
+		String userId = vo.getUserId();
+		userService.passwdUpdate(vo);
+		rttr.addFlashAttribute("passupdate","성공");
+		return "redirect:/main";
+	}
+	
 	private final JavaMailSender mailSender;
 	@GetMapping("/findpassword")
 	@ResponseBody
@@ -133,7 +165,29 @@ public class LoginController {
 		return Checkcode;
 	}
 	
+	@RequestMapping(value="/socailLogin", method = RequestMethod.GET)
+	public String socialLogin(UserVO vo, HttpSession session) {
+		System.out.println(vo);
+		String email = vo.getUserId();
+		String social = vo.getUserSocial();
+		System.out.println(email);
+		System.out.println(social);
+
+		int rs = userService.selectSocialLogin(vo);
+		if(rs == 0) {
+			int res = userService.insertSocialLogin(vo);
+			System.out.println("결과 : "+res);
+		}
+
+		session.setAttribute("userId", vo.getUserId());
+		
+		return "redirect:/main";
+	}
 	
+	@RequestMapping(value="/navercallback", method = RequestMethod.GET)
+	public String naverCallback() {
+		return "/login/navercallback";
+	}
 	
 	
 	

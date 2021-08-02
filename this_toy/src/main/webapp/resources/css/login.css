@@ -61,7 +61,7 @@ body {
   box-shadow: 0px 0px 30px rgba(255, 141, 226, 0.3);
   transition: 0.3s;
 }
-.menu .drop-down ul .drop-down ul{
+.menu .drop-down ul .drop-down ul {
   left: 131px;
   top: 0;
 }
@@ -146,7 +146,6 @@ body {
 form {
   align-items: center;
   width: 290px;
-  height: 550px;
 }
 
 .login-content h2 {
@@ -299,17 +298,6 @@ a:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-.login-api img{
-  width: 300px;
-  height: 50px;
-  border-radius: 25px;
-}
-.login-api .g-signin2{
-  border-radius: 25px;
-}
-.abcRioButton{
-  border-radius: 25px;
 }
 
 

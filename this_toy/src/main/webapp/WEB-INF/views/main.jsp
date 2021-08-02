@@ -17,7 +17,15 @@
 	href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 <title>Document</title>
 </head>
-
+<script defer>
+	var result = "<c:out value='${passupdate}'/>";
+	function success() {
+		alert('비밀번호가 변경이 깔끔하게 성공했습니다 ^^.');
+	}
+	if (result == '성공') {
+		success();
+	}
+</script>
 <body>
 	<%@ include file="includes/header.jsp"%>
 	<main>
