@@ -32,7 +32,7 @@ public class AdminController {
 		HttpSession session = request.getSession();
 		String userId = (String) session.getAttribute("userId");
 		if(!userId.equals("admin")) {
-			return "redirect:/main";
+			return "redirect:/";
 		}
 		int count = service.getTotal();
 		PageVO pVO = new PageVO(count, 1);
@@ -58,7 +58,7 @@ public class AdminController {
 	HttpSession session = request.getSession();
 	String userId = (String) session.getAttribute("userId");
 	if(!userId.equals("admin") || userId==null) {
-		return "redirect:/main";
+		return "redirect:/";
 	}
 	int count = service.getTotal();
 	PageVO pVO = new PageVO(count, 1);

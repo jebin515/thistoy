@@ -21,7 +21,7 @@
 				<main>
 					<form action="/login/loginsuccess" method="post">
 						<div>
-							<a href="/main" class="logo"></a>
+							<a href="/" class="logo"></a>
 						</div>
 						<div class="input-div one">
 							<div class="i">

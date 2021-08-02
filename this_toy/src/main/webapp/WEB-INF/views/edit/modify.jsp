@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,10 +19,11 @@
 <link rel="stylesheet" href="/css/editmypage.css?var=2">
 <link rel="stylesheet" href="/css/header.css">
 <link rel="stylesheet" href="/css/footer.css">
+<script src="/js/modify.js?ver=3" defer></script>
+
 </head>
 
 <body>
-
 	<%@ include file="../includes/header.jsp"%>
 	<div class="main">
 		<main>
@@ -45,10 +46,8 @@
 					<table>
 						<tr class="form-control">
 							<th><span>아이디</span></th>
-							<td>
-								<input type="text" name="userId" value="${user.userId}"
-								class="userId" required readonly>
-							</td>
+							<td><input type="text" name="userId" value="${user.userId}"
+								class="userId" required readonly></td>
 						</tr>
 						<tr class="form-control">
 							<th><span>이름</span></th>
@@ -69,8 +68,7 @@
 						<tr class="form-control">
 							<th><span>이메일</span></th>
 							<td><input type="email" name="userEmail" id="userEmail"
-								class="userEmail" value="${user.userEmail}" required>
-<%-- 								class="userEmail" value="${userId.userEmail}" required> --%>
+								class="userEmail" value="${user.userEmail}" required> 
 							</td>
 						</tr>
 						<tr class="form-control">
@@ -85,7 +83,7 @@
 								onclick="findAddr()" required><br> <input
 								id="member_addr" name="userAddress" type="text"
 								value="${user.userAddress}" readonly required> <br>
-							<input type="text" name="userAddressDetail" id="member_detail"
+								<input type="text" name="userAddressDetail" id="member_detail"
 								value="${user.userAddressDetail}" required></td>
 						</tr>
 					</table>
@@ -96,62 +94,21 @@
 			<!-- 저장 하기 버튼 -->
 			<div class="button">
 
-				<input type='button' class="delet" value='회원탈퇴' onclick="location.href='delet.html'" /> 
-				<input type='submit' class="save" value='저장하기' />
+				<input type="hidden" name="user" value="${user.userId}"> <input
+					type='button' class="delet btn" value='회원탈퇴' /> <input
+					type='button' class="save btn" value='저장하기' />
 
 			</div>
 
 			<!-- 회원 탈퇴 버튼 -->
 		</form>
 	</div>
-	<!-- footer영역 넣어주기 -->
-
 	<%@ include file="../includes/footer.jsp"%>
-
-	<a href="#" class="back-to-top"> <i
-		class="bx-fw bx bxs-rocket bx-tada-hover"></i>
-	</a>
-
-	<div class="chat">
-		<div class="chat_header">
-			<div class="chat_logo"></div>
-			<div class="fa-times">
-				<i class="bx bx-x" onclick="closechat();"></i>
-			</div>
-		</div>
-		<div class="chat_main">
-			<div class="chat_info">
-				<div class="chat_profile">
-					<i class='bx bx-game'></i>
-				</div>
-				<div class="dito">
-					<span class="dito_name">디토</span>
-					<div class="dito_text">디스토이에 오신걸 환영합니다! 꼭 필요한 미니어처를 찾아가세요!!</div>
-				</div>
-			</div>
-			<div class="question">
-				<button type="button" class="ask" onclick="answer1();">반품/교환/환불</button>
-				<br>
-				<button type="button" class="ask" onclick="answer2();">결제
-					안내</button>
-				<br>
-				<button type=" button" class="ask" onclick="answer3();">재입고
-					안내</button>
-			</div>
-		</div>
-	</div>
-	<div class="chat-bot-open">
-		<i class='bx bx-message-rounded' onclick="openchat();"></i>
-	</div>
-	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 	<script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
-	<script src="/js/back-to-top.js"></script>
 	<script src="/js/address.js"></script>
 	<script src="/js/modifyCheck.js"></script>
-	<script src="/js/chatbot.js"></script>
-<!-- 	<script type="text/javascript" src="js/editmypage.js"></script> -->
 	<script
 		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </body>

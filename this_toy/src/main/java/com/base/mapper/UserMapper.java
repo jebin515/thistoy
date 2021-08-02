@@ -1,9 +1,11 @@
 package com.base.mapper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import com.base.entity.ProductVO;
 import com.base.entity.UserVO;
 import com.base.session.LoginCommand;
 
@@ -41,7 +43,8 @@ public interface UserMapper {
 	public int insertSocialLogin(UserVO vo);
 	
 	int passwdUpdate(UserVO vo);
-
+	
+	int deleteUser(String userId);
 
 
 }

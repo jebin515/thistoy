@@ -30,8 +30,8 @@
 		user_tel,
 		user_address_post,
 		user_address,
-		user_address_detail
-		<!-- user_img -->
+		user_address_detail,
+		user_img
 		) values (
 		#{userId},
 		#{userPasswd},
@@ -40,30 +40,16 @@
 		#{userTel},
 		#{userAddressPost},
 		#{userAddress},
-		#{userAddressDetail}
-		<!-- #{userImg} -->
+		#{userAddressDetail},
+		#{userImg}
 		)
-		<!-- 'xml테스트','xml테스트','xml테스트','xml테스트','xml테스트','xml테스트' -->
 	</insert>
 	<select id="selectById" resultType="com.base.entity.UserVO">
-		<!-- <![CDATA[ -->
 		select * from
 		usertable
 		where
 		user_id = #{userId}
-		<!-- and -->
-		<!-- user_passwd = #{userPasswd} -->
-		<!-- ]]> -->
 	</select>
-	<!-- 로그인 -->
-	<!-- <select id="login" resultType="com.base.entity.UserVO"> -->
-	<!-- select user_id,user_passwd from -->
-	<!-- usertable -->
-	<!-- where -->
-	<!-- user_id = #{userId} -->
-	<!-- and -->
-	<!-- user_passwd = #{userPasswd} -->
-	<!-- </select> -->
 	<update id="userModify">
 		update usertable
 		set
@@ -117,5 +103,8 @@
 	<update id="passwdUpdate">
 		update usertable set user_passwd = #{userPasswd} where user_id = #{userId}
 	</update>
+	<delete id="deleteUser">
+	delete from usertable where user_id=#{userId}
+	</delete>
 
 </mapper>

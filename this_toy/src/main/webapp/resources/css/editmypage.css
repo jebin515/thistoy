@@ -129,3 +129,6 @@ main .register-main .register-menu .one {
   font-size: 35px;
   color: rgba(245, 96, 153, 0.9);
 }
+.btn:hover{
+	cursor:pointer;
+}
