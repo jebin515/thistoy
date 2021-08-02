@@ -110,3 +110,17 @@ Number.prototype.formatNumber = function () {
   while (regex.test(nstr)) nstr = nstr.replace(regex, "$1" + "," + "$2");
   return nstr;
 };
+
+let p_price = document.querySelectorAll('.p_price');
+let p_num = document.querySelectorAll('.p_num');
+let totalPrice=0;
+function pay() {
+for(let i = 0; i<p_price.length; i++){
+	let price = Number(p_price[i].value)*Number(p_num[i].value);
+	totalPrice+=price;
+}
+totalPrice += 3000;
+console.log(totalPrice);
+document.querySelector('#sum_p_price').innerHTML="합계 : "+totalPrice+"원";
+}
+pay();

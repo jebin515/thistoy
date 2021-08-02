@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,14 +18,13 @@
 
 <body>
 <%@ include file="../includes/header.jsp" %>
-
     <article>
         <div>주문상세정보</div>
         <table class="ordertop">
             <tr>
-                <td>주문일자 2021.07.14</td>
-                <td>주문번호 20210714123123</td>
-                <td><a href="#" class="order_remove">주문내역 삭제</a></td>
+                <td>주문일자 <fmt:formatDate var="date" value="${order.orderDate}" pattern="yyyy.MM.dd" /> ${date}</td>
+                <td>주문번호 <c:out value="${order.orderCode}"/></td>
+                <td><a href="/mypage/orderdelete?oc=${order.orderCode}" class="order_remove">주문내역 삭제</a></td>
             </tr>
         </table>
         <table class="ordermiddle">
@@ -36,26 +36,28 @@
                 <th>진행상태</th>
             </tr>
             <tr>
-                <td>0123344405</td>
+                <td><c:out value="${product.productCode}"/></td>
                 <td>
                     <div class="orderinfo">
-                        <img src="/img/mable.jpg" alt="" class="orderimg">
+                    <c:set var="i" value='${fn:indexOf(product.productMainImg,",")}' />
+					<c:set var="simg" value="${fn:substring(product.productMainImg,0,i)}" />
+                        <img src="/upload/product/main/${simg}" alt="" class="orderimg">
                         <div class="orderinfo_text">
                             <div class="product_logo">This Toy</div>
-                            <div>마블 아이언맨 피규어</div>
+                            <div><c:out value="${product.productName}"/></div>
                         </div>
                     </div>
                 </td>
                 <td>
-                    <div>9,900원</div>
+                    <div><c:out value="${product.productPrice}"/>원</div>
                     <div>(1개)</div>
                 </td>
                 <td>
-                    <div>판매자 아이디</div>
-                    <div>판매자 전화번호</div>
+                    <div>판매자 <c:out value="${seller.userId}"/></div>
+                    <div>판매자 <c:out value="${seller.userTel}"/></div>
                 </td>
                 <td>
-                    <div class="delivering">배송중</div>
+                    <div class="delivering"><c:out value="${order.orderSituation}"/></div>
                     <a href="" class="order_cancle">주문취소</a>
                 </td>
                 <td></td>
@@ -72,8 +74,8 @@
                 <th>연락처</th>
                 <td>010-6865-6036</td>
                 <td rowspan="2" class="orderer_info">
-                    윤재빈<br />
-                    010-6865-6036</td>
+                    ${user.userName}<br />
+                    ${user.userTel}</td>
             </tr>
             <tr>
                 <th>배송지</th>

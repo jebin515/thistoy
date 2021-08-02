@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -74,6 +73,7 @@
 							<li><a href="#">사이트안내</a></li>
 							<li><a href="#">신제품</a></li>
 							<li><a href="#">인기제품</a></li>
+							<li><a href="#">판매글작성</a></li>
 							<li class="drop-down"><a href="#">카테고리</a>
 								<ul>
 									<li><a href="#">피규어</a></li>
@@ -86,9 +86,33 @@
 										</ul></li>
 								</ul></li>
 						</ul></li>
-				</ul>
-				<ul>
-					<li><a href="#">공지사항</a></li>
+					<li class="drop-down"><a href="#"><i
+							class='bx-fw bx  bx-tada-hover bx-xs'></i>카테고리</a>
+						<ul>
+							<li class="drop-down"><a href="">피규어</a>
+								<ul>
+									<li><a href="#">애니</a></li>
+									<li><a href="#">게임</a></li>
+									<li><a href="#">연예인</a></li>
+								</ul></li>
+							<li class="drop-down"><a href="">하우스</a>
+								<ul>
+									<li><a href="#">소형</a></li>
+									<li><a href="#">중형</a></li>
+									<li><a href="#">대형</a></li>
+								</ul></li>
+							<li class="drop-down"><a href="">RC</a>
+								<ul>
+									<li><a href="#">육</a></li>
+									<li><a href="#">해</a></li>
+									<li><a href="#">공</a></li>
+								</ul></li>
+							<li class="drop-down"><a href="">기타</a>
+								<ul>
+									<li><a href="#">슬라임</a></li>
+									<li><a href="#">굿즈</a></li>
+								</ul></li>
+						</ul></li>
 				</ul>
 				<ul>
 					<li class="drop-down"><a href="#">신제품/인기제품</a>
@@ -96,6 +120,9 @@
 							<li><a href="#">신제품</a></li>
 							<li><a href="#">인기제품</a></li>
 						</ul></li>
+				</ul>
+				<ul>
+					<li><a href="#">공지사항</a></li>
 				</ul>
 				<ul>
 					<li class="drop-down"><a href="#">고객센터</a></li>
@@ -134,26 +161,29 @@
 						<div>
 							<a href="../register/register-1">회원가입</a>
 						</div>
-						<a href="../login/findpw" onclick="window.open(this.href, '_blank', 'width=900px,height=500px,toolbars=no,scrollbars=no'); return false;"
-						>비밀번호 찾기</a>
+						<a href="../login/findpw"
+							onclick="window.open(this.href, '_blank', 'width=900px,height=500px,toolbars=no,scrollbars=no'); return false;">비밀번호
+							찾기</a>
 					</div>
 					<input type="submit" class="btn" value="로그인">
 					<div class="login-api">
-						<!-- <a href="#"><img src="/img/naver1.png"></a> -->
 						<a id="naver_id_login" class="api">네이버로그인</a>
 						<div class="g-signin2" data-width="300" data-height="50"
 							data-longtitle="true"></div>
-						<a href="javascript:kakaoLogin();"><img
+<!-- 						<a href="javascript:kakaoLogin();"> -->
+<a href="https://kauth.kakao.com/oauth/authorize?client_id=46578e2a852ca11289c2da8422acc9ca&redirect_uri=http://localhost:9090/login/kakaocallback&response_type=code">
+						<img
 							src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg"
-							width="222" class="api" /></a>
+							width="222" class="api" /></a> </a>
 					</div>
-
-				</form>
 		</div>
+
+		</form>
+	</div>
 	</div>
 	<script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-		<script type="text/javascript" src="/js/login.js"></script>
+	<script type="text/javascript" src="/js/login.js"></script>
 	<script type="text/javascript" src="/js/loginremember.js"></script>
 	<script type="text/javascript" src="/js/login-slide.js"></script>
 	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
@@ -163,17 +193,23 @@
 	<script type="text/javascript"
 		src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
 		charset="utf-8"></script>
-	<script type="text/javascript" src="/js/kakao.js"></script>
+<!-- 		<script type="text/javascript" src="/js/kakao.js"></script> -->
 	<script type="text/javascript" src="/js/google.js"></script>
 	<script type="text/javascript">
 		var naver_id_login = new naver_id_login("5sh4TrG6DyRbb_FeQOmr",
 				"http://localhost:9090/login/navercall");
 		var state = naver_id_login.getUniqState();
 		naver_id_login.setButton("green", 3, 60);
-		naver_id_login.setDomain("http://localhost:9090/main");
+		naver_id_login.setDomain("http://localhost:9090");
 		naver_id_login.setState(state);
-		naver_id_login.setPopup();
+// 		naver_id_login.setPopup();
 		naver_id_login.init_naver_id_login();
+	</script>
+	<script type="text/javascript">
+		window.history.forward();
+		function noBack() {
+			window.history.forward();
+		}
 	</script>
 </body>
 

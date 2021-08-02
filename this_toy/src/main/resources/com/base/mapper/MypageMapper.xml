@@ -17,7 +17,6 @@
 	select * from product where user_id = #{userId} order by product_date desc
 	</select>
 	
-	
 	<select id="getCart" resultType="ProductVO">
 	select * from product where product_code = #{productCode}
 	</select>
@@ -26,15 +25,42 @@
 	select * from cart where user_id = #{userId} order by cart_code desc
 	</select>
 	
-	<select id="getOrder" resultType="OrdersVO">
-	select * from orders where user_Id = #{userId} order by order_date desc
-	</select>
-	
 	<select id="getWish" resultType="WishlistVO">
 	select * from wish_list where product_code = #{productCode}
 	</select>
+	<select id="getOrderList" resultType="OrdersVO">
+	select * from orders where user_id = #{userId} order by order_code desc
+	</select>
+	<select id="getProduct" resultType="OrdersVO">
+	select a.USER_TEL, b.*, c.* from usertable a, product b, orders c 
+	where b.product_code=#{productCode} and b.user_id=a.user_id and c.user_id=#{userId}
+	and c.order_code=${orderCode}
+	</select>
+	<select id="getOrder" resultType="OrdersVO">
+	select * from orders where order_code=#{orderCode}
+	</select>
+	<select id="getProduct2" resultType="ProductVO">
+	select * from product where product_code=#{productCode}
+	</select>
+	<select id="getUser" resultType="UserVO">
+	select * from usertable where user_id = #{userId}
+	</select>
+	<select id="getSeller" resultType="UserVO">
+	select * from usertable where user_id = #{seller}
+	</select>
+	<select id="getReviewList" resultType="ReviewVO">
+	select * from review where user_id = #{userId} order by review_date desc
+	</select>
+	<select id="getQnaList" resultType="QnAVO">
+	select * from question where user_id = #{userId} order by question_date desc
+	</select>
+	<delete id="orderdelete">
+	delete from orders where order_code = #{orderCode}
+	</delete>
 	
-	
+	<delete id="deleteCart">
+	delete from cart where product_code = #{productCode} and user_id = #{userId}
+	</delete>
 	
 	
 </mapper>

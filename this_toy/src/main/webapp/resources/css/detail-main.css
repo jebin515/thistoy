@@ -29,11 +29,25 @@
 }
 
 #main .txt-section .txt-title {
+	display:flex;
+	justify-content:space-between;
 	font-family: "Cafe24Ssurround", sans-serif;
 	font-weight: bold;
 	font-size: 30px;
-	height: 100px;
+	height: 50px;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+#main .txt-section .txt-title .product_delete{
+	border: none;
+	background-color: rgba(245, 96, 153, 0.9);
+	font-family: "Cafe24Ssurround", sans-serif;
+	color: white;
+	font-size: 15px;
+	font-weight: 300;
+	border: 1px solid red;
+	width: 50px;
+	margin-bottom: 10px;
+	cursor: pointer;
 }
 
 #main .txt-section .txt-main {
@@ -177,7 +191,9 @@
 	width: 100px;
 	margin-right: 650px;
 }
-
+button:hover{
+	cursor:pointer
+}
 #main .detail-content select, option {
 	font-family: "Font Awesome 5 Free";
 	font-weight: 900;
@@ -224,6 +240,12 @@
 	font-weight: 300;
 	color: rgba(245, 96, 153, 0.9);
 	height: 50px;
+}
+#main .detail-content .last {
+	position: static;
+	display: block;
+	text-align:left;
+	margin-bottom:300px;
 }
 
 #main .detail-content .fa-star, .fa-star-o {
@@ -506,4 +528,7 @@
 }
 .QnInfo th{
 	width:200px
+}
+.another{
+	text-align:left;
 }
