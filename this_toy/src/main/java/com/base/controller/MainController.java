@@ -21,10 +21,15 @@ import lombok.AllArgsConstructor;
 public class MainController {
 	private MainService service;
 
-	@GetMapping("main")
-	public void getBest(Model model) {
+	@GetMapping("/")
+	public String getBest(Model model) {
 		model.addAttribute("best", service.bestList());
 		model.addAttribute("newproduct", service.newList());
+		return "main";
+	}
+	@RequestMapping("info")
+	public void info() {
+		
 	}
 
 }

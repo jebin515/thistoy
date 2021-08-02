@@ -53,7 +53,7 @@
                                 </table>
                             </div>
                             <div class="btn_wrap">
-                                <input type="submit" id="next_button" class="button" value="확인" onclick="opener.window.location='/main'; window.close();">
+                                <input type="submit" id="next_button" class="button" value="확인" onclick="opener.window.location='/'; window.close();">
                             </div>
                         </form>
                     </div>

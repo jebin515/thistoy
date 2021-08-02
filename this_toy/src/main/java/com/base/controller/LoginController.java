@@ -78,7 +78,7 @@ public class LoginController {
 		} catch (IdPasswordNotMatchingException e) {
 			return "/login/loginfail";
 		}
-		return "redirect:/main";
+		return "redirect:/";
 	} //기존 로그인 
 	
 	
@@ -92,7 +92,7 @@ public class LoginController {
 	public String logoutGET(HttpSession session) {
 		session.invalidate();
 		System.out.println("로그아웃 GET");
-		return "redirect:/main";
+		return "redirect:/";
 	}
 
 	
@@ -128,7 +128,7 @@ public class LoginController {
 		String userId = vo.getUserId();
 		userService.passwdUpdate(vo);
 		rttr.addFlashAttribute("passupdate","성공");
-		return "redirect:/main";
+		return "redirect:/";
 	}
 	
 	private final JavaMailSender mailSender;
@@ -181,7 +181,7 @@ public class LoginController {
 
 		session.setAttribute("userId", vo.getUserId());
 		
-		return "redirect:/main";
+		return "redirect:/";
 	}
 	
 	@RequestMapping(value="/navercallback", method = RequestMethod.GET)

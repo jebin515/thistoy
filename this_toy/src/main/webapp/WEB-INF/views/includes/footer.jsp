@@ -31,9 +31,7 @@
 <div class="chat">
 	<div class="chat_header">
 		<div class="chat_logo"></div>
-<!-- 		<div class="fa-times"> -->
 			<i class="bx bx-x" onclick="closechat();"></i>
-<!-- 		</div> -->
 	</div>
 	<div class="chat_main">
 		<div class="chat_info">

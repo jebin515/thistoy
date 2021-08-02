@@ -36,7 +36,7 @@
 	<c:if test="${empty userId}">
 
 		<div class="header-full">
-			<a href="/main" class="logo"></a>
+			<a href="/" class="logo"></a>
 			<nav class="header_nav">
 				<div class="header_menu">
 					<a href="/login/login" class="header_login"><i
@@ -49,7 +49,7 @@
 	</c:if>
 	<c:if test="${not empty userId and userId ne 'admin'}">
 		<div class="header-full">
-			<a href="/main" class="logo"></a>
+			<a href="/" class="logo"></a>
 			<nav class="header_nav">
 				<div class="header_menu">
 
@@ -66,7 +66,7 @@
 	</c:if>
 	<c:if test="${userId eq 'admin'}">
 		<div class="header-full">
-			<a href="/main" class="logo"></a>
+			<a href="/" class="logo"></a>
 			<nav class="header_nav">
 				<div class="header_menu">
 
@@ -86,8 +86,8 @@
 		<li class="drop-down"><a href="#"><i
 				class='bx-fw bx bxs-directions bx-tada-hover bx-xs'></i>전체</a>
 			<ul>
-				<li><a href="">공지사항</a></li>
-				<li><a href="#">사이트안내</a></li>
+				<li><a href="/notice/notice">공지사항</a></li>
+				<li><a href="/info">사이트안내</a></li>
 				<li><a href="/product/list?bn=New">신제품</a></li>
 				<li><a href="/product/list?bn=Best">인기제품</a></li>
 				<li><a href="/product/detail_writer">판매글 작성</a></li>
@@ -158,7 +158,7 @@
 		<li><a href="/notice/notice">공지사항</a></li>
 	</ul>
 	<ul>
-		<li><a href="#">사이트안내</a></li>
+		<li><a href="/info">사이트안내</a></li>
 	</ul>
 
 	<ul>

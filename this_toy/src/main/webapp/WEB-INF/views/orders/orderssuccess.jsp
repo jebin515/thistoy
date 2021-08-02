@@ -27,7 +27,7 @@
                         <p>추가적인 결재 및 환불/교환은 해당 페이지를 찾아주시기 바랍니다</p>
                     </div>
                     <div class="register-success-btn">
-                        <a href="/main">메인페이지로 이동</a>
+                        <a href="/">메인페이지로 이동</a>
                     </div>
                 </div>
             </div>

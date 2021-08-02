@@ -116,7 +116,7 @@ public class ProductController {
 		vo.setProductMainImg(mainnames);
 		vo.setProductInfoImg(infonames);
 		prService.register(vo);
-		return "redirect:/main";
+		return "redirect:/";
 	}
 
 	@GetMapping("list")
@@ -181,7 +181,7 @@ public class ProductController {
 	@PostMapping("delete")
 	public  String deleteProduct(@RequestParam(name = "pc") String productCode) {
 		int count =  prService.removeProduct(productCode);
-		return "redirect:/main";
+		return "redirect:/";
 	}
 	@ResponseBody
 	@PostMapping(value = "cart", produces = "application/text; charset=UTF-8")

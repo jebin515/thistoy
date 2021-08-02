@@ -35,4 +35,6 @@ public interface UserService {
 	
 	int passwdUpdate(UserVO vo);
 	
+	int deleteUser(String userId);
+	
 }

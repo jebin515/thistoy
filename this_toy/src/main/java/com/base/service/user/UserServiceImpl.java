@@ -1,5 +1,6 @@
 package com.base.service.user;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Service;
 
 import com.base.entity.UserVO;
@@ -18,11 +19,6 @@ public class UserServiceImpl implements UserService {
 
 	private final UserMapper userMapper;
 
-//	@Override
-//	public UserVO login(UserVO userVO) {
-//		System.out.println("서비스VO : "+userVO);
-//		return userMapper.login(userVO);
-//	}
 
 	// 회원가입
 	@Override
@@ -81,9 +77,6 @@ public class UserServiceImpl implements UserService {
 			System.out.println("수정비번틀림");
 			throw new IdPasswordNotMatchingException();
 		}
-		// 기본
-//      return new AuthInfo(user.getUserId(), user.getUserName());
-		// 유저수정 페이지 위해서 다른 정보들도 넣음
 		return new AuthInfo(user.getUserId());
 	}
 	
@@ -109,6 +102,12 @@ public class UserServiceImpl implements UserService {
 	public int passwdUpdate(UserVO vo) {
 		// TODO Auto-generated method stub
 		return userMapper.passwdUpdate(vo);
+	}
+
+	@Override
+	public int deleteUser(String userId) {
+		// TODO Auto-generated method stub
+		return userMapper.deleteUser(userId);
 	}
 	
 	
