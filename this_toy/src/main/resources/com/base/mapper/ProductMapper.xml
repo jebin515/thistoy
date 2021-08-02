@@ -8,8 +8,8 @@
 	<insert id="insert">
 	<![CDATA[
 	insert into product 
-	(product_code,product_name,product_price,product_main_img,product_text,product_stock,down_ca_code,user_id,product_info_img) values
-	(#{downCaCode}||pd_code_seq.nextval,#{productName},#{productPrice},#{productMainImg},#{productText},#{productStock},
+	(product_code,product_name,product_price,product_main_img,product_stock,down_ca_code,user_id,product_info_img) values
+	(#{downCaCode}||pd_code_seq.nextval,#{productName},#{productPrice},#{productMainImg},#{productStock},
 	#{downCaCode},#{userId},#{productInfoImg})
 	]]>
 	</insert>
