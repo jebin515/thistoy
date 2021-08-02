@@ -41,27 +41,36 @@ public class RegisterController {
 //		return "/register/register-2";
 	}
 	@PostMapping("/register-2")
-	public String registerPOST(UserVO userVO,HttpServletRequest request, RedirectAttributes rttr) throws Exception {
+	public String registerPOST(UserVO userVO,HttpServletRequest request, RedirectAttributes rttr,MultipartFile file) throws Exception {
 //        연속등록 불가능하도록 플래시어트리뷰트 후 리다이렉트
-
+		
+//		ServletContext ctx = request.getServletContext();
+//		String fileName = file.getOriginalFilename();
+//		String webPath = "/resources/upload/user";
+//		String realPath = ctx.getRealPath(webPath);
+//		System.out.println(realPath);
+//		File savePath = new File(realPath);
+//		if(!savePath.exists()) {
+//			savePath.mkdir();
+//		}
+//		realPath += File.separator + fileName;
+//		File saveFile = new File(realPath);
+//		file.transferTo(saveFile);
+//		userVO.setUserImg(fileName);
 		
         rttr.addFlashAttribute("result", "success");
 		int result = userService.idCheck(userVO);
 		int result2 = userService.emailCheck(userVO);
 		try {
 			if(result >= 1) {
-				System.out.println("아디중복");
 				return "/register/alreadyid";
 			}else if (result2 >= 1) {
-				System.out.println("메일중복");
 				return "/register/alreadyemail";
 			}else if (result ==0 && result2==0) {
-				System.out.println("가입성공");
 				userService.register(userVO);
 			}
 		} catch (Exception e) {
 			throw new RuntimeException();
-//			return "redirect:/register/register-2";
 		}
         System.out.println("register - 2   -------------------------------- Post! ---------------------------");
         return "redirect:/register/register-3";
