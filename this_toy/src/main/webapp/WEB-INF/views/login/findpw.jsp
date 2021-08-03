@@ -26,7 +26,7 @@
     <body>
         <main>
             <div class="title">
-                <span>비밀번호 변경</span>
+                <span>비밀번호 찾기</span>
             </div>
             <div class="register-main">
                 <!-- <div class="wrap wd668"> -->
