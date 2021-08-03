@@ -39,8 +39,10 @@ public class NoticeController {
 			pageNum = vo.getRealEnd();
 		}
 		svo.setPageNum(pageNum);
-			model.addAttribute("list", service.getListwithPagingSearch(svo));
-		model.addAttribute("pageMaker", new PageVO(count, pageNum));
+		model.addAttribute("list", service.getListwithPagingSearch(svo));
+		if(count!=0) {
+			model.addAttribute("pageMaker", new PageVO(count, pageNum));
+		}
 	}
 
 	@PostMapping("/notice_writer")

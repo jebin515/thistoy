@@ -54,43 +54,55 @@
 					</c:forEach>
 				</tbody>
 			</table>
-			<c:if test="${!empty pageMaker}">
-			<div class="page-number">
-				<tr>
-					<div class='pull-right'>
-					<ul>
-						<li><a href="/notice/notice?type=${param.type}&keyword=${param.keyword}"><i class="fas fa-angle-double-left"></i></a></li>
-						<li><a href="/notice/notice?p=${pageMaker.startPage-1}&type=${param.type}&keyword=${param.keyword}"><i class="fas fa-angle-left"></i></a></li> 
- 
-							<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-								<li><a href="/notice/notice?p=${num}&type=${param.type}&keyword=${param.keyword}" class="pn" id="${pageMaker.pageNum==num? 'pageNum':''}">${num}</a></li>
-							</c:forEach>
-						<li><a href="/notice/notice?p=${pageMaker.endPage+1}&type=${param.type}&keyword=${param.keyword}"><i class="fas fa-angle-right" id="right"></i></a></li>
-						<li><a href="/notice/notice?p=${pageMaker.realEnd}&type=${param.type}&keyword=${param.keyword}"><i class="fas fa-angle-double-right"></i></a></li>
-						
-					</ul>
-					</div>
-				</tr>
-			</div>
-			</c:if>
+			<c:if test="${pageMaker ne null}">
+				<div class="page-number">
+					<tr>
+						<div class='pull-right'>
+							<ul>
+								<li><a
+									href="/notice/notice?type=${param.type}&keyword=${param.keyword}"><i
+										class="fas fa-angle-double-left"></i></a></li>
+								<li><a
+									href="/notice/notice?p=${pageMaker.startPage-1}&type=${param.type}&keyword=${param.keyword}"><i
+										class="fas fa-angle-left"></i></a></li>
+
+								<c:forEach var="num" begin="${pageMaker.startPage}"
+									end="${pageMaker.endPage}">
+									<li><a
+										href="/notice/notice?p=${num}&type=${param.type}&keyword=${param.keyword}"
+										class="pn" id="${pageMaker.pageNum==num? 'pageNum':''}">${num}</a></li>
+								</c:forEach>
+								<li><a
+									href="/notice/notice?p=${pageMaker.endPage+1}&type=${param.type}&keyword=${param.keyword}"><i
+										class="fas fa-angle-right" id="right"></i></a></li>
+								<li><a
+									href="/notice/notice?p=${pageMaker.realEnd}&type=${param.type}&keyword=${param.keyword}"><i
+										class="fas fa-angle-double-right"></i></a></li>
+
+							</ul>
+						</div>
+					</tr>
+				</div>
+				</c:if>
 		</div>
 		<c:if test="${userId eq 'admin'}">
 			<button id='board-writer' type="button" class="board-writer"
 				onclick="location.href='notice_writer' ">글쓰기</button>
 		</c:if>
-		<div>
-						<div class="notice-search">
-							<form id='searchForm' action="/notice/notice" method="get">
-								<select name="type">
-									<option value="1">제목</option>
-									<option value="2">내용</option>
-									<option value="3">제목+내용</option>
-								</select> 
-								<input type='text' class="keyword" name='keyword'>
-								<button class='btn-defauit'>검색</button>
-							</form>
-						</div>
-		</div>
+		<c:if test="${pageMaker ne null}">
+			<div>
+				<div class="notice-search">
+					<form id='searchForm' action="/notice/notice" method="get">
+						<select name="type">
+							<option value="1">제목</option>
+							<option value="2">내용</option>
+							<option value="3">제목+내용</option>
+						</select> <input type='text' class="keyword" name='keyword'>
+						<button class='btn-defauit'>검색</button>
+					</form>
+				</div>
+			</div>
+		</c:if>
 	</main>
 	<%@ include file="../includes/footer.jsp"%>
 
