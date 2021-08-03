@@ -54,7 +54,7 @@
 					</c:forEach>
 				</tbody>
 			</table>
-
+			<c:if test="${!empty pageMaker}">
 			<div class="page-number">
 				<tr>
 					<div class='pull-right'>
@@ -72,6 +72,7 @@
 					</div>
 				</tr>
 			</div>
+			</c:if>
 		</div>
 		<c:if test="${userId eq 'admin'}">
 			<button id='board-writer' type="button" class="board-writer"
