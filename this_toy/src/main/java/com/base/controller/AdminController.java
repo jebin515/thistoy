@@ -41,7 +41,9 @@ public class AdminController {
 		} else if (pageNum > pVO.getRealEnd()) { 
 			pageNum = pVO.getRealEnd();
 		}
+		if(count != 0) {
 		model.addAttribute("userListPaging", new PageVO(count, pageNum));
+		}
 		model.addAttribute("admin", service.userListPaging(pageNum));
 		return "admin/admin";
 	}

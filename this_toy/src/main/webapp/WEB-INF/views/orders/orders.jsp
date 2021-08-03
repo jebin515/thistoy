@@ -40,11 +40,11 @@
 
 						<td><input type="hidden" name="productImg" value="${mimg}">
 							<img src="/upload/product/main/${mimg}" /></td>
-						<td><input type="hidden" name="userId" value="${pdc.userId}">
-							<c:out value="${pdc.userId}" /></td>
 						<td><input type="hidden" name="productName"
 							value="${pdc.productName}"> <c:out
 								value="${pdc.productName}" /></td>
+								<td><input type="hidden" name="userId" value="${pdc.userId}">
+							<c:out value="${pdc.userId}" /></td>
 						<td><input type="hidden" value="배송비">3000원</td>
 
 						<td><input type="hidden" name="orderEa"
@@ -251,7 +251,7 @@
 																+ '외'
 																+ '${pricecount}'
 																+ '개', //결제창에서 보여질 이름 // 상품 이름
-												amount : '${count + 100}', //실제 결제되는 가격
+												amount : '${count + 3000}', //실제 결제되는 가격
 												buyer_email : "${user.userEmail}",
 												buyer_name : nameValue, // 구매자
 											},

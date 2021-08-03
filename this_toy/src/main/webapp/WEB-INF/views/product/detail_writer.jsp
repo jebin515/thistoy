@@ -15,7 +15,7 @@
 	href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 <title>Document</title>
 <link rel="stylesheet" href="/css/style.css">
-<link rel="stylesheet" href="/css/detail-writer.css?ver=1" />
+<link rel="stylesheet" href="/css/detail-writer.css?ver=2" />
 </head>
 <script defer>
 	var result = "<c:out value='${fail}'/>";

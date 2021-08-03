@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
 <link rel="stylesheet"
 	href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-<title>Document</title>
+<title>This Toy</title>
 </head>
 <script defer>
 	var result = "<c:out value='${passupdate}'/>";

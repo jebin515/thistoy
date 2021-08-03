@@ -73,22 +73,49 @@
         <table class="order_bottom">
             <tr>
                 <th>수령인</th>
-                <td>윤재빈</td>
+                <td>
+                <c:choose>
+                	<c:when test="${order.newuserName == null}">
+                		<c:out value="${user.userName}"/> 
+                	</c:when>
+                	<c:otherwise>
+                		<c:out value="${order.newuserName}"/>
+                	</c:otherwise>
+                </c:choose>
+                </td>
                 <td class="orderer_info first">주문자정보</td>
             </tr>
             <tr>
                 <th>연락처</th>
-                <td>010-6865-6036</td>
+                <td>
+                	<c:choose>
+                		<c:when test="${order.newuserTel == null}">
+                			<c:out value="${user.userTel}"/>
+                		</c:when>
+                		<c:otherwise>
+                			<c:out value="${order.newuserTel}"></c:out>
+                		</c:otherwise>
+                	</c:choose>
+                </td>
                 <td rowspan="2" class="orderer_info">
-                    ${user.userName}<br />
+                    ${user.userName}<br/>
                     ${user.userTel}</td>
             </tr>
             <tr>
                 <th>배송지</th>
                 <td>
-                    13938<br />
-                    경기도 안양시 ~~~~~~~~~~~<br />
-                    1111111호
+                	<c:choose>
+                		<c:when test="${order.orderAddressPost == null}">
+                			<c:out value="${user.userAddressPost}"/><br/>
+                			<c:out value="${user.userAddress}"/><br/>
+                			<c:out value="${user.userAddressDetail}"/>
+                		</c:when>
+                   		<c:otherwise>
+                   			<c:out value="${order.orderAddressPost}"/><br/>
+                   			<c:out value="${order.orderAddress}"/><br/>
+                   			<c:out value="${order.orderAddressDetail}"/>
+                   		</c:otherwise>
+                    </c:choose>
                 </td>
             </tr>
         </table>

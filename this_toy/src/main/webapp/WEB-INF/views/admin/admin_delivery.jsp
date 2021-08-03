@@ -125,9 +125,6 @@
 							</a></li>
 						</ul>
 					</div>
-					<div class="right_page">
-						<a href="#"></a>
-					</div>
 				</div>
 			</div>
 	</section>

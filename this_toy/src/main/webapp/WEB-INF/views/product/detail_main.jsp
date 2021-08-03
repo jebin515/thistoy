@@ -22,7 +22,7 @@
 	crossorigin="anonymous"></script>
 <title>Document</title>
 <link rel="stylesheet" href="/css/style.css">
-<link rel="stylesheet" href="/css/detail-main.css?ver=5" />
+<link rel="stylesheet" href="/css/detail-main.css?ver=2" />
 </head>
 <body>
 	<%@ include file="../includes/header.jsp"%>
@@ -85,15 +85,30 @@
 							<tr>
 								<th><span>재고</span></th>
 								<td><div class="stock">
-										<c:out value="${product.productStock}" />
-									</div>개</td>
+										<c:choose>
+											<c:when test="${product.productStock == 0}">
+												재고가 없습니다
+											</c:when>
+											<c:otherwise>
+											<c:out value="${product.productStock}" />
+											</div>개</td>
+											</c:otherwise>
+										</c:choose>
+									
 							</tr>
 							<tr>
 								<th><span>주문수량</span></th>
-								<td><input type="number" class="product_num" value="1"
-									name="st" oninput="inputnumber();" min="1" max="10" readonly />
+								<td>
+									<c:choose>
+									<c:when test="${product.productStock == 0}">
+										재고가 없습니다
+									</c:when>
+									<c:otherwise>
+									<input type="number" class="product_num" value="1" name="st" oninput="inputnumber();" min="1" max="10" readonly />
 									<button type="button" class="ea_btn" onclick="plus()">+</button>
 									<button type="button" class="ea_btn" onclick="minus()">-</button>
+									</c:otherwise>
+									</c:choose>
 								</td>
 							</tr>
 							<tr>
@@ -107,8 +122,16 @@
 					</form>
 				</div>
 				<div class="detail-head-button">
-					<button type="button" class="directbuy">바로구매</button>
-					<button type="button" class="cart">장바구니</button>
+					<c:choose>
+						<c:when test="${product.productStock == 0}">
+							<button type="button" class="directbuy" style="background-color: gray;" disabled/>바로구매</button>
+							<button type="button" class="cart" style="background-color: gray; color:white; border : none;" disabled/>장바구니</button>
+						</c:when>
+						<c:otherwise>
+							<button type="button" class="directbuy">바로구매</button>
+							<button type="button" class="cart">장바구니</button>
+						</c:otherwise>
+					</c:choose>
 					<c:forEach var="ws" items="${wish}">
 						<c:if test="${!empty userId}">
 							<c:if test="${userId==ws.userId}">
@@ -302,25 +325,48 @@
 		</div>
 		<div class="detail-content">
 			<div class="title last">
-				<span class="another">배송/교환/환불</span> <br /> <br />
-				<div>
-					<p>반품 및 교환 기간 반품 및 교환은 결제완료 후 15일 이내에만 가능합니다.</p>
-					<br />
-					<p>단, 제공받은 상품이 주문제품의 내용과 다르거나 계약 내용과 다르게 이행된 경우는 3개월 이내에 가능합니다.</p>
-					<br />
-					<p>반품 및 교환이 불가한 경우 단순 변심으로 인한 반품 또는 교환 요청이 결제완료 후 15일이 경과한 경우
-						상품이 훼손되거나 포장개봉 또는 제품의 사용으로 상품가치가 현저히 감소한 경우 제품 인도 시에 포함되어 있던 사은품이나
-						샘플이 누락된 경우 시간이 경과되어 재판매가 곤란할 정도로 상품 가치가 상실된 경우</p>
-					<p>(예: 한정판매 제품, 제품 사용기한의 경과 등) 특별한 할인 혜택이 적용된 제품의 경우 교환 안내 교환 및
-						일부 품목의 교환은 전체 반품 후 재주문 하셔야 합니다.</p>
-					<br />
-					<p>단순 변심에 의한 동일 제품의 옵션 (색상 등) 교환 이더라도 전체 반품 후 재주문 부탁 드립니다.</p>
-					<br />
-					<p>환불 기간 반품 상품이 판매자에게 도착하고 반품사유와 반품비가 확인되면 주문하신 결제 수단에 따라 환불이
-						진행됩니다.</p>
-					<br /> 처리 기간은 최대 2주 가량 소요될 수 있으며, 신용카드의 경우는 카드사 또는 고객님의 결제일에 따라
-					처리일정이 달라질 수 있습니다.
-				</div>
+				<div class="another"><span class="another">배송/교환/환불</span></div>
+				<table id="lasttable" style="border: 1px solid black;">
+					<tr>
+						<th style="width:150px; padding: 20px;">반품배송비</th>
+						<td style="padding: 15px;">반품 배송비 무료!</td>
+						<th style="width:150px; padding: 20px;">교환배송비</th>
+						<td style="padding: 15px;">교환 배송비 무료!</td>
+					</tr>
+					<tr>
+						<th style="width:150px; padding: 20px;">보내실 곳</th>
+						<td style="padding: 15px;" colspan="3">경기도 안양시 만안구 안양동 782-68 (우:14001)</td>
+					</tr>
+					<tr>
+						<th style="width:120px; padding: 20px;" rowspan="2">반품/교환 사유 &nbsp;&nbsp;기간</th>
+						<td style="padding: 15px;" colspan="3">구매자 단순변심은 상품 수령 후 7일 이내(이후 구매자 반품배송비 부담)</td>
+					</tr>
+					<tr>
+						<td style="padding: 15px;" colspan="3">표시/광고와 상이, 광고와 다른 사실을 안 날로부터 30일 (판매자 반품 배송비 부담) 둘 중 하나가 경과시 반품/교환 불가</td>
+					</tr>
+					<tr>
+						<th style="width:150px; padding: 20px;" rowspan="7">반품/교환 불가능 사유</th>
+						<td style="padding: 15px;" colspan="3">반품요청기간이 지난 경우</td>
+					</tr>
+					<tr>
+						<td style="padding: 15px;" colspan="3">구매자의 책임 있는 사유로 상품 등이 멸실 또는 훼손된 경우</td>
+					</tr>
+					<tr>
+						<td style="padding: 15px;" colspan="3">구매자의 책임있는 사유로 포장이 훼손되어 상품 가치가 상실된 경우</td>
+					</tr>
+					<tr>
+						<td style="padding: 15px;" colspan="3">구매자의 사용 도는 일부 소비에 의하여 상품의 가치가 감소한 경우</td>
+					</tr>
+					<tr>
+						<td style="padding: 15px;" colspan="3">시간의 경과에 의하여 재판매가 곤란할 정도로 상품 등의 가치가 감소한 경우</td>
+					</tr>
+					<tr>
+						<td style="padding: 15px;" colspan="3">고객의 요청상항에 맞춰 제작에 들어가는 맞춤제작상품의 경우</td>
+					</tr>
+					<tr>
+						<td style="padding: 15px;" colspan="3">복제가 가능한 상품 등의 포장을 훼손한 경우</td>
+					</tr>
+				</table>
 			</div>
 		</div>
 		<input type="hidden" value="${(empty userId)? null:userId}"
