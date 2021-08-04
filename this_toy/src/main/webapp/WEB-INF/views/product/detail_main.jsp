@@ -22,7 +22,7 @@
 	crossorigin="anonymous"></script>
 <title>Document</title>
 <link rel="stylesheet" href="/css/style.css">
-<link rel="stylesheet" href="/css/detail-main.css?ver=2" />
+<link rel="stylesheet" href="/css/detail-main.css?ver=3" />
 </head>
 <body>
 	<%@ include file="../includes/header.jsp"%>
@@ -405,19 +405,19 @@
 			let ok=confirm('리뷰를 삭제하시겠습니까?');
 			if(ok==true){
 			let reviewNum = $(this).val();
-			location.href="/review/delete?rc="+reviewNum+"&pc=${QnA[0].productCode}";
+			location.href="/review/delete?rc="+reviewNum+"&pc=${product.productCode}";
 			}
 		})
 		$(document).on('click','.delete_QnA',function(){
 			let ok=confirm('문의내용을 삭제하시겠습니까?');
 			if(ok==true){
 			let QnANum = $(this).val();
-			location.href="/QnA/delete?qc="+QnANum+"&pc=${QnA[0].productCode}";
+			location.href="/QnA/delete?qc="+QnANum+"&pc=${product.productCode}";
 			}
 		})
 		$(document).on('click','.register_button',function(){
 			let registerindex = $(".register_button").index(this);
-			location.href="/QnA/reply?qc="+$(this).val()+"&rt="+$('.reg').eq(registerindex).val()+"&pc=${QnA[0].productCode}";
+			location.href="/QnA/reply?qc="+$(this).val()+"&rt="+$('.reg').eq(registerindex).val()+"&pc=${product.productCode}";
 		})
 		$(document).on('click','.product_delete',function(){
 			let ok = confirm('판매글을 삭제하시겠습니까?');

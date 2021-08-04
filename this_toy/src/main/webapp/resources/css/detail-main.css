@@ -178,6 +178,7 @@
 #main .detail-content .img_rating {
 	display: flex;
 	justify-content: space-between;
+	margin-bottom:30px;
 }
 
 #main .detail-content .review_register {
