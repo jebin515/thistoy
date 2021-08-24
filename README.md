@@ -67,9 +67,7 @@
             
     - 검색 후 (제목을 기준으로 검색)
     ![검색 2](https://user-images.githubusercontent.com/80955533/130389913-1e6522f4-999e-4b1b-beae-e1f267edbf95.PNG)
-            
-    - 검색 결과 없을 때
-    ![검색결과2](https://user-images.githubusercontent.com/77195474/130575775-15ab0206-2568-4d78-957d-d6ed69298e3c.PNG)
+           
 
 ---
 * 상품 리스트 페이지
