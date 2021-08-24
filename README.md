@@ -61,7 +61,7 @@
 
 ---
 
- +  검색
+ * 검색
     - 예시) 해달 검색!
             ![검색 1](https://user-images.githubusercontent.com/80955533/130389910-a80c46e1-a3e8-4525-aab2-030a49f8607c.PNG)
             
