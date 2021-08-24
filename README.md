@@ -109,6 +109,7 @@
 ---
 
 + 마이페이지
+
     - 찜목록
  
 ![마이페이지1](https://user-images.githubusercontent.com/77195474/130581483-ebb7ce3d-c4ef-416b-8820-d82728a79a38.PNG)
@@ -122,18 +123,26 @@
 ![마에페이지3](https://user-images.githubusercontent.com/77195474/130581662-c74e9f4a-547f-4b2e-adfd-edb99a897668.PNG)
 ![마이페이지4](https://user-images.githubusercontent.com/77195474/130581680-e0e1d89f-2dfe-4c9c-a760-d05f3c424d83.PNG)
 ![마이페이지5](https://user-images.githubusercontent.com/77195474/130581851-4ee4f841-21b0-4eb5-b7ed-568dd04431f5.PNG)
+
     - 장바구니 코드
     삭제 또는 전체상품삭제 클릭시 장바구니에서 해당하는 상품 삭제(AJAX)
  
     ![삭제1](https://user-images.githubusercontent.com/77195474/130582821-8fea63a2-bbdc-4fca-98a2-98c100667f21.PNG)
     ![삭제2](https://user-images.githubusercontent.com/77195474/130582889-406a751f-02ab-40a4-b205-dea4fa6d3785.PNG)
     ![삭제3](https://user-images.githubusercontent.com/77195474/130582925-8649aa20-2f96-48b1-ac0a-267204cfb805.PNG)
+    
     - 주문목록
   
 ![주문목록1](https://user-images.githubusercontent.com/77195474/130581867-3538ec9a-b23f-4788-960b-6418aaf7987d.PNG)
+
     - 주문상세정보(배송전)
+    
 ![주문목록2](https://user-images.githubusercontent.com/77195474/130581881-3e520afb-e7d4-4d52-bf49-6f5f5ec2f5ce.PNG)
+
     - 주문상세정보(배송완료)
+    
 ![주문목록3](https://user-images.githubusercontent.com/77195474/130581903-41f587af-d8df-4861-8141-e3d892182393.PNG)
+
     - 리뷰/QnA
+    
 ![리뷰문의](https://user-images.githubusercontent.com/77195474/130581930-f4b75692-fbfb-4576-b18d-83543ee5369a.PNG)
