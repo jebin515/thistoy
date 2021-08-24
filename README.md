@@ -49,7 +49,9 @@
 
 ## 담당 기능 및 구현
 * 상품 판매 등록
+
 ![상품등록](https://user-images.githubusercontent.com/77195474/130574077-a856b49e-73eb-421d-b2f5-279ce1e9e4b2.PNG)
+
 + 상품 판매 등록(코드)
     - 슬라이드 사진 컬럼과 상품설명 컬럼에 사진 저장.
     - 쉼표(,)단위로 사진이름 끊어서 저장.
@@ -61,11 +63,17 @@
 
  +  검색
     - 예시) 해달 검색!
+   
             ![검색 1](https://user-images.githubusercontent.com/80955533/130389910-a80c46e1-a3e8-4525-aab2-030a49f8607c.PNG)
+            
     - 검색 후 (제목을 기준으로 검색)
+    
             ![검색 2](https://user-images.githubusercontent.com/80955533/130389913-1e6522f4-999e-4b1b-beae-e1f267edbf95.PNG)
+            
     - 검색 결과 없을 때
+   
             ![검색결과2](https://user-images.githubusercontent.com/77195474/130575775-15ab0206-2568-4d78-957d-d6ed69298e3c.PNG)
+            
 ---
 * 상품 리스트 페이지
 
