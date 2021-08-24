@@ -116,12 +116,10 @@
 + 마이페이지
 
     - 찜목록
- 
-![마이페이지1](https://user-images.githubusercontent.com/77195474/130581483-ebb7ce3d-c4ef-416b-8820-d82728a79a38.PNG)
-
+    ![마이페이지1](https://user-images.githubusercontent.com/77195474/130581483-ebb7ce3d-c4ef-416b-8820-d82728a79a38.PNG)
+    
     - 등록한 판매글
- 
-![마이페이지2](https://user-images.githubusercontent.com/77195474/130581632-baa9d2d0-5672-4bad-a56e-dbae69d746a2.PNG)
+    ![마이페이지2](https://user-images.githubusercontent.com/77195474/130581632-baa9d2d0-5672-4bad-a56e-dbae69d746a2.PNG)
 
     - 장바구니
     
