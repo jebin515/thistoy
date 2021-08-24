@@ -19,7 +19,7 @@
 ## 개발 기간
 * 2021-06-22 ~ 2021-08-03(약 6주)
 
-  ![2](https://user-images.githubusercontent.com/80955533/130388132-2191f395-6922-4b31-90fe-2bc0d62dcd5a.png)
+ ![기획 및 역할](https://user-images.githubusercontent.com/77195474/130573066-258e62c6-efb9-4472-bc97-91b83b8313e9.PNG)
 ## 참여 인원
 * 6명
 
@@ -29,72 +29,10 @@
 * 상품 판매 등록 구현
 * 상품 검색 구현
 * 상품 리스트 페이지 구현
-* 상품 상세페이지에 존재하는 기능 구현
-* 결제 페이지 구현(우편 번호api, 구매목록 추가, 장바구니에서 삭제, 판매량 증가, 재고 감소)
-
-## 담당 기능 및 구현
-* **Header**
-![헤더](https://user-images.githubusercontent.com/80955533/130389056-bad7937f-780f-4231-a5cb-45f032631bcb.PNG)
-
-    + 메인 검색 
-        - 예시) 해달 검색!
-        
-            ![검색 1](https://user-images.githubusercontent.com/80955533/130389910-a80c46e1-a3e8-4525-aab2-030a49f8607c.PNG)
-            
-        - 검색 후 (제목을 기준으로 검색)
-            
-            ![검색 2](https://user-images.githubusercontent.com/80955533/130389913-1e6522f4-999e-4b1b-beae-e1f267edbf95.PNG)
-            
-* **Footer**
-![푸터](https://user-images.githubusercontent.com/80955533/130389071-af1565d5-30c0-45f2-a3b5-57c1fdf170ec.PNG)
-
+* 상품 리뷰, 문의, 찜하기, 장바구니 넣기 기능 구현
+* 마이페이지 구현
+* 이외에 백엔드 총괄
 ---
-
-* **Main**
-
-  전체적인 슬라이드 작동
-![메인최종](https://user-images.githubusercontent.com/80955533/130390237-8b6e694e-6fbe-4a67-98db-d795326a4276.PNG)
-    신상품 : 물품등록일자를 기준으로 가장 최신의 물품을 반영<br/><br/>
-    인기제품 : 등록된 물품중 열람횟수가 가장 많은 물품을 반영
-    
-    + 해당 물품 호버시 제목/가격 및 사이트 이동 버튼
-     
-      ![메인3](https://user-images.githubusercontent.com/80955533/130390350-38edd97c-c242-4e20-a7ea-c5c4f996d9e4.PNG)
-      
-
----
-
-* **Login**
-
-    소셜 로그인 및 로그인
-    
-    ![로그인](https://user-images.githubusercontent.com/80955533/130390754-6a9324ce-42a1-4bb7-a75f-0e14c3276e7f.PNG)
-    
-    카카오 , 구글 , 네이버 api 사용
----
-
-* **OrderPage**
-  
-  주문페이지
-  
-  ![주문페이지](https://user-images.githubusercontent.com/80955533/130403838-925d192a-4121-4e95-83ef-d956d4b00a53.PNG)
-  
-  - db에서 해당하는 유저의 정보를 가져와 기본배송지 및 이름 및 전화번호 전달
-  - 장바구니 및 바로구매를 통해 넘어온 데이터로 물품을 출력
-  - 결제api(아임포트)를 통해 금액검증 후 결재완료 시 ajax통신으로 데이터를 db에 저장 
-  
-  주문페이지(신규배송지)
-  
-  ![오더페이지3](https://user-images.githubusercontent.com/80955533/130404904-22a626c8-c9ac-4f83-b3c1-e39517ea91de.PNG)
-  
-  - 신규배송지에 작성한 이름,전화번호,주소 db에 저장
-  - 실시간으로 작성한 이름,전화번호를 출력
-  - 결재완료시 주문목록에 신규배송지로 작성되어있는 값으로 출력
-  
-  ![오더페이지 코드](https://user-images.githubusercontent.com/80955533/130406193-a01346f0-1948-4379-bfa2-29d85efbea8c.PNG)
-  
----
-
 ## DB
 * USER
 
@@ -107,4 +45,79 @@
 * ERD
  
   ![5](https://user-images.githubusercontent.com/80955533/130388497-d9186f5e-8bbd-4d39-be2c-578e4964c720.jpg)
+---
 
+## 담당 기능 및 구현
+* 상품 판매 등록
+![상품등록](https://user-images.githubusercontent.com/77195474/130574077-a856b49e-73eb-421d-b2f5-279ce1e9e4b2.PNG)
++ 상품 판매 등록(코드)
+    - 슬라이드 사진 컬럼과 상품설명 컬럼에 사진 저장.
+    - 쉼표(,)단위로 사진이름 끊어서 저장.
+    - 최소 1장의 슬라이드 사진과 상품설명 사진 필요.
+
+![판매등록코드1](https://user-images.githubusercontent.com/77195474/130574597-d1437090-8076-43f7-988f-ed2122847e3f.PNG) ![판매등록코드2](https://user-images.githubusercontent.com/77195474/130574658-a5671f0e-6a0d-42e4-ad79-eba003e99c42.PNG)
+
+---
+
+ +  검색
+    - 예시) 해달 검색!
+            ![검색 1](https://user-images.githubusercontent.com/80955533/130389910-a80c46e1-a3e8-4525-aab2-030a49f8607c.PNG)
+    - 검색 후 (제목을 기준으로 검색)
+            ![검색 2](https://user-images.githubusercontent.com/80955533/130389913-1e6522f4-999e-4b1b-beae-e1f267edbf95.PNG)
+    - 검색 결과 없을 때
+            ![검색결과2](https://user-images.githubusercontent.com/77195474/130575775-15ab0206-2568-4d78-957d-d6ed69298e3c.PNG)
+---
+* 상품 리스트 페이지
+![리스트페이지](https://user-images.githubusercontent.com/77195474/130575999-b5d71bb2-673c-47a7-bfa0-8c3f34c14efe.PNG)
+
++ 리스트 페이지 코드
+    - 상품을 검색했을 때, 카테고리를 통해 페이지에 들어왔을 때, Best나 New를 클릭했을 때에 따라 다른 결과로 리스트 페이지를 출력 시키기위해 xml에 조건문 작성.
+    - 조건에 따른 리스트마다 페이징 처리도 다르게 해줘야 하기 때문에 상품의 개수를 구하는 xml또한 조건문 작성.
+![리스트xml1](https://user-images.githubusercontent.com/77195474/130576350-65cc5210-cc76-4ff0-ab63-9be6b4f6b342.PNG) ![리스트xml2](https://user-images.githubusercontent.com/77195474/130576368-5ce4284f-633c-44bc-aa40-4710d0498aa0.PNG)
+---
+
++ 상품 상세페이지(상단)
+    - 하트 클릭시 찜 목록 DB에 저장이 되고 색변환 
+    - 장바구니 클릭시 장바구니 DB에 저장
+![상세페이지1](https://user-images.githubusercontent.com/77195474/130577884-4d77eb31-8b09-4424-8126-1ffb58610826.PNG) ![찜](https://user-images.githubusercontent.com/77195474/130577976-ce8efab1-4c09-4723-b1d6-7ef406c8e68b.PNG)
++ 상품 상세페이지(리뷰)
+    - 구매자만 작성가능 중복작성 불가
+![리뷰1](https://user-images.githubusercontent.com/77195474/130578288-6b5024b5-8093-4f70-b281-4b85c3965826.PNG)
++ 상품 상세페이지(문의)
+    - 누구나 작성가능 중복작성 가능 본인의 글만 볼 수 있다.
+    - 더보기 클릭할 때마다 10개의 문의글 추가 출력
+![문의1](https://user-images.githubusercontent.com/77195474/130578989-70bce2c6-f949-440d-a68b-23108ac87ac7.PNG)
+* 상품 상세페이지 코드
+    - 리뷰작성 및 페이징(AJAX)
+    ![리뷰코드1](https://user-images.githubusercontent.com/77195474/130580115-eef592a9-1e6a-4815-b3a8-2313fd14747c.PNG) ![리뷰코드2](https://user-images.githubusercontent.com/77195474/130580160-af89b590-35b3-4d39-8f91-5ea98e6eb54c.PNG)
+    ![리뷰코드3](https://user-images.githubusercontent.com/77195474/130580208-723e1704-9f79-4eff-8627-108b3632a871.PNG)
+    ![리뷰코드4](https://user-images.githubusercontent.com/77195474/130580244-3ef885d4-62a8-4573-9e66-15b8a6303279.PNG)
+
+    - 문의글 작성, 문의 답글 삭제, 더보기(AJAX)
+    ![문의코드1](https://user-images.githubusercontent.com/77195474/130580452-263caf5c-88b1-4da1-8718-6bbccddcbbab.PNG)
+    ![문의코드2](https://user-images.githubusercontent.com/77195474/130580504-e5fceb7a-3992-47db-b90f-09cf6606eff2.PNG)
+    ![문의코드3](https://user-images.githubusercontent.com/77195474/130580524-5b4ba0f7-fca8-4bf3-97cc-fc07692d4c57.PNG)
+    ![문의코드4](https://user-images.githubusercontent.com/77195474/130580544-bd1b4eca-123f-4e4c-9acc-2a164a6ed3e9.PNG)
+---
++ 마이페이지
+    - 찜목록
+![마이페이지1](https://user-images.githubusercontent.com/77195474/130581483-ebb7ce3d-c4ef-416b-8820-d82728a79a38.PNG)
+    - 등록한 판매글
+![마이페이지2](https://user-images.githubusercontent.com/77195474/130581632-baa9d2d0-5672-4bad-a56e-dbae69d746a2.PNG)
+    - 장바구니
+![마에페이지3](https://user-images.githubusercontent.com/77195474/130581662-c74e9f4a-547f-4b2e-adfd-edb99a897668.PNG)
+![마이페이지4](https://user-images.githubusercontent.com/77195474/130581680-e0e1d89f-2dfe-4c9c-a760-d05f3c424d83.PNG)
+![마이페이지5](https://user-images.githubusercontent.com/77195474/130581851-4ee4f841-21b0-4eb5-b7ed-568dd04431f5.PNG)
+    - 장바구니 코드
+    삭제 또는 전체상품삭제 클릭시 장바구니에서 해당하는 상품 삭제(AJAX)
+    ![삭제1](https://user-images.githubusercontent.com/77195474/130582821-8fea63a2-bbdc-4fca-98a2-98c100667f21.PNG)
+    ![삭제2](https://user-images.githubusercontent.com/77195474/130582889-406a751f-02ab-40a4-b205-dea4fa6d3785.PNG)
+    ![삭제3](https://user-images.githubusercontent.com/77195474/130582925-8649aa20-2f96-48b1-ac0a-267204cfb805.PNG)
+    - 주문목록
+![주문목록1](https://user-images.githubusercontent.com/77195474/130581867-3538ec9a-b23f-4788-960b-6418aaf7987d.PNG)
+    - 주문상세정보(배송전)
+![주문목록2](https://user-images.githubusercontent.com/77195474/130581881-3e520afb-e7d4-4d52-bf49-6f5f5ec2f5ce.PNG)
+    - 주문상세정보(배송완료)
+![주문목록3](https://user-images.githubusercontent.com/77195474/130581903-41f587af-d8df-4861-8141-e3d892182393.PNG)
+    - 리뷰/QnA
+![리뷰문의](https://user-images.githubusercontent.com/77195474/130581930-f4b75692-fbfb-4576-b18d-83543ee5369a.PNG)
