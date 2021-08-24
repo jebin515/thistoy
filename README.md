@@ -126,10 +126,10 @@
 
     - 장바구니 코드
     삭제 또는 전체상품삭제 클릭시 장바구니에서 해당하는 상품 삭제(AJAX)
- 
-    ![삭제1](https://user-images.githubusercontent.com/77195474/130582821-8fea63a2-bbdc-4fca-98a2-98c100667f21.PNG)
-    ![삭제2](https://user-images.githubusercontent.com/77195474/130582889-406a751f-02ab-40a4-b205-dea4fa6d3785.PNG)
-    ![삭제3](https://user-images.githubusercontent.com/77195474/130582925-8649aa20-2f96-48b1-ac0a-267204cfb805.PNG)
+    
+  ![삭제1](https://user-images.githubusercontent.com/77195474/130582821-8fea63a2-bbdc-4fca-98a2-98c100667f21.PNG)
+  ![삭제2](https://user-images.githubusercontent.com/77195474/130582889-406a751f-02ab-40a4-b205-dea4fa6d3785.PNG)
+  ![삭제3](https://user-images.githubusercontent.com/77195474/130582925-8649aa20-2f96-48b1-ac0a-267204cfb805.PNG)
     
     - 주문목록
   
